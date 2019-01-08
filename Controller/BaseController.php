@@ -6,7 +6,7 @@ require_once getenv("CONSTANTES");
 
 class BaseController
 {
-    public static $defaultPath = "siscove";
+    public static $defaultPath = "inpla";
     /**
      *Construtor da BaseController 
      */

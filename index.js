@@ -22,7 +22,7 @@ $(function() {
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
         isModal: false,
-        title: 'Login - SISCOVE'
+        title: 'Login - INPLA'
     });
     $(".login").keyup(function(event){
         if (event.keyCode==13){
