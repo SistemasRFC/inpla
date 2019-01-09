@@ -12,53 +12,31 @@ $(function() {
     });
     $("#btnSalvar").jqxButton({ width: '100', theme: theme });
     $("#btnSalvar").click(function(){
-        $( "#dialogInformacao" ).jqxWindow('setContent', "Aguarde, salvando permiss&otilde;es!");
-        $( "#dialogInformacao" ).jqxWindow("open");
-        $('#method').val('AtualizaPermissoes');
-        var checkBoxes = '';
-        $.post('../../Controller/PermissaoMenu/PermissaoMenuController.php',
-            {method: 'ListarMenus',
-            codPerfil: $("#codPerfil").val()}, function(dados){
-
-            dados = eval('('+dados+')');            
-            data = dados[1];
-            if (data!=null){
-                for (i=0;i<data.length;i++){                    
-                    if ($("#chk"+data[i].COD_MENU_W).jqxCheckBox('val')){
-                        checkBoxes += data[i].COD_MENU_W+';S|';
-                    }else{
-                        checkBoxes += data[i].COD_MENU_W+';N|';
-                    }
-                }
-                $.post('../../Controller/PermissaoMenu/PermissaoMenuController.php',
-                    {method: $('#method').val(),
-                    codPerfil: $("#codPerfil").val(),
-                    C: checkBoxes}, function(data){
-
-                    data = eval('('+data+')');
-                    if (data[0]){
-                        $( "#dialogInformacao" ).jqxWindow("close");
-                    }
-                });
-            }
-        });        
-    });
-    $("#codPerfil").change(function(){
-        CarregaListaMenus();
+        MontaComboSelecionado();
     });
 });
-function CarregaListaMenus(){
-    $( "#dialogInformacao" ).jqxWindow('setContent', "Aguarde, atualizando");
-    $( "#dialogInformacao" ).jqxWindow("open");    
-    $.post('../../Controller/PermissaoMenu/PermissaoMenuController.php',
-        {method: 'ListarMenus',
-        codPerfil: $("#codPerfil").val()}, function(data){
 
-        data = eval('('+data+')');
-        ListaMenus(data[1]);
+function MontaComboSelecionado(){
+    var checkBoxes ='';
+    $(".check").each(function(){
+        if ($(this).jqxCheckBox('val')){
+            checkBoxes += $(this).attr('codMenu')+'=>SP';
+        }else{
+            checkBoxes += $(this).attr('codMenu')+'=>NP';
+        }
     });
+    SalvarPermissoes(checkBoxes); 
+}
+
+function SalvarPermissoes(checkBoxes){
+    $('#method').val('AtualizaPermissoes');
+    ExecutaDispatch('PermissaoMenu', $('#method').val(), 'codPerfil;'+$("#codPerfil").val()+'|C;'+checkBoxes, CarregaListaMenus);
+}
+function CarregaListaMenus(){
+    ExecutaDispatch('PermissaoMenu', 'ListarMenus', 'codPerfil;'+$("#codPerfil").val()+'|', ListaMenus);
 }
 function ListaMenus(ListaMenus){
+    ListaMenus=ListaMenus[1];
     count=3;
     tabela = '';
     for(i=0;i<ListaMenus.length;i++){
@@ -72,7 +50,7 @@ function ListaMenus(ListaMenus){
             dscMenu = ListaMenus[i].DSC_MENU_W;
         }
         tabela += "<td width='400px'>";
-        tabela += "<div id='chk"+ListaMenus[i].COD_MENU_W+"' style='margin-left: 10px; float: left;' class='check'><span>"+dscMenu+"</span></div><br>";
+        tabela += "<div id='chk"+ListaMenus[i].COD_MENU_W+"' codMenu='"+ListaMenus[i].COD_MENU_W+"' style='margin-left: 10px; float: left;' class='check'><span>"+dscMenu+"</span></div><br>";
         tabela += "</td>";
         count++;
         if (count==3){
@@ -94,51 +72,15 @@ function ListaMenus(ListaMenus){
     $( "#dialogInformacao" ).jqxWindow("close");
 }
 
-function CarregaComboPerfil(){
-    $("#dialogInformacao").jqxWindow('setContent', "<h4 style='text-align:center;'>Aguarde, carregando Combo!<br><img src='../../Resources/images/carregando.gif' width='200' height='30'></h4>");
-    $("#dialogInformacao" ).jqxWindow("open");    
-    $.post('../../Controller/Perfil/PerfilController.php',
-           {
-               method: 'ListarPerfilAtivo'
-           },
-           function(listaPefil){
-                listaPefil = eval ('('+listaPefil+')');
-                if (listaPefil[0]==true){
-                    MontaComboPerfil(listaPefil[1]);
-                    CarregaListaMenus(listaPefil[1][0].COD_PERFIL_W);
-                    $( "#dialogInformacao" ).jqxWindow('close');
-                }else{                    
-                    $( "#dialogInformacao" ).jqxWindow('setContent', 'N&atilde;o foi poss&iacute;vel executar a consulta!<br>'+listaAssunto[1]);
-                    $( "#dialogInformacao" ).jqxWindow('open');
-                }                
-           }
-    );
+function CarregaComboPerfil(arrDados){
+    CriarComboDispatch('codPerfil', arrDados, 0);   
+    $("#codPerfil").change(function(){
+        CarregaListaMenus();
+    });
 }
-function MontaComboPerfil(listaPefil){    
-    var source =
-    {
-        localdata: listaPefil,
-        datatype: "json",
-        datafields:
-        [
-            { name: 'COD_PERFIL_W', type: 'string' },
-            { name: 'DSC_PERFIL_W', type: 'string' }
-        ]
-    };
-    var dataAdapter = new $.jqx.dataAdapter(source);    
-    $("#codPerfil").jqxDropDownList(
-    {
-        source: dataAdapter,
-        theme: theme,
-        width: 200,
-        height: 25,
-        selectedIndex: 0,
-        displayMember: 'DSC_PERFIL_W',
-        valueMember: 'COD_PERFIL_W'
-    });                
-}
+
 $(document).ready(function () {
     $('#checkboxes').html("<img src='../../Resources/images/carregando.gif' width='200' height='30'>");
     //CarregaListaMenus();
-    CarregaComboPerfil();
+    ExecutaDispatch('Perfil', 'ListarPerfilAtivo', '', CarregaComboPerfil);
 });

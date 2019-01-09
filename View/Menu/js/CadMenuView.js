@@ -5,7 +5,7 @@ $(function() {
     $("#btnSalvar").click(function(){
         $( "#dialogInformacao" ).jqxWindow('setContent', "Aguarde, salvando departamento!");
         $( "#dialogInformacao" ).jqxWindow("open");
-        if ($("#imagem").val()!=""){
+        if ($("#arquivo").val()!=""){
             var formData = new FormData($('form')[0]);
             ExecutaDispatchUpload('Menu', 'uploadArquivo', formData, salvarMenu);
         }else{
@@ -40,7 +40,7 @@ function salvarMenu(data){
         $("#dscCaminhoImagem").val(data.msg);
     }
     var parametros = retornaParametros();
-    ExecutaDispatch('Menu', method, parametros,fecharTelaCadastro);
+    ExecutaDispatch('Menu', $("#method").val(), parametros,fecharTelaCadastro);
 }
 
 function fecharTelaCadastro(){

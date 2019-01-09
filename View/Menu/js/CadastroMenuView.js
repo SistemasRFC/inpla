@@ -44,16 +44,7 @@ $(function() {
         $("#ListaMetodos").jqxWindow('open');
     });
     $("#btnNovo").click(function(){
-<<<<<<< HEAD
         ExecutaDispatch('Menu', 'ListaMenus', '', MontaComboMenu);
-=======
-        CriarCombo('codMenuPai', 
-                   '../../Controller/Menu/MenuController.php',
-                   'method;ListaMenus',
-                   'COD_MENU_W|DSC_MENU_W',
-                   'DSC_MENU_W',
-                   'COD_MENU_W');
->>>>>>> d3189162ba88ea71eeaed1eec345c8d5209e93d2
         $("#codMenu").val(0);
         $("#dscMenu").val('');
         $("#nmeController").val('');

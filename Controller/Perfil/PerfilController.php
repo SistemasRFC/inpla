@@ -3,38 +3,31 @@ include_once("Controller/BaseController.php");
 include_once("Model/Perfil/PerfilModel.php");
 class PerfilController extends BaseController
 {
-    function PerfilController(){
-      $method = $_REQUEST['method'];
-      $string =$method.'()';
-      $method = "\$this->".$string.";";
-      eval($method);
-    }
-
-    Private function ChamaView(){
+    Public function ChamaView(){
         $params = array();        
         echo ($this->gen_redirect_and_form(BaseController::ReturnView(BaseController::getPath(), get_class($this)), $params));
     }
 
-    Private function ListarPerfil(){
+    Public function ListarPerfil(){
         $model = new PerfilModel();
         echo $model->ListarPerfil();
     }
 
-    Private function ListarPerfilRestrito(){
+    Public function ListarPerfilRestrito(){
         $model = new PerfilModel();
         echo $model->ListarPerfilRestrito();
     }
 
-    Private function ListarPerfilAtivo(){
+    Public function ListarPerfilAtivo(){
         $model = new PerfilModel();
         echo $model->ListarPerfilAtivo();
     }
 
-    Private function AddPerfil(){
+    Public function AddPerfil(){
         $PerfilModel = new PerfilModel();
         echo $PerfilModel->AddPerfil();
     }
-    Private Function UpdatePerfil(){
+    Public Function UpdatePerfil(){
         $PerfilModel = new PerfilModel();
         echo $PerfilModel->UpdatePerfil();
     }

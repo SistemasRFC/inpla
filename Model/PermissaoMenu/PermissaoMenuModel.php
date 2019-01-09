@@ -26,9 +26,9 @@ class PermissaoMenuModel
     function AtualizaPermissoes(){
         $dao = new PermissaoMenuDao();        
         $dao->RemovePermissoes('0');
-        $array = explode("|", $_POST['C']);
+        $array = explode("P", $_POST['C']);
         for ($i=0;$i<count($array)-1;$i++){
-            $registro=explode(';',$array[$i]);            
+            $registro=explode('=>',$array[$i]);            
             if ($registro[1]=='S'){
                 $atualizado = $dao->AddPermissao($registro[0]);
             }else{

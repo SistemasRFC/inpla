@@ -7,7 +7,6 @@ if (!isset($_SESSION)){
 if (!isset($_SESSION['cod_usuario'])){
     header("Location:../../index.php");
 }
-$rs_usuario = $_SESSION['DadosUsuario'];
 ?>
 <html>
     <head>
@@ -63,12 +62,10 @@ $rs_usuario = $_SESSION['DadosUsuario'];
                         <table width="100%" align="left" style="border:1px solid #a4bed4;">
                             <tr>
                                 <td align="left" style="text-align:left; height:10%; font-size:14px;color:#000000;vertical-align:middle;font-family: arial, helvetica, serif;" width="30%">
-                                    <?php echo $rs_usuario[1][0]['DSC_CLIENTE_FINAL'];?> <BR>
                                     Sistema de Vendas
                                 </td>
                                 <td align="left" style="text-align:left; height:10%;font-size:14px;color:#000000;vertical-align:middle;font-family: arial, helvetica, serif;">
                                     <?php
-                                        echo "Usu&aacute;rio: ".$rs_usuario[1][0]['NME_USUARIO_COMPLETO'];
                                         echo "<BR>";
                                         echo"<a style=\"text-align:left;
                                                 height:10%;

@@ -68,7 +68,7 @@ class PermissaoMenuDao extends BaseDao
     }
 
     function AddPermissao( $codMenu ) {        
-        $insert_login = "INSERT INTO SE_MENU_PERFIL
+        $insert_login = "INSERT INTO SE_MENU_PERFIL (COD_PERFIL_W, COD_MENU_W)
                          VALUES (
                                 '".filter_input(INPUT_POST, 'codPerfil', FILTER_SANITIZE_NUMBER_INT)."',
                                 $codMenu)";

@@ -18,10 +18,13 @@ class PerfilDao extends BaseDao
     }
 
     function ListarPerfilAtivo() {
-        $sql = " SELECT COD_PERFIL_W,
-                        DSC_PERFIL_W 
+        $sql = " SELECT COD_PERFIL_W as ID,
+                        DSC_PERFIL_W as DSC
                    FROM SE_PERFIL 
-                  WHERE IND_ATIVO='S'";        
+                  WHERE IND_ATIVO='S'
+                 UNION
+                 SELECT 0 as ID,
+                        '(Selecione)' as DSC";        
         return $this->selectDB("$sql", false);
     }
 

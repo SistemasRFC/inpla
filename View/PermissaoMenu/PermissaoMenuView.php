@@ -1,4 +1,4 @@
-<?php include_once "View/MenuPrincipal/Cabecalho.php";?>
+<?php include_once $_SERVER['DOCUMENT_ROOT']."/View/MenuPrincipal/Cabecalho.php";?>
 <HTML>
     <HEAD>
     <title>Permissão de Menus</title>
@@ -15,7 +15,7 @@
                         <table width="30%" border="0" align="left">
                             <tr>
                                 <td class="style3">Perfil</td>
-                                <td class="styleTD1">
+                                <td class="styleTD1" id="tdcodPerfil">
                                     <div id="codPerfil"></div>
                                 </td>
                             </tr>
