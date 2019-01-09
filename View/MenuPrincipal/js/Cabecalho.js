@@ -208,7 +208,7 @@ function CriarCombo(nmeCombo, url, parametros, dataFields, displayMember, valueM
 function CriarComboDispatch(nmeCombo, arrDados, valor){ 
     console.log(arrDados);
     $("#td"+nmeCombo).html('');
-    var select = '<select id="'+nmeCombo+'">';
+    var select = '<select id="'+nmeCombo+'" class="persist">';
     for (i=0;i<arrDados[1].length;i++){
         if (arrDados[1][i]['ID']==valor){
             select += '<option value="'+arrDados[1][i]['ID']+'" selected>'+arrDados[1][i]['DSC']+'</option>';
@@ -315,6 +315,57 @@ function ExecutaDispatch(Controller, Method, Parametros, Callback){
              }
         }
     );     
+}
+
+function ExecutaDispatchUpload(Controller, Method, Parametros, Callback){
+    $( "#dialogInformacao" ).jqxWindow('setContent', "Aguarde!");
+    $( "#dialogInformacao" ).jqxWindow("open"); 
+    $.ajax({
+        url: '../../Dispatch.php?controller='+Controller+'&method='+Method,
+        type: 'POST',
+        // Form data
+        data: Parametros,
+        //Options to tell JQuery not to process data or worry about content-type
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data){
+            data = eval('('+data+')');
+            if(data.sucesso == true){
+                 if (Callback!=undefined){
+                     Callback(data);
+                 }
+                 $( "#dialogInformacao" ).jqxWindow("close"); 
+            }
+            else{                 
+                $( "#dialogInformacao" ).jqxWindow('setContent', 'Erro ao executar a consulta!');
+            }
+        }
+    });     
+}
+
+function retornaParametros(){
+    var name;
+    var value;
+    var retorno='';
+    $(".persist").each(function(index) { 
+        name = $(this).prop('id');
+        switch ($(this).attr('type')) {
+            case 'checkbox':
+                if ($(this).is(":checked")){
+                    var value = 'S';
+                }else{
+                    var value = 'N';
+                }
+                break;
+                
+            default:
+                value = $(this).val();
+                break;
+        }
+        retorno += name+';'+value+'|';
+    });
+    return retorno;
 }
 
 function RedirecionaController(Controller, Method){

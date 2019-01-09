@@ -53,7 +53,7 @@ class MenuController extends BaseController
     Public Function uploadArquivo(){      
         $arquivo = $_FILES['arquivo'];
         $tipos = array('jpg', 'png', 'gif', 'psd', 'bmp');
-        $enviar = $this->uploadFile($arquivo, '../../Resources/images/', $tipos);
+        $enviar = $this->uploadFile($arquivo, 'Resources/images/', $tipos);
         $data['sucesso'] = false;
         if(isset($enviar['erro'])){
             $data['msg'] = $enviar['erro'];
@@ -86,7 +86,7 @@ class MenuController extends BaseController
                 }
             }
             if(!$tipoPermitido){
-                $retorno["erro"] = "Tipo nÃ£o permitido";
+                $retorno["erro"] = "Tipo não permitido";
             }
             else{
                 if(move_uploaded_file($arquivo['tmp_name'], $pasta . $nomeOriginal . $tipoArquivo)){

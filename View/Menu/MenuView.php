@@ -8,7 +8,7 @@
 
   </head>
   <body>
-      <input type="hidden" id="method" name="method">
+      <input type="hidden" id="method" name="method" class="persist">
       <table width="100%" id="CadastroMenus">
           <tr>
               <td width="100%"

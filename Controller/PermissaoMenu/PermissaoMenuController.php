@@ -1,6 +1,6 @@
 <?php
-include_once("../BaseController.php");
-include_once("../../Model/PermissaoMenu/PermissaoMenuModel.php");
+include_once("Controller/BaseController.php");
+include_once("Model/PermissaoMenu/PermissaoMenuModel.php");
 class PermissaoMenuController extends BaseController
 {
   function PermissaoMenuController(){
@@ -39,5 +39,4 @@ class PermissaoMenuController extends BaseController
     echo $model->AtualizaPermissoes();
   }
 }
-$PermissaoMenuController = new PermissaoMenuController();
 ?>

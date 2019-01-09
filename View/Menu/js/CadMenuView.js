@@ -5,77 +5,11 @@ $(function() {
     $("#btnSalvar").click(function(){
         $( "#dialogInformacao" ).jqxWindow('setContent', "Aguarde, salvando departamento!");
         $( "#dialogInformacao" ).jqxWindow("open");
-        if ($('#codMenu').val()==0){
-            method = 'AddMenu';
-        }else{
-            method = 'UpdateMenu';
-        }
-        if ($("#indAtivo").is(":checked")){
-            var check = 'S';
-        }else{
-            var check = 'N';
-        }
-        if ($("#indAtalho").is(":checked")){
-            var checkAtalho = 'S';
-        }else{
-            var checkAtalho = 'N';
-        }
         if ($("#imagem").val()!=""){
             var formData = new FormData($('form')[0]);
-            $.ajax({
-                url: '../../Controller/Menu/MenuController.php?method=uploadArquivo',
-                type: 'POST',
-                // Form data
-                data: formData,
-                //Options to tell JQuery not to process data or worry about content-type
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function(data){
-                    data = eval('('+data+')');
-                    if(data.sucesso == true){
-                        $("#dscCaminhoImagem").val(data.msg);
-                        $.post('../../Controller/Menu/MenuController.php',
-                            {method: method,
-                            codMenu: $("#codMenu").val(),
-                            dscMenu: $("#dscMenu").val(),
-                            nmeController: $("#nmeController").val(),
-                            nmeMethod: $("#nmeMethod").val(),
-                            indAtivo: check,
-                            indAtalho: checkAtalho,
-                            codMenuPai: $("#codMenuPai").val(),
-                            dscCaminhoImagem: $("#dscCaminhoImagem").val()}, function(result){                            
-                            result = eval('('+result+')');
-                            if (result[0]==true){
-                                $( "#dialogInformacao" ).jqxWindow('setContent', "Registro salvo com sucesso!");
-                                CarregaGridMenu();
-                                setTimeout(function(){
-                                    $( "#dialogInformacao" ).jqxWindow("close");
-                                    $( "#CadMenus" ).jqxWindow("close");
-                                },"2000");
-                            }else{                                
-                                $( "#dialogInformacao" ).jqxWindow('setContent', 'Erro ao salvar Menu!'+result[1]);
-                            }
-                        });
-                        $('#resposta').html('<img src="'+ data.msg +'" />');
-                    }
-                    else{
-                        $('#resposta').html(data.msg);
-                    }
-                }
-            });
+            ExecutaDispatchUpload('Menu', 'uploadArquivo', formData, salvarMenu);
         }else{
-            arquivo='';
-            var parametros = 'codMenu;'+$("#codMenu").val()+'|';
-            parametros += 'codMenu;'+$("#codMenu").val()+'|';
-            parametros += 'dscMenu;'+$("#dscMenu").val()+'|';
-            parametros += 'nmeController;'+$("#nmeController").val()+'|';
-            parametros += 'nmeMethod;'+$("#nmeMethod").val()+'|';
-            parametros += 'indAtivo;'+check+'|';
-            parametros += 'indAtalho;'+checkAtalho+'|';
-            parametros += 'codMenuPai;'+$("#codMenuPai").val()+'|';
-            parametros += 'dscCaminhoImagem;'+$("#dscCaminhoImagem").val();
-            ExecutaDispatch('Menu', method, parametros,fecharTelaCadastro);
+            salvarMenu();
         }
     });
     
@@ -95,6 +29,19 @@ $(function() {
         }
     });
 });
+
+function salvarMenu(data){
+    if ($('#codMenu').val()==0){
+        $("#method").val('AddMenu');
+    }else{
+        $("#method").val('UpdateMenu');
+    }    
+    if (data!=undefined){
+        $("#dscCaminhoImagem").val(data.msg);
+    }
+    var parametros = retornaParametros();
+    ExecutaDispatch('Menu', method, parametros,fecharTelaCadastro);
+}
 
 function fecharTelaCadastro(){
     $( "#CadMenus" ).jqxWindow("close");
