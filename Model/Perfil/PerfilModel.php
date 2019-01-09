@@ -1,6 +1,6 @@
 <?php
-include_once("../../Model/BaseModel.php");
-include_once("../../Dao/Perfil/PerfilDao.php");
+include_once("Model/BaseModel.php");
+include_once("Dao/Perfil/PerfilDao.php");
 class PerfilModel extends BaseModel
 {
     function PerfilModel(){

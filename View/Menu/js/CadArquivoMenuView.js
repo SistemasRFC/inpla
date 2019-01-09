@@ -12,7 +12,7 @@ $(function() {
     $("#btnSalvarArquivo").click(function(){
         $("#dialogInformacao").jqxWindow('setContent', "<h4 style='text-align:center;'>Aguarde, salvando!<br><img src='../../Resources/images/carregando.gif' width='200' height='30'></h4>");
         $("#dialogInformacao" ).jqxWindow("open");    
-        $.post('../../Controller/Menu/CadastroMenuController.php',
+        $.post('../../Controller/Menu/MenuController.php',
             {method: $("#methodArquivo").val(),
             codMenu: $("#codMenu").val(),
             codArquivo: $("#codArquivo").val(),
@@ -47,7 +47,7 @@ function MontaTabelaArquivoMenu(codMenu){
             { name: 'DSC_ARQUIVO', type: 'string' },
             { name: 'NRO_PRIORIDADE', type: 'string' }
         ],
-        url: '../../Controller/Menu/CadastroMenuController.php',
+        url: '../../Controller/Menu/MenuController.php',
         data:{
             method: 'ListaArquivoMenuGrid',
             codMenu: codMenu
@@ -86,7 +86,7 @@ function MontaTabelaArquivoMenu(codMenu){
 function DeleteMenuArquivo(){    
     $("#dialogInformacao").jqxWindow('setContent', "<h4 style='text-align:center;'>Aguarde, removendo menu<br><img src='../../Resources/images/carregando.gif' width='200' height='30'></h4>");
     $("#dialogInformacao" ).jqxWindow("open");    
-    $.post('../../Controller/Menu/CadastroMenuController.php',
+    $.post('../../Controller/Menu/MenuController.php',
         {method: 'DeleteMenuArquivo',
         codArquivo: $("#codArquivo").val()}, function(result){                            
         result = eval('('+result+')');

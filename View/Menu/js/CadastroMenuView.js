@@ -44,7 +44,16 @@ $(function() {
         $("#ListaMetodos").jqxWindow('open');
     });
     $("#btnNovo").click(function(){
+<<<<<<< HEAD
         ExecutaDispatch('Menu', 'ListaMenus', '', MontaComboMenu);
+=======
+        CriarCombo('codMenuPai', 
+                   '../../Controller/Menu/MenuController.php',
+                   'method;ListaMenus',
+                   'COD_MENU_W|DSC_MENU_W',
+                   'DSC_MENU_W',
+                   'COD_MENU_W');
+>>>>>>> d3189162ba88ea71eeaed1eec345c8d5209e93d2
         $("#codMenu").val(0);
         $("#dscMenu").val('');
         $("#nmeController").val('');
@@ -189,7 +198,7 @@ $(document).ready(function(){
 function DeleteMenu(){    
     $("#dialogInformacao").jqxWindow('setContent', "<h4 style='text-align:center;'>Aguarde, removendo menu<br><img src='../../Resources/images/carregando.gif' width='200' height='30'></h4>");
     $("#dialogInformacao" ).jqxWindow("open");    
-    $.post('../../Controller/Menu/CadastroMenuController.php',
+    $.post('../../Controller/Menu/MenuController.php',
         {method: 'DeleteMenu',
         codMenu: $("#codMenu").val()}, function(result){                            
         result = eval('('+result+')');

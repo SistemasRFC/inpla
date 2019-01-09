@@ -1,10 +1,12 @@
 <?php
-include_once("../../Dao/PermissaoMenu/PermissaoMenuDao.php");
+include_once("Dao/PermissaoMenu/PermissaoMenuDao.php");
 class PermissaoMenuModel
 {
     function PermissaoMenuModel(){
-        ob_start();
-        session_start();
+        If (!isset($_SESSION)){
+            ob_start();
+            session_start();
+        }
     }
 
     function ListarPerfil(){

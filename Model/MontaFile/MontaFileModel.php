@@ -1,7 +1,6 @@
 <?php
-
-//include_once("../../Model/BaseModel.php");
-include_once("../../Dao/MontaFile/MontaFileDao.php");
+//include_once("Model/BaseModel.php");
+include_once("Dao/MontaFile/MontaFileDao.php");
 
 class MontaFileModel {
 

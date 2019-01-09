@@ -1,5 +1,5 @@
 <?php
-include_once("../../Dao/BaseDao.php");
+include_once("Dao/BaseDao.php");
 class #classDao extends BaseDao
 {
     Protected $tableName = "#dscTabela";
@@ -8,19 +8,19 @@ class #classDao extends BaseDao
     
     Protected $columnKey = #pk;
     
-    Public Function #classDao(){
+    Public Function #classDao() {
         $this->conect();
     }
 
-    Public Function Listar#class(){    
+    Public Function Listar#class() {    
         return $this->MontarSelect();
     }
 
-    Public Function Update#class(){
+    Public Function Update#class() {
         return $this->MontarUpdate();
     }
 
-    Public Function Insert#class(){
+    Public Function Insert#class() {
         return $this->MontarInsert();
     }
 }

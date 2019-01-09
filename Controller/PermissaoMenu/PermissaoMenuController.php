@@ -3,16 +3,6 @@ include_once("Controller/BaseController.php");
 include_once("Model/PermissaoMenu/PermissaoMenuModel.php");
 class PermissaoMenuController extends BaseController
 {
-  function PermissaoMenuController(){
-    $method = $_REQUEST['method'];
-    $string =$method.'()';
-    $method = "\$this->".$string.";";
-    eval($method);
-
-  }
-  /**
-   * Redireciona para a view indicada
-   */
   function ChamaView(){
     $model = new PermissaoMenuModel();
     $listaPerfil = $model->ListarPerfil();
@@ -29,6 +19,17 @@ class PermissaoMenuController extends BaseController
     //$view = $this->getPath()."/View/Seguranca/".str_replace("Controller", "View", get_class($this)).".php";
     //echo ($this->gen_redirect_and_form($view, $params));
   }
+
+  function PermissaoMenuController(){
+    $method = $_REQUEST['method'];
+    $string =$method.'()';
+    $method = "\$this->".$string.";";
+    eval($method);
+
+  }
+  /**
+   * Redireciona para a view indicada
+   */
 
   Public Function ListarMenus(){
     $model = new PermissaoMenuModel();

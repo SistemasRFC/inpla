@@ -1,8 +1,15 @@
 <script src="js/CadMenuView.js?rdm=<?php echo time();?>"></script>
+<<<<<<< HEAD
 <form name="menuForm" enctype="multpart/form-data" id="cadastroMenuForm" method="post" action="../../Controller/Menu/CadastroMenuController.php">
     <input type="hidden" id="indAtivo1" name="indAtivo1" class="persist">
     <input type="hidden" id="codMenu" name="codMenu" value="0" class="persist">    
     <input type="hidden" id="dscCaminhoImagem" name="dscCaminhoImagem" class="persist">
+=======
+<form name="menuForm" enctype="multpart/form-data" id="cadastroMenuForm" method="post" action="../../Controller/Menu/MenuController.php">
+    <input type="hidden" id="indAtivo1" name="indAtivo1">
+    <input type="hidden" id="codMenu" name="codMenu" value="0">    
+    <input type="hidden" id="dscCaminhoImagem" name="dscCaminhoImagem">
+>>>>>>> d3189162ba88ea71eeaed1eec345c8d5209e93d2
     <table width="100%">
     <tr>
         <td>
