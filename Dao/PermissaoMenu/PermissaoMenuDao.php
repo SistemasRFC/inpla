@@ -1,5 +1,5 @@
 <?php
-include_once("../../Dao/BaseDao.php");
+include_once("Dao/BaseDao.php");
 class PermissaoMenuDao extends BaseDao
 {
     function PermissaoMenuDao() {

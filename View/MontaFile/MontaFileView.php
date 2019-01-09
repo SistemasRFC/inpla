@@ -1,8 +1,8 @@
-<?php include_once "../../View/MenuPrincipal/Cabecalho.php"; ?>
+<?php include_once "View/MenuPrincipal/Cabecalho.php"; ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Cadastro - kart</title>
+        <title>Monta File</title>
         <script src="../MontaFile/JavaScript/MontaFileView.js?rdm=<?php echo time();?>"></script>        
     </head>
     <body>

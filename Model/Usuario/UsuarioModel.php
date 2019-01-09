@@ -1,6 +1,6 @@
 <?php 
-include_once("../../Model/BaseModel.php");
-include_once("../../Dao/Usuario/UsuarioDao.php");
+include_once("Model/BaseModel.php");
+include_once("Dao/Usuario/UsuarioDao.php");
 class UsuarioModel extends BaseModel
 {
     function UsuarioModel(){

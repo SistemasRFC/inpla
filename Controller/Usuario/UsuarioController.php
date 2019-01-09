@@ -1,6 +1,6 @@
 <?php 
-include_once("../BaseController.php");
-include_once("../../Model/Usuario/UsuarioModel.php");
+include_once("Controller/BaseController.php");
+include_once("Model/Usuario/UsuarioModel.php");
 class UsuarioController extends BaseController
 {
     function UsuarioController(){
@@ -50,5 +50,4 @@ class UsuarioController extends BaseController
         echo $UsuarioModel->ResetaSenha();
     }  
 }
-$UsuarioController = new UsuarioController();
 ?>

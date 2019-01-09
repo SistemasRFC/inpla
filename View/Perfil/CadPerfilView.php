@@ -1,4 +1,4 @@
-<form name="menuForm" enctype="multpart/form-data" id="CadPerfilForm" method="post" action="../../Controller/Menu/CadastroMenuController.php">    
+<form name="menuForm" enctype="multpart/form-data" id="CadPerfilForm" method="post" action="../../Controller/Menu/MenuController.php">    
     <input type="hidden" id="method" name="method">    
     <table>
         <tr>

@@ -1,5 +1,5 @@
 function ListarMetodos(classe){
-    $.post('../../Controller/Menu/CadastroMenuController.php',
+    $.post('../../Controller/Menu/MenuController.php',
         {method: 'ListarMetodos',
          classe: classe,
          pastaAtual: $("#pastaAtual").val()}, function(result){                            

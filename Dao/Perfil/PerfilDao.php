@@ -1,5 +1,5 @@
 <?php
-include_once("../../Dao/BaseDao.php");
+include_once("Dao/BaseDao.php");
 class PerfilDao extends BaseDao
 {
     function PerfilDao() {

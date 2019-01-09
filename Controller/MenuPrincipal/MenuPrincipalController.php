@@ -1,5 +1,4 @@
 <?php
-
 include_once("Controller/BaseController.php");
 include_once("Model/MenuPrincipal/MenuPrincipalModel.php");
 
@@ -37,6 +36,4 @@ class MenuPrincipalController extends BaseController {
     }
 
 }
-
-$menuPrincipalController = new MenuPrincipalController();
 ?>

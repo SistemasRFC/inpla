@@ -1,6 +1,6 @@
 <?php
-include_once("../BaseController.php");
-include_once("../../Model/Perfil/PerfilModel.php");
+include_once("Controller/BaseController.php");
+include_once("Model/Perfil/PerfilModel.php");
 class PerfilController extends BaseController
 {
     function PerfilController(){
@@ -44,5 +44,4 @@ class PerfilController extends BaseController
         echo $PerfilModel->RetornaPerfilUsuarioLogado();   
     }
 }
-$PerfilController = new PerfilController();
 ?>

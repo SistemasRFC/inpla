@@ -1,5 +1,5 @@
 function ListarController(dir){
-    $.post('../../Controller/Menu/CadastroMenuController.php',
+    $.post('../../Controller/Menu/MenuController.php',
         {method: 'ListarController',
          pasta: dir}, function(result){                            
         result = eval('('+result+')');             
