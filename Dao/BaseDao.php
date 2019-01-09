@@ -32,7 +32,7 @@ class BaseDao{
             if (self::$conexao==null){
                 self::$conexao = new mysqli(self::getHost(), self::getUser(), self::getPassword(), self::getDB());
                 if(mysqli_connect_errno()){          
-                    print "Ocorreu um Erro na conexão MySQL:<b>".mysql_error()."</b>";
+                    print "Ocorreu um Erro na conexão MySQL:<b>".mysqli_connect_error()."</b>";
                     die();
                 }
             }

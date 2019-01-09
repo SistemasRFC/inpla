@@ -1,5 +1,5 @@
 <script src="js/CadUsuarioView.js"></script>
-<form name="CadastroForm" method="post" action="Controller/Seguranca/UsuarioController.php">
+<form name="CadastroForm" method="post" action="Controller/Usuario/UsuarioController.php">
     <input type="hidden" id="method" name="method">
     <input type="hidden" id="codUsuario" name="codUsuario">
     <table>

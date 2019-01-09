@@ -110,12 +110,12 @@ class CadastroMenuController extends BaseController
         $pastaAtual = filter_input(INPUT_POST, 'pastaAtual');
         $classe = filter_input(INPUT_POST, 'classe');
         $pasta = getcwd();
-        $novo = explode('\\', $pasta);
+        $novo = explode('/', $pasta);
         $pasta='';
         for ($i=0;$i<count($novo)-1;$i++){
-            $pasta.=$novo[$i].'\\';
+            $pasta.=$novo[$i].'/';
         }          
-        $arquivo = $pasta.$pastaAtual.'\\'.$classe;        
+        $arquivo = $pasta.$pastaAtual.'/'.$classe;        
         if (file_exists($arquivo)){
             $file = fopen($arquivo, 'r');
             $linha='';
@@ -140,13 +140,13 @@ class CadastroMenuController extends BaseController
     
     Public Function ListarController(){
         $pasta = getcwd();        
-        $novo = explode('\\', $pasta);
+        $novo = explode('/', $pasta);
         $pasta='';
         for ($i=0;$i<count($novo)-1;$i++){
-            $pasta.=$novo[$i].'\\';
+            $pasta.=$novo[$i].'/';
         }         
         if (filter_input(INPUT_POST, 'pasta')!=''){
-            $pasta = $pasta.filter_input(INPUT_POST, 'pasta').'\\';
+            $pasta = $pasta.filter_input(INPUT_POST, 'pasta').'/';
         }               
         $pasta = $this->PegarArquivosPasta($pasta);
         echo json_encode($pasta);

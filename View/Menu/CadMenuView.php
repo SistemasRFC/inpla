@@ -1,4 +1,4 @@
-<form name="menuForm" enctype="multpart/form-data" id="cadastroMenuForm" method="post" action="../../Controller/Seguranca/CadastroMenuController.php">
+<form name="menuForm" enctype="multpart/form-data" id="cadastroMenuForm" method="post" action="../../Controller/Menu/CadastroMenuController.php">
     <input type="hidden" id="indAtivo1" name="indAtivo1">
     <input type="hidden" id="codMenu" name="codMenu" value="0">    
     <input type="hidden" id="dscCaminhoImagem" name="dscCaminhoImagem">

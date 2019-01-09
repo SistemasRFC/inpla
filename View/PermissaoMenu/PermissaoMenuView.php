@@ -5,7 +5,7 @@
     <script src="js/PermissaoMenuView.js?rdm=<?php echo time();?>"></script>
     </HEAD>
     <BODY>
-        <form name="PermissaoForm" id="PermissaoForm" method="post" action="../../Controller/Seguranca/PermissaoController.php">
+        <form name="PermissaoForm" id="PermissaoForm" method="post" action="../../Controller/PermissaoMenu/PermissaoController.php">
             <input type="hidden" value="" name="method" id="method">
             <input type="hidden" value="" name="codMenu" id="codMenu">
             <input type="hidden" value="" name="indAtivo" id="indAtivo">
