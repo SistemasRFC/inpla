@@ -1,12 +1,9 @@
 <?php
-include_once("../../Model/BaseModel.php");
-include_once("../../Dao/Menu/CadastroMenuDao.php");
-class CadastroMenuModel extends BaseModel
+include_once("Model/BaseModel.php");
+include_once("Dao/Menu/MenuDao.php");
+include_once("Resources/php/FuncoesArray.php");
+class MenuModel extends BaseModel
 {
-    function CadastroMenuModel(){
-        ob_start();
-        session_start();
-    }
     /**
      * Carrega Lista de menus
      * @param type $nmeLogin
@@ -14,27 +11,27 @@ class CadastroMenuModel extends BaseModel
      * @return type
      */
     function ListaMenus(){
-        $dao = new CadastroMenuDao();
+        $dao = new MenuDao();
         return json_encode($dao->ListaMenus());
     }
 
     function AddMenu(){
-        $dao = new CadastroMenuDao();
+        $dao = new MenuDao();
         return json_encode($dao->AddMenu());
     }
 
     function UpdateMenu(){
-        $dao = new CadastroMenuDao();
+        $dao = new MenuDao();
         return json_encode($dao->UpdateMenu());
     }
 
     function DeleteMenu(){
-        $dao = new CadastroMenuDao();
+        $dao = new MenuDao();
         return json_encode($dao->DeleteMenu());
     }
 
     function ListarMenusAutoComplete($parametro){
-        $dao = new CadastroMenuDao();
+        $dao = new MenuDao();
         $lista = $dao->ListarMenusAutoComplete($parametro);
         $total = count($lista);
         $i=0;
@@ -64,11 +61,12 @@ class CadastroMenuModel extends BaseModel
     }
 
     function ListarMenusGrid(){
-        $dao = new CadastroMenuDao();
+        $dao = new MenuDao();
         $lista = $dao->ListarMenusGrid();
         if ($lista[0]){
-            $lista = BaseModel::AtualizaBooleanInArray($lista, 'IND_MENU_ATIVO_W', 'ATIVO');
-            $lista = BaseModel::AtualizaBooleanInArray($lista, 'IND_ATALHO', 'ATALHO');
+            $lista = FuncoesArray::AtualizaBooleanInArray($lista, 'IND_MENU_ATIVO_W', 'ATIVO');
+            $lista = FuncoesArray::AtualizaBooleanInArray($lista, 'IND_ATALHO', 'ATALHO');
+//            $lista = FuncoesArray::RecursiveArrayUtf8Encode($lista, 'IND_ATALHO', 'ATALHO');
         }
         return json_encode($lista);
     }

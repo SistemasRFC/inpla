@@ -31,26 +31,32 @@ $(function() {
     }); 
     $("#btnLogin").jqxButton({ width: '100', theme: theme });
     $("#btnLogin").click(function(){
-        $( "#dialogInformacao" ).jqxWindow('setContent', "Aguarde, efetuando Login!");
-        $( "#dialogInformacao" ).jqxWindow("open");        
-        $.post('Controller/Login/LoginController.php',
-               {
-                   method: 'Logar',
-                   nmeLogin: $("#nmeLogin").val(),
-                   txtSenha: $("#txtSenha").val()
-               },
-               function(logar){
-                    logar = eval ('('+logar+')');
-                    if (logar[0]==true){
-                        window.location.href=logar[1][0]['DSC_PAGINA'];
-                    }else{
-                        $( "#dialogInformacao" ).jqxWindow('setContent', "Usu&aacute;rio ou senha inv&aacute;lido!");                        
-                    }
-               }
-        );
+        logar();
     });
 
 });
+
+function logar(){
+    $( "#dialogInformacao" ).jqxWindow('setContent', "Aguarde, efetuando Login!");
+    $( "#dialogInformacao" ).jqxWindow("open");            
+    $.post('Dispatch.php',
+        {
+            method: 'Logar',
+            controller: 'Login',
+            verificaPermissao: 'N',
+            nmeUsuario: $("#nmeLogin").val(),
+            txtSenha: $("#txtSenha").val()
+        },
+        function(logar){
+             logar = eval ('('+logar+')');
+             if (logar[0]==true){
+                 $(location).attr('href','Dispatch.php?controller='+logar[1][0]['DSC_PAGINA']+'&method='+logar[1][0]['NME_METHOD']);
+             }else{
+                 $( "#dialogInformacao" ).jqxWindow('setContent', "Usu&aacute;rio ou senha inv&aacute;lido!");  
+             }
+        }
+    );    
+}
 $(document).ready(function(){
     $("#nmeLogin").focus();
     $("#nmeLogin").val('adm');

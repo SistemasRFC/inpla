@@ -370,20 +370,41 @@ class BaseDao{
      * @param type $type
      * @return type
      */
-    Public Function Populate($field, $type='S'){
+    Public Static Function Populate($field, $type='S'){
         $array = array('S' => FILTER_SANITIZE_STRING,
                        'I' => FILTER_SANITIZE_NUMBER_INT,
                        'F' => FILTER_SANITIZE_NUMBER_FLOAT,
-                       'D' => FILTER_SANITIZE_STRING);
+                       'D' => FILTER_SANITIZE_STRING,
+                       'P' => FILTER_SANITIZE_STRING);
         if ($type=='F'){
             $return = filter_input(INPUT_POST, $field);
             $return = str_replace(",", ".", str_replace(".", "", $return));
         }else if ($type=='D'){
-            $return = $this->ConverteDataForm(filter_input(INPUT_POST, $field, $array[$type]));
+            $return = BaseDao::ConverteDataForm(filter_input(INPUT_POST, $field, $array[$type]));            
+        }else if ($type=='P'){
+            $return = md5(filter_input(INPUT_POST, $field, $array[$type]));
         }else{
             $return = filter_input(INPUT_POST, $field, $array[$type]);
         }
         return $return;
+    }
+    
+    Public Function GetColumns(){
+        return array_merge($this->columns, $this->columnKey);
+    }  
+    
+    Public Static Function PermissaoMetodoUsuario($codUsuario, $controller, $method){
+        $sql = "SELECT COUNT(*) AS QTD
+                  FROM SE_MENU M
+                 INNER JOIN SE_MENU_PERFIL MP
+                    ON M.COD_MENU_W = MP.COD_MENU_W
+                 INNER JOIN SE_USUARIO U
+                    ON MP.COD_PERFIL_W = U.COD_PERFIL_W
+                 WHERE M.NME_CONTROLLER = '$controller'
+                   AND M.NME_METHOD = '$method'
+                   AND U.COD_USUARIO = $codUsuario
+                   AND M.IND_MENU_ATIVO_W = 'S'";
+        return static::selectDB($sql, false);
     }
 }
 ?>

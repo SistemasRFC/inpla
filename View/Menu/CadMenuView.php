@@ -1,3 +1,4 @@
+<script src="js/CadMenuView.js?rdm=<?php echo time();?>"></script>
 <form name="menuForm" enctype="multpart/form-data" id="cadastroMenuForm" method="post" action="../../Controller/Menu/CadastroMenuController.php">
     <input type="hidden" id="indAtivo1" name="indAtivo1">
     <input type="hidden" id="codMenu" name="codMenu" value="0">    
@@ -51,8 +52,7 @@
                     <td class="style2">Menu Pai</td>
                 </tr>
                 <tr>
-                    <td class="styleTD1">
-                        <div id="codMenuPai"></div>
+                    <td class="styleTD1" id="tdcodMenuPai">
                     </td>
                 </tr>
             </table>

@@ -1,8 +1,8 @@
 <?php
-include_once("../../Dao/BaseDao.php");
-class CadastroMenuDao extends BaseDao
+include_once("Dao/BaseDao.php");
+class MenuDao extends BaseDao
 {
-    function CadastroMenuDao() {
+    function MenuDao() {
         $this->conect();
     }
 
@@ -13,12 +13,17 @@ class CadastroMenuDao extends BaseDao
     function ListaMenus() {
         try {
             $sql_lista = " SELECT COD_MENU_W,
-                                  DSC_MENU_W
+                                  COD_MENU_W AS ID,
+                                  DSC_MENU_W,
+                                  DSC_MENU_W AS DSC
                              FROM SE_MENU
-                            WHERE COD_MENU_PAI_W > -1
+                            WHERE COD_MENU_PAI_W > -1 
+                              AND IND_VISIBLE = 'S'
                             UNION
                            SELECT '0' AS COD_MENU_W,
-                                  'Sem Pai' AS DSC_MENU_W
+                                  '0' AS ID,
+                                  'Sem Pai' AS DSC_MENU_W,
+                                  'Sem Pai' AS DSC
                             ORDER BY DSC_MENU_W";
             $lista = $this->selectDB("$sql_lista", false);
         } catch (Exception $e) {
@@ -54,7 +59,9 @@ class CadastroMenuDao extends BaseDao
     public function ListarMenusGrid() {
         try {
             $sql_lista = " SELECT COD_MENU_W,
+                                  COD_MENU_W AS ID,
                                   DSC_MENU_W,
+                                  DSC_MENU_W AS DSC,
                                   NME_CONTROLLER,
                                   NME_METHOD,
                                   IND_MENU_ATIVO_W,

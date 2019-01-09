@@ -59,108 +59,7 @@ $(function() {
         $("#indAtivo").prop("checked", false);
         $("#indAtalho").prop("checked", false);
         $("#CadMenus").jqxWindow("open");
-    });    
-    $("#btnSalvar").click(function(){
-        $( "#dialogInformacao" ).jqxWindow('setContent', "Aguarde, salvando departamento!");
-        $( "#dialogInformacao" ).jqxWindow("open");
-        if ($('#codMenu').val()==0){
-            method = 'AddMenu';
-        }else{
-            method = 'UpdateMenu';
-        }
-        if ($("#indAtivo").is(":checked")){
-            var check = 'S';
-        }else{
-            var check = 'N';
-        }
-        if ($("#indAtalho").is(":checked")){
-            var checkAtalho = 'S';
-        }else{
-            var checkAtalho = 'N';
-        }
-        if ($("#imagem").val()!=""){
-            var formData = new FormData($('form')[0]);
-            $.ajax({
-                url: '../../Controller/Menu/CadastroMenuController.php?method=uploadArquivo',
-                type: 'POST',
-                // Form data
-                data: formData,
-                //Options to tell JQuery not to process data or worry about content-type
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function(data){
-                    data = eval('('+data+')');
-                    if(data.sucesso == true){
-                        $("#dscCaminhoImagem").val(data.msg);
-                        $.post('../../Controller/Menu/CadastroMenuController.php',
-                            {method: method,
-                            codMenu: $("#codMenu").val(),
-                            dscMenu: $("#dscMenu").val(),
-                            nmeController: $("#nmeController").val(),
-                            nmeMethod: $("#nmeMethod").val(),
-                            indAtivo: check,
-                            indAtalho: checkAtalho,
-                            codMenuPai: $("#codMenuPai").val(),
-                            dscCaminhoImagem: $("#dscCaminhoImagem").val()}, function(result){                            
-                            result = eval('('+result+')');
-                            if (result[0]==true){
-                                $( "#dialogInformacao" ).jqxWindow('setContent', "Registro salvo com sucesso!");
-                                CarregaGridMenu();
-                                CriarCombo( 'codMenuPai', 25, 190,
-                                            '../../Controller/Menu/CadastroMenuController.php',
-                                            'method;ListaMenus',
-                                            'COD_MENU_W|DSC_MENU_W',
-                                            'DSC_MENU_W',
-                                            'COD_MENU_W');
-                                setTimeout(function(){
-                                    $( "#dialogInformacao" ).jqxWindow("close");
-                                    $( "#CadMenus" ).jqxWindow("close");
-                                },"2000");
-                            }else{                                
-                                $( "#dialogInformacao" ).jqxWindow('setContent', 'Erro ao salvar Menu!'+result[1]);
-                            }
-                        });
-                        $('#resposta').html('<img src="'+ data.msg +'" />');
-                    }
-                    else{
-                        $('#resposta').html(data.msg);
-                    }
-                }
-            });
-        }else{
-            arquivo='';
-            $.post('../../Controller/Menu/CadastroMenuController.php',
-                {method: method,
-                codMenu: $("#codMenu").val(),
-                dscMenu: $("#dscMenu").val(),
-                nmeController: $("#nmeController").val(),
-                nmeMethod: $("#nmeMethod").val(),
-                indAtivo: check,
-                indAtalho: checkAtalho,
-                codMenuPai: $("#codMenuPai").val(),
-                dscCaminhoImagem: $("#dscCaminhoImagem").val()}, function(data){
-
-                data = eval('('+data+')');
-                if (data[0]==1){
-                    $( "#dialogInformacao" ).jqxWindow('setContent', "Registro salvo com sucesso!");
-                    CriarCombo('codMenuPai', 
-                               '../../Controller/Menu/CadastroMenuController.php',
-                               'method;ListaMenus',
-                               'COD_MENU_W|DSC_MENU_W',
-                               'DSC_MENU_W',
-                               'COD_MENU_W');                    
-                    CarregaGridMenu();
-                    setTimeout(function(){
-                        $( "#dialogInformacao" ).jqxWindow("close");
-                        $( "#CadMenus" ).jqxWindow("close");
-                    },"2000");
-                }else{
-                    $( "#dialogInformacao" ).jqxWindow('setContent', 'Erro ao salvar Menu!'+data[1]);
-                }
-            });
-        }
-    });
+    });   
     
     $( "#indAtivo" ).click(function( event ) {
         if (this.checked){
@@ -178,21 +77,8 @@ $(function() {
         }
     });
 });
-function CarregaGridMenu(){
-    $("#tdMenus").html("");
-    $("#tdMenus").html('<div id="listaMenus"></div>');
-    $('#listaMenus').html("<img src='../../Resources/images/carregando.gif' width='200' height='30'>");
-    $("#dialogInformacao").jqxWindow('setContent', "<h4 style='text-align:center;'>Aguarde, carregando grid!<br><img src='../../Resources/images/carregando.gif' width='200' height='30'></h4>");
-    $("#dialogInformacao" ).jqxWindow("open");     
-    $.post('../../Controller/Menu/CadastroMenuController.php',
-           {
-               method: 'ListarMenusGrid'
-           },
-           function(listaMenus){
-                listaMenus = eval ('('+listaMenus+')');
-                MontaTabelaMenu(listaMenus[1]);
-           }
-    );
+function CarregaGridMenu(listaMenus){
+    MontaTabelaMenu(listaMenus[1]);
 }
 function MontaTabelaMenu(listaMenus){
     var nomeGrid = 'listaMenus';
@@ -297,13 +183,8 @@ function MontaTabelaMenu(listaMenus){
     $("#dialogInformacao" ).jqxWindow("close");  
 }
 $(document).ready(function(){
-    CriarCombo('codMenuPai', 
-               '../../Controller/Menu/CadastroMenuController.php',
-               'method;ListaMenus',
-               'COD_MENU_W|DSC_MENU_W',
-               'DSC_MENU_W',
-               'COD_MENU_W');    
-    CarregaGridMenu();    
+    ExecutaDispatch('Menu', 'ListaMenus', '', MontaComboMenu);
+    ExecutaDispatch('Menu', 'ListarMenusGrid', '', CarregaGridMenu);
     $(document).on('contextmenu', function (e) {
         return false;
     });

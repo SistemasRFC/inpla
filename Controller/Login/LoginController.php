@@ -1,32 +1,24 @@
 <?php
-include_once("../BaseController.php");
-include_once("../../Model/Login/LoginModel.php");
+
+include_once("Controller/BaseController.php");
+include_once("Model/Login/LoginModel.php");
+
 class LoginController extends BaseController
 {
-    function LoginController(){        
-        eval("\$this->".BaseController::getMethod()."();");
+    Public Function Logar(){
+        $LoginModel = new LoginModel();
+        echo $LoginModel->Logar();
+    }   
+    
+    Public Function AlterarSenha(){
+        $LoginModel = new LoginModel();
+        echo $LoginModel->AlteraSenha();        
+    }   
+    
+    Public Function Logoff(){
+        $params = array();
+        echo ($this->gen_redirect_and_form('index.php', $params));
     }
-    /**
-     * Verifica se o usuário é válido
-     * @param type $pagina 
-     */
-    function Logar(){
-        $model = new LoginModel();        
-        $logar = $model->Logar();
-        echo $logar;
-    }
-
-  function AlteraSenha(){
-     $model = new LoginModel();
-     if ($model->AlteraSenha()){
-        header("Location: ../../Controller/MenuPrincipal/MenuPrincipalController.php?method=CarregaMenu");
-    }else{
-        header("Location: ../../index.php");
-    }
-  }
-  function Logoff(){
-      header("Location: ../../index.php");
-  }
 }
 $loginController = new LoginController();
 ?>

@@ -1,6 +1,8 @@
 <?php
-include_once("../../Model/BaseModel.php");
-include_once("../../Dao/MenuPrincipal/MenuPrincipalDao.php");
+include_once("Model/BaseModel.php");
+include_once("Dao/MenuPrincipal/MenuPrincipalDao.php");
+include_once("Resources/php/FuncoesArray.php");
+
 class MenuPrincipalModel extends BaseModel
 {
     function MenuPrincipalModel(){
@@ -37,7 +39,9 @@ class MenuPrincipalModel extends BaseModel
 
     function CarregaMenuNew($path){
         $dao = new MenuPrincipalDao();
-        return json_encode($dao->CarregaMenuNew($_SESSION['cod_usuario'], $path));
+        $listaAtualizada = $dao->CarregaMenuNew($_SESSION['cod_usuario'], $path);
+//        $listaAtualizada = FuncoesArray::RecursiveArrayUtf8Encode($result);
+        return json_encode($listaAtualizada);
     }
 
     function CarregaController($codMenu, $path){

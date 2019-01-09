@@ -1,7 +1,7 @@
 <?php
 include_once PATH."Dao/BaseDao.php";
-require_once(PATH.'Resources/PHPMailer_5.2.4/class.phpmailer.php');
-include(PATH."Resources/PHPMailer_5.2.4/class.smtp.php"); // optional, gets called from within class.phpmailer.php if not already loaded
+//require_once(PATH.'Resources/PHPMailer_5.2.4/class.phpmailer.php');
+//include(PATH."Resources/PHPMailer_5.2.4/class.smtp.php"); // optional, gets called from within class.phpmailer.php if not already loaded
 class BaseModel {
 
     Protected $objRequest;
@@ -40,16 +40,15 @@ class BaseModel {
         //$body             = file_get_contents('contents.html');
         //$body             = preg_replace('/[\]/','',$body);
         $mail->IsSMTP(); // telling the class to use SMTP
-        $mail->Host       = "smtp.gmail.com"; // SMTP server
         $mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
                                                    // 1 = errors and messages
                                                    // 2 = messages only
         $mail->SMTPAuth   = true;                  // enable SMTP authentication
         $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-        $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+        $mail->Host       = SMTP_EMAIL;      // sets GMAIL as the SMTP server
         $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
-        $mail->Username   = "sistemasiscove";  // GMAIL username
-        $mail->Password   = "Rfm1440@";            // GMAIL password
+        $mail->Username   = USER_EMAIL;  // GMAIL username
+        $mail->Password   = USER_PWD;            // GMAIL password
         $mail->SetFrom("sistemasiscove@gmail.com", "No-Reply");
         $mail->Subject    = utf8_decode($titulo);
 

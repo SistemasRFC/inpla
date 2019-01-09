@@ -1,18 +1,10 @@
-function CarregaAtalhos(){
+function CarregaAtalhos(listaAtalhos){
     $("#divAtalhos").html("<span style='align:center;'>Aguarde, Carregando!<br><img src='../../Resources/images/carregando.gif' width='200' height='30'></span>");
-    $.post('../../Controller/MenuPrincipal/MenuPrincipalController.php',
-        {
-            method: 'CarregaAtalhos'
-        },
-        function(listaAtalhos){
-             listaAtalhos = eval ('('+listaAtalhos+')');
-             if (listaAtalhos[0]==true){
-                 MontaTabelaAtalhos(listaAtalhos[1]);
-             }else{
-                 $("#divAtalhos").html("<span style='align:center;'>Erro ao buscar atalhos!<br>"+listaAtalhos[1]);
-             }
-        }
-    );
+    if (listaAtalhos[0]==true){
+        MontaTabelaAtalhos(listaAtalhos[1]);
+    }else{
+        $("#divAtalhos").html("<span style='align:center;'>Erro ao buscar atalhos!<br>"+listaAtalhos[1]);
+    }
 }
 
 function MontaTabelaNoticias(listaNoticias){
@@ -55,5 +47,5 @@ function MontaTabelaAtalhos(listaAtalhos){
     $("#divAtalhos").html(tabela);
 }
 $(document).ready(function() {
-    CarregaAtalhos();       
+    ExecutaDispatch('MenuPrincipal', 'CarregaAtalhos', '', CarregaAtalhos);
 });

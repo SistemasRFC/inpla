@@ -1,16 +1,13 @@
 <?php
-include_once("../BaseController.php");
-include_once("../../Model/Menu/CadastroMenuModel.php");
-class CadastroMenuController extends BaseController
+include_once("Controller/BaseController.php");
+include_once("Model/Menu/MenuModel.php");
+class MenuController extends BaseController
 {
-    function CadastroMenuController(){
-        eval("\$this->".BaseController::getMethod()."();");
-    }
     /**
      * Redireciona para a view indicada
      */
     function ChamaView(){
-        $model = new CadastroMenuModel();
+        $model = new MenuModel();
         $lista = $model->ListaMenus();
         $params = array('ListaMenus' => urlencode(serialize($lista)));
         $view = $this->getPath()."/View/Menu/".str_replace("Controller", "View", get_class($this)).".php";
@@ -20,36 +17,36 @@ class CadastroMenuController extends BaseController
     * Adiciona um menu na tabela SE_MENU
     */
     function AddMenu(){
-        $model = new CadastroMenuModel();
+        $model = new MenuModel();
         echo $model->AddMenu();
     }
 
     function UpdateMenu(){
-        $model = new CadastroMenuModel();
+        $model = new MenuModel();
         echo $model->UpdateMenu();
     }
 
     function ListaMenus(){
-        $model = new CadastroMenuModel();
+        $model = new MenuModel();
         echo $model->ListaMenus();
     }
 
     function DeleteMenu(){
-        $model = new CadastroMenuModel();
+        $model = new MenuModel();
         echo $model->DeleteMenu();
     }
 
     function ListarMenusAutoComplete(){
         if ( !isset($_REQUEST['term']) )
             exit;
-        $model = new CadastroMenuModel();
+        $model = new MenuModel();
         $lista = $model->ListarMenusAutoComplete($_REQUEST['term']);
         echo $lista;
         flush();
     }
 
     Public Function ListarMenusGrid(){
-        $model = new CadastroMenuModel();
+        $model = new MenuModel();
         echo $model->ListarMenusGrid();
     }
 
@@ -175,5 +172,4 @@ class CadastroMenuController extends BaseController
         return $arquivosPasta;
     }
 }
-$cadastroMenuController = new CadastroMenuController();
 ?>

@@ -1,57 +1,59 @@
 <?php
-include_once("../../Dao/Login/LoginDao.php");
-class LoginModel
-{
-    function LoginModel(){
-        If (!isset($_SESSION)){
-            ob_start();
-            session_start();
-        }
-    }
-    /**
-     * Encripta a senha e verifica se o login existe
-     * @param type $nmeLogin
-     * @param type $txtSenha
-     * @return type
-     */
-    function Logar(){
-        $nmeLogin = filter_input(INPUT_POST, 'nmeLogin', FILTER_SANITIZE_MAGIC_QUOTES);
-        $txtSenha = filter_input(INPUT_POST, 'txtSenha', FILTER_SANITIZE_MAGIC_QUOTES);
-        if (($nmeLogin=="adm")&&($txtSenha=="adm")){
-            $_SESSION['cod_usuario']=1;
-            $_SESSION['cod_cliente_final']=1;
-            $_SESSION['cod_perfil']=1;
-            $logar[0]=true;
-            $logar[1][0]['MSG']='sucesso';  
-            $logar[1][0]['DSC_PAGINA'] = 'Controller/MenuPrincipal/MenuPrincipalController.php?method=CarregaMenu';
-        }else{           
-            $senha = base64_encode($txtSenha);            
-            $dao = new LoginDao();
-            $logar = $dao->Logar($nmeLogin, $senha);
-            if ($logar[0]){
-                if ($logar[1]!=NULL){
-                    $logar[1][0]['DSC_PAGINA'] = 'Controller/MenuPrincipal/MenuPrincipalController.php?method=CarregaMenu';
-                    if ($logar[1][0]['COD_USUARIO']>0){
-                        $codigo = "'".$logar[1][0]['COD_USUARIO']."'";
-                        $_SESSION['cod_usuario']=$codigo;
-                        $_SESSION['cod_perfil']=$logar[1][0]['COD_PERFIL_W'];
-                        if ($txtSenha=='123459'){
-                            $logar[1][0]['DSC_PAGINA'] = 'View/Seguranca/AlteraSenhaView.php?txtSenha='.base64_encode($txtSenha);                        
-                        }
-                    }else{
-                        $logar[0]=false;
-                    }
-                }else{
-                    $logar[0]=false;
-                }
-            }            
-        }
-        return json_encode($logar);
-    }
 
-    function AlteraSenha(){
-        $dao = new LoginDao();
-        return $dao->AlteraSenha($_SESSION['cod_usuario']);
+include_once 'Model/BaseModel.php';
+include_once 'Dao/Login/LoginDao.php';
+
+class LoginModel extends BaseModel{
+    Public Function Logar(){
+        $LoginDao = new LoginDao();
+        $this->PopulaObjetoComRequest($LoginDao->GetColumns(), $LoginDao);
+        $result = $LoginDao->Logar($this->objRequest);
+        if ($result[0]){
+            if ($result[1]!=null){
+                static::AtualizaSessao($result[1]);
+                $result[1][0]['DSC_PAGINA'] = 'MenuPrincipal';
+                $result[1][0]['NME_METHOD'] = 'ChamaView';
+            }else{
+                $result[0] = false;
+                $result[1] = 'Usuário não encontrado!';
+            }
+        }
+        return json_encode($result);
+    }
+    
+    Public Function AtualizaSessao($dados){
+        $_SESSION['cod_usuario']=$dados[0]['COD_USUARIO'];
+    }
+    
+    Public Function AlteraSenha(){
+        $LoginDao = new LoginDao();
+        $this->RecuperaRequest(true);
+        $this->objRequest->codUsuario = $_SESSION['cod_usuario'];
+        $result = $this->VerificaSenhaAtual();
+        if ($result[0]){
+            $result = $LoginDao->AlteraSenha($this->objRequest);
+            if ($result[0]){
+                if ($result[1]){        
+                    $result[1]['TXT_MSG'] = 'Senha Alterada!';
+                    $result[1]['DSC_PAGINA'] = '../../Controller/MenuPrincipal/MenuPrincipalController.php';
+                    $result[1]['NME_METHOD'] = 'ChamaView';
+                }
+            }
+        }
+        return json_encode($result);
+    }
+    
+    Public Function VerificaSenhaAtual(){
+        $LoginDao = new LoginDao();
+        $verifica = $LoginDao->VerificaSenhaAtual($this->objRequest);
+        if ($verifica[0]){
+            if ($verifica[1][0]['QTD']==0){
+                return array(false, 'Senha atual não confere!');
+            }
+        }else{
+            return array(false, 'Problema ao executar a consulta!');
+        }
+        return array(true, 'Senha Alterada!');
     }
 
 }

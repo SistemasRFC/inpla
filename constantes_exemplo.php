@@ -1,20 +1,15 @@
 <?php
-/**
- * Arquivo de Constantes do Sistema para ser configurado
- * Ap�s a configura��o este arquivo deve ser renomeado
- */
+define('PATH', '');
+define("DSC_FUNC", "");
+
 const PORT     = "";
 const USER     = "";
 const PASSWORD = "";
 const CONEXAO  = "";
 const DB       = "";
-const ALIAS    = ""; //Quando for colocar um alias colocar a '/' antes
+const ALIAS    = "";
 
-define ('AMBIENTE', 'HMG');
-if (AMBIENTE=='HMG'){
-    define ('TOKEN', '');
-    define ('URL', '');
-}else{
-    define ('TOKEN', '');
-    define ('URL', '');
-}
+//Constantes de configuração de emails
+const SMTP_EMAIL = "";
+const USER_EMAIL = "";
+const USER_PWD   = "";

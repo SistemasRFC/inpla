@@ -49,6 +49,7 @@ class MenuPrincipalDao extends BaseDao
                                   ON MP.COD_PERFIL_W = U.COD_PERFIL_W
                                WHERE COD_USUARIO = $codUsuario
                                  AND IND_MENU_ATIVO_W = 'S'
+                                 AND IND_VISIBLE = 'S'
                                ORDER BY DSC_MENU_W";
             $rs_localiza = $this->selectDB("$sql_localiza", false);
         } catch (Exception $e) {

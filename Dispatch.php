@@ -1,5 +1,9 @@
 <?php
+ob_start();
+ini_set('display_errors', true);
+error_reporting(E_ALL & ~E_WARNING & ~ E_DEPRECATED);
 include_once 'constantes.php';
+
 class Dispatch{
     
     Public Function __construct() {

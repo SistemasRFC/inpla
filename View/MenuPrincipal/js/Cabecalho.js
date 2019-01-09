@@ -7,61 +7,55 @@ $(document).ready(function(){
         $(this).jqxInput({theme: theme, height: 25});          
     }); 
 });
-function VerificaSessao(){
-    $.post('../../Controller/MenuPrincipal/MenuPrincipalController.php', {
-        async: false,
-        method: 'VerificaSessao'}, function(result){
-        result = eval('('+result+')');
-        if (!result){            
-            window.location.href='../../index.php';
-        }else{
-            CarregaMenu();
-        }
-    });
-    
+function VerificaSessao(result){
+    if (!result){            
+        window.location.href='../../index.php';
+    }else{
+        CarregaMenu();
+    }
 }
+
 function CarregaMenu(){
+    ExecutaDispatch('MenuPrincipal', 'CarregaMenuNew', '', MontaMenu);    
+}
+
+function MontaMenu(menu){
     $('#CriaMenu').html('<img src="../../Resources/images/carregando.gif" width="200" height="30">');
     var DadosMenu = '';
-    var theme = 'energyblue';
-    $.post('../../Controller/MenuPrincipal/MenuPrincipalController.php', {
-        async: false,
-        method: 'CarregaMenuNew'}, function(menu){
-        menu = eval('('+menu+')');
-        DadosMenu = menu;
-        if (DadosMenu[0]){
-            var source =
-            {
-                datatype: "json",
-                datafields: [
-                    { name: 'id', map: 'COD_MENU_W' },
-                    { name: 'idPai', map: 'COD_MENU_PAI_W' },
-                    { name: 'dscMenu', map: 'DSC_MENU_W' },
-                    { name: 'subMenuWidth', map: 'VLR_TAMANHO_SUBMENU' }
-                ],
-                id: 'id',
-                localdata: DadosMenu[1]
-            };
-            var dataAdapter = new $.jqx.dataAdapter(source);
-            dataAdapter.dataBind();
-            var records = dataAdapter.getRecordsHierarchy('id', 'idPai', 'items', [
-                {name: 'dscMenu', map: 'label'},
-                {name: 'id', map: 'id'}
-            ]);
-            $('#CriaMenu').jqxMenu({ source: records, height: 30, theme: theme });
-            $("#CriaMenu").on('itemclick', function (event) {
-                console.log(DadosMenu[1]);
-                for(i=0;i<DadosMenu[1].length;i++){
-                    
-                    if (event.args.id==DadosMenu[1][i].COD_MENU_W){                    
-                        if((DadosMenu[1][i].NME_CONTROLLER!='#') && (DadosMenu[1][i].NME_CONTROLLER!=null) && (DadosMenu[1][i].NME_CONTROLLER!='')){
-                            window.location.href=DadosMenu[1][i].NME_PATH+'?method='+DadosMenu[1][i].NME_METHOD;
-                        }
+    DadosMenu = menu;
+    if (DadosMenu[0]){
+        var source =
+        {
+            datatype: "json",
+            datafields: [
+                { name: 'id', map: 'COD_MENU_W' },
+                { name: 'idPai', map: 'COD_MENU_PAI_W' },
+                { name: 'dscMenu', map: 'DSC_MENU_W' },
+                { name: 'subMenuWidth', map: 'VLR_TAMANHO_SUBMENU' }
+            ],
+            id: 'id',
+            localdata: DadosMenu[1]
+        };
+        var dataAdapter = new $.jqx.dataAdapter(source);
+        dataAdapter.dataBind();
+        var records = dataAdapter.getRecordsHierarchy('id', 'idPai', 'items', [
+            {name: 'dscMenu', map: 'label'},
+            {name: 'id', map: 'id'}
+        ]);
+        $('#CriaMenu').jqxMenu({ source: records, height: 30, theme: theme });
+        $("#CriaMenu").on('itemclick', function (event) {
+            console.log(DadosMenu[1]);
+            for(i=0;i<DadosMenu[1].length;i++){
+
+                if (event.args.id==DadosMenu[1][i].COD_MENU_W){                    
+                    if((DadosMenu[1][i].NME_CONTROLLER!='#') && (DadosMenu[1][i].NME_CONTROLLER!=null) && (DadosMenu[1][i].NME_CONTROLLER!='')){
+                        RedirecionaController(DadosMenu[1][i].NME_CONTROLLER, DadosMenu[1][i].NME_METHOD);
+//                        window.location.href=DadosMenu[1][i].NME_PATH+'?method='+DadosMenu[1][i].NME_METHOD;
                     }
                 }
-            });
-        }
-    });
+            }
+        });
+    }
 }
 
 function CriarDivAutoComplete(nmeInput, url, method, dataFields, displayMember, valueMember, callback, width){ 
@@ -211,6 +205,22 @@ function CriarCombo(nmeCombo, url, parametros, dataFields, displayMember, valueM
     dataAdapter.dataBind();    
 }
 
+function CriarComboDispatch(nmeCombo, arrDados, valor){ 
+    console.log(arrDados);
+    $("#td"+nmeCombo).html('');
+    var select = '<select id="'+nmeCombo+'">';
+    for (i=0;i<arrDados[1].length;i++){
+        if (arrDados[1][i]['ID']==valor){
+            select += '<option value="'+arrDados[1][i]['ID']+'" selected>'+arrDados[1][i]['DSC']+'</option>';
+        }else{
+            select += '<option value="'+arrDados[1][i]['ID']+'">'+arrDados[1][i]['DSC']+'</option>';
+        }
+    }
+    select += '</select>';
+    $("#td"+nmeCombo).html(select);
+    $("#"+nmeCombo).jqxDropDownList({dropDownHeight: '150px'});
+}
+
 function CriarComboTamanho(nmeCombo, largura, altura, larguraDrop, url, parametros, dataFields, displayMember, valueMember, valor){ 
     $("#td"+nmeCombo).html('');
     $("#td"+nmeCombo).html('<div id="'+nmeCombo+'"></div>');
@@ -264,8 +274,55 @@ function CriarComboTamanho(nmeCombo, largura, altura, larguraDrop, url, parametr
     dataAdapter.dataBind();    
 }
 
+function ExecutaDispatch(Controller, Method, Parametros, Callback){
+    $( "#dialogInformacao" ).jqxWindow('setContent', "Aguarde!");
+    $( "#dialogInformacao" ).jqxWindow("open"); 
+    var obj = new Object();
+    Object.defineProperty(obj, 'method', {
+        __proto__: null,
+        enumerable : true,
+        configurable : true,
+        value: Method
+    });    
+    Object.defineProperty(obj, 'controller', {
+        __proto__: null,
+        enumerable : true,
+        configurable : true,
+        value: Controller
+    });        
+    if (Parametros != undefined){
+        var dados = Parametros.split('|'); 
+        for (i=0;i<dados.length;i++){
+            var campos = dados[i].split(';');
+            Object.defineProperty(obj, campos[0], {
+                                __proto__: null,
+                                enumerable : true,
+                                configurable : true,
+                                value: campos[1] });
+        }    
+    }
+    $.post('../../Dispatch.php',
+        obj,
+        function(retorno){
+             retorno = eval ('('+retorno+')');
+             if (retorno[0]==true){
+                 if (Callback!=undefined){
+                     Callback(retorno);
+                 }
+                 $( "#dialogInformacao" ).jqxWindow("close"); 
+             }else{
+                 $( "#dialogInformacao" ).jqxWindow('setContent', 'Erro ao executar a consulta!');
+             }
+        }
+    );     
+}
+
+function RedirecionaController(Controller, Method){
+    $(location).attr('href','../../Dispatch.php?controller='+Controller+'&method='+Method);
+}
+
 $(document).ready(function(){        
-    VerificaSessao();
+    ExecutaDispatch('MenuPrincipal', 'VerificaSessao', '', VerificaSessao);
     $("#btnFechar").click(function(){
         $("#dialogInformacao").jqxWindow('close');
     });
