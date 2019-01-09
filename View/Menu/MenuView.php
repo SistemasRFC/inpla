@@ -1,5 +1,6 @@
 <?php 
-include_once $_SERVER['DOCUMENT_ROOT']."/View/MenuPrincipal/Cabecalho.php";?>
+include_once getenv("CONSTANTES");
+include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
 <html>
   <head>
     <title>Cadastro de Menus</title>
