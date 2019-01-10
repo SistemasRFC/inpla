@@ -52,7 +52,6 @@ if (!isset($_SESSION['cod_usuario'])) {
         <script src="../../Resources/js/jquery.maskMoney.js"></script>
         <script src="../../View/MenuPrincipal/js/Cabecalho.js?random=<?php echo time(); ?>"></script>
         <script src="../../View/MenuPrincipal/js/Constantes.js?random=<?php echo time(); ?>"></script>
-        <script src="../../View/MenuPrincipal/js/DialogsView.js"></script>
         <script src="../../Resources/swal/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../../Resources/swal/dist/sweetalert.css"> 
     </head>

@@ -1,3 +1,6 @@
+<?php 
+include_once getenv("CONSTANTES");
+?>
 <head>
     <title> Menu Principal</title>
 </head>
@@ -9,7 +12,7 @@
     a:active{border: #000000; text-decoration:none; background-color:#FFFFFF; color:#FF0000;}
     img{border:#000000;}
 </style>
-    <script src="View/MenuPrincipal/js/MenuPrincipalView.js"></script>
+    <script src="../../View/MenuPrincipal/js/MenuPrincipalView.js"></script>
     <form name="menuPrincipal" method="post">
     <input type="hidden" name="horaInicial">
     <input type="hidden" name="data">
