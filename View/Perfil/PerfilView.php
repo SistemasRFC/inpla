@@ -5,7 +5,7 @@ include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
   <head>
       <title>Cadastro de Perfil</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script src="js/PerfilView.js"></script>
+    <script src="js/PerfilView.js?rdm=<?php echo time();?>"></script>
 
   </head>
   <body>

@@ -119,13 +119,7 @@ function montaTabelaPerfil(listaPerfil) {
 }
 
 function addPerfil(indAtivo) {
-    swal({
-        title: "Aguarde, salvando Perfil",
-        imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false,
-        timer: 2000
-    });
-    ExecutaDispatch('Perfil', 'AddPerfil', 'dscPerfil;' + $("#dscPerfil").val() + '|' + 'indAtivo;' + indAtivo + '|', retornoAddPerfil);
+    ExecutaDispatch('Perfil', 'AddPerfil', 'dscPerfil;' + $("#dscPerfil").val() + '|' + 'indAtivo;' + indAtivo + '|', retornoAddPerfil, 'S');
 }
 
 function retornoAddPerfil(retorno) {
@@ -145,13 +139,7 @@ function retornoAddPerfil(retorno) {
 }
 
 function alterarPerfil(indAtivo) {
-    swal({
-        title: "Aguarde, salvando Perfil",
-        imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false,
-        timer: 2000
-    });
-    ExecutaDispatch('Perfil', 'UpdatePerfil', 'codPerfil;' + $("#codPerfil").val() + '|' + 'dscPerfil;' + $("#dscPerfil").val() + '|' + 'indAtivo;' + indAtivo + '|', retornoAlterarPerfil);
+    ExecutaDispatch('Perfil', 'UpdatePerfil', 'codPerfil;' + $("#codPerfil").val() + '|' + 'dscPerfil;' + $("#dscPerfil").val() + '|' + 'indAtivo;' + indAtivo + '|', retornoAlterarPerfil, 'S');
 }
 
 function retornoAlterarPerfil(retorno) {

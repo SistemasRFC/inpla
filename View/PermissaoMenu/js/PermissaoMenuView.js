@@ -25,7 +25,7 @@ function SalvarPermissoes(checkBoxes) {
         timer: 2000
     });    
     $('#method').val('AtualizaPermissoes');
-    ExecutaDispatch('PermissaoMenu', $('#method').val(), 'codPerfil;' + $("#codPerfil").val() + '|C;' + checkBoxes, CarregaListaMenus);
+    ExecutaDispatch('PermissaoMenu', $('#method').val(), 'codPerfil;' + $("#codPerfil").val() + '|C;' + checkBoxes, CarregaListaMenus, 'S');
 }
 function CarregaListaMenus() {
     ExecutaDispatch('PermissaoMenu', 'ListarMenus', 'codPerfil;' + $("#codPerfil").val() + '|', ListaMenus);

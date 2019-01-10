@@ -278,7 +278,7 @@ function CriarComboTamanho(nmeCombo, largura, altura, larguraDrop, url, parametr
     dataAdapter.dataBind();    
 }
 
-function ExecutaDispatch(Controller, Method, Parametros, Callback){
+function ExecutaDispatch(Controller, Method, Parametros, Callback, ConfirmaExecucao){
     // swal({
     //     title: "Aguarde!",
     //     imageUrl: "../../Resources/images/preload.gif",
@@ -312,20 +312,22 @@ function ExecutaDispatch(Controller, Method, Parametros, Callback){
     $.post('../../Dispatch.php',
         obj,
         function(retorno){
-             retorno = eval ('('+retorno+')');
-             if (retorno[0]==true){
-                $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
-                swal({
-                    title: "Sucesso!",
-                    text: "",
-                    showConfirmButton: false,
-                    type: "success",
-                    timer: 2000
-                });                 
-                 if (Callback!=undefined){
-                     Callback(retorno);
-                 }
-             }else{
+            retorno = eval ('('+retorno+')');
+            if (retorno[0]==true){
+                if (ConfirmaExecucao!=undefined){
+                    $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
+                    swal({
+                        title: "Sucesso!",
+                        text: "",
+                        showConfirmButton: false,
+                        type: "success",
+                        timer: 2000
+                    });                 
+                }
+                if (Callback!=undefined){
+                    Callback(retorno);
+                }
+            }else{
                 $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
                 swal({
                     title: "Erro!",
