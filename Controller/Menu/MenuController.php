@@ -121,16 +121,20 @@ class MenuController extends BaseController
         $pasta='';
         for ($i=0;$i<count($novo)-1;$i++){
             $pasta.=$novo[$i].'/';
-        }         
+        }
         if (filter_input(INPUT_POST, 'pasta')!=''){
-            $pasta = $pasta.filter_input(INPUT_POST, 'pasta').'/';
-        }               
+            if (filter_input(INPUT_POST, 'pasta')!= undefined) {
+                $pasta = $pasta.filter_input(INPUT_POST, 'pasta').'/';
+            } else {
+                echo 'Diretório '.filter_input(INPUT_POST, 'pasta').' não encontrado';
+            }
+        }
         $pasta = $this->PegarArquivosPasta($pasta);
         echo json_encode(array(true, $pasta));
     }
 
     Public Function PegarArquivosPasta($pasta){
-        //echo $pasta; exit;
+        // echo $pasta; exit;
         $diretorio = $pasta;
         $ponteiro  = opendir($diretorio);
         while ($nome_itens = readdir($ponteiro)) {

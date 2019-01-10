@@ -7,7 +7,7 @@
   </head>
   <body>
       <input type="hidden" id="pastaAtual">
-      <table width="100%" id="CadastroMenus">
+      <table width="100%" id="tbListaController">
           <tr>
               <td width="100%"
                   style="text-align:left;
