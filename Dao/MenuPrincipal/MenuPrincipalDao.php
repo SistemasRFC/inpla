@@ -75,11 +75,11 @@ class MenuPrincipalDao extends BaseDao
         try {
             $sql_localiza = " SELECT DSC_MENU_W,
                                      m.COD_MENU_W,
-                                     CONCAT('" .$path. "','/Controller/',NME_CONTROLLER) AS NME_CONTROLLER,
+                                     CONCAT('" .$path. "','/Dispatch.php?controller=',NME_CONTROLLER,'&method=',NME_METHOD) AS NME_CONTROLLER,
                                      NME_METHOD,
                                      NME_USUARIO_COMPLETO,
                                      M.COD_MENU_PAI_W,
-                                     M.DSC_CAMINHO_IMAGEM,
+                                     CONCAT('" .$path. "',M.DSC_CAMINHO_IMAGEM) as DSC_CAMINHO_IMAGEM,
                                      TXT_SENHA_W
                                 FROM SE_MENU M
                                INNER JOIN SE_MENU_PERFIL MP

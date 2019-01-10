@@ -34,7 +34,7 @@ function MontaTabelaAtalhos(listaAtalhos){
                 tabela = tabela + "<tr style=''><td style='font-size:20;font-family: arial, helvetica, serif;height:10%;padding-top:20px;'>"
                 j=0;
             }
-            tabela = tabela + "<a style='padding-left:45px;' href='"+listaAtalhos[i].NME_CONTROLLER+"?method="+listaAtalhos[i].NME_METHOD+"'><img src='"+listaAtalhos[i].DSC_CAMINHO_IMAGEM+"' title='"+listaAtalhos[i].DSC_MENU_W+"' width='65' height='65'></a>";
+            tabela = tabela + "<a style='padding-left:45px;' href='"+listaAtalhos[i].NME_CONTROLLER+"'><img src='"+listaAtalhos[i].DSC_CAMINHO_IMAGEM+"' title='"+listaAtalhos[i].DSC_MENU_W+"' width='65' height='65'></a>";
             j++;
             if (j==colunas){
                 tabela = tabela + "</td></tr>";
