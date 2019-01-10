@@ -1,19 +1,19 @@
 <script src="js/CadUsuarioView.js"></script>
-<form name="CadastroForm" method="post" action="Controller/Usuario/UsuarioController.php">
+<form name="UsuarioForm" method="post" action="Controller/Usuario/UsuarioController.php">
     <input type="hidden" id="method" name="method">
     <input type="hidden" id="codUsuario" name="codUsuario">
     <table>
         <tr>
             <td>
-                Login
+                Nome Completo
             </td>
-            <td><input type="text" id="nmeLogin" name="nmeLogin" size="35"></td>
+            <td><input type="text" id="nmeUsuarioCompleto" name="nmeUsuarioCompleto" size="35"></td>
         </tr>
         <tr>
             <td>
-                Nome
+                Login
             </td>
-            <td><input type="text" id="nmeUsuario" name="nmeUsuario" size="35"></td>
+            <td><input type="text" id="nmeLogin" name="nmeLogin" size="35"></td>
         </tr>
         <tr>
             <td>

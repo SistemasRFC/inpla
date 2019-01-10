@@ -43,7 +43,7 @@ $(function() {
         }         
         $.post('../../Controller/Usuario/UsuarioController.php',
               {method: $("#method").val(),
-               nmeUsuario: $("#nmeUsuario").val(),
+               nmeUsuarioCompleto: $("#nmeUsuarioCompleto").val(),
                codUsuario: $("#codUsuario").val(),
                nmeLogin: $("#nmeLogin").val(),
                codPerfil: $("#codPerfil").val(),

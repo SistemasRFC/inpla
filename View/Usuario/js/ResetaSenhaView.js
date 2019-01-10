@@ -12,7 +12,7 @@ $(function() {
         title: 'Mensagem',
         isModal: true
     });   
-    $( "#CadastroForm" ).jqxWindow({
+    $( "#ReiniciaSenhaForm" ).jqxWindow({
         autoOpen: true,
         height: 150,
         width: 450,

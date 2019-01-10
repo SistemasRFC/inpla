@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Sistema Gerenciador de Avalia&ccedil;&otilde;es</title>
+        <title>Usuário - Reiniciar senha</title>
         <link href="../../Resources/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../../Resources/jqx/jqwidgets/styles/jqx.base.css" type="text/css" />
         <link rel="stylesheet" href="../../Resources/jqx/jqwidgets/styles/jqx.energyblue.css" type="media" />
@@ -18,7 +18,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=IBM850; ISO-8859-1">
     </head>
     <body>
-        <div id="CadastroForm">
+        <div id="ReiniciaSenhaForm">
             <div id="windowHeader">
             </div>
             <div style="overflow: hidden;" id="windowContent">        
