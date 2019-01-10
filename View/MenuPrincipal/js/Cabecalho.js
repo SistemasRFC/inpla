@@ -16,14 +16,20 @@ function VerificaSessao(result){
 }
 
 function CarregaMenu(){
+    swal({
+        title: "Carregando",
+        imageUrl: "../../Resources/images/preload.gif",
+        showConfirmButton: false
+    });
     ExecutaDispatch('MenuPrincipal', 'CarregaMenuNew', '', MontaMenu);    
 }
 
 function MontaMenu(menu){
-    $('#CriaMenu').html('<img src="../../Resources/images/carregando.gif" width="200" height="30">');
+    // $('#CriaMenu').html('<img src="../../Resources/images/carregando.gif" width="200" height="30">');
     var DadosMenu = '';
     DadosMenu = menu;
     if (DadosMenu[0]){
+        swal.close();
         var source =
         {
             datatype: "json",
@@ -273,8 +279,11 @@ function CriarComboTamanho(nmeCombo, largura, altura, larguraDrop, url, parametr
 }
 
 function ExecutaDispatch(Controller, Method, Parametros, Callback){
-    $( "#dialogInformacao" ).jqxWindow('setContent', "Aguarde!");
-    $( "#dialogInformacao" ).jqxWindow("open"); 
+    swal({
+        title: "Aguarde!",
+        imageUrl: "../../Resources/images/preload.gif",
+        showConfirmButton: false
+    });
     var obj = new Object();
     Object.defineProperty(obj, 'method', {
         __proto__: null,
@@ -307,17 +316,26 @@ function ExecutaDispatch(Controller, Method, Parametros, Callback){
                  if (Callback!=undefined){
                      Callback(retorno);
                  }
-                 $( "#dialogInformacao" ).jqxWindow("close"); 
+                 swal.close();
              }else{
-                 $( "#dialogInformacao" ).jqxWindow('setContent', 'Erro ao executar a consulta!');
+                $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
+                swal({
+                    title: "Erro!",
+                    text: "Erro ao executar a consulta!",
+                    type: "error",
+                    confirmButtonText: "Fechar"
+                });
              }
         }
     );     
 }
 
 function ExecutaDispatchUpload(Controller, Method, Parametros, Callback){
-    $( "#dialogInformacao" ).jqxWindow('setContent', "Aguarde!");
-    $( "#dialogInformacao" ).jqxWindow("open"); 
+    swal({
+        title: "Aguarde!",
+        imageUrl: "../../Resources/images/preload.gif",
+        showConfirmButton: false
+    });
     $.ajax({
         url: '../../Dispatch.php?controller='+Controller+'&method='+Method,
         type: 'POST',
@@ -333,10 +351,15 @@ function ExecutaDispatchUpload(Controller, Method, Parametros, Callback){
                  if (Callback!=undefined){
                      Callback(data);
                  }
-                 $( "#dialogInformacao" ).jqxWindow("close"); 
-            }
-            else{                 
-                $( "#dialogInformacao" ).jqxWindow('setContent', 'Erro ao executar a consulta!');
+                 swal.close();
+            } else {
+                $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
+                swal({
+                    title: "Erro!",
+                    text: "Erro ao executar a consulta!",
+                    type: "error",
+                    confirmButtonText: "Fechar"
+                });
             }
         }
     });     
@@ -372,7 +395,4 @@ function RedirecionaController(Controller, Method){
 
 $(document).ready(function(){        
     ExecutaDispatch('MenuPrincipal', 'VerificaSessao', '', VerificaSessao);
-    $("#btnFechar").click(function(){
-        $("#dialogInformacao").jqxWindow('close');
-    });
 });
