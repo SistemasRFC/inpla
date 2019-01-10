@@ -70,17 +70,21 @@ function ListaMenus(ListaMenus){
         }
     } 
     $( "#dialogInformacao" ).jqxWindow("close");
+    $(".MenusExistentes").show();
 }
 
 function CarregaComboPerfil(arrDados){
     CriarComboDispatch('codPerfil', arrDados, 0);   
     $("#codPerfil").change(function(){
-        CarregaListaMenus();
+        if ($(this).val()!=0){
+            CarregaListaMenus();
+        }else{
+            $(".MenusExistentes").hide();
+        }
     });
 }
 
 $(document).ready(function () {
-    $('#checkboxes').html("<img src='../../Resources/images/carregando.gif' width='200' height='30'>");
-    //CarregaListaMenus();
+    $(".MenusExistentes").hide();
     ExecutaDispatch('Perfil', 'ListarPerfilAtivo', '', CarregaComboPerfil);
 });

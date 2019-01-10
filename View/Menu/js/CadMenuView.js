@@ -12,7 +12,13 @@ $(function() {
             salvarMenu();
         }
     });
-    
+    $("#btnListarController").click(function(){
+        ListarController(undefined); 
+        $("#ListaController").jqxWindow('open');
+    });
+    $("#btnListarMetodos").click(function(){
+        ListarMetodos($("#nmeClasse").val()); 
+    });    
     $( "#indAtivo" ).click(function( event ) {
         if (this.checked){
             $('#indAtivo1').val('S');
@@ -20,47 +26,15 @@ $(function() {
             $('#indAtivo1').val('N');
         }
     });
-    $( "#indPai" ).click(function( event ) {
-        if (this.checked){
-            $('#indPai1').val('S');
-            $('#codMenu').val('0');
-        }else{
-            $('#indPai1').val('N');
-        }
-    });
+
     $( "#indVisible" ).click(function( event ) {
         if (this.checked){
             $('#indVisible1').val('S');
-            $('#codMenu').val('0');
         }else{
             $('#indVisible1').val('N');
         }
     });
 });
-
-function ListarControllers() {
-        ExecutaDispatch('Menu', 'listarController', undefined, MostrarControllers);
-}
-
-function MostrarControllers(data) {
-    tabela = '<table>';
-    tabela += '<tr>';    
-    tabela += '<td>Controller</td>';
-    tabela += '</tr>';
-    for (i=0;i<data.length;i++){
-        tabela += '<tr>';        
-        tabela += '<td><a href="javascript:ListarController(\''+data[i].nmeArquivo+'\');">'+data[i].nmeArquivo+'</a></td>';
-        if (data[i].dscTipo=='file'){
-            tabela += '<td><a href="javascript:UtilizarController(\''+data[i].nmeArquivo+'\');">Utilizar</a></td>';
-        }else{
-            tabela += '<td><br></td>';
-        }
-        
-        tabela += '</tr>';
-    }
-    tabela += '</table>';
-    $("#listaController").html(tabela);
-}
 
 function salvarMenu(data){
     if ($('#codMenu').val()==0){
@@ -89,57 +63,6 @@ function MontaComboMenu(arrDados){
     CriarComboDispatch('codMenuPai', arrDados, 0);
 }
 
-function MontaTabelaArquivoMenu(codMenu){
-    var theme = 'energyblue';
-    var nomeGrid = 'listaArquivoMenu';    
-    var source =
-    {
-        datatype: "json",
-        type: "post",
-        updaterow: function (rowid, rowdata, commit) {
-            commit(true);
-        },
-        datafields:
-        [
-            { name: 'COD_ARQUIVO', type: 'string' },
-            { name: 'DSC_ARQUIVO', type: 'string' },
-            { name: 'NRO_PRIORIDADE', type: 'string' }
-        ],
-        url: '../../Controller/Menu/MenuController.php',
-        data:{
-            method: 'ListaArquivoMenuGrid',
-            codMenu: codMenu
-        }
-        
-    };
-    var dataAdapter = new $.jqx.dataAdapter(source);
-    $("#"+nomeGrid).jqxGrid(
-    {
-        width: 400,
-        height: 150,
-        source: dataAdapter,
-        theme: theme,
-        sortable: true,
-        filterable: true,
-        pageable: true,
-        columnsresize: true,
-        selectionmode: 'singlerow',
-        columns: [
-          { text: 'Descri&ccedil;&atilde;o', datafield: 'DSC_ARQUIVO', columntype: 'textbox', width: 280}
-        ]
-    });
-    // events
-    $('#'+nomeGrid).on('rowdoubleclick', function (event)
-    {
-        var args = event.args;
-        $("#codArquivo").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_ARQUIVO);
-        $("#dscArquivo").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_ARQUIVO);
-        $("#nroPrioridade").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NRO_PRIORIDADE);
-        $("#methodArquivo").val("UpdateArquivo");        
-        $("#CadArquivoMenus").jqxWindow("open");
-    });
-    $("#dialogInformacao" ).jqxWindow("close");  
-}
 
 function DeleteMenu(){    
     $("#dialogInformacao").jqxWindow('setContent', "<h4 style='text-align:center;'>Aguarde, removendo menu<br><img src='../../Resources/images/carregando.gif' width='200' height='30'></h4>");

@@ -2,7 +2,7 @@
   <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script src="js/ListaMetodosView.js"></script>
+    <script src="js/ListaMetodosView.js?rdm=<?php echo time();?>"></script>
 
   </head>
   <body>
@@ -16,7 +16,7 @@
                    color:#0150D3;
                    vertical-align:middle;
                    font-family: arial, helvetica, serif;">
-                  Controller(s)
+                  Método(s)
               </td>
           </tr>       
           <tr>

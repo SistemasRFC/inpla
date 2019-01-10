@@ -104,39 +104,19 @@ class MenuController extends BaseController
     }
     
     Public Function ListarMetodos(){
-        $pastaAtual = filter_input(INPUT_POST, 'pastaAtual');
         $classe = filter_input(INPUT_POST, 'classe');
-        $pasta = getcwd();
-        $novo = explode('/', $pasta);
-        $pasta='';
-        for ($i=0;$i<count($novo)-1;$i++){
-            $pasta.=$novo[$i].'/';
-        }          
-        $arquivo = $pasta.$pastaAtual.'/'.$classe;        
-        if (file_exists($arquivo)){
-            $file = fopen($arquivo, 'r');
-            $linha='';
-            while (!feof($file)){
-                $linha = fgets($file, 4096);
-                $linha = trim($linha);                
-                $pos = strpos(strtoupper($linha), strtoupper('function'));                
-                if ($pos!==FALSE){
-                    $methodo=substr($linha,$pos+strlen('function')+1);
-                    $methodo=str_replace('{','',str_replace(')','',str_replace('(', ' ',$methodo)));
-                    $methodo = explode(' ', $methodo);
-                    $methods[]['dscMetodo'] = $methodo[0];
-                }
-                
-            }
-            fclose($file);
-        }else{
-            echo "cade o arquivo".$arquivo;
+        include_once 'Controller/'.$classe.'/'.$classe.'Controller.php';
+        $metodosBase = get_class_methods('BaseController');
+        $metodosController = get_class_methods($classe.'Controller');
+        $metodos = array_diff($metodosController,$metodosBase);
+        foreach ($metodos as $value){
+            $methods[] = $value;
         }
-        echo json_encode($methods);
+        echo json_encode(array(true, $methods));
     }
     
     Public Function ListarController(){
-        $pasta = getcwd();        
+        $pasta = PATH.'/Controller/';        
         $novo = explode('/', $pasta);
         $pasta='';
         for ($i=0;$i<count($novo)-1;$i++){
@@ -146,7 +126,7 @@ class MenuController extends BaseController
             $pasta = $pasta.filter_input(INPUT_POST, 'pasta').'/';
         }               
         $pasta = $this->PegarArquivosPasta($pasta);
-        echo json_encode($pasta);
+        echo json_encode(array(true, $pasta));
     }
 
     Public Function PegarArquivosPasta($pasta){

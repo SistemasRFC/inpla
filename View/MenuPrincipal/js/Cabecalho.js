@@ -44,7 +44,6 @@ function MontaMenu(menu){
         ]);
         $('#CriaMenu').jqxMenu({ source: records, height: 30, theme: theme });
         $("#CriaMenu").on('itemclick', function (event) {
-            console.log(DadosMenu[1]);
             for(i=0;i<DadosMenu[1].length;i++){
 
                 if (event.args.id==DadosMenu[1][i].COD_MENU_W){                    
@@ -206,7 +205,6 @@ function CriarCombo(nmeCombo, url, parametros, dataFields, displayMember, valueM
 }
 
 function CriarComboDispatch(nmeCombo, arrDados, valor){ 
-    console.log(arrDados);
     $("#td"+nmeCombo).html('');
     var select = '<select id="'+nmeCombo+'" class="persist">';
     for (i=0;i<arrDados[1].length;i++){

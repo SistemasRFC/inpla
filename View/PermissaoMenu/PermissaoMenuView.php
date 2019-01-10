@@ -23,7 +23,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="MenusExistentes">
                         <table width="100%" border="0" align="center">
                             <tr>
                                 <td>Menus Existentes</td>
@@ -48,7 +48,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="MenusExistentes">
                         <input type="button" id="btnSalvar" value="Salvar">
                     </td>
                 </tr>

@@ -1,26 +1,21 @@
 function ListarMetodos(classe){
-    $.post('../../Controller/Menu/MenuController.php',
-        {method: 'ListarMetodos',
-         classe: classe,
-         pastaAtual: $("#pastaAtual").val()}, function(result){                            
-        result = eval('('+result+')');      
-        MontaTabelaMetodos(result);
-        $("#ListaMetodos").jqxWindow('open');
-    });
+    ExecutaDispatch('Menu', 'ListarMetodos', 'classe;'+classe+'|'+'pastaAtual;'+$("#pastaAtual").val()+'|', MontaTabelaMetodos);
 }
 
 function MontaTabelaMetodos(data){
-    tabela = '<table>';
-    tabela += '<tr>';    
-    tabela += '<td>Controller</td>';
-    tabela += '</tr>';
-    for (i=0;i<data.length;i++){
-        tabela += '<tr>';        
-        tabela += '<td><a href="javascript:Utilizar(\''+data[i].dscMetodo+'\');">'+data[i].dscMetodo+'</a></td>';
-        tabela += '</tr>';
+    if (data[0]){
+        data = data[1];
+        console.log(data);
+        tabela = '<table>';
+        for (i=0;i<data.length;i++){
+            tabela += '<tr>';        
+            tabela += '<td><a href="javascript:Utilizar(\''+data[i]+'\');">'+data[i]+'</a></td>';
+            tabela += '</tr>';
+        }
+        tabela += '</table>';
+        $("#listaMetodos").html(tabela);
+        $("#ListaMetodos").jqxWindow('open');
     }
-    tabela += '</table>';
-    $("#listaMetodos").html(tabela);
 }
 
 function Utilizar(metodo){

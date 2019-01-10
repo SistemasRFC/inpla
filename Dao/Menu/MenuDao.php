@@ -65,6 +65,7 @@ class MenuDao extends BaseDao
                                   NME_CONTROLLER,
                                   NME_METHOD,
                                   IND_MENU_ATIVO_W,
+                                  IND_VISIBLE,
                                   COD_MENU_PAI_W,
                                   COALESCE(IND_ATALHO,'N') AS IND_ATALHO,
                                   COALESCE(DSC_CAMINHO_IMAGEM, '') AS DSC_CAMINHO_IMAGEM,

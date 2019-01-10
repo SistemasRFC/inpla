@@ -32,17 +32,7 @@ $(function() {
         isModal: true,
         autoOpen: false
     });
-    $("#btnDeletar").click(function(){
-        DeleteMenu(); 
-    });
-    $("#btnListarController").click(function(){
-        ListarControllers(); 
-        $("#ListaController").jqxWindow('open');
-    });
-    $("#btnListarMetodos").click(function(){
-        ListarMetodos($("#nmeClasse").val()); 
-        $("#ListaMetodos").jqxWindow('open');
-    });
+
     $("#btnNovo").click(function(){
         ExecutaDispatch('Menu', 'ListaMenus', '', MontaComboMenu);
         $("#codMenu").val(0);
@@ -54,22 +44,6 @@ $(function() {
         $("#indAtivo").prop("checked", false);
         $("#indAtalho").prop("checked", false);
         $("#CadMenus").jqxWindow("open");
-    });   
-    
-    $( "#indAtivo" ).click(function( event ) {
-        if (this.checked){
-            $('#indAtivo1').val('S');
-        }else{
-            $('#indAtivo1').val('N');
-        }
-    });
-    $( "#indPai" ).click(function( event ) {
-        if (this.checked){
-            $('#indPai1').val('S');
-            $('#codMenu').val('0');
-        }else{
-            $('#indPai1').val('N');
-        }
     });
 });
 function CarregaGridMenu(listaMenus){
@@ -94,7 +68,8 @@ function MontaTabelaMenu(listaMenus){
             { name: 'DSC_CAMINHO_IMAGEM', type: 'string' },
             { name: 'COD_MENU_PAI_W', type: 'string' },
             { name: 'ATIVO', type: 'boolean' },
-            { name: 'ATALHO', type: 'boolean' }
+            { name: 'ATALHO', type: 'boolean' },
+            { name: 'VISIBLE', type: 'boolean' }
         ]
     };
     var dataAdapter = new $.jqx.dataAdapter(source);
@@ -116,7 +91,8 @@ function MontaTabelaMenu(listaMenus){
           { text: 'Imagem', datafield: 'DSC_CAMINHO_IMAGEM', columntype: 'textbox', width: 180},
           { text: 'Menu Pai', datafield: 'COD_MENU_PAI_W', columntype: 'textbox', width: 180},
           { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 67 },
-          { text: 'Atalho', datafield: 'ATALHO', columntype: 'checkbox', width: 67 }
+          { text: 'Atalho', datafield: 'ATALHO', columntype: 'checkbox', width: 67 },
+          { text: 'Visível', datafield: 'VISIBLE', columntype: 'checkbox', width: 67 }
         ]
     });
     // events
@@ -139,6 +115,7 @@ function MontaTabelaMenu(listaMenus){
             $("#codMenuPai").val($('#listaMenus').jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_PAI_W);
             $("#indAtivo").prop("checked", $('#listaMenus').jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
             $("#indAtalho").prop("checked", $('#listaMenus').jqxGrid('getrowdatabyid', args.rowindex).ATALHO);
+            $("#indVisible").prop("checked", $('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).VISIBLE);
             return false;
         }        
     });
@@ -146,14 +123,19 @@ function MontaTabelaMenu(listaMenus){
     $('#'+nomeGrid).on('rowdoubleclick', function (event)
     {
         var args = event.args;
+        $('#cadastroMenuForm').each (function(){
+            this.reset();
+        });
         $("#codMenu").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_W);
         $("#dscMenu").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_MENU_W);
         $("#nmeController").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
+        $("#nmeClasse").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
         $("#nmeMethod").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_METHOD);
         $("#dscCaminhoImagem").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_CAMINHO_IMAGEM);
         $("#codMenuPai").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_PAI_W);
         $("#indAtivo").prop("checked", $('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
         $("#indAtalho").prop("checked", $('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATALHO);
+        $("#indVisible").prop("checked", $('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).VISIBLE);
         $("#method").val("UpdateMenu");
         $("#CadMenus").jqxWindow("open");
     });
@@ -185,19 +167,3 @@ $(document).ready(function(){
     });
     $("input[type='button']").jqxButton({theme:theme});
 });
-
-function DeleteMenu(){    
-    $("#dialogInformacao").jqxWindow('setContent', "<h4 style='text-align:center;'>Aguarde, removendo menu<br><img src='../../Resources/images/carregando.gif' width='200' height='30'></h4>");
-    $("#dialogInformacao" ).jqxWindow("open");    
-    $.post('../../Controller/Menu/MenuController.php',
-        {method: 'DeleteMenu',
-        codMenu: $("#codMenu").val()}, function(result){                            
-        result = eval('('+result+')');
-        if (result[0]==true){              
-            CarregaGridMenu();
-            $( "#CadMenus" ).jqxWindow("close");
-        }else{                                
-            $( "#dialogInformacao" ).jqxWindow('setContent', 'Erro ao deletar Menu!'+result[1]);
-        }
-    });
-}

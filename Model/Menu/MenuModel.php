@@ -66,6 +66,7 @@ class MenuModel extends BaseModel
         if ($lista[0]){
             $lista = FuncoesArray::AtualizaBooleanInArray($lista, 'IND_MENU_ATIVO_W', 'ATIVO');
             $lista = FuncoesArray::AtualizaBooleanInArray($lista, 'IND_ATALHO', 'ATALHO');
+            $lista = FuncoesArray::AtualizaBooleanInArray($lista, 'IND_VISIBLE', 'VISIBLE');
 //            $lista = FuncoesArray::RecursiveArrayUtf8Encode($lista, 'IND_ATALHO', 'ATALHO');
         }
         return json_encode($lista);

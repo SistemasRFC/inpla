@@ -2,7 +2,7 @@
   <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script src="js/ListaControllerView.js"></script>
+    <script src="js/ListaControllerView.js?rdm=<?php echo time();?>"></script>
 
   </head>
   <body>
