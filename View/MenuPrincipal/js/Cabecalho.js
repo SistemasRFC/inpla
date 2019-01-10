@@ -19,7 +19,8 @@ function CarregaMenu(){
     swal({
         title: "Carregando",
         imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false
+        showConfirmButton: false,
+        timer: 3000
     });
     ExecutaDispatch('MenuPrincipal', 'CarregaMenuNew', '', MontaMenu);    
 }
@@ -29,7 +30,6 @@ function MontaMenu(menu){
     var DadosMenu = '';
     DadosMenu = menu;
     if (DadosMenu[0]){
-        swal.close();
         var source =
         {
             datatype: "json",
@@ -282,7 +282,8 @@ function ExecutaDispatch(Controller, Method, Parametros, Callback){
     swal({
         title: "Aguarde!",
         imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false
+        showConfirmButton: false,
+        timer: 3000
     });
     var obj = new Object();
     Object.defineProperty(obj, 'method', {
@@ -316,7 +317,6 @@ function ExecutaDispatch(Controller, Method, Parametros, Callback){
                  if (Callback!=undefined){
                      Callback(retorno);
                  }
-                 swal.close();
              }else{
                 $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
                 swal({
@@ -334,7 +334,8 @@ function ExecutaDispatchUpload(Controller, Method, Parametros, Callback){
     swal({
         title: "Aguarde!",
         imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false
+        showConfirmButton: false,
+        timer: 3000
     });
     $.ajax({
         url: '../../Dispatch.php?controller='+Controller+'&method='+Method,
@@ -351,7 +352,6 @@ function ExecutaDispatchUpload(Controller, Method, Parametros, Callback){
                  if (Callback!=undefined){
                      Callback(data);
                  }
-                 swal.close();
             } else {
                 $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
                 swal({
