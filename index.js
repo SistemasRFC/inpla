@@ -32,20 +32,28 @@ function logar() {
         showConfirmButton: false,
         timer: 2000
     });
-    ExecutaDispatch('Login', 'Logar', 'verificaPermissao;' + 'N' + '|' + 'nmeUsuario;' + $("#nmeLogin").val() + '|' + 'txtSenha;' + $("#txtSenha").val() + '|', retornoLogar);
-}
-
-function retornoLogar(retorno) {
-    if (retorno[0]) {
-        $(location).attr('href', 'Dispatch.php?controller=' + logar[1][0]['DSC_PAGINA'] + '&method=' + logar[1][0]['NME_METHOD']);
-    } else {
-        swal({
-            title: "Erro!",
-            text: "Usuário ou senha inválido!",
-            confirmButtontext: "Fechar",
-            type: "error"
-        });
-    }
+    $.post('Dispatch.php',
+        {
+            method: 'Logar',
+            controller: 'Login',
+            verificaPermissao: 'N',
+            nmeUsuario: $("#nmeLogin").val(),
+            txtSenha: $("#txtSenha").val()
+        },
+        function(logar){
+            logar = eval ('('+logar+')');
+            if (logar[0]==true){
+                $(location).attr('href','Dispatch.php?controller='+logar[1][0]['DSC_PAGINA']+'&method='+logar[1][0]['NME_METHOD']);
+            }else{
+                swal({
+                    title: "Erro!",
+                    text: "Usuário ou senha inválido!",
+                    confirmButtontext: "Fechar",
+                    type: "error"
+                });
+            }
+        }
+    );
 }
 
 $(document).ready(function () {

@@ -19,6 +19,8 @@ session_unset();
         <script type="text/javascript" src="Resources/jqx/jqwidgets/jqxcore.js"></script>
         <script type="text/javascript" src="Resources/jqx/jqwidgets/jqxwindow.js"></script>
         <script type="text/javascript" src="Resources/jqx/scripts/gettheme.js"></script>
+        <script src="Resources/swal/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="Resources/swal/dist/sweetalert.css"> 
         <script src="index.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=IBM850; ISO-8859-1">
     </head>
