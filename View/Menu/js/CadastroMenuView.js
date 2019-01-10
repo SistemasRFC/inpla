@@ -36,7 +36,7 @@ $(function() {
         DeleteMenu(); 
     });
     $("#btnListarController").click(function(){
-        ListarControllers(); 
+        ListarController();
         $("#ListaController").jqxWindow('open');
     });
     $("#btnListarMetodos").click(function(){

@@ -38,30 +38,6 @@ $(function() {
     });
 });
 
-function ListarControllers() {
-        ExecutaDispatch('Menu', 'listarController', undefined, MostrarControllers);
-}
-
-function MostrarControllers(data) {
-    tabela = '<table>';
-    tabela += '<tr>';    
-    tabela += '<td>Controller</td>';
-    tabela += '</tr>';
-    for (i=0;i<data.length;i++){
-        tabela += '<tr>';        
-        tabela += '<td><a href="javascript:ListarController(\''+data[i].nmeArquivo+'\');">'+data[i].nmeArquivo+'</a></td>';
-        if (data[i].dscTipo=='file'){
-            tabela += '<td><a href="javascript:UtilizarController(\''+data[i].nmeArquivo+'\');">Utilizar</a></td>';
-        }else{
-            tabela += '<td><br></td>';
-        }
-        
-        tabela += '</tr>';
-    }
-    tabela += '</table>';
-    $("#listaController").html(tabela);
-}
-
 function salvarMenu(data){
     if ($('#codMenu').val()==0){
         $("#method").val('AddMenu');
