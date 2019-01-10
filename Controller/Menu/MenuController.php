@@ -123,7 +123,7 @@ class MenuController extends BaseController
             $pasta.=$novo[$i].'/';
         }
         if (filter_input(INPUT_POST, 'pasta')!=''){
-            if (filter_input(INPUT_POST, 'pasta')!= undefined) {
+            if (filter_input(INPUT_POST, 'pasta')!= 'undefined') {
                 $pasta = $pasta.filter_input(INPUT_POST, 'pasta').'/';
             } else {
                 echo 'Diretório '.filter_input(INPUT_POST, 'pasta').' não encontrado';
