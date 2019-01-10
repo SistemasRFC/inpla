@@ -1,4 +1,6 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT']."/View/MenuPrincipal/Cabecalho.php";?>
+<?php 
+include_once getenv("CONSTANTES");
+include_once PATH."/View/MenuPrincipal/Cabecalho.php";?>
 <HTML>
     <HEAD>
     <title>Permissão de Menus</title>
