@@ -314,6 +314,14 @@ function ExecutaDispatch(Controller, Method, Parametros, Callback){
         function(retorno){
              retorno = eval ('('+retorno+')');
              if (retorno[0]==true){
+                $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
+                swal({
+                    title: "Sucesso!",
+                    text: "",
+                    showConfirmButton: false,
+                    type: "success",
+                    timer: 2000
+                });                 
                  if (Callback!=undefined){
                      Callback(retorno);
                  }
@@ -321,7 +329,7 @@ function ExecutaDispatch(Controller, Method, Parametros, Callback){
                 $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
                 swal({
                     title: "Erro!",
-                    text: "Erro ao executar a consulta!",
+                    text: "Erro ao executar!\nErro: "+retorno[1],
                     type: "error",
                     confirmButtonText: "Fechar"
                 });
