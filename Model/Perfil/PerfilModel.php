@@ -1,6 +1,7 @@
 <?php
 include_once("Model/BaseModel.php");
 include_once("Dao/Perfil/PerfilDao.php");
+include_once("Resources/php/FuncoesArray.php");
 class PerfilModel extends BaseModel
 {
     function PerfilModel(){
@@ -27,7 +28,7 @@ class PerfilModel extends BaseModel
     function ListarPerfil(){
         $dao = new PerfilDao();
         $listaPerfil = $dao->ListarPerfil();
-        $lista = BaseModel::AtualizaBooleanInArray($listaPerfil, 'IND_ATIVO', 'ATIVO');
+        $lista = FuncoesArray::AtualizaBooleanInArray($listaPerfil, 'IND_ATIVO', 'ATIVO');
         return json_encode($lista);
     }
 

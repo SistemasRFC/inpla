@@ -1,5 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<?php include_once "View/MenuPrincipal/Cabecalho.php";?>
+<?php 
+include_once getenv("CONSTANTES");
+include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
 <html>
   <head>
       <title>Cadastro de Perfil</title>
@@ -11,7 +12,12 @@
       <input type="hidden" id="method" name="method" value="">
       <table width="100%" id="CadastroPerfil">
           <tr>
-              <td width="100%" style="text-align:left;height:10%;font-size:18px;color:#000000;vertical-align:middle;font-family: arial, helvetica, serif;border-bottom: 1px solid #000000;">
+              <td style="text-align:left;
+                    height:10%;
+                    font-size:18px;
+                    color:#000000;
+                    vertical-align:middle;
+                    font-family: arial, helvetica, serif;border-bottom: 1px solid #000000;">
                   Cadastro de Perfil
               </td>
           </tr>
