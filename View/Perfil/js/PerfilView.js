@@ -1,6 +1,6 @@
 $(function () {
     $("#indAtivo").jqxCheckBox({ width: 120, height: 25, theme: theme });
-    
+
     $("#CadPerfil").jqxWindow({
         autoOpen: false,
         height: 200,
@@ -12,21 +12,21 @@ $(function () {
         isModal: true,
         title: 'Cadastro de Perfil'
     });
-    
+
     $("#listaPerfil").jqxTooltip({
         content: 'D&ecirc; um duplo clique para editar',
         position: 'mouse',
         name: 'movieTooltip',
         theme: theme
     });
-    
+
     $("#btnNovo").click(function () {
         $("#codPerfil").val('');
         $("#dscPerfil").val('');
         $("#indAtivo").jqxCheckBox('uncheck');
         $("#CadPerfil").jqxWindow("open");
     });
-    
+
     $("#btnSalvar").click(function () {
         if ($("#indAtivo").jqxCheckBox('val')) {
             indAtivo = 'S';
@@ -43,27 +43,27 @@ $(function () {
 
 function carregaGridPerfil() {
     swal({
-        title: "Aguarde, Carregando Lista de Perfis!",
+        title: "Aguarde, carregando lista de perfis",
         imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false
+        showConfirmButton: false,
+        timer: 2000
     });
     ExecutaDispatch('Perfil', 'ListarPerfil', undefined, retornoGridPerfil);
 }
 
-function retornoGridPerfil(retorno){
-    if (retorno[0]==true){
+function retornoGridPerfil(retorno) {
+    if (retorno[0] == true) {
         $("#codPerfil").val(0);
-        swal.close();
         montaTabelaPerfil(retorno[1]);
-    }else{
-        $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
+    } else {
+        $(".jquery-waiting-base-container").fadeOut({ modo: "fast" });
         swal({
             title: "Erro!",
             text: 'N&atilde;o foi poss&iacute;vel executar a consulta!<br>' + retorno[1],
             type: "error",
             confirmButtonText: "Fechar"
         });
-    }    
+    }
 }
 
 function montaTabelaPerfil(listaPerfil) {
@@ -76,12 +76,12 @@ function montaTabelaPerfil(listaPerfil) {
             commit(true);
         },
         datafields:
-        [
-            { name: 'COD_PERFIL_W', type: 'string' },
-            { name: 'DSC_PERFIL_W', type: 'string' },
-            { name: 'IND_ATIVO', type: 'string' },
-            { name: 'ATIVO', type: 'boolean' }
-        ]
+            [
+                { name: 'COD_PERFIL_W', type: 'string' },
+                { name: 'DSC_PERFIL_W', type: 'string' },
+                { name: 'IND_ATIVO', type: 'string' },
+                { name: 'ATIVO', type: 'boolean' }
+            ]
     };
     var dataAdapter = new $.jqx.dataAdapter(source);
     $("#" + nomeGrid).jqxGrid(
@@ -120,54 +120,54 @@ function montaTabelaPerfil(listaPerfil) {
 
 function addPerfil(indAtivo) {
     swal({
-        title: "Aguarde, salvando perfil!",
+        title: "Aguarde, salvando Perfil",
         imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false
+        showConfirmButton: false,
+        timer: 2000
     });
-    ExecutaDispatch('Perfil', 'AddPerfil', 'dscPerfil;'+$("#dscPerfil").val()+'|'+'indAtivo;'+indAtivo+'|', retornoAddPerfil);
+    ExecutaDispatch('Perfil', 'AddPerfil', 'dscPerfil;' + $("#dscPerfil").val() + '|' + 'indAtivo;' + indAtivo + '|', retornoAddPerfil);
 }
 
-function retornoAddPerfil(retorno){
-    if (retorno[0]==true){
+function retornoAddPerfil(retorno) {
+    if (retorno[0] == true) {
         $("#codPerfil").val('');
-        swal.close();
         $("#CadPerfil").jqxWindow("close");
         carregaGridPerfil();
-    }else{
-        $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
+    } else {
+        $(".jquery-waiting-base-container").fadeOut({ modo: "fast" });
         swal({
             title: "Erro!",
             text: retorno[1],
             type: "error",
             confirmButtonText: "Fechar"
         });
-    }    
+    }
 }
 
 function alterarPerfil(indAtivo) {
     swal({
-        title: "Aguarde, salvando perfil!",
+        title: "Aguarde, salvando Perfil",
         imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false
+        showConfirmButton: false,
+        timer: 2000
     });
-    ExecutaDispatch('Perfil', 'UpdatePerfil', 'codPerfil;'+$("#codPerfil").val()+'|'+'dscPerfil;'+$("#dscPerfil").val()+'|'+'indAtivo;'+indAtivo+'|', retornoAlterarPerfil);
+    ExecutaDispatch('Perfil', 'UpdatePerfil', 'codPerfil;' + $("#codPerfil").val() + '|' + 'dscPerfil;' + $("#dscPerfil").val() + '|' + 'indAtivo;' + indAtivo + '|', retornoAlterarPerfil);
 }
 
-function retornoAlterarPerfil(retorno){
-    if (retorno[0]==true){
+function retornoAlterarPerfil(retorno) {
+    if (retorno[0] == true) {
         $("#codPerfil").val('');
-        swal.close();
         $("#CadPerfil").jqxWindow("close");
         carregaGridPerfil();
-    }else{
-        $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
+    } else {
+        $(".jquery-waiting-base-container").fadeOut({ modo: "fast" });
         swal({
             title: "Erro!",
             text: retorno[1],
             type: "error",
             confirmButtonText: "Fechar"
         });
-    }    
+    }
 }
 
 

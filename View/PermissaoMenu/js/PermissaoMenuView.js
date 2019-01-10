@@ -1,59 +1,48 @@
-$(function() {
-    $( "#dialogInformacao" ).jqxWindow({
-        autoOpen: false,
-        height: 150,
-        width: 450,
-        theme: theme,
-        animationType: 'fade',
-        showAnimationDuration: 500,
-        closeAnimationDuration: 500,
-        title: 'Mensagem',
-        isModal: true
-    });
+$(function () {
     $("#btnSalvar").jqxButton({ width: '100', theme: theme });
-    $("#btnSalvar").click(function(){
+    $("#btnSalvar").click(function () {
         MontaComboSelecionado();
     });
 });
 
-function MontaComboSelecionado(){
-    var checkBoxes ='';
-    $(".check").each(function(){
-        if ($(this).jqxCheckBox('val')){
-            checkBoxes += $(this).attr('codMenu')+'=>SP';
-        }else{
-            checkBoxes += $(this).attr('codMenu')+'=>NP';
+function MontaComboSelecionado() {
+    var checkBoxes = '';
+    $(".check").each(function () {
+        if ($(this).jqxCheckBox('val')) {
+            checkBoxes += $(this).attr('codMenu') + '=>SP';
+        } else {
+            checkBoxes += $(this).attr('codMenu') + '=>NP';
         }
     });
-    SalvarPermissoes(checkBoxes); 
+    SalvarPermissoes(checkBoxes);
 }
 
-function SalvarPermissoes(checkBoxes){
+function SalvarPermissoes(checkBoxes) {
     $('#method').val('AtualizaPermissoes');
-    ExecutaDispatch('PermissaoMenu', $('#method').val(), 'codPerfil;'+$("#codPerfil").val()+'|C;'+checkBoxes, CarregaListaMenus);
+    ExecutaDispatch('PermissaoMenu', $('#method').val(), 'codPerfil;' + $("#codPerfil").val() + '|C;' + checkBoxes, CarregaListaMenus);
 }
-function CarregaListaMenus(){
-    ExecutaDispatch('PermissaoMenu', 'ListarMenus', 'codPerfil;'+$("#codPerfil").val()+'|', ListaMenus);
+function CarregaListaMenus() {
+    ExecutaDispatch('PermissaoMenu', 'ListarMenus', 'codPerfil;' + $("#codPerfil").val() + '|', ListaMenus);
 }
-function ListaMenus(ListaMenus){
-    ListaMenus=ListaMenus[1];
-    count=3;
+function ListaMenus(ListaMenus) {
+    ListaMenus = ListaMenus[1];
+    count = 3;
     tabela = '';
-    for(i=0;i<ListaMenus.length;i++){
-        if (count==3){
+    for (i = 0; i < ListaMenus.length; i++) {
+        if (count == 3) {
             tabela += "<tr>";
-            count=0;
-        }       
-        if (ListaMenus[i].DSC_MENU_PAI!=null){
-            dscMenu = "<strong>"+ListaMenus[i].DSC_MENU_PAI+"</strong>>>>"+ListaMenus[i].DSC_MENU_W;
-        }else{
+            count = 0;
+        }
+        if (ListaMenus[i].DSC_MENU_PAI != null) {
+            dscMenu = "<strong>" + ListaMenus[i].DSC_MENU_PAI + "</strong>>>>" + ListaMenus[i].DSC_MENU_W;
+        } else {
             dscMenu = ListaMenus[i].DSC_MENU_W;
         }
         tabela += "<td width='400px'>";
-        tabela += "<div id='chk"+ListaMenus[i].COD_MENU_W+"' codMenu='"+ListaMenus[i].COD_MENU_W+"' style='margin-left: 10px; float: left;' class='check'><span>"+dscMenu+"</span></div><br>";
+        tabela += "<div id='chk" + ListaMenus[i].COD_MENU_W + "' codMenu='" + ListaMenus[i].COD_MENU_W + "' style='margin-left: 10px; float: left;' class='check'><span>" + dscMenu + "</span></div><br>";
         tabela += "</td>";
         count++;
-        if (count==3){
+        if (count == 3) {
             tabela += "</tr>";
         }
     }
@@ -62,23 +51,22 @@ function ListaMenus(ListaMenus){
     // Create jqxCheckBox
     $(".check").jqxCheckBox({ height: 25, theme: theme });
     $('.check').jqxCheckBox('uncheck');
-    for(i=0;i<ListaMenus.length;i++){        
-        if (ListaMenus[i].PERFIL==null){            
-            $("#chk"+ListaMenus[i].COD_MENU_W).jqxCheckBox('uncheck');
-        }else{            
-            $("#chk"+ListaMenus[i].COD_MENU_W).jqxCheckBox('check');
+    for (i = 0; i < ListaMenus.length; i++) {
+        if (ListaMenus[i].PERFIL == null) {
+            $("#chk" + ListaMenus[i].COD_MENU_W).jqxCheckBox('uncheck');
+        } else {
+            $("#chk" + ListaMenus[i].COD_MENU_W).jqxCheckBox('check');
         }
-    } 
-    $( "#dialogInformacao" ).jqxWindow("close");
+    }
     $(".MenusExistentes").show();
 }
 
-function CarregaComboPerfil(arrDados){
-    CriarComboDispatch('codPerfil', arrDados, 0);   
-    $("#codPerfil").change(function(){
-        if ($(this).val()!=0){
+function CarregaComboPerfil(arrDados) {
+    CriarComboDispatch('codPerfil', arrDados, 0);
+    $("#codPerfil").change(function () {
+        if ($(this).val() != 0) {
             CarregaListaMenus();
-        }else{
+        } else {
             $(".MenusExistentes").hide();
         }
     });

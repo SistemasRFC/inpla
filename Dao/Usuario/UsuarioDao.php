@@ -42,7 +42,8 @@ class UsuarioDao extends BaseDao
                               TXT_SENHA_W,                             
                               COD_PERFIL_W,
                               IND_ATIVO,
-                              TXT_EMAIL)
+                              TXT_EMAIL,
+                              NRO_CPF)
                        VALUES (
                               $codUsuario,
                               '".filter_input(INPUT_POST, 'nmeLogin', FILTER_SANITIZE_MAGIC_QUOTES)."',
@@ -50,7 +51,8 @@ class UsuarioDao extends BaseDao
                               '".$senha."',
                               '".filter_input(INPUT_POST, 'codPerfil', FILTER_SANITIZE_NUMBER_INT)."',
                               '".filter_input(INPUT_POST, 'indAtivo', FILTER_SANITIZE_STRING)."',
-                              '".filter_input(INPUT_POST, 'txtEmail', FILTER_SANITIZE_STRING)."')";
+                              '".filter_input(INPUT_POST, 'txtEmail', FILTER_SANITIZE_STRING)."',
+                              '".filter_input(INPUT_POST, 'nroCpf', FILTER_SANITIZE_STRING)."')";
         $result = $this->insertDB("$sql_lista");
         if ($result[0]){
             $result[1]= $codUsuario;

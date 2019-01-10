@@ -39,11 +39,5 @@
                     </tr>
                 </table>
             </div>
-        </div>    
-        <div id="dialogInformacao">
-            <div id="windowHeader">
-            </div>
-            <div style="overflow: hidden;" id="windowContent">
-            </div>
-        </div>    
+        </div>
 </html>

@@ -20,7 +20,7 @@ function CarregaMenu(){
         title: "Carregando",
         imageUrl: "../../Resources/images/preload.gif",
         showConfirmButton: false,
-        timer: 3000
+        timer: 1000
     });
     ExecutaDispatch('MenuPrincipal', 'CarregaMenuNew', '', MontaMenu);    
 }
@@ -279,12 +279,12 @@ function CriarComboTamanho(nmeCombo, largura, altura, larguraDrop, url, parametr
 }
 
 function ExecutaDispatch(Controller, Method, Parametros, Callback){
-    swal({
-        title: "Aguarde!",
-        imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false,
-        timer: 3000
-    });
+    // swal({
+    //     title: "Aguarde!",
+    //     imageUrl: "../../Resources/images/preload.gif",
+    //     showConfirmButton: false,
+    //     timer: 2000
+    // });
     var obj = new Object();
     Object.defineProperty(obj, 'method', {
         __proto__: null,
@@ -331,12 +331,12 @@ function ExecutaDispatch(Controller, Method, Parametros, Callback){
 }
 
 function ExecutaDispatchUpload(Controller, Method, Parametros, Callback){
-    swal({
-        title: "Aguarde!",
-        imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false,
-        timer: 3000
-    });
+    // swal({
+    //     title: "Aguarde!",
+    //     imageUrl: "../../Resources/images/preload.gif",
+    //     showConfirmButton: false,
+    //     timer: 2000
+    // });
     $.ajax({
         url: '../../Dispatch.php?controller='+Controller+'&method='+Method,
         type: 'POST',

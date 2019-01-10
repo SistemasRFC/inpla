@@ -1,10 +1,10 @@
 <?php
 
-if (!isset($_SESSION)){
+if (!isset($_SESSION)) {
     session_start();
-} 
+}
 
-if (!isset($_SESSION['cod_usuario'])){
+if (!isset($_SESSION['cod_usuario'])) {
     header("Location:../../index.php");
 }
 ?>
@@ -12,7 +12,7 @@ if (!isset($_SESSION['cod_usuario'])){
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="../../Resources/JavaScript.js"></script>
-        <link rel="stylesheet" href="../../Resources/css/style.css?random=<?php echo time();?>" type="text/css" />
+        <link rel="stylesheet" href="../../Resources/css/style.css?random=<?php echo time(); ?>" type="text/css" />
         <link href="../../Resources/css/redmond/jquery-ui-1.10.3.custom.css" rel="stylesheet">
         <link rel="stylesheet" href="../../Resources/jqx/jqwidgets/styles/jqx.base.css" type="text/css" />
         <link rel="stylesheet" href="../../Resources/jqx/jqwidgets/styles/jqx.bootstrap.css" type="media" />
@@ -50,8 +50,8 @@ if (!isset($_SESSION['cod_usuario'])){
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxtabs.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxtooltip.js"></script>
         <script src="../../Resources/js/jquery.maskMoney.js"></script>
-        <script src="../../View/MenuPrincipal/js/Cabecalho.js?random=<?php echo time();?>"></script>
-        <script src="../../View/MenuPrincipal/js/Constantes.js?random=<?php echo time();?>"></script>
+        <script src="../../View/MenuPrincipal/js/Cabecalho.js?random=<?php echo time(); ?>"></script>
+        <script src="../../View/MenuPrincipal/js/Constantes.js?random=<?php echo time(); ?>"></script>
         <script src="../../View/MenuPrincipal/js/DialogsView.js"></script>
         <script src="../../Resources/swal/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../../Resources/swal/dist/sweetalert.css"> 
@@ -68,8 +68,8 @@ if (!isset($_SESSION['cod_usuario'])){
                                 </td>
                                 <td align="left" style="text-align:left; height:10%;font-size:14px;color:#000000;vertical-align:middle;font-family: arial, helvetica, serif;">
                                     <?php
-                                        echo "<BR>";
-                                        echo"<a style=\"text-align:left;
+                                    echo "<BR>";
+                                    echo "<a style=\"text-align:left;
                                                 height:10%;
                                                 font-size:10px;
                                                 color:#0150D3;
@@ -92,9 +92,3 @@ if (!isset($_SESSION['cod_usuario'])){
         </table>
     </body>
 </html>
-<div id="dialogInformacao">
-  <div id="windowHeader">
-  </div>
-  <div style="overflow: hidden;" id="windowContent">
-  </div>
-</div>

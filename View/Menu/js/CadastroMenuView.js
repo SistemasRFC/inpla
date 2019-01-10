@@ -1,5 +1,5 @@
-$(function() {
-    $("#CadMenus").jqxWindow({ 
+$(function () {
+    $("#CadMenus").jqxWindow({
         title: 'Cadastro de Menus',
         height: 450,
         width: 700,
@@ -10,7 +10,7 @@ $(function() {
         isModal: true,
         autoOpen: false
     });
-    $("#ListaController").jqxWindow({ 
+    $("#ListaController").jqxWindow({
         title: 'Lista de Controllers',
         height: 450,
         width: 700,
@@ -21,7 +21,7 @@ $(function() {
         isModal: true,
         autoOpen: false
     });
-    $("#ListaMetodos").jqxWindow({ 
+    $("#ListaMetodos").jqxWindow({
         title: 'Lista de Metodos',
         height: 450,
         width: 700,
@@ -33,23 +33,25 @@ $(function() {
         autoOpen: false
     });
 
-    $("#btnNovo").click(function(){
+    $("#btnNovo").click(function () {
         ExecutaDispatch('Menu', 'ListaMenus', '', MontaComboMenu);
         $("#codMenu").val(0);
         $("#dscMenu").val('');
         $("#nmeController").val('');
         $("#nmeMethod").val('');
-        $("#dscCaminhoImagem").val('');        
+        $("#dscCaminhoImagem").val('');
         $("#codMenuPai").jqxDropDownList('selectIndex', -1);
         $("#indAtivo").prop("checked", false);
         $("#indAtalho").prop("checked", false);
         $("#CadMenus").jqxWindow("open");
     });
 });
-function CarregaGridMenu(listaMenus){
+
+function CarregaGridMenu(listaMenus) {
     MontaTabelaMenu(listaMenus[1]);
 }
-function MontaTabelaMenu(listaMenus){
+
+function MontaTabelaMenu(listaMenus) {
     var nomeGrid = 'listaMenus';
     var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px', autoOpenPopup: false, mode: 'popup', theme: theme });
     var source =
@@ -60,44 +62,43 @@ function MontaTabelaMenu(listaMenus){
             commit(true);
         },
         datafields:
-        [
-            { name: 'COD_MENU_W', type: 'string' },
-            { name: 'DSC_MENU_W', type: 'string' },
-            { name: 'NME_CONTROLLER', type: 'string' },
-            { name: 'NME_METHOD', type: 'string' },
-            { name: 'DSC_CAMINHO_IMAGEM', type: 'string' },
-            { name: 'COD_MENU_PAI_W', type: 'string' },
-            { name: 'ATIVO', type: 'boolean' },
-            { name: 'ATALHO', type: 'boolean' },
-            { name: 'VISIBLE', type: 'boolean' }
-        ]
+            [
+                { name: 'COD_MENU_W', type: 'string' },
+                { name: 'DSC_MENU_W', type: 'string' },
+                { name: 'NME_CONTROLLER', type: 'string' },
+                { name: 'NME_METHOD', type: 'string' },
+                { name: 'DSC_CAMINHO_IMAGEM', type: 'string' },
+                { name: 'COD_MENU_PAI_W', type: 'string' },
+                { name: 'ATIVO', type: 'boolean' },
+                { name: 'ATALHO', type: 'boolean' },
+                { name: 'VISIBLE', type: 'boolean' }
+            ]
     };
     var dataAdapter = new $.jqx.dataAdapter(source);
-    $("#"+nomeGrid).jqxGrid(
-    {
-        width: 800,
-        source: dataAdapter,
-        theme: theme,
-        sortable: true,
-        filterable: true,
-        pageable: true,
-        columnsresize: true,
-        selectionmode: 'singlerow',
-        columns: [
-          { text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_MENU_W', width: 80},
-          { text: 'Descri&ccedil;&atilde;o', datafield: 'DSC_MENU_W', columntype: 'textbox', width: 180},
-          { text: 'Controller', datafield: 'NME_CONTROLLER', columntype: 'textbox', width: 180},
-          { text: 'Method', datafield: 'NME_METHOD', columntype: 'textbox', width: 180},
-          { text: 'Imagem', datafield: 'DSC_CAMINHO_IMAGEM', columntype: 'textbox', width: 180},
-          { text: 'Menu Pai', datafield: 'COD_MENU_PAI_W', columntype: 'textbox', width: 180},
-          { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 67 },
-          { text: 'Atalho', datafield: 'ATALHO', columntype: 'checkbox', width: 67 },
-          { text: 'Visível', datafield: 'VISIBLE', columntype: 'checkbox', width: 67 }
-        ]
-    });
+    $("#" + nomeGrid).jqxGrid(
+        {
+            width: 800,
+            source: dataAdapter,
+            theme: theme,
+            sortable: true,
+            filterable: true,
+            pageable: true,
+            columnsresize: true,
+            selectionmode: 'singlerow',
+            columns: [
+                { text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_MENU_W', width: 80 },
+                { text: 'Descri&ccedil;&atilde;o', datafield: 'DSC_MENU_W', columntype: 'textbox', width: 180 },
+                { text: 'Controller', datafield: 'NME_CONTROLLER', columntype: 'textbox', width: 180 },
+                { text: 'Method', datafield: 'NME_METHOD', columntype: 'textbox', width: 180 },
+                { text: 'Imagem', datafield: 'DSC_CAMINHO_IMAGEM', columntype: 'textbox', width: 180 },
+                { text: 'Menu Pai', datafield: 'COD_MENU_PAI_W', columntype: 'textbox', width: 180 },
+                { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 67 },
+                { text: 'Atalho', datafield: 'ATALHO', columntype: 'checkbox', width: 67 },
+                { text: 'Visível', datafield: 'VISIBLE', columntype: 'checkbox', width: 67 }
+            ]
+        });
     // events
-    $('#'+nomeGrid).on('rowclick', function (event)
-    {
+    $('#' + nomeGrid).on('rowclick', function (event) {
         var args = event.args;
         var row = args.rowindex;
 
@@ -115,37 +116,36 @@ function MontaTabelaMenu(listaMenus){
             $("#codMenuPai").val($('#listaMenus').jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_PAI_W);
             $("#indAtivo").prop("checked", $('#listaMenus').jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
             $("#indAtalho").prop("checked", $('#listaMenus').jqxGrid('getrowdatabyid', args.rowindex).ATALHO);
-            $("#indVisible").prop("checked", $('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).VISIBLE);
+            $("#indVisible").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).VISIBLE);
             return false;
-        }        
+        }
     });
-    $("#"+nomeGrid).jqxGrid('localizestrings', localizationobj);
-    $('#'+nomeGrid).on('rowdoubleclick', function (event)
-    {
+    $("#" + nomeGrid).jqxGrid('localizestrings', localizationobj);
+    $('#' + nomeGrid).on('rowdoubleclick', function (event) {
         var args = event.args;
-        $('#cadastroMenuForm').each (function(){
+        $('#cadastroMenuForm').each(function () {
             this.reset();
         });
-        $("#codMenu").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_W);
-        $("#dscMenu").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_MENU_W);
-        $("#nmeController").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
-        $("#nmeClasse").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
-        $("#nmeMethod").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_METHOD);
-        $("#dscCaminhoImagem").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_CAMINHO_IMAGEM);
-        $("#codMenuPai").val($('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_PAI_W);
-        $("#indAtivo").prop("checked", $('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
-        $("#indAtalho").prop("checked", $('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATALHO);
-        $("#indVisible").prop("checked", $('#'+nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).VISIBLE);
+        $("#codMenu").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_W);
+        $("#dscMenu").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_MENU_W);
+        $("#nmeController").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
+        $("#nmeClasse").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
+        $("#nmeMethod").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_METHOD);
+        $("#dscCaminhoImagem").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_CAMINHO_IMAGEM);
+        $("#codMenuPai").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_PAI_W);
+        $("#indAtivo").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
+        $("#indAtalho").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATALHO);
+        $("#indVisible").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).VISIBLE);
         $("#method").val("UpdateMenu");
         $("#CadMenus").jqxWindow("open");
     });
     $("#jqxMenu").on('itemclick', function (event) {
         var args = event.args;
         var rowindex = $("#listaMenus").jqxGrid('getselectedrowindex');
-        if ($.trim($(args).text()) == "Editar") {           
+        if ($.trim($(args).text()) == "Editar") {
             $("#CadMenus").jqxWindow("open");
             //$("#CadMenus").dialog("open");
-        }else if($.trim($(args).text()) == "Novo"){
+        } else if ($.trim($(args).text()) == "Novo") {
             $("#codMenu").val(0);
             $("#dscMenu").val('');
             $("#nmeController").val('');
@@ -157,13 +157,12 @@ function MontaTabelaMenu(listaMenus){
             $("#CadMenus").jqxWindow("open");
         }
     });
-    $("#dialogInformacao" ).jqxWindow("close");  
 }
-$(document).ready(function(){
+$(document).ready(function () {
     ExecutaDispatch('Menu', 'ListaMenus', '', MontaComboMenu);
     ExecutaDispatch('Menu', 'ListarMenusGrid', '', CarregaGridMenu);
     $(document).on('contextmenu', function (e) {
         return false;
     });
-    $("input[type='button']").jqxButton({theme:theme});
+    $("input[type='button']").jqxButton({ theme: theme });
 });
