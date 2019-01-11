@@ -3,11 +3,8 @@ include_once ("Controller/BaseController.php");
 include_once ("Model/MontaFile/MontaFileModel.php");
 class MontaFileController extends BaseController
 {
-    function MontaFileController() {
-        eval("\$this->".BaseController::getMethod()."();");
-    }
-    
-    Private Function ChamaView() {
+   
+    Public Function ChamaView() {
         $param = array();
         $view = BaseController::ReturnView(BaseController::getPath(), get_class($this));
         echo $this->gen_redirect_and_form($view, $param);

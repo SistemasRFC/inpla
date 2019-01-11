@@ -1,4 +1,6 @@
 <?php
+
+use phpDocumentor\Reflection\Types\Object_;
 class BaseDao{
     /*Método construtor do banco de dados*/
     public function BaseDao(){
@@ -178,7 +180,7 @@ class BaseDao{
      * 
      * @param type $codLoja
      */
-    Public Function MontarInsert($codLoja=NULL){
+    Public Function MontarInsert(stdClass $obj){
         if ($this->columnKey){
             $columnKey = $this->CatchUltimoCodigo($this->tableName, $this->columnKey[key($this->columnKey)]['column']);
             $fields = '('.$this->columnKey[key($this->columnKey)]['column'].', ';
@@ -188,26 +190,28 @@ class BaseDao{
             $values = 'VALUES (';
             $columnKey = 0;
         }
-        if (!empty($codLoja)){
-            $fields .= 'COD_LOJA, ';
-            $values .= $codLoja.', ';
-        }
-        foreach($_POST as $key => $value){
-            foreach($this->columns as $keyc => $valuec){                
+
+        foreach($obj as $key => $value){
+            foreach($this->columns as $keyc => $valuec){
                 if ($keyc == $key){
                     $fields .= $valuec['column'].', ';
-                    if ($valuec['typeColumn']=='S'){
-                        $values .= "'".$value."', ";
-                    }else if ($valuec['typeColumn']=='F'){
-                        $values .= "'".str_replace(",", ".", str_replace(".", "", $value))."', ";
-                    }else if ($valuec['typeColumn']=='D'){
-                        $values .= "'".$this->ConverteDataForm($value)."', ";
-                    }else if ($valuec['typeColumn']=='DT'){
-                        $values .= "'".$this->ConverteDataForm($value, true)."', ";
-                    }else{
-                        $values .= $value.', ';
-                    }
-                    
+                    switch($valuec['typeColumn']){
+                        case 'S':
+                            $values .= "'".$value."', ";
+                            break;
+                        case 'F':
+                            $values .= "'".str_replace(",", ".", str_replace(".", "", $value))."', ";
+                            break;
+                        case 'D':
+                            $values .= "'".$this->ConverteDataForm($value)."', ";
+                            break;
+                        case 'DT':
+                            $values .= "'".$this->ConverteDataForm($value, true)."', ";
+                            break;
+                        default:
+                            $values .= $value.', ';
+                            break;
+                    }                    
                 }
             }
         }
@@ -219,23 +223,28 @@ class BaseDao{
         return $return;
     }
     
-    Public Function MontarUpdate(){
+    Public Function MontarUpdate(stdClass $obj){
         $values = ' SET ';
-        foreach($_POST as $key => $value){
+        foreach($obj as $key => $value){
             foreach($this->columns as $keyc => $valuec){                
                 if ($keyc == $key){
-                    if ($valuec['typeColumn']=='S'){
-                        $values .= $valuec['column']." = '".$value."', ";
-                    }else if ($valuec['typeColumn']=='F'){
-                        $values .= $valuec['column']." = '".str_replace(",", ".", str_replace(".", "", $value))."', ";
-                    }else if ($valuec['typeColumn']=='D'){
-                        $values .= $valuec['column']." = '".$this->ConverteDataForm($value)."', ";
-                    }else if ($valuec['typeColumn']=='DT'){
-                        $values .= $valuec['column']." = '".$this->ConverteDataForm($value, true)."', ";
-                    }else{
-                        $values .= $valuec['column']." = ".$value.", ";
-                    }
-                    
+                    switch($valuec['typeColumn']){
+                        case 'S':
+                            $values .= $valuec['column']." = '".$value."', ";
+                            break;
+                        case 'F':
+                            $values .= $valuec['column']." = '".str_replace(",", ".", str_replace(".", "", $value))."', ";
+                            break;
+                        case 'D':
+                            $values .= $valuec['column']." = '".$this->ConverteDataForm($value)."', ";
+                            break;
+                        case 'DT':
+                            $values .= $valuec['column']." = '".$this->ConverteDataForm($value, true)."', ";
+                            break;
+                        default:
+                            $values .= $valuec['column']." = ".$value.", ";
+                            break;
+                    }                    
                 }
             }
         }

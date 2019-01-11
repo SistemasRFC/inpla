@@ -16,11 +16,11 @@ class #classDao extends BaseDao
         return $this->MontarSelect();
     }
 
-    Public Function Update#class() {
-        return $this->MontarUpdate();
+    Public Function Update#class(stdClass $obj) {
+        return $this->MontarUpdate($obj);
     }
 
-    Public Function Insert#class() {
-        return $this->MontarInsert();
+    Public Function Insert#class(stdClass $obj) {
+        return $this->MontarInsert($obj);
     }
 }

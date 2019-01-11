@@ -1,24 +1,27 @@
 $(function () {
-    $("#nmeLogin").jqxInput({height: 22, width: 100});
-    $("#txtSenha").jqxInput({height: 22, width: 100});
+    $("#nmeLogin").jqxInput({height: 30, width: 200});
+    $("#txtSenha").jqxInput({height: 30, width: 200});
     valor = '{x:' + $(window).width / 2 + ', y:' + $(window).heigth / 2 + '}';
-    $("#CadastroForm").jqxWindow({
-        autoOpen: true,
-        height: 150,
-        width: 350,
+    $("#CadInvestidor").jqxWindow({
+        autoOpen: false,
+        height: 270,
+        width: 500,
         theme: theme,
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
-        isModal: false,
-        title: 'Login - INPLA'
+        title: 'Cadastro',
+        isModal: true
     });
     $(".login").keyup(function (event) {
         if (event.keyCode == 13) {
             $("#btnLogin").click();
         }
     });
-    $("#btnLogin").jqxButton({width: '100', theme: theme});
+    $("#btnCadastrar").click(function(){
+        $("#CadInvestidor").jqxWindow("open");
+    });
+    $("#btnLogin").jqxButton({width: '208', height: 30, theme: "energyblue"});
     $("#btnLogin").click(function () {
         logar();
     });

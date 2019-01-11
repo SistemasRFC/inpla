@@ -22,13 +22,15 @@ class #classModel extends BaseModel
     
     Public Function Insert#class() {
         $dao = new #classDao();        
-        $result = $dao->Insert#class();
+        BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        $result = $dao->Insert#class($this->objRequest);
         return json_encode($result);        
     }
 
     Public Function Update#class() {
         $dao = new #classDao();
-        $result = $dao->Update#class();
+        BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        $result = $dao->Update#class($this->objRequest);
         return json_encode($result);
     }	
     

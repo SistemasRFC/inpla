@@ -1,8 +1,8 @@
 <?php
-//include_once("Model/BaseModel.php");
+include_once("Model/BaseModel.php");
 include_once("Dao/MontaFile/MontaFileDao.php");
 
-class MontaFileModel {
+class MontaFileModel extends BaseModel{
 
     public function MontaFileModel() {
         if (!isset($_SESSION)) {
@@ -16,20 +16,20 @@ class MontaFileModel {
         $lista = $dao->ListarTabelas();
         
         if ($Json) {
-            return json_encode($lista[1]);
+            return json_encode($lista);
         } else {
             return $lista;
         }
     }
 
     function GeraController($nmeFile) {
-        $ContentController = file_get_contents('../../Controller/MontaFile/Controller.tpl');
+        $ContentController = file_get_contents(PATH.'Controller/MontaFile/Controller.tpl');
         if (!$ContentController) {
             echo 'Não foi possíel ler a Controller.';
         } else {
             $ContentController = str_replace("#class", $nmeFile, $ContentController);
         }
-        $dir = "../../Controller/".$nmeFile."/";
+        $dir = PATH."Controller/".$nmeFile."/";
         if (!is_dir($dir) && strlen($dir)>0){
             mkdir($dir, 0777);
         }
@@ -44,13 +44,13 @@ class MontaFileModel {
     }
 
     function GeralModel($nmeFile) {
-        $ModelContent = file_get_contents('../../Controller/MontaFile/Model.tpl');
+        $ModelContent = file_get_contents(PATH.'Controller/MontaFile/Model.tpl');
         if (!$ModelContent) {
             echo 'Não foi possíel ler a Model. ';
         } else {
             $ModelContent = str_replace("#class", $nmeFile, $ModelContent);
         }
-        $dir = "../../Model/".$nmeFile."/";
+        $dir = PATH."Model/".$nmeFile."/";
         if (!is_dir($dir) && strlen($dir)>0){
             mkdir($dir, 0777);
         }
@@ -86,7 +86,7 @@ class MontaFileModel {
         } else {
             return $colunas;
         }
-        $DaoContent = file_get_contents('../../Controller/MontaFile/Dao.tpl');
+        $DaoContent = file_get_contents(PATH.'Controller/MontaFile/Dao.tpl');
         if (!$DaoContent) {
             echo 'Não foi possíel ler a Dao. ';
         } else {
@@ -95,7 +95,7 @@ class MontaFileModel {
             $DaoContent = str_replace("#pk", $pk, $DaoContent);
             $DaoContent = str_replace("#dscTabela", strtoupper($dscTabela), $DaoContent);
         }
-        $dir = "../../Dao/".$nmeFile."/";
+        $dir = PATH."Dao/".$nmeFile."/";
         if (!is_dir($dir) && strlen($dir)>0){
             mkdir($dir, 0777);
         }
@@ -118,6 +118,8 @@ class MontaFileModel {
         $this->GeralModel($nmeFile);
 
         $this->GeraDao($nmeFile, $dscTabela);
+
+        return json_encode(array(true, ""));
     }
 
     function DefineTipoDado($tpDado) {
