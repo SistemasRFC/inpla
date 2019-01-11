@@ -3,10 +3,6 @@ include_once("Controller/BaseController.php");
 include_once("Model/#class/#classModel.php");
 class #classController extends BaseController
 {
-    function #classController() {
-        eval("\$this->".BaseController::getMethod()."();");
-    }
-
     /**
      * Redireciona para a Tela de  de #class
      */
