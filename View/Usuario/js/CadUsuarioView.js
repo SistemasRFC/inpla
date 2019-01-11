@@ -104,85 +104,85 @@ function retornoSalvarUsuario(retorno) {
     }
 }
 
-function CarregaComboPerfil() {
-    swal({
-        title: "Aguarde, carregando combo",
-        imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false,
-        timer: 2000
-    });
-    ExecutaDispatch('Perfil', 'ListarPerfilRestrito', undefined, MontaComboPerfil);
-}
+//function CarregaComboPerfil() {
+//    swal({
+//        title: "Aguarde, carregando combo",
+//        imageUrl: "../../Resources/images/preload.gif",
+//        showConfirmButton: false,
+//        timer: 2000
+//    });
+//    ExecutaDispatch('Perfil', 'ListarPerfilRestrito', undefined, MontaComboPerfil);
+//}
+//
+//function MontaComboPerfil(listaPerfil) {
+//    if (listaPerfil[0]) {
+//        var source =
+//                {
+//                    localdata: listaPerfil,
+//                    datatype: "json",
+//                    datafields:
+//                            [
+//                                {name: 'COD_PERFIL_W', type: 'string'},
+//                                {name: 'DSC_PERFIL_W', type: 'string'}
+//                            ]
+//                };
+//        var dataAdapter = new $.jqx.dataAdapter(source);
+//        $("#codPerfil").jqxDropDownList({
+//            source: dataAdapter,
+//            theme: theme,
+//            width: 200,
+//            height: 25,
+//            selectedIndex: 0,
+//            displayMember: 'DSC_PERFIL_W',
+//            valueMember: 'COD_PERFIL_W'
+//        });
+//    } else {
+//        swal({
+//            title: "Erro!",
+//            text: listaPerfil[1],
+//            confirmButtonText: "Fechar",
+//            type: "error"
+//        });
+//    }
+//}
 
-function MontaComboPerfil(listaPerfil) {
-    if (listaPerfil[0]) {
-        var source =
-                {
-                    localdata: listaPerfil,
-                    datatype: "json",
-                    datafields:
-                            [
-                                {name: 'COD_PERFIL_W', type: 'string'},
-                                {name: 'DSC_PERFIL_W', type: 'string'}
-                            ]
-                };
-        var dataAdapter = new $.jqx.dataAdapter(source);
-        $("#codPerfil").jqxDropDownList({
-            source: dataAdapter,
-            theme: theme,
-            width: 200,
-            height: 25,
-            selectedIndex: 0,
-            displayMember: 'DSC_PERFIL_W',
-            valueMember: 'COD_PERFIL_W'
-        });
-    } else {
-        swal({
-            title: "Erro!",
-            text: listaPerfil[1],
-            confirmButtonText: "Fechar",
-            type: "error"
-        });
-    }
-}
-
-function CarregaCliente() {
-    ExecutaDispatch('Usuario', 'ListaDadosUsuario', undefined, MontaComboDadosUsuario);
-}
-
-function MontaComboDadosUsuario(ListaDadosUsuario) {
-    if (ListaDadosUsuario[0]) {
-        var source =
-                {
-                    localdata: ListaDadosUsuario,
-                    datatype: "json",
-                    datafields:
-                            [
-                                {name: 'COD_CLIENTE', type: 'string'},
-                                {name: 'NME_CLIENTE', type: 'string'}
-                            ]
-                };
-        var dataAdapter = new $.jqx.dataAdapter(source);
-        $("#codCliente").jqxDropDownList(
-                {
-                    source: dataAdapter,
-                    theme: theme,
-                    width: 200,
-                    height: 25,
-                    selectedIndex: -1,
-                    displayMember: 'NME_CLIENTE',
-                    valueMember: 'COD_CLIENTE'
-                });
-    } else {
-        swal({
-            title: "Erro!",
-            text: ListaDadosUsuario[1],
-            confirmButtonText: "Fechar",
-            type: "error"
-        });
-    }
-}
+//function CarregaCliente() {
+//    ExecutaDispatch('Usuario', 'ListaDadosUsuario', undefined, MontaComboDadosUsuario);
+//}
+//
+//function MontaComboDadosUsuario(ListaDadosUsuario) {
+//    if (ListaDadosUsuario[0]) {
+//        var source =
+//                {
+//                    localdata: ListaDadosUsuario,
+//                    datatype: "json",
+//                    datafields:
+//                            [
+//                                {name: 'COD_CLIENTE', type: 'string'},
+//                                {name: 'NME_CLIENTE', type: 'string'}
+//                            ]
+//                };
+//        var dataAdapter = new $.jqx.dataAdapter(source);
+//        $("#codCliente").jqxDropDownList(
+//                {
+//                    source: dataAdapter,
+//                    theme: theme,
+//                    width: 200,
+//                    height: 25,
+//                    selectedIndex: -1,
+//                    displayMember: 'NME_CLIENTE',
+//                    valueMember: 'COD_CLIENTE'
+//                });
+//    } else {
+//        swal({
+//            title: "Erro!",
+//            text: ListaDadosUsuario[1],
+//            confirmButtonText: "Fechar",
+//            type: "error"
+//        });
+//    }
+//}
 
 $(document).ready(function () {
-    CarregaCliente();
+//    CarregaCliente();
 });

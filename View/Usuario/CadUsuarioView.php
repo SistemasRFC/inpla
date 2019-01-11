@@ -26,13 +26,7 @@
                 Email
             </td>
             <td><input type="text" id="txtEmail" name="txtEmail" size="35"></td>
-        </tr>       
-        <tr>
-            <td>Perfil</td>
-            <td class="styleTD1" style="text-align:left;">
-                <div id="codPerfil"></div>
-            </td>
-        </tr> 
+        </tr>
         <tr>
             <td><div id="indAtivo"> Ativo</div></td>
         </tr> 

@@ -3,39 +3,36 @@ include_once("Controller/BaseController.php");
 include_once("Model/Usuario/UsuarioModel.php");
 class UsuarioController extends BaseController
 {
-    function UsuarioController(){
-        eval("\$this->".BaseController::getMethod()."();");
-    }
 
-    Private function ChamaView(){
+    Public function ChamaView(){
         $params = array();        
         echo ($this->gen_redirect_and_form(BaseController::ReturnView(BaseController::getPath(), get_class($this)), $params));  
     }
 
-    Private function ListarUsuario(){
+    Public function ListarUsuario(){
         $model = new UsuarioModel();
         echo $model->ListarUsuario();
     }
     
-    Private Function ListaDadosUsuario(){
+    Public Function ListaDadosUsuario(){
         $model = new UsuarioModel();
         echo $model->ListaDadosUsuario();        
     }
-    Private function AddUsuario(){
+    Public function AddUsuario(){
         $UsuarioModel = new UsuarioModel();
         echo $UsuarioModel->AddUsuario();
     }
-    Private function UpdateUsuario(){
+    Public function UpdateUsuario(){
         $UsuarioModel = new UsuarioModel();
         echo $UsuarioModel->UpdateUsuario();  
     }
 
-    Private function DeleteUsuario(){
+    Public function DeleteUsuario(){
         $UsuarioModel = new UsuarioModel();
         echo $UsuarioModel->UpdateUsuario();
     }
 
-    Private function AddLogin(){
+    Public function AddLogin(){
         $UsuarioModel = new UsuarioModel();
         echo $UsuarioModel->AddLogin();
     }

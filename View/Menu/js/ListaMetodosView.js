@@ -5,7 +5,6 @@ function ListarMetodos(classe){
 function MontaTabelaMetodos(data){
     if (data[0]){
         data = data[1];
-        console.log(data);
         tabela = '<table>';
         for (i=0;i<data.length;i++){
             tabela += '<tr>';        

@@ -23,7 +23,6 @@ function CarregaGridUsuario() {
         imageUrl: "../../Resources/images/preload.gif",
         timer: 2000
     });
-    $("#tdGrid").html("");
     ExecutaDispatch('Usuario', 'ListarUsuario', undefined, retornoGridUsuario);
 }
 
@@ -60,7 +59,9 @@ function MontaTabelaUsuario(listaUsuario) {
                 { name: 'COD_PERFIL_W', type: 'string' },
                 { name: 'DSC_PERFIL_W', type: 'string' },
                 { name: 'IND_ATIVO', type: 'string' },
-                { name: 'ATIVO', type: 'boolean' }
+                { name: 'ATIVO', type: 'boolean' },
+                { name: 'NRO_CPF', type: 'string' },
+                { name: 'TXT_EMAIL', type: 'string' }
             ]
     };
     var dataAdapter = new $.jqx.dataAdapter(source);
@@ -77,14 +78,13 @@ function MontaTabelaUsuario(listaUsuario) {
             columns: [
                 { text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_USUARIO', width: 80 },
                 { text: 'Login', datafield: 'NME_USUARIO', columntype: 'textbox', width: 180 },
-                { text: 'Nome', datafield: 'NME_USUARIO_COMPLETO', columntype: 'textbox', width: 180 },
-                { text: 'Pefil', datafield: 'COD_PERFIL_W', columntype: 'textbox', width: 180 },
+                { text: 'Nome Completo', datafield: 'NME_USUARIO_COMPLETO', columntype: 'textbox', width: 180 },
                 { text: 'Perfil', datafield: 'DSC_PERFIL_W', columntype: 'textbox', width: 180 },
+                { text: 'CPF', datafield: 'NRO_CPF', columntype: 'textbox', width: 180 },
                 { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 67 }
             ]
         });
     // events
-    $('#' + nomeGrid).jqxGrid('hidecolumn', 'COD_PERFIL_W');
     $('#' + nomeGrid).jqxGrid('hidecolumn', 'NRO_CPF');
 
     $("#" + nomeGrid).jqxGrid('localizestrings', localizationobj);
@@ -95,8 +95,9 @@ function MontaTabelaUsuario(listaUsuario) {
         var rowID = rowData.uid;
         $("#codUsuario").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).COD_USUARIO);
         $("#nmeLogin").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).NME_USUARIO);
-        $("#nmeUsuario").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).NME_USUARIO_COMPLETO);
-        $("#codPerfil").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).COD_PERFIL_W);
+        $("#nmeUsuarioCompleto").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).NME_USUARIO_COMPLETO);
+        $("#txtEmail").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).TXT_EMAIL);
+        $("#nroCpf").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).NRO_CPF   );
         if ($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).IND_ATIVO == 'S') {
             $("#indAtivo").jqxCheckBox('check');
         } else {
@@ -110,10 +111,11 @@ function MontaTabelaUsuario(listaUsuario) {
 function LimparCampos() {
     $("#codUsuario").val('');
     $("#nmeLogin").val('');
-    $("#nmeUsuario").val('');
-    $("#codPerfil").val(0);
+    $("#nmeUsuarioCompleto").val('');
+    $("#txtEmail").val('');
+    $("#nroCpf").val('');
 }
 $(document).ready(function () {
-    CarregaComboPerfil();
+//    CarregaComboPerfil();
     CarregaGridUsuario();
 });

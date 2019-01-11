@@ -6,19 +6,18 @@ class UsuarioDao extends BaseDao
         $this->conect();
     }
 
-    function ListarUsuario( $codPerfil ) {
+    function ListarUsuario() {
         $sql = " SELECT DISTINCT U.COD_USUARIO,
                         NME_USUARIO_COMPLETO,
                         NME_USUARIO,
+                        NRO_CPF,
+                        TXT_EMAIL,
                         U.COD_PERFIL_W,
                         P.DSC_PERFIL_W,
                         U.IND_ATIVO
                    FROM SE_USUARIO U 
                   INNER JOIN SE_PERFIL P 
-                     ON U.COD_PERFIL_W = P.COD_PERFIL_W  
-                    AND U.COD_PERFIL_W  IN (SELECT COD_PERFIL_ACESSO
-                                              FROM RE_PERMISSAO_PERFIL
-                                             WHERE COD_PERFIL = $codPerfil)";
+                     ON U.COD_PERFIL_W = P.COD_PERFIL_W";
         return $this->selectDB("$sql", false);
     }
 
@@ -47,7 +46,7 @@ class UsuarioDao extends BaseDao
                        VALUES (
                               $codUsuario,
                               '".filter_input(INPUT_POST, 'nmeLogin', FILTER_SANITIZE_MAGIC_QUOTES)."',
-                              '".filter_input(INPUT_POST, 'nmeUsuario', FILTER_SANITIZE_MAGIC_QUOTES)."',
+                              '".filter_input(INPUT_POST, 'nmeUsuarioCompleto', FILTER_SANITIZE_MAGIC_QUOTES)."',
                               '".$senha."',
                               '".filter_input(INPUT_POST, 'codPerfil', FILTER_SANITIZE_NUMBER_INT)."',
                               '".filter_input(INPUT_POST, 'indAtivo', FILTER_SANITIZE_STRING)."',
@@ -64,7 +63,7 @@ class UsuarioDao extends BaseDao
         $nroCpf = str_replace('-','',str_replace('.', '', filter_input(INPUT_POST, 'nroCpf', FILTER_SANITIZE_NUMBER_INT)));
         $sql_lista = " UPDATE SE_USUARIO
                           SET NME_USUARIO          = '".filter_input(INPUT_POST, 'nmeLogin', FILTER_SANITIZE_MAGIC_QUOTES)."',
-                              NME_USUARIO_COMPLETO = '".filter_input(INPUT_POST, 'nmeUsuario', FILTER_SANITIZE_MAGIC_QUOTES)."',
+                              NME_USUARIO_COMPLETO = '".filter_input(INPUT_POST, 'nmeUsuarioCompleto', FILTER_SANITIZE_MAGIC_QUOTES)."',
                               TXT_EMAIL            = '".filter_input(INPUT_POST, 'txtEmail', FILTER_SANITIZE_MAGIC_QUOTES)."',
                               COD_PERFIL_W         = '".filter_input(INPUT_POST, 'codPerfil', FILTER_SANITIZE_NUMBER_INT)."', 
                               IND_ATIVO            = '".filter_input(INPUT_POST, 'indAtivo', FILTER_SANITIZE_STRING)."'

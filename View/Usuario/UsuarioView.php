@@ -1,4 +1,6 @@
-<?php include_once "View/MenuPrincipal/Cabecalho.php";?>
+<?php 
+include_once getenv("CONSTANTES");
+include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
 <html>
     <head>
         <title>Cadastro de Usuários</title>

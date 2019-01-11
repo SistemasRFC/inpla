@@ -1,6 +1,7 @@
 <?php 
 include_once("Model/BaseModel.php");
 include_once("Dao/Usuario/UsuarioDao.php");
+include_once("Resources/php/FuncoesArray.php");
 class UsuarioModel extends BaseModel
 {
     function UsuarioModel(){
@@ -11,18 +12,18 @@ class UsuarioModel extends BaseModel
     }
 
     function ListarUsuario(){
-        $dao = new UsuarioDao();        
-        $lista = $dao->ListarUsuario($_SESSION['cod_perfil']);    
+        $dao = new UsuarioDao();
+        $lista = $dao->ListarUsuario();    
         if ($lista[0]){
             if ($lista[1]!=null){
-                $lista = BaseModel::AtualizaBooleanInArray($lista, 'IND_ATIVO', 'ATIVO');
+                $lista = FuncoesArray::AtualizaBooleanInArray($lista, 'IND_ATIVO', 'ATIVO');
             }
         }
         return json_encode($lista);
     }
 
     function ListaDadosUsuario(){
-        $dao = new UsuarioDao();        
+        $dao = new UsuarioDao();
         $lista = $dao->ListaDadosUsuario($_SESSION['cod_perfil']);    
         return json_encode($lista);
     }
@@ -43,7 +44,7 @@ class UsuarioModel extends BaseModel
     }
     
     function AddLogin(){
-        $dao = new UsuarioDao();        
+        $dao = new UsuarioDao();
         $result = $dao->AddLogin();
         return $result;
     }
