@@ -11,11 +11,6 @@ class PerfilModel extends BaseModel
         }
     }
 
-    function ListarPerfilRestrito(){
-        $dao = new PerfilDao();
-        return json_encode($dao->ListarPerfilRestrito($_SESSION['cod_perfil']));
-    }
-
     function ListarPerfilAtivo(){
         $dao = new PerfilDao();
         return json_encode($dao->ListarPerfilAtivo());

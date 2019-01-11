@@ -18,14 +18,8 @@ function MontaComboSelecionado() {
 }
 
 function SalvarPermissoes(checkBoxes) {
-    swal({
-        title: "Aguarde, salvando permissões",
-        showConfirmButton: false,
-        imageUrl: "../../Resources/images/preload.gif",
-        timer: 2000
-    });    
     $('#method').val('AtualizaPermissoes');
-    ExecutaDispatch('PermissaoMenu', $('#method').val(), 'codPerfil;' + $("#codPerfil").val() + '|C;' + checkBoxes, CarregaListaMenus, 'S');
+    ExecutaDispatch('PermissaoMenu', $('#method').val(), 'codPerfil;' + $("#codPerfil").val() + '|C;' + checkBoxes, CarregaListaMenus, 'Aguarde, salvando permissões', 'Permissões Salvas com Sucesso!');
 }
 function CarregaListaMenus() {
     ExecutaDispatch('PermissaoMenu', 'ListarMenus', 'codPerfil;' + $("#codPerfil").val() + '|', ListaMenus);

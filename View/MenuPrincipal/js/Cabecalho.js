@@ -16,12 +16,6 @@ function VerificaSessao(result){
 }
 
 function CarregaMenu(){
-    swal({
-        title: "Carregando",
-        imageUrl: "../../Resources/images/preload.gif",
-        showConfirmButton: false,
-        timer: 1000
-    });
     ExecutaDispatch('MenuPrincipal', 'CarregaMenuNew', '', MontaMenu);    
 }
 
@@ -278,7 +272,14 @@ function CriarComboTamanho(nmeCombo, largura, altura, larguraDrop, url, parametr
     dataAdapter.dataBind();    
 }
 
-function ExecutaDispatch(Controller, Method, Parametros, Callback, ConfirmaExecucao){
+function ExecutaDispatch(Controller, Method, Parametros, Callback, MensagemAguarde, MensagemRetorno){
+    if (MensagemAguarde!=undefined){
+        swal({
+            title: MensagemAguarde,
+            imageUrl: "../../Resources/images/preload.gif",
+            showConfirmButton: false
+        });
+    }
     var obj = new Object();
     Object.defineProperty(obj, 'method', {
         __proto__: null,
@@ -308,15 +309,17 @@ function ExecutaDispatch(Controller, Method, Parametros, Callback, ConfirmaExecu
         function(retorno){
             retorno = eval ('('+retorno+')');
             if (retorno[0]==true){
-                if (ConfirmaExecucao!=undefined){
+                if (MensagemRetorno!=undefined){
                     $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
                     swal({
                         title: "Sucesso!",
-                        text: "",
+                        text: MensagemRetorno,
                         showConfirmButton: false,
-                        type: "success",
-                        timer: 2000
-                    });                 
+                        type: "success"
+                    });
+                    setTimeout(function(){
+                        swal.close();
+                    }, 2000);
                 }
                 if (Callback!=undefined){
                     Callback(retorno);
@@ -324,8 +327,8 @@ function ExecutaDispatch(Controller, Method, Parametros, Callback, ConfirmaExecu
             }else{
                 $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
                 swal({
-                    title: "Erro!",
-                    text: "Erro ao executar!\nErro: "+retorno[1],
+                    title: "Erro ao executar!",
+                    text: "Erro: "+retorno[1],
                     type: "error",
                     confirmButtonText: "Fechar"
                 });

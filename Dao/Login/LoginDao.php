@@ -17,7 +17,8 @@ class LoginDao extends BaseDao{
                        COD_PERFIL_W
                   FROM SE_USUARIO
                  WHERE NME_USUARIO = '".$objRequest->nmeUsuario."'
-                   AND TXT_SENHA_W   = '".$objRequest->txtSenha."'";
+                   AND TXT_SENHA_W   = '".$objRequest->txtSenha."'
+                   AND IND_ATIVO = 'S'";
         return $this->selectDB($sql, false);
     }
     

@@ -88,12 +88,7 @@ class UsuarioDao extends BaseDao
         $sql_lista = " UPDATE SE_USUARIO
                           SET TXT_SENHA_W = '".$senha."'
                         WHERE COD_USUARIO = ".filter_input(INPUT_POST, 'codUsuario', FILTER_SANITIZE_NUMBER_INT);
-        if ($this->insertDB("$sql_lista")) {
-            return filter_input(INPUT_POST, 'codUsuario', FILTER_SANITIZE_NUMBER_INT);
-        } else {
-            return 0;
-        }
-
+        return $this->insertDB("$sql_lista");
     }
 
     Public Function ResetaSenha() {

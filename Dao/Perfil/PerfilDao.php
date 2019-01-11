@@ -6,17 +6,6 @@ class PerfilDao extends BaseDao
         $this->conect();
     }
 
-    function ListarPerfilRestrito( $codPerfil ) {
-        $sql = " SELECT COD_PERFIL_W,
-                        DSC_PERFIL_W 
-                   FROM SE_PERFIL 
-                  WHERE COD_PERFIL_W  IN (SELECT COD_PERFIL_ACESSO
-                                            FROM RE_PERMISSAO_PERFIL
-                                           WHERE COD_PERFIL = $codPerfil)
-                    AND IND_ATIVO = 'S'";        
-        return $this->selectDB("$sql", false);
-    }
-
     function ListarPerfilAtivo() {
         $sql = " SELECT COD_PERFIL_W as ID,
                         DSC_PERFIL_W as DSC

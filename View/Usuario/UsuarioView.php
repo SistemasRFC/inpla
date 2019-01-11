@@ -4,7 +4,7 @@ include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
 <html>
     <head>
         <title>Cadastro de Usuários</title>
-        <script src="js/UsuarioView.js"></script>
+        <script src="js/UsuarioView.js?rdm=<?php echo time();?>"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
 
     </head>

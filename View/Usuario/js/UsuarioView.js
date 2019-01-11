@@ -17,29 +17,12 @@ $(function () {
 });
 
 function CarregaGridUsuario() {
-    swal({
-        title: "Aguarde",
-        showConfirmButton: false,
-        imageUrl: "../../Resources/images/preload.gif",
-        timer: 2000
-    });
     ExecutaDispatch('Usuario', 'ListarUsuario', undefined, retornoGridUsuario);
 }
 
 function retornoGridUsuario(retorno) {
-    if (retorno[0]) {
-        $("#codUsuario").val('');
-        $("#CadUsuarios").jqxWindow("close");
-        MontaTabelaUsuario(retorno[1]);
-    } else {
-        $(".jquery-waiting-base-container").fadeOut({ modo: "fast" });
-        swal({
-            title: "Erro!",
-            text: retorno[1],
-            type: "error",
-            confirmButtonText: "Fechar"
-        });
-    }
+    $("#codUsuario").val('');
+    MontaTabelaUsuario(retorno[1]);
 }
 
 function MontaTabelaUsuario(listaUsuario) {
@@ -98,11 +81,8 @@ function MontaTabelaUsuario(listaUsuario) {
         $("#nmeUsuarioCompleto").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).NME_USUARIO_COMPLETO);
         $("#txtEmail").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).TXT_EMAIL);
         $("#nroCpf").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).NRO_CPF   );
-        if ($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).IND_ATIVO == 'S') {
-            $("#indAtivo").jqxCheckBox('check');
-        } else {
-            $("#indAtivo").jqxCheckBox('uncheck');
-        }
+        $("#codPerfil").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).COD_PERFIL_W);
+        $("#indAtivo").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
         $("#method").val("UpdateMenu");
         $("#CadUsuarios").jqxWindow("open");
     });
@@ -114,8 +94,10 @@ function LimparCampos() {
     $("#nmeUsuarioCompleto").val('');
     $("#txtEmail").val('');
     $("#nroCpf").val('');
+    $("#indAtivo").prop("checked", false);
+    $("#codPerfil").val('0');
 }
 $(document).ready(function () {
-//    CarregaComboPerfil();
+    ExecutaDispatch('Perfil', 'ListarPerfilAtivo', undefined, CarregaComboPerfil);
     CarregaGridUsuario();
 });

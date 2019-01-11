@@ -13,11 +13,6 @@ class PerfilController extends BaseController
         echo $model->ListarPerfil();
     }
 
-    Public function ListarPerfilRestrito(){
-        $model = new PerfilModel();
-        echo $model->ListarPerfilRestrito();
-    }
-
     Public function ListarPerfilAtivo(){
         $model = new PerfilModel();
         echo $model->ListarPerfilAtivo();

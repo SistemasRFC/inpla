@@ -14,28 +14,13 @@ $(function () {
     $("#nroCpf").mask('999.999.999-99');
     $("#btnResetar").jqxButton({ width: '150', theme: theme });
     $("#btnResetar").click(function () {
-        swal({
-            title: "Aguarde, resetando senha",
-            imageUrl: "../../Resources/images/preload.gif",
-            showConfirmButton: false,
-            timer: 2000
-        });
-        ExecutaDispatch('Usuario', 'ResetaSenha', 'nroCpf;' + $("#nroCpf").val() + '|', retornoResetaSenha);
+        ExecutaDispatch('Usuario', 'ResetaSenha', 'nroCpf;' + $("#nroCpf").val() + '|', retornoResetaSenha, "Aguarde, resetando senha");
     });
 
 });
 
 function retornoResetaSenha(retorno) {
-    if (retorno[0]) {
-        window.location.href = '../../index.php';
-    } else {
-        swal({
-            title: "Erro!",
-            text: retono[1],
-            confirmButtonText: "Fechar",
-            type: "error"
-        });
-    }
+    window.location.href = '../../index.php';
 }
 
 $(document).ready(function () {
