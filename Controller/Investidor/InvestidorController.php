@@ -3,10 +3,6 @@ include_once("Controller/BaseController.php");
 include_once("Model/Investidor/InvestidorModel.php");
 class InvestidorController extends BaseController
 {
-    function InvestidorController() {
-        eval("\$this->".BaseController::getMethod()."();");
-    }
-
     /**
      * Redireciona para a Tela de  de Investidor
      */

@@ -375,6 +375,7 @@ class BaseDao{
      *       = 'I' - FILTER_SANITIZE_NUMBER_INTEGER
      *       = 'F' - FILTER_SANITIZE_NUMBER_FLOAT
      *       = 'D' - FILTER_SANITIZE_STRING (formatado para data)
+     *       = 'P' - FILTER_SANITIZE_STRING (Formato para senha)
      * @param type $field
      * @param type $type
      * @return type

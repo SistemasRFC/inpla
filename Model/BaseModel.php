@@ -33,7 +33,7 @@ class BaseModel {
             $this->objRequest->$key = $val;
         }
     }
-    
+
     Public Function EnviaEmail($nomeDestinatario, $emailDestinatario, $titulo, $mensagem){
         $mail             = new PHPMailer();
 

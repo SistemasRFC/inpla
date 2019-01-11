@@ -1,6 +1,7 @@
 <?php
 include_once("Model/BaseModel.php");
 include_once("Dao/Investidor/InvestidorDao.php");
+include_once("Resources/php/FuncoesString.php");
 class InvestidorModel extends BaseModel
 {
     public function InvestidorModel() {
@@ -23,8 +24,13 @@ class InvestidorModel extends BaseModel
     Public Function InsertInvestidor() {
         $dao = new InvestidorDao();     
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $this->objRequest->codPerfilW = 2;
-        $result = $dao->InsertInvestidor($this->objRequest);
+        $result = $this->VerificaCamposVazios();
+        if ($result[0]){
+            $this->objRequest->txtSenhaW = md5("123459");
+            $this->objRequest->codPerfilW = 2;
+            $this->objRequest->indAtivo = 'S';
+            $result = $dao->InsertInvestidor($this->objRequest);
+        }
         return json_encode($result);        
     }
 
@@ -35,6 +41,37 @@ class InvestidorModel extends BaseModel
         $result = $dao->UpdateInvestidor($this->objRequest);
         return json_encode($result);
     }	
-    
+ 
+    Public Function VerificaCamposVazios(){
+        $result=array(true, '');
+        if (!isset($this->objRequest->nmeUsuarioCompleto)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Nome Completo'\n";
+        }else{
+            if (trim($this->objRequest->nmeUsuarioCompleto)==''){
+                $result[0] = false;
+                $result[1] .= "Preencha o campo 'Nome Completo'\n";
+            }
+        }
+        if (!isset($this->objRequest->nmeUsuario)){
+            $result[0] = false;
+            $result[1] .= "Preencha o campo 'Login'\n";
+        }else{
+            if (trim($this->objRequest->nmeUsuario)==''){
+                $result[0] = false;
+                $result[1] .= "Preencha o campo 'Login'\n";
+            }
+            //tratar se o usuario ja existe
+        }
+        if (!FuncoesString::validaCPF($this->objRequest->nroCpf)){
+            $result[0] = false;
+            $result[1] .= "CPF inválido\n";
+        }
+        if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
+            $result[0] = false;
+            $result[1] .= "Email inválido'\n";
+        }      
+        return $result;
+    }
 }
 

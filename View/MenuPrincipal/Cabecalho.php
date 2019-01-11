@@ -43,7 +43,6 @@ if (!isset($_SESSION['cod_usuario'])) {
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxradiobutton.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxcalendar.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxnumberinput.js"></script>
-        <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxmaskedinput.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxdatetimeinput.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/globalization/globalize.js"></script>        
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxwindow.js"></script>
