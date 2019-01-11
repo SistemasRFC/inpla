@@ -161,7 +161,7 @@ class BaseDao{
      * @param <type> $data
      * @return <type>
      */
-    function ConverteDataForm($data){
+    Static function ConverteDataForm($data){
         if ($data!=''){
             $data = substr($data, 6,4).'-'.substr($data, 3,2).'-'.substr($data, 0,2);
         }else{

@@ -31,4 +31,11 @@ class InvestidorDao extends BaseDao
     Public Function InsertInvestidor(stdClass $obj) {
         return $this->MontarInsert($obj);
     }
+    
+    Public function VerificaLoginExiste($nmeUsuario) {
+        $sql = "SELECT COUNT(COD_USUARIO) AS COD_USUARIO
+                  FROM SE_USUARIO 
+                 WHERE NME_USUARIO ='".$nmeUsuario."'";
+        return $this->selectDB($sql, false);
+    }
 }

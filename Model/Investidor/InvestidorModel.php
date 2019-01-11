@@ -22,13 +22,13 @@ class InvestidorModel extends BaseModel
     }
     
     Public Function InsertInvestidor() {
-        $dao = new InvestidorDao();     
+        $dao = new InvestidorDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $result = $this->VerificaCamposVazios();
         if ($result[0]){
             $this->objRequest->txtSenhaW = md5("123459");
             $this->objRequest->codPerfilW = 2;
-            $this->objRequest->indAtivo = 'S';
+            $this->objRequest->indAtivo = 'N';
             $result = $dao->InsertInvestidor($this->objRequest);
         }
         return json_encode($result);        
@@ -56,12 +56,16 @@ class InvestidorModel extends BaseModel
         if (!isset($this->objRequest->nmeUsuario)){
             $result[0] = false;
             $result[1] .= "Preencha o campo 'Login'\n";
-        }else{
-            if (trim($this->objRequest->nmeUsuario)==''){
+        } else if (trim($this->objRequest->nmeUsuario)==''){
                 $result[0] = false;
                 $result[1] .= "Preencha o campo 'Login'\n";
+        } else {
+            $dao = new InvestidorDao();
+            $retorno = $dao->VerificaLoginExiste($this->objRequest->nmeUsuario);
+            if($retorno[1][0]['COD_USUARIO'] > 0){
+                $result[0] = false;
+                $result[1] .= "Esse Login já está sendo usado!\n";
             }
-            //tratar se o usuario ja existe
         }
         if (!FuncoesString::validaCPF($this->objRequest->nroCpf)){
             $result[0] = false;
