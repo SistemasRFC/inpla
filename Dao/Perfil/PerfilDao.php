@@ -43,7 +43,7 @@ class PerfilDao extends BaseDao
                         IND_ATIVO)
                  VALUES (
                         $codPerfil,
-                        '" .filter_input(INPUT_POST, 'dscPerfil', FILTER_SANITIZE_MAGIC_QUOTES). "',
+                        '" .filter_input(INPUT_POST, 'dscPerfilW', FILTER_SANITIZE_MAGIC_QUOTES). "',
                         '" .filter_input(INPUT_POST, 'indAtivo', FILTER_SANITIZE_MAGIC_QUOTES). "')";
         return $this->insertDB($sql);
     }
@@ -55,9 +55,9 @@ class PerfilDao extends BaseDao
      */
     Public Function UpdatePerfil() {
         $sql = " UPDATE SE_PERFIL
-                    SET DSC_PERFIL_W = '" .filter_input(INPUT_POST, 'dscPerfil', FILTER_SANITIZE_STRING). "',
+                    SET DSC_PERFIL_W = '" .filter_input(INPUT_POST, 'dscPerfilW', FILTER_SANITIZE_STRING). "',
                         IND_ATIVO    = '" .filter_input(INPUT_POST, 'indAtivo', FILTER_SANITIZE_MAGIC_QUOTES). "'
-                  WHERE COD_PERFIL_W = " .filter_input(INPUT_POST, 'codPerfil', FILTER_SANITIZE_NUMBER_INT);
+                  WHERE COD_PERFIL_W = " .filter_input(INPUT_POST, 'codPerfilW', FILTER_SANITIZE_NUMBER_INT);
         return $this->insertDB($sql);
     }
     

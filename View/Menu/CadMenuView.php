@@ -1,6 +1,6 @@
 <script src="js/CadMenuView.js?rdm=<?php echo time();?>"></script>
 <form name="menuForm" enctype="multpart/form-data" id="cadastroMenuForm" method="post" action="../../Controller/Menu/CadastroMenuController.php">
-    <input type="hidden" id="codMenu" name="codMenu" value="0" class="persist">    
+    <input type="hidden" id="codMenuW" name="codMenu" value="0" class="persist">    
     <input type="hidden" id="dscCaminhoImagem" name="dscCaminhoImagem" class="persist">
     <table width="100%">
     <tr>
@@ -11,7 +11,7 @@
                 </tr>
                 <tr>
                     <td class="styleTD1">
-                        <input name="dscMenu" id="dscMenu" size="30" class="persist">
+                        <input name="dscMenu" id="dscMenuW" size="30" class="persist">
                     </td>
                 </tr>
                 <tr>
@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <td class="style2">
-                        <input type="checkbox" name="indAtivo" id="indAtivo" class="persist">Ativo
+                        <input type="checkbox" name="indMenuAtivoW" id="indMenuAtivoW" class="persist">Ativo
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
                     <td class="style2">Menu Pai</td>
                 </tr>
                 <tr>
-                    <td class="styleTD1" id="tdcodMenuPai">
+                    <td class="styleTD1" id="tdcodMenuPaiW">
                     </td>
                 </tr>
             </table>

@@ -38,7 +38,7 @@ function fecharTelaCadastro() {
 }
 
 function MontaComboMenu(arrDados) {
-    CriarComboDispatch('codMenuPai', arrDados, 0);
+    CriarComboDispatch('codMenuPaiW', arrDados, 0);
 }
 
 function DeleteMenu() {

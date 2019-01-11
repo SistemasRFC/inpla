@@ -13,7 +13,7 @@
             <td>
                 Login
             </td>
-            <td><input type="text" id="nmeLogin" name="nmeLogin" size="35" class="persist"></td>
+            <td><input type="text" id="nmeUsuario" name="nmeUsuario" size="35" class="persist"></td>
         </tr>
         <tr>
             <td>
@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <td class="style3">Perfil</td>
-            <td class="styleTD1" id="tdcodPerfil">
+            <td class="styleTD1" id="tdcodPerfilW">
                 <div id="codPerfil"></div>
             </td>
         </tr>        

@@ -1,6 +1,6 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
-    <script src="js/InvestidorView.js?rdm=<?php echo time();?>"></script>
+    <script src="View/Investidor/js/InvestidorView.js?rdm=<?php echo time();?>"></script>
     <form name="InvestidorForm" method="post" action="Controller/Usuario/UsuarioController.php">
         <input type="hidden" id="method" name="method">
         <input type="hidden" id="codUsuario" name="codUsuario" class="persist">

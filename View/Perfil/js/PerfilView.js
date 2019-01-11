@@ -19,9 +19,7 @@ $(function () {
     });
 
     $("#btnNovo").click(function () {
-        $("#codPerfil").val('');
-        $("#dscPerfil").val('');
-        $("#indAtivo").prop("checked", false);
+        LimparCampos();
         $("#CadPerfil").jqxWindow("open");
     });
 
@@ -54,6 +52,7 @@ function carregaGridPerfil() {
 function montaTabelaPerfil(listaPerfil) {
     $("#codPerfil").val(0);
     listaPerfil = listaPerfil[1];
+    console.log(listaPerfil);
     var nomeGrid = 'listaPerfil';
     var source =
     {
@@ -94,9 +93,7 @@ function montaTabelaPerfil(listaPerfil) {
         var rows = $('#' + nomeGrid).jqxGrid('getdisplayrows');
         var rowData = rows[args.visibleindex];
         var rowID = rowData.uid;
-        $("#codPerfil").val($('#listaPerfil').jqxGrid('getrowdatabyid', rowID).COD_PERFIL_W);
-        $("#dscPerfil").val($('#listaPerfil').jqxGrid('getrowdatabyid', rowID).DSC_PERFIL_W);
-        $("#indAtivo").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
+        preencheCamposForm(listaPerfil[rowID],'indAtivo;B|');
         $("#CadPerfil").jqxWindow("open");
     });
 }

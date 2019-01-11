@@ -45,10 +45,10 @@ class UsuarioDao extends BaseDao
                               NRO_CPF)
                        VALUES (
                               $codUsuario,
-                              '".filter_input(INPUT_POST, 'nmeLogin', FILTER_SANITIZE_MAGIC_QUOTES)."',
+                              '".filter_input(INPUT_POST, 'nmeUsuario', FILTER_SANITIZE_MAGIC_QUOTES)."',
                               '".filter_input(INPUT_POST, 'nmeUsuarioCompleto', FILTER_SANITIZE_MAGIC_QUOTES)."',
                               '".$senha."',
-                              '".filter_input(INPUT_POST, 'codPerfil', FILTER_SANITIZE_NUMBER_INT)."',
+                              '".filter_input(INPUT_POST, 'codPerfilW', FILTER_SANITIZE_NUMBER_INT)."',
                               '".filter_input(INPUT_POST, 'indAtivo', FILTER_SANITIZE_STRING)."',
                               '".filter_input(INPUT_POST, 'txtEmail', FILTER_SANITIZE_STRING)."',
                               '".filter_input(INPUT_POST, 'nroCpf', FILTER_SANITIZE_STRING)."')";
@@ -62,10 +62,10 @@ class UsuarioDao extends BaseDao
     function UpdateUsuario() {     
         $nroCpf = str_replace('-','',str_replace('.', '', filter_input(INPUT_POST, 'nroCpf', FILTER_SANITIZE_NUMBER_INT)));
         $sql_lista = " UPDATE SE_USUARIO
-                          SET NME_USUARIO          = '".filter_input(INPUT_POST, 'nmeLogin', FILTER_SANITIZE_MAGIC_QUOTES)."',
+                          SET NME_USUARIO          = '".filter_input(INPUT_POST, 'nmeUsuario', FILTER_SANITIZE_MAGIC_QUOTES)."',
                               NME_USUARIO_COMPLETO = '".filter_input(INPUT_POST, 'nmeUsuarioCompleto', FILTER_SANITIZE_MAGIC_QUOTES)."',
                               TXT_EMAIL            = '".filter_input(INPUT_POST, 'txtEmail', FILTER_SANITIZE_MAGIC_QUOTES)."',
-                              COD_PERFIL_W         = '".filter_input(INPUT_POST, 'codPerfil', FILTER_SANITIZE_NUMBER_INT)."', 
+                              COD_PERFIL_W         = '".filter_input(INPUT_POST, 'codPerfilW', FILTER_SANITIZE_NUMBER_INT)."', 
                               IND_ATIVO            = '".filter_input(INPUT_POST, 'indAtivo', FILTER_SANITIZE_STRING)."'
                         WHERE COD_USUARIO = ".filter_input(INPUT_POST, 'codUsuario', FILTER_SANITIZE_NUMBER_INT);        
         $result = $this->insertDB("$sql_lista");        

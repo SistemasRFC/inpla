@@ -35,14 +35,7 @@ $(function () {
 
     $("#btnNovo").click(function () {
         ExecutaDispatch('Menu', 'ListaMenus', '', MontaComboMenu);
-        $("#codMenu").val(0);
-        $("#dscMenu").val('');
-        $("#nmeController").val('');
-        $("#nmeMethod").val('');
-        $("#dscCaminhoImagem").val('');
-        $("#codMenuPai").jqxDropDownList('selectIndex', -1);
-        $("#indAtivo").prop("checked", false);
-        $("#indAtalho").prop("checked", false);
+        LimparCampos();
         $("#CadMenus").jqxWindow("open");
     });
 });
@@ -123,19 +116,21 @@ function MontaTabelaMenu(listaMenus) {
     $("#" + nomeGrid).jqxGrid('localizestrings', localizationobj);
     $('#' + nomeGrid).on('rowdoubleclick', function (event) {
         var args = event.args;
-        $('#cadastroMenuForm').each(function () {
-            this.reset();
-        });
-        $("#codMenu").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_W);
-        $("#dscMenu").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_MENU_W);
-        $("#nmeController").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
-        $("#nmeClasse").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
-        $("#nmeMethod").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_METHOD);
-        $("#dscCaminhoImagem").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_CAMINHO_IMAGEM);
-        $("#codMenuPai").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_PAI_W);
-        $("#indAtivo").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
-        $("#indAtalho").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATALHO);
-        $("#indVisible").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).VISIBLE);
+        var rows = $('#' + nomeGrid).jqxGrid('getdisplayrows');
+        var rowData = rows[args.visibleindex];
+        var rowID = rowData.uid;
+
+        preencheCamposForm(listaMenus[rowID], 'indMenuAtivoW;B|indAtalho;B|indVisible;B|');
+//        $("#codMenu").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_W);
+//        $("#dscMenu").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_MENU_W);
+//        $("#nmeController").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
+//        $("#nmeClasse").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
+//        $("#nmeMethod").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_METHOD);
+//        $("#dscCaminhoImagem").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_CAMINHO_IMAGEM);
+//        $("#codMenuPai").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_PAI_W);
+//        $("#indAtivo").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
+//        $("#indAtalho").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATALHO);
+//        $("#indVisible").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).VISIBLE);
         $("#method").val("UpdateMenu");
         $("#CadMenus").jqxWindow("open");
     });
@@ -146,14 +141,15 @@ function MontaTabelaMenu(listaMenus) {
             $("#CadMenus").jqxWindow("open");
             //$("#CadMenus").dialog("open");
         } else if ($.trim($(args).text()) == "Novo") {
-            $("#codMenu").val(0);
-            $("#dscMenu").val('');
-            $("#nmeController").val('');
-            $("#nmeMethod").val('');
-            $("#dscCaminhoImagem").val('');
-            $("#codMenuPai").val(0);
-            $("#indAtivo").prop("checked", false);
-            $("#indAtalho").prop("checked", false);
+            LimparCampos();
+//            $("#codMenu").val(0);
+//            $("#dscMenu").val('');
+//            $("#nmeController").val('');
+//            $("#nmeMethod").val('');
+//            $("#dscCaminhoImagem").val('');
+//            $("#codMenuPai").val(0);
+//            $("#indAtivo").prop("checked", false);
+//            $("#indAtalho").prop("checked", false);
             $("#CadMenus").jqxWindow("open");
         }
     });

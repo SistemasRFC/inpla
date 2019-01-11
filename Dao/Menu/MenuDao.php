@@ -90,10 +90,10 @@ class MenuDao extends BaseDao
                               DSC_CAMINHO_IMAGEM, IND_ATALHO, IND_VISIBLE) 
                        VALUES (
                               " .$this->CatchUltimoCodigo('SE_MENU', 'COD_MENU_W'). ", "
-                              . "'" .filter_input(INPUT_POST, 'dscMenu', FILTER_SANITIZE_MAGIC_QUOTES). "', "
+                              . "'" .filter_input(INPUT_POST, 'dscMenuW', FILTER_SANITIZE_MAGIC_QUOTES). "', "
                               . "'" .filter_input(INPUT_POST, 'nmeController', FILTER_SANITIZE_MAGIC_QUOTES). "', "
-                              . "'" .filter_input(INPUT_POST, 'indAtivo', FILTER_SANITIZE_MAGIC_QUOTES). "', "
-                              . filter_input(INPUT_POST, 'codMenuPai', FILTER_SANITIZE_NUMBER_INT). ", "
+                              . "'" .filter_input(INPUT_POST, 'indMenuAtivoW', FILTER_SANITIZE_MAGIC_QUOTES). "', "
+                              . filter_input(INPUT_POST, 'codMenuPaiW', FILTER_SANITIZE_NUMBER_INT). ", "
                               . "'" .filter_input(INPUT_POST, 'nmeMethod', FILTER_SANITIZE_MAGIC_QUOTES). "', "
                               . "'" .filter_input(INPUT_POST, 'dscCaminhoImagem', FILTER_SANITIZE_MAGIC_QUOTES). "', "
                               . "'" .filter_input(INPUT_POST, 'indAtalho', FILTER_SANITIZE_MAGIC_QUOTES). "', "
@@ -105,15 +105,15 @@ class MenuDao extends BaseDao
 
     function UpdateMenu() {
         $sql_lista = " UPDATE SE_MENU 
-                          SET DSC_MENU_W = '" . filter_input(INPUT_POST, 'dscMenu', FILTER_SANITIZE_MAGIC_QUOTES) . "',
+                          SET DSC_MENU_W = '" . filter_input(INPUT_POST, 'dscMenuW', FILTER_SANITIZE_MAGIC_QUOTES) . "',
                               NME_CONTROLLER = '" . filter_input(INPUT_POST, 'nmeController', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                              IND_MENU_ATIVO_W = '" . filter_input(INPUT_POST, 'indAtivo', FILTER_SANITIZE_MAGIC_QUOTES) . "',
-                              COD_MENU_PAI_W = " . filter_input(INPUT_POST, 'codMenuPai', FILTER_SANITIZE_NUMBER_INT) . ",
+                              IND_MENU_ATIVO_W = '" . filter_input(INPUT_POST, 'indMenuAtivoW', FILTER_SANITIZE_MAGIC_QUOTES) . "',
+                              COD_MENU_PAI_W = " . filter_input(INPUT_POST, 'codMenuPaiW', FILTER_SANITIZE_NUMBER_INT) . ",
                               NME_METHOD = '" . filter_input(INPUT_POST, 'nmeMethod', FILTER_SANITIZE_MAGIC_QUOTES) . "',
                               DSC_CAMINHO_IMAGEM = '" . filter_input(INPUT_POST, 'dscCaminhoImagem', FILTER_SANITIZE_MAGIC_QUOTES) . "',
                               IND_ATALHO = '" . filter_input(INPUT_POST, 'indAtalho', FILTER_SANITIZE_MAGIC_QUOTES) . "',
                               IND_VISIBLE = '" . filter_input(INPUT_POST, 'indVisible', FILTER_SANITIZE_MAGIC_QUOTES) . "'
-                        WHERE COD_MENU_W = " . filter_input(INPUT_POST, 'codMenu', FILTER_SANITIZE_NUMBER_INT);
+                        WHERE COD_MENU_W = " . filter_input(INPUT_POST, 'codMenuW', FILTER_SANITIZE_NUMBER_INT);
         $result = $this->insertDB("$sql_lista", false);
         return $result;
 

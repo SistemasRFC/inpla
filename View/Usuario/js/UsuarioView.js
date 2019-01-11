@@ -76,27 +76,12 @@ function MontaTabelaUsuario(listaUsuario) {
         var rows = $('#listaUsuarios').jqxGrid('getdisplayrows');
         var rowData = rows[args.visibleindex];
         var rowID = rowData.uid;
-        $("#codUsuario").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).COD_USUARIO);
-        $("#nmeLogin").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).NME_USUARIO);
-        $("#nmeUsuarioCompleto").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).NME_USUARIO_COMPLETO);
-        $("#txtEmail").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).TXT_EMAIL);
-        $("#nroCpf").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).NRO_CPF   );
-        $("#codPerfil").val($('#listaUsuarios').jqxGrid('getrowdatabyid', rowID).COD_PERFIL_W);
-        $("#indAtivo").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
+        preencheCamposForm(listaUsuario[rowID],'indAtivo;B|');
         $("#method").val("UpdateMenu");
         $("#CadUsuarios").jqxWindow("open");
     });
 }
 
-function LimparCampos() {
-    $("#codUsuario").val('');
-    $("#nmeLogin").val('');
-    $("#nmeUsuarioCompleto").val('');
-    $("#txtEmail").val('');
-    $("#nroCpf").val('');
-    $("#indAtivo").prop("checked", false);
-    $("#codPerfil").val('0');
-}
 $(document).ready(function () {
     ExecutaDispatch('Perfil', 'ListarPerfilAtivo', undefined, CarregaComboPerfil);
     CarregaGridUsuario();
