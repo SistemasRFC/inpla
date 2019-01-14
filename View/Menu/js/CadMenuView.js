@@ -20,7 +20,7 @@ $(function () {
 });
 
 function salvarMenu(data) {
-    if ($('#codMenu').val() == 0) {
+    if ($('#codMenuW').val() == '') {
         $("#method").val('AddMenu');
     } else {
         $("#method").val('UpdateMenu');
@@ -42,7 +42,7 @@ function MontaComboMenu(arrDados) {
 }
 
 function DeleteMenu() {
-    ExecutaDispatch('Menu', 'DeleteMenu', 'codMenu;' + $("#codMenu").val() + '|', retornoDeleteMenu, "Aguarde, removendo menu", "Menu removido com sucesso!");
+    ExecutaDispatch('Menu', 'DeleteMenu', 'codMenuW;' + $("#codMenuW").val() + '|', retornoDeleteMenu, "Aguarde, removendo menu", "Menu removido com sucesso!");
 }
 
 function retornoDeleteMenu(retorno) {

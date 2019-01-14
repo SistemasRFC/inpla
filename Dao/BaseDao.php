@@ -199,9 +199,9 @@ class BaseDao{
                         case 'S':
                             $values .= "'".$value."', ";
                             break;
-                        case 'F':
-                            $values .= "'".str_replace(",", ".", str_replace(".", "", $value))."', ";
-                            break;
+//                        case 'F':
+//                            $values .= "'".str_replace(",", ".", str_replace(".", "", $value))."', ";
+//                            break;
                         case 'D':
                             $values .= "'".$this->ConverteDataForm($value)."', ";
                             break;
@@ -219,7 +219,7 @@ class BaseDao{
         $values = substr($values, 0, strlen($values)-2).')';
         $sql = "INSERT INTO ".$this->tableName." ".$fields." ".$values;
         $return = $this->insertDB($sql);
-        $return[2] = $columnKey;
+        $return[2] = $columnKey;      
         return $return;
     }
     
@@ -232,9 +232,9 @@ class BaseDao{
                         case 'S':
                             $values .= $valuec['column']." = '".$value."', ";
                             break;
-                        case 'F':
-                            $values .= $valuec['column']." = '".str_replace(",", ".", str_replace(".", "", $value))."', ";
-                            break;
+//                        case 'F':
+//                            $values .= $valuec['column']." = '".str_replace(",", ".", str_replace(".", "", $value))."', ";
+//                            break;
                         case 'D':
                             $values .= $valuec['column']." = '".$this->ConverteDataForm($value)."', ";
                             break;
