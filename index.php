@@ -44,7 +44,7 @@ include_once getenv("CONSTANTES");
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxtabs.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxtooltip.js"></script>
         <script src="../../Resources/js/jquery.maskMoney.js"></script>
-        <script src="../../View/MenuPrincipal/js/Cabecalho.js?random=<?php echo time(); ?>"></script>
+        <script src="../../View/MenuPrincipal/js/FuncoesGerais.js?random=<?php echo time(); ?>"></script>
         <script src="../../Resources/swal/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../../Resources/swal/dist/sweetalert.css"> 
         <script src="index.js"></script>
@@ -120,8 +120,8 @@ include_once getenv("CONSTANTES");
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <a href="javascript:return" id=btnCadastrar>Cadastre-se</a>
-                        <a href="javascript:return" id=btnEsqueciSenha>Esqueci a senha</a>
+                        <a href="javascript:return false" id=btnCadastrar>Cadastre-se</a>
+                        <a href="javascript:return false" id=btnEsqueciSenha>Esqueci a senha</a>
                     </td>
                 </tr>
             </table>

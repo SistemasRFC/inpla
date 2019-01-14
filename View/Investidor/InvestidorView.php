@@ -5,7 +5,6 @@
     </head>
     <body>
         <form name="InvestidorForm" method="post" action="Controller/Investidor/InvestidorController.php">
-            <input type="hidden" id="method" name="method">
             <input type="hidden" id="codUsuario" name="codUsuario" class="persist">
             <table width="100%">
                 <tr>

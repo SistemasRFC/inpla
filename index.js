@@ -21,7 +21,7 @@ $(function () {
     $("#btnCadastrar").click(function () {
         $("#CadInvestidor").jqxWindow("open");
     });
-    $("#btnLogin").jqxButton({ width: '208', height: 30, theme: "energyblue" });
+    $("#btnLogin").jqxButton({ width: '208', height: 30, theme: 'energyblue' });
     $("#btnLogin").click(function () {
         logar();
     });
