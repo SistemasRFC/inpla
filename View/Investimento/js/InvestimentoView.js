@@ -16,9 +16,8 @@ $(function () {
 });
 
 function salvarInvestimento() {
-    $('#method').val('InsertInvestimento');
     var parametros = retornaParametros();
-    ExecutaDispatch('Investimento', $('#method').val(), parametros, carrregaInvestimentos, 'Aguarde, Salvando Investimento', 'Investimento criado com sucesso!!');
+    ExecutaDispatch('Investimento', 'InsertInvestimento', parametros, carrregaInvestimentos, 'Aguarde, Salvando Investimento', 'Investimento criado com sucesso!!');
 }
 
 function carrregaInvestimentos() {
@@ -60,7 +59,7 @@ function montaTabelaInvestimento(ListaInvestimentos) {
             filterable: true,
             pageable: true,
             columnsresize: true,
-            selectionmode: 'singlerow',
+            selectionmode: 'singlerow',         
             columns: [
                 {text: 'Nro.', columntype: 'textbox', datafield: 'COD_INVESTIMENTO', width: 50},
                 {text: 'Plano', datafield: 'DSC_PLANO', columntype: 'textbox', width: 80},
@@ -70,27 +69,7 @@ function montaTabelaInvestimento(ListaInvestimentos) {
                 {text: 'Valor Restante', datafield: 'VLR_RESTANTE', columntype: 'textbox', width: 120},
                 {text: 'Saldo', datafield: 'VLR_SALDO', columntype: 'textbox', width: 90},
                 {text: 'Status', datafield: 'DSC_STATUS', columntype: 'textbox', width: 170},
-                {text: 'Ação', datafield: 'COD_INVESTIMENTO_A', width: 90,
-                    createwidget: function (row, column, value, htmlElement) {
-                        var datarecord = value;
-//                            var imgurl = '../../Resources/images/saque.jpg';
-                        var imgurl = '../../Resources/images/enviar.png';
-                        var img = '<img style="margin-top: 0px;" height="25" width="30" src="' + imgurl + '"/>';
-                        var button = $("<div style='border:none;'>" + img + "<div class='buttonValue'>" + value + "</div></div>");
-                        $(htmlElement).append(button);
-                        button.jqxButton({ height: '100%', width: '100%' });
-                        button.click(function (event) {
-                            var clickedButton = button.find(".buttonValue")[0].innerHTML;
-                            $("#ComprovanteForm").jqxWindow("open");
-                            $("#codInvestimentoA").val(clickedButton);
-                        });
-                    },
-                    initwidget: function (row, column, value, htmlElement) {
-                        var imgurl = '../../Resources/images/enviar.png';
-                        $(htmlElement).find('.buttonValue')[0].innerHTML = value;
-                        $(htmlElement).find('img')[0].src = imgurl;
-                    }
-                }
+                {text: 'Ação', datafield: 'COD_INVESTIMENTO_A', columntype: 'textbox', width: 90}
             ]
         });
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><nfeProc versao="3.10" xmlns="http://www.portalfiscal.inf.br/nfe"><NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe Id="NFe53171226441410000161550010000000031783467791" versao="3.10"><ide><cUF>53</cUF><cNF>78346779</cNF><natOp>Remessa de Produtos</natOp><indPag>0</indPag><mod>55</mod><serie>1</serie><nNF>3</nNF><dhEmi>2017-12-11T16:34:34+00:00</dhEmi><tpNF>1</tpNF><idDest>1</idDest><cMunFG>5300108</cMunFG><tpImp>1</tpImp><tpEmis>1</tpEmis><cDV>1</cDV><tpAmb>2</tpAmb><finNFe>1</finNFe><indFinal>1</indFinal><indPres>9</indPres><procEmi>0</procEmi><verProc>0.1.0</verProc></ide><emit><CNPJ>26441410000161</CNPJ><xNome>HB PNEUS E RODAS LTDA ME</xNome><xFant>ALYSSON PNEUS E RODAS</xFant><enderEmit><xLgr>AREA ESPECIAL 2A CONJ E LOTE 2/4 LOJA</xLgr><nro>01 E 02</nro><xCpl>ANTIGO SETOR DE OFICINAS</xCpl><xBairro>GUARA II</xBairro><cMun>5300108</cMun><xMun>BRASILIA</xMun><UF>DF</UF><CEP>71070625</CEP><cPais>1058</cPais><xPais>Brasil</xPais><fone>6135688766</fone></enderEmit><IE>767247800177</IE><CRT>1</CRT></emit><dest><CPF>70167664115</CPF><xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome><enderDest><xLgr>Quadra 107 Rua E</xLgr><nro>Lt 03 apto 803</nro><xBairro>Norte (Águas Claras)</xBairro><cMun>5300108</cMun><xMun>Brasília</xMun><UF>DF</UF><CEP>71920180</CEP><cPais>1058</cPais><xPais>Brasil</xPais></enderDest><indIEDest>9</indIEDest></dest><det nItem="1"><prod><cProd>1969</cProd><cEAN/><xProd>175/60/13</xProd><NCM>40121100</NCM><CFOP>5102</CFOP><uCom>un</uCom><qCom>2.0000</qCom><vUnCom>198.7700000000</vUnCom><vProd>397.54</vProd><cEANTrib/><uTrib>un</uTrib><qTrib>2.0000</qTrib><vUnTrib>198.7700000000</vUnTrib><indTot>1</indTot></prod><imposto><vTotTrib>64.40</vTotTrib><ICMS><ICMSSN102><orig>0</orig><CSOSN>102</CSOSN></ICMSSN102></ICMS><IPI><cEnq>999</cEnq><IPINT><CST>53</CST></IPINT></IPI><PIS><PISNT><CST>07</CST></PISNT></PIS><COFINS><COFINSNT><CST>07</CST></COFINSNT></COFINS></imposto></det><total><ICMSTot><vBC>0</vBC><vICMS>0</vICMS><vICMSDeson>0</vICMSDeson><vBCST>0</vBCST><vST>0</vST><vProd>397.54</vProd><vFrete>0</vFrete><vSeg>0</vSeg><vDesc>0</vDesc><vII>0</vII><vIPI>0</vIPI><vPIS>0</vPIS><vCOFINS>0</vCOFINS><vOutro>0</vOutro><vNF>397.54</vNF><vTotTrib>64.40</vTotTrib></ICMSTot></total><transp><modFrete>0</modFrete></transp><cobr><fat><nFat>3</nFat></fat><dup><nDup>Pagamento a vista</nDup><vDup>397.54</vDup></dup></cobr><infAdic><infCpl>Não Incidência ICMS conforme Decisão... Trib. aprox. R$: 16,70 Federal e  47,70 Estadual Fonte: IBPT/empresometro.com.br S3A6R4</infCpl></infAdic></infNFe><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#NFe53171226441410000161550010000000031783467791"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>Y52Xd2N+TVF8OhIXbwVNmITbKAM=</DigestValue></Reference></SignedInfo><SignatureValue>GWSRfNs9sozbRcw5hmS/HKFdEY0K/Rm20Qdh6V3dCVrXnMUfS5s+CB8+HL0lYDJjwoxQsuSof6jJ
+787y50EnQDXqhW5vGrtmrUMtL3wa2GCMdN5IZBTlA4QaPape8sWBhwzaQxLZ1TlzZYfWspIPjPKw
+ZwYElg0nDlkoQK3t9bxhkcnJL4SVLf92vErTS1ZIlHMH7tgZuNVOov1fuALcX5+3suyDdpPAk71R
+r56kxu0x/AObfbsywKe7BCAmktY1daRwiQ55qx5tzVea6zMlkpJW2uZHnOK+g2tVlr4ZOwHbR3ms
+bvEImWMvgmO0Orbmg69JzU/SeTzTi0EfN6RJVA==</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIHQTCCBSmgAwIBAgIDGmByMA0GCSqGSIb3DQEBCwUAMIGJMQswCQYDVQQGEwJCUjETMBEGA1UE
+CgwKSUNQLUJyYXNpbDE2MDQGA1UECwwtU2VjcmV0YXJpYSBkYSBSZWNlaXRhIEZlZGVyYWwgZG8g
+QnJhc2lsIC0gUkZCMS0wKwYDVQQDDCRBdXRvcmlkYWRlIENlcnRpZmljYWRvcmEgU0VSUFJPUkZC
+djUwHhcNMTcxMDExMTQxMDE4WhcNMTgxMDExMTQxMDE4WjCB2TELMAkGA1UEBhMCQlIxCzAJBgNV
+BAgMAkRGMREwDwYDVQQHDAhCUkFTSUxJQTETMBEGA1UECgwKSUNQLUJyYXNpbDE2MDQGA1UECwwt
+U2VjcmV0YXJpYSBkYSBSZWNlaXRhIEZlZGVyYWwgZG8gQnJhc2lsIC0gUkZCMRMwEQYDVQQLDApB
+UkNPUlJFSU9TMRYwFAYDVQQLDA1SRkIgZS1DTlBKIEExMTAwLgYDVQQDDCdIQiBQTkVVUyBFIFJP
+REFTIExUREEgTUU6MjY0NDE0MTAwMDAxNjEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB
+AQCZXCxi98Fg0Yq6KSV+XL5znjuvjHe+daV7rYhXh+WNxUsAi1RBRqRvSoZNfnKeYx9fMD+UXmza
+nmkfJdc6ecgG30+tB5UzzNU0k8qKlS+TKXhETutUBuNvs2Y9EpVRCBUn8t/r67tvBuOUPkwcRIul
+ka6L/ZKvQRHEhB9sXrpDEN9tI7WNHR0E2JaFEU/koPK2zkYNMAXs1TyzciVPJFbBBmC3f5+YhGOQ
+2RJBXYXB/BedfWK2FC35S28Ju7AKwi7mlUhA2ulizOzHZ7teUD1/zZF6Y2nuqth/1QX/IcANtNkY
+k1Y8q0aAk7svmjth0fz2UYGVf3AOAUuGIIsB7SbtAgMBAAGjggJeMIICWjAfBgNVHSMEGDAWgBQU
+gC2dfppFwPFbPxnVQLBvL2Xg6TBbBgNVHSAEVDBSMFAGBmBMAQIBCjBGMEQGCCsGAQUFBwIBFjho
+dHRwOi8vcmVwb3NpdG9yaW8uc2VycHJvLmdvdi5ici9kb2NzL2RwY2Fjc2VycHJvcmZiLnBkZjCB
+iAYDVR0fBIGAMH4wPKA6oDiGNmh0dHA6Ly9yZXBvc2l0b3Jpby5zZXJwcm8uZ292LmJyL2xjci9h
+Y3NlcnByb3JmYnY1LmNybDA+oDygOoY4aHR0cDovL2NlcnRpZmljYWRvczIuc2VycHJvLmdvdi5i
+ci9sY3IvYWNzZXJwcm9yZmJ2NS5jcmwwVgYIKwYBBQUHAQEESjBIMEYGCCsGAQUFBzAChjpodHRw
+Oi8vcmVwb3NpdG9yaW8uc2VycHJvLmdvdi5ici9jYWRlaWFzL2Fjc2VycHJvcmZidjUucDdiMIHH
+BgNVHREEgb8wgbygOAYFYEwBAwSgLwQtMTAwMjE5NTAwNzQ4NzQ5NTE5MTAwMDAwMDAwMDAwMDAw
+MDAwMDAwMDAwMDAwoC0GBWBMAQMCoCQEIklWQU5JTERFIEFMTUVJREEgREUgQkFSUk9TIEUgU0lM
+VkGgGQYFYEwBAwOgEAQOMjY0NDE0MTAwMDAxNjGgFwYFYEwBAwegDgQMMDAwMDAwMDAwMDAwgR1t
+YXJjZWxvY29udGFkb3JkZkBob3RtYWlsLmNvbTAOBgNVHQ8BAf8EBAMCBeAwHQYDVR0lBBYwFAYI
+KwYBBQUHAwQGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4ICAQCH8tvePJXrv43oUQzWI7dZ2HLC
+4vepMt0sL/fpOc8v97CJ0NxENhXuw86fc7InYdwRYHt7cp98Er8b03NvZLBur8wTU6EoXgjJZjhv
+uArCJwql2ZVUAzBfSZs+vIj4M1mdw9gWIdB2mCtvK1Arj61SPQjLfayKMqswVmfnFvlW0mokzLc6
+HBuPNoke51F8S2pulR+A000oNOu2ePJpxCSlWIe6Rvd4rLhSX2WA8PZ7FnfhQaiAJlC/CgvpcKcQ
+TP00WuN8sb/7wkQZ0U3SJM1O15c/i9HM/oAcIgd1FnzZWNow8PAeuiK+ff1IP0et4tpoiuQSHG3I
+iKsVG3vW460sKnXXAvPV7zatwdUy/Bi6pOF1unk8NE1t2vWPt+JrYD8PqsPDVwlfWLcB4JWAjfzJ
+LdP4ceBPRM5SFIT/5gtIlRe8uCJXt7/kfQBQZICrDN0Tkjm2C0UE4WBDI5ojW/8h01tueq/Eo/QD
+wx6wR9Ju4ryu6wRNOpYFsHBddslUu6VHT+f3JZAOtOp/Y/eoBUj1kXgaMeoDJi+ZZqjda4CzWFNY
+i/g2zhJtgM7PMm6MESF1uyVYW1+u3lTe6ixV+oD88tHxRKMIpQJIxNrIf9grfwTHSuWpoCe7Ukvs
+v8hhaY3CgKiVAvQwluq9D1UH6bzkWMuMPCoX7/8AYv4sR3DFlg==</X509Certificate></X509Data></KeyInfo></Signature></NFe><protNFe versao="3.10"><infProt><tpAmb>2</tpAmb><verAplic>SVRS201712041502</verAplic><chNFe>53171226441410000161550010000000031783467791</chNFe><dhRecbto>2017-12-11T16:34:37-02:00</dhRecbto><nProt>353170000359206</nProt><digVal>Y52Xd2N+TVF8OhIXbwVNmITbKAM=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe></nfeProc>

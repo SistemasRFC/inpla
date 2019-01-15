@@ -10,7 +10,7 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
     </head>
     <body>
         <input type="hidden" id="codInvestimento" name="codInvestimento" value="0" class="persist">
-        <input type="hidden" id="method" name="method" class="persist">
+        <input type="hidden" id="method" name="method">
         <table width="100%">
             <tr>
                 <td width="100%"

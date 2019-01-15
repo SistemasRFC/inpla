@@ -20,7 +20,7 @@ class InvestimentoDao extends BaseDao
 
     Public Function ListarInvestimento($codUsuario) {
         $sql = "SELECT I.COD_INVESTIMENTO,
-                       I.COD_INVESTIMENTO AS COD_INVESTIMENTO_A,
+                       concat('<a href=\"#\">Teste</a>', '   ', '<a href=\"#\">Teste</a>') AS COD_INVESTIMENTO_A,
                        P.DSC_PLANO,
                        I.DTA_INICIO,
                        P.VLR_PLANO,
