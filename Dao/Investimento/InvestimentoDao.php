@@ -20,7 +20,9 @@ class InvestimentoDao extends BaseDao
 
     Public Function ListarInvestimento($codUsuario) {
         $sql = "SELECT I.COD_INVESTIMENTO,
-                       concat('<a href=\"#\">Teste</a>', '   ', '<a href=\"#\">Teste</a>') AS COD_INVESTIMENTO_A,
+                       CASE WHEN I.LNK_COMPROVANTES IS NULL THEN '<a href=\"#\"><img src=\"../../Resources/images/enviar.png\" title=\"Enviar Comprovante\" width=\"20\" height=\"\"></a>'
+                            ELSE '<a href=\"#\"><img src=\"../../Resources/images/saque.jpg\" title=\"Sacar\" width=\"20\" height=\"\"></a>'
+                       END AS COD_INVESTIMENTO_A,
                        P.DSC_PLANO,
                        I.DTA_INICIO,
                        P.VLR_PLANO,
