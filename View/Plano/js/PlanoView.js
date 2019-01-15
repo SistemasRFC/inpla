@@ -60,24 +60,6 @@ function montaTabelaPlanos(ListaPlanos) {
                     {text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 67}
                 ]
             });
-    // events
-    $('#' + nomeGrid).on('rowclick', function (event) {
-        var args = event.args;
-        var row = args.rowindex;
-
-        if (event.args.rightclick) {
-
-            $("#listaPlanos").jqxGrid('selectrow', event.args.rowindex);
-            var scrollTop = $(window).scrollTop();
-            var scrollLeft = $(window).scrollLeft();
-            $("#codPlano").val($('#listaPlanos').jqxGrid('getrowdatabyid', args.rowindex).COD_PLANO);
-            $("#dscPlano").val($('#listaPlanos').jqxGrid('getrowdatabyid', args.rowindex).DSC_PLANO);
-            $("#vlrPlano").val($('#listaPlanos').jqxGrid('getrowdatabyid', args.rowindex).VLR_PLANO);
-            $("#indAtivo").val($('#listaPlanos').jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
-            return false;
-        }
-    });
-    $("#" + nomeGrid).jqxGrid('localizestrings', localizationobj);
     $('#' + nomeGrid).on('rowdoubleclick', function (event) {
         var args = event.args;
         var rows = $('#' + nomeGrid).jqxGrid('getdisplayrows');
