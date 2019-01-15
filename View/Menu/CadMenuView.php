@@ -11,7 +11,7 @@
                 </tr>
                 <tr>
                     <td class="styleTD1">
-                        <input name="dscMenu" id="dscMenuW" size="30" class="persist">
+                        <input type="text" name="dscMenu" id="dscMenuW" size="30" class="persist">
                     </td>
                 </tr>
                 <tr>
@@ -19,7 +19,7 @@
                 </tr>
                 <tr>
                     <td class="styleTD1">
-                        <input name="nmeController" id="nmeController" size="50" class="persist">
+                        <input type="text" name="nmeController" id="nmeController" size="50" class="persist">
                         <input type="hidden" name="nmeClasse" id="nmeClasse" size="50" class="persist">
                     </td>
                     <td>
@@ -31,7 +31,7 @@
                 </tr>
                 <tr>
                     <td class="styleTD1">
-                        <input name="nmeMethod" id="nmeMethod" size="50" class="persist">
+                        <input type="text" name="nmeMethod" id="nmeMethod" size="50" class="persist">
                     </td>
                     <td>
                         <input type="button" id="btnListarMetodos" value="Listar Métodos">

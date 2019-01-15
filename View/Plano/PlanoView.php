@@ -37,11 +37,11 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                 <tr>
                     <td class="style2">
                         Descrição<br>
-                        <input name="dscPlano" id="dscPlano" size="20" class="persist">
+                        <input type="text" name="dscPlano" id="dscPlano" size="20" class="persist">
                     </td>
                     <td class="style2">
                         Valor<br>
-                        <input name="vlrPlano" id="vlrPlano" size="20" class="persist">
+                        <input type="text" name="vlrPlano" id="vlrPlano" size="20" class="persist">
                     </td>
                     <td class="style2">
                         <input type="checkbox" name="indAtivo" id="indAtivo" class="persist">Ativo
