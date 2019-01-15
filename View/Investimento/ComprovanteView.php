@@ -4,7 +4,7 @@
     </head>
     <body>
         <form name="ComprovanteForm" method="post" action="Controller/Investimento/InvestimentoController.php">
-            <input type="hidden" id="codInvestimento" name="codInvestimento" value="0" class="persist">
+            <input type="hidden" id="codInvestimentoA" name="codInvestimento" value="0" class="persist">
             <input type="hidden" id="method" name="method" class="persist">
             <table width="30%">
                 <tr>

@@ -82,7 +82,7 @@ function montaTabelaInvestimento(ListaInvestimentos) {
                         button.click(function (event) {
                             var clickedButton = button.find(".buttonValue")[0].innerHTML;
                             $("#ComprovanteForm").jqxWindow("open");
-                            $("#codInvestimento").val(clickedButton);
+                            $("#codInvestimentoA").val(clickedButton);
                         });
                     },
                     initwidget: function (row, column, value, htmlElement) {
