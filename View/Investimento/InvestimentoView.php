@@ -6,7 +6,7 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
     <head>
         <title>Cadastro de Investimentos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
-        <script src="View/Investimento/js/InvestimentoView.js?rdm=<?php echo time(); ?>"></script>
+        <script src="js/InvestimentoView.js?rdm=<?php echo time(); ?>"></script>
     </head>
     <body>
         <input type="hidden" id="codInvestimento" name="codInvestimento" value="0" class="persist">
@@ -25,22 +25,17 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
             </tr>
         </table>
         <form name="InvestimentoForm" enctype="multpart/form-data" id="cadastroInvestimentoForm" method="post" action="../../Controller/Investimento/InvestimentoController.php">
-            <table width="50%">
+            <table width="30%">
                 <tr>
-                    <td class="style2">
-                        <input type="button" id="btnNovo" value="Novo Investimento">
+                    <td>&nbsp;&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="style2">Plano</td>
+                </tr>
+                <tr>
+                    <td class="styleTD1">
+                        <div id="tdcodPlano"></div>
                     </td>
-                </tr>
-                <tr>
-                    <td>&nbsp;&nbsp;&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="style2">
-                        Plano<br>
-                        <input name="codPlano" id="codPlano" size="20" class="persist">
-                    </td>
-                </tr>
-                <tr>
                     <td align="right" class="style2">
                         <input type="button" id="btnSalvar" value="Salvar">
                     </td>
@@ -54,5 +49,12 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                 </td>
             </tr>
         </table>
+        <div id="ComprovanteForm">
+              <div id="windowHeader">
+              </div>
+              <div style="overflow: hidden;" id="windowContent">
+                  <?php include_once "ComprovanteView.php";?>
+              </div>
+        </div>
     </body>
 </html>

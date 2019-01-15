@@ -12,14 +12,34 @@ class InvestimentoDao extends BaseDao
                                 "codStatus"   => array("column" =>"COD_STATUS", "typeColumn" =>"I"),
                                 "lnkComprovantes"   => array("column" =>"LNK_COMPROVANTES", "typeColumn" =>"S"));
     
-    Protected $columnKey = array("codInvestimento1"=> array("column" =>"COD_INVESTIMENTO1", "typeColumn" => "I"));
+    Protected $columnKey = array("codInvestimento"=> array("column" =>"COD_INVESTIMENTO", "typeColumn" => "I"));
     
     Public Function InvestimentoDao() {
         $this->conect();
     }
 
-    Public Function ListarInvestimento() {    
-        return $this->MontarSelect();
+    Public Function ListarInvestimento($codUsuario) {
+        $sql = "SELECT I.COD_INVESTIMENTO,
+                       I.COD_INVESTIMENTO AS COD_INVESTIMENTO_A,
+                       P.DSC_PLANO,
+                       I.DTA_INICIO,
+                       P.VLR_PLANO,
+                       (SELECT COALESCE(SUM(S.VLR_SAQUE),0)
+                          FROM EN_SAQUE S
+                         WHERE S.COD_INVESTIMENTO = I.COD_INVESTIMENTO) AS VLR_TOTAL_SAQUES,
+                       COALESCE(((P.VLR_PLANO*2)-(SELECT COALESCE(SUM(S.VLR_SAQUE),0)
+                                                    FROM EN_SAQUE S
+                                                   WHERE S.COD_INVESTIMENTO = I.COD_INVESTIMENTO)),0) AS VLR_RESTANTE,
+                       COALESCE('',0) AS VLR_SALDO,
+                       I.COD_STATUS,
+                       S.DSC_STATUS
+                  FROM EN_INVESTIMENTO I
+                 INNER JOIN EN_PLANO P
+                    ON I.COD_PLANO = P.COD_PLANO
+                 INNER JOIN EN_STATUS S
+                    ON I.COD_STATUS = S.COD_STATUS
+                WHERE I.COD_USUARIO = " . $codUsuario;
+        return $this->selectDB($sql, false);
     }
 
     Public Function UpdateInvestimento(stdClass $obj) {

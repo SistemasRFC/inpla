@@ -99,6 +99,7 @@ class MenuDao extends BaseDao
                               . "'" .filter_input(INPUT_POST, 'indAtalho', FILTER_SANITIZE_MAGIC_QUOTES). "', "
                               . "'" .filter_input(INPUT_POST, 'indVisible', FILTER_SANITIZE_MAGIC_QUOTES). "') ";
         $result = $this->insertDB("$sql_lista");
+        $result[2] = $sql_lista;
         return $result;
 
     }

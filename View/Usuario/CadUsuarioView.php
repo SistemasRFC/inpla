@@ -32,7 +32,7 @@
             <td class="styleTD1" id="tdcodPerfilW">
                 <div id="codPerfil"></div>
             </td>
-        </tr>        
+        </tr>
         <tr>
             <td><input type="checkbox" name="indAtivo" id="indAtivo" class="persist">Ativo</td>
         </tr>         

@@ -21,6 +21,12 @@ class PlanoModel extends BaseModel
         }
         return json_encode($lista);
     }
+
+    Public Function ListarPlanoAtivo($Json=true) {
+        $dao = new PlanoDao();
+        $lista = $dao->ListarPlanoAtivo();
+        return json_encode($lista);
+    }
     
     Public Function InsertPlano() {
         $dao = new PlanoDao();        

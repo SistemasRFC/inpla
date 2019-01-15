@@ -20,6 +20,11 @@ $(function () {
 });
 
 function salvarMenu(data) {
+    swal({
+        title: 'Aguarde, salvando menu!',
+        imageUrl: "../../Resources/images/preload.gif",
+        showConfirmButton: false
+    });
     if ($('#codMenuW').val() == '') {
         $("#method").val('AddMenu');
     } else {
@@ -29,12 +34,17 @@ function salvarMenu(data) {
         $("#dscCaminhoImagem").val(data.msg);
     }
     var parametros = retornaParametros();
-    ExecutaDispatch('Menu', $("#method").val(), parametros, fecharTelaCadastro, 'Aguarde, salvando Menu!', 'Registro salvo com sucesso!');
+    ExecutaDispatch('Menu', $("#method").val(), parametros, fecharTelaCadastro);
 }
 
-function fecharTelaCadastro() {
+function fecharTelaCadastro(dados) {
     $("#CadMenus").jqxWindow("close");
     ExecutaDispatch('Menu', 'ListarMenusGrid', '', CarregaGridMenu);
+    swal({
+        title: "Sucesso!",
+        text: dados[2],
+        type: "info"
+    });
 }
 
 function MontaComboMenu(arrDados) {

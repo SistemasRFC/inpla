@@ -16,6 +16,11 @@ class PlanoController extends BaseController
         echo $PlanoModel->ListarPlano();
     }
     
+    Public Function ListarPlanoAtivo() {
+        $PlanoModel = new PlanoModel();
+        echo $PlanoModel->ListarPlanoAtivo();
+    }
+    
     Public Function InsertPlano() {
         $PlanoModel = new PlanoModel();
         echo $PlanoModel->InsertPlano();
