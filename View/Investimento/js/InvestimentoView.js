@@ -38,7 +38,7 @@ function montaTabelaInvestimento(ListaInvestimentos) {
             datafields:
                 [
                     {name: 'COD_INVESTIMENTO', type: 'string'},
-                    {name: 'COD_INVESTIMENTO_A', type: 'string'},
+                    {name: 'DSC_ACAO', type: 'string'},
                     {name: 'DSC_PLANO', type: 'string'},
                     {name: 'DTA_INICIO', type: 'string'},
                     {name: 'VLR_PLANO', type: 'string'},
@@ -69,7 +69,7 @@ function montaTabelaInvestimento(ListaInvestimentos) {
                 {text: 'Valor Restante', datafield: 'VLR_RESTANTE', columntype: 'textbox', width: 120},
                 {text: 'Saldo', datafield: 'VLR_SALDO', columntype: 'textbox', width: 90},
                 {text: 'Status', datafield: 'DSC_STATUS', columntype: 'textbox', width: 170},
-                {text: 'Ação', datafield: 'COD_INVESTIMENTO_A', columntype: 'textbox', width: 90}
+                {text: 'Ação', datafield: 'DSC_ACAO', columntype: 'textbox', width: 60}
             ]
         });
 }

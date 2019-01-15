@@ -22,7 +22,7 @@ class InvestimentoDao extends BaseDao
         $sql = "SELECT I.COD_INVESTIMENTO,
                        CASE WHEN I.LNK_COMPROVANTES IS NULL THEN '<a href=\"#\"><img src=\"../../Resources/images/enviar.png\" title=\"Enviar Comprovante\" width=\"20\" height=\"\"></a>'
                             ELSE '<a href=\"#\"><img src=\"../../Resources/images/saque.jpg\" title=\"Sacar\" width=\"20\" height=\"\"></a>'
-                       END AS COD_INVESTIMENTO_A,
+                       END AS DSC_ACAO,
                        P.DSC_PLANO,
                        I.DTA_INICIO,
                        P.VLR_PLANO,
