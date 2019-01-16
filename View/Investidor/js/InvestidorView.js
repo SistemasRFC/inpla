@@ -1,4 +1,3 @@
-
 $(function () {
     $("#btnSalvar").jqxButton({ width: '100', height: 30, theme: 'energyblue' });
     $("#nroCpf").mask('999.999.999-99');
