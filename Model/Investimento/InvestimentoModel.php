@@ -18,7 +18,6 @@ class InvestimentoModel extends BaseModel
             $lista = FuncoesMoeda::FormataMoedaInArray($lista, 'VLR_PLANO');
             $lista = FuncoesMoeda::FormataMoedaInArray($lista, 'VLR_TOTAL_SAQUES');
             $lista = FuncoesMoeda::FormataMoedaInArray($lista, 'VLR_RESTANTE');
-            $lista = FuncoesMoeda::FormataMoedaInArray($lista, 'VLR_SALDO');
         }
         return json_encode($lista);
     }

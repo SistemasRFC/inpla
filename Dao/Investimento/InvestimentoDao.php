@@ -20,9 +20,10 @@ class InvestimentoDao extends BaseDao
 
     Public Function ListarInvestimento($codUsuario) {
         $sql = "SELECT I.COD_INVESTIMENTO,
-                       CASE WHEN I.LNK_COMPROVANTES IS NULL THEN '<a href=\"#\"><img src=\"../../Resources/images/enviar.png\" title=\"Enviar Comprovante\" width=\"20\" height=\"\"></a>'
-                            ELSE '<a href=\"#\"><img src=\"../../Resources/images/saque.jpg\" title=\"Sacar\" width=\"20\" height=\"\"></a>'
-                       END AS DSC_ACAO,
+                       CONCAT(
+                       '<a href=\"javascript:comprovanteForm(',I.COD_INVESTIMENTO,')\"><img src=\"../../Resources/images/enviar.png\" title=\"Enviar Comprovante\" width=\"20\" height=\"\"></a>',
+                       '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+                       '<a href=\"javascript:pagarComSaldo()\"><img src=\"../../Resources/images/reinvestir.png\" title=\"Pagar com Saldo\" width=\"20\" height=\"\"></a>') AS DSC_ACAO,
                        P.DSC_PLANO,
                        I.DTA_INICIO,
                        P.VLR_PLANO,
@@ -32,7 +33,6 @@ class InvestimentoDao extends BaseDao
                        COALESCE(((P.VLR_PLANO*2)-(SELECT COALESCE(SUM(S.VLR_SAQUE),0)
                                                     FROM EN_SAQUE S
                                                    WHERE S.COD_INVESTIMENTO = I.COD_INVESTIMENTO)),0) AS VLR_RESTANTE,
-                       COALESCE('',0) AS VLR_SALDO,
                        I.COD_STATUS,
                        S.DSC_STATUS
                   FROM EN_INVESTIMENTO I
