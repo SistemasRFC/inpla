@@ -17,8 +17,19 @@ class BancoDao extends BaseDao
         $this->conect();
     }
 
-    Public Function ListarBanco() {    
+    Public Function ListarBanco() {
         return $this->MontarSelect();
+    }
+
+    Public Function ListarBancoAtivo() {
+        $sql = " SELECT COD_BANCO AS ID,
+                        DSC_BANCO AS DSC
+                   FROM EN_BANCO
+                  WHERE IND_ATIVO = 'S'
+                 UNION
+                 SELECT 0 AS ID,
+                        '(Selecione)' AS DSC";
+        return $this->selectDB($sql, false);
     }
 
     Public Function UpdateBanco(stdClass $obj) {

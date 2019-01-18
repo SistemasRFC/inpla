@@ -15,6 +15,11 @@ class BancoController extends BaseController
         $BancoModel = new BancoModel();
         echo $BancoModel->ListarBanco();
     }
+
+    Public Function ListarBancoAtivo() {
+        $BancoModel = new BancoModel();
+        echo $BancoModel->ListarBancoAtivo();
+    }
     
     Public Function InsertBanco() {
         $BancoModel = new BancoModel();

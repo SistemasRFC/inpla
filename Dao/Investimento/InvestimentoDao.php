@@ -20,10 +20,12 @@ class InvestimentoDao extends BaseDao
 
     Public Function ListarInvestimento($codUsuario) {
         $sql = "SELECT I.COD_INVESTIMENTO,
-                       CONCAT(
-                       '<a href=\"javascript:comprovanteForm(',I.COD_INVESTIMENTO,')\"><img src=\"../../Resources/images/enviar.png\" title=\"Enviar Comprovante\" width=\"20\" height=\"\"></a>',
-                       '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
-                       '<a href=\"javascript:pagarComSaldo()\"><img src=\"../../Resources/images/reinvestir.png\" title=\"Pagar com Saldo\" width=\"20\" height=\"\"></a>') AS DSC_ACAO,
+                       CASE WHEN I.COD_STATUS = 1 
+                            THEN CONCAT(
+                                    '<a href=\"javascript:comprovanteForm(',I.COD_INVESTIMENTO,')\"><img src=\"../../Resources/images/enviar.png\" title=\"Enviar Comprovante\" width=\"20\" height=\"\"></a>',
+                                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+                                    '<a href=\"javascript:cancelarInvestimento(',I.COD_INVESTIMENTO,')\"><img src=\"../../Resources/images/delete.png\" title=\"Cancelar Investimento\" width=\"20\" height=\"\"></a>')
+                            ELSE '' END AS DSC_ACAO,
                        P.DSC_PLANO,
                        I.DTA_INICIO,
                        P.VLR_PLANO,

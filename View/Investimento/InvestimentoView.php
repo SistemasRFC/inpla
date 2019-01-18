@@ -10,6 +10,8 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
     </head>
     <body>
         <input type="hidden" id="codInvestimento" name="codInvestimento" value="0" class="persist">
+        <input type="hidden" id="codStatus" name="codStatus" value="0" class="persist">
+        <input type="hidden" id="indAtivo" name="indAtivo" value="0" class="persist">
         <input type="hidden" id="method" name="method">
         <table width="100%">
             <tr>
@@ -31,10 +33,14 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                 </tr>
                 <tr>
                     <td class="style2">Plano</td>
+                    <td class="style2">Banco para depósito</td>
                 </tr>
                 <tr>
                     <td class="styleTD1">
                         <div id="tdcodPlano"></div>
+                    </td>
+                    <td class="styleTD1">
+                        <div id="tdcodBanco"></div>
                     </td>
                     <td align="right" class="style2">
                         <input type="button" id="btnSalvar" value="Salvar">
