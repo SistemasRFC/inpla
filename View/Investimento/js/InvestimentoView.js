@@ -77,7 +77,7 @@ function montaTabelaInvestimento(ListaInvestimentos) {
 }
 
 function comprovanteForm(cod) {
-    $("#codInvestimentoA").val(cod);
+    $("#codInvestimento").val(cod);
     $("#ComprovanteForm").jqxWindow("open");
 }
 
