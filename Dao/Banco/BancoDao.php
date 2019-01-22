@@ -27,11 +27,21 @@ class BancoDao extends BaseDao
                    FROM EN_BANCO
                   WHERE IND_ATIVO = 'S'
                  UNION
-                 SELECT 0 AS ID,
+                 SELECT -1 AS ID,
                         '(Selecione)' AS DSC";
         return $this->selectDB($sql, false);
     }
 
+    Public Function ListaDadosBanco() {
+        $sql = " SELECT NRO_AGENCIA AS AGENCIA,
+                        NRO_CONTA AS CONTA,
+                        DSC_TITULAR AS TITULAR,
+                        NRO_CPF AS CPF
+                   FROM EN_BANCO
+                  WHERE COD_BANCO = ". $this->Populate('codBanco', 'I');
+        return $this->selectDB($sql, false);
+    }
+    
     Public Function UpdateBanco(stdClass $obj) {
         return $this->MontarUpdate($obj);
     }

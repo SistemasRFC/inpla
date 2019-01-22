@@ -3,6 +3,7 @@
 include_once("Model/BaseModel.php");
 include_once("Dao/Investimento/InvestimentoDao.php");
 include_once("Resources/php/FuncoesMoeda.php");
+include_once("Resources/php/FuncoesData.php");
 
 class InvestimentoModel extends BaseModel {
 
@@ -20,6 +21,7 @@ class InvestimentoModel extends BaseModel {
             $lista = FuncoesMoeda::FormataMoedaInArray($lista, 'VLR_PLANO');
             $lista = FuncoesMoeda::FormataMoedaInArray($lista, 'VLR_TOTAL_SAQUES');
             $lista = FuncoesMoeda::FormataMoedaInArray($lista, 'VLR_RESTANTE');
+            $lista = FuncoesData::AtualizaDataInArray($lista, 'DTA_INICIO');
         }
         return json_encode($lista);
     }
@@ -61,7 +63,7 @@ class InvestimentoModel extends BaseModel {
             $result[0] = false;
             $result[1] .= "Nenhum plano foi selecionado!\n";
         }
-        if ($dao->Populate('codBanco', 'I') == 0) {
+        if ($dao->Populate('codBanco', 'I') == -1) {
             $result[0] = false;
             $result[1] .= "Nenhum banco para depósito foi selecionado!\n";
         }

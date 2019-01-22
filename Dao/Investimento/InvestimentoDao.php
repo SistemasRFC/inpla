@@ -10,7 +10,8 @@ class InvestimentoDao extends BaseDao
                                 "indAtivo"   => array("column" =>"IND_ATIVO", "typeColumn" =>"S"),
                                 "codUsuario"   => array("column" =>"COD_USUARIO", "typeColumn" =>"I"),
                                 "codStatus"   => array("column" =>"COD_STATUS", "typeColumn" =>"I"),
-                                "lnkComprovantes"   => array("column" =>"LNK_COMPROVANTES", "typeColumn" =>"S"));
+                                "lnkComprovantes"   => array("column" =>"LNK_COMPROVANTES", "typeColumn" =>"S"),
+                                "codBanco"   => array("column" =>"COD_BANCO", "typeColumn" =>"I"));
     
     Protected $columnKey = array("codInvestimento"=> array("column" =>"COD_INVESTIMENTO", "typeColumn" => "I"));
     
@@ -23,11 +24,11 @@ class InvestimentoDao extends BaseDao
                        CASE WHEN I.COD_STATUS = 1 
                             THEN CONCAT(
                                     '<a href=\"javascript:comprovanteForm(',I.COD_INVESTIMENTO,')\"><img src=\"../../Resources/images/enviar.png\" title=\"Enviar Comprovante\" width=\"20\" height=\"\"></a>',
-                                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+                                    '&nbsp;&nbsp;&nbsp;',
                                     '<a href=\"javascript:cancelarInvestimento(',I.COD_INVESTIMENTO,')\"><img src=\"../../Resources/images/delete.png\" title=\"Cancelar Investimento\" width=\"20\" height=\"\"></a>')
                             ELSE '' END AS DSC_ACAO,
                        P.DSC_PLANO,
-                       I.DTA_INICIO,
+                       COALESCE (I.DTA_INICIO, '') AS DTA_INICIO,
                        P.VLR_PLANO,
                        (SELECT COALESCE(SUM(S.VLR_SAQUE),0)
                           FROM EN_SAQUE S
@@ -36,13 +37,17 @@ class InvestimentoDao extends BaseDao
                                                     FROM EN_SAQUE S
                                                    WHERE S.COD_INVESTIMENTO = I.COD_INVESTIMENTO)),0) AS VLR_RESTANTE,
                        I.COD_STATUS,
-                       S.DSC_STATUS
+                       S.DSC_STATUS,
+                       B.DSC_BANCO
                   FROM EN_INVESTIMENTO I
                  INNER JOIN EN_PLANO P
                     ON I.COD_PLANO = P.COD_PLANO
                  INNER JOIN EN_STATUS S
                     ON I.COD_STATUS = S.COD_STATUS
-                WHERE I.COD_USUARIO = " . $codUsuario;
+                 INNER JOIN EN_BANCO B
+                    ON I.COD_BANCO = B.COD_BANCO
+                WHERE I.COD_USUARIO = " . $codUsuario."
+                ORDER BY I.COD_INVESTIMENTO";
         return $this->selectDB($sql, false);
     }
 

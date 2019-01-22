@@ -27,22 +27,33 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
             </tr>
         </table>
         <form name="InvestimentoForm" enctype="multpart/form-data" id="cadastroInvestimentoForm" method="post" action="../../Controller/Investimento/InvestimentoController.php">
-            <table width="30%">
+            <table width="45%">
                 <tr>
                     <td>&nbsp;&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="style2">Plano</td>
-                    <td class="style2">Banco para depósito</td>
+                    <td>Plano</td>
+                    <td class="tdBanco">Banco para depósito</td>
                 </tr>
                 <tr>
-                    <td class="styleTD1">
+                    <td>
                         <div id="tdcodPlano"></div>
                     </td>
-                    <td class="styleTD1">
+                    <td class="tdBanco">
                         <div id="tdcodBanco"></div>
                     </td>
-                    <td align="right" class="style2">
+                    <td>
+                        <input type="checkbox" name="indPagarSaldo" id="indPagarSaldo" class="persist">Pagar com Saldo
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;&nbsp;
+                    </td>
+                    <td  class="tdBanco">
+                        <div id="tdDadosBanco"></div>
+                    </td>
+                    <td align="right">
                         <input type="button" id="btnSalvar" value="Salvar">
                     </td>
                 </tr>

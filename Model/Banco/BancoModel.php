@@ -25,6 +25,12 @@ class BancoModel extends BaseModel
         $lista = $dao->ListarBancoAtivo();
         return json_encode($lista);
     }
+
+    Public Function ListaDadosBanco($Json=true) {
+        $dao = new BancoDao();
+        $lista = $dao->ListaDadosBanco();
+        return json_encode($lista);
+    }
     
     Public Function InsertBanco() {
         $dao = new BancoDao();        
