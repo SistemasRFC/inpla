@@ -157,7 +157,6 @@ function CarregaComboBanco(arrDados) {
 function retornoDadosBanco(dadosBanco) {
     $("#tdDadosBanco").html('');
     var dadosBanco = dadosBanco[1];
-    console.log(dadosBanco[0]['AGENCIA']);
     var html = 'Agência: <b>'+dadosBanco[0]['AGENCIA']+'</b><br>';
         html += 'Conta: <b>'+dadosBanco[0]['CONTA']+'</b><br>';
         html += 'Titular: <b>'+dadosBanco[0]['TITULAR']+'</b><br>';

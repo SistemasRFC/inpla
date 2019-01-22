@@ -32,10 +32,10 @@ class InvestimentoDao extends BaseDao
                        P.VLR_PLANO,
                        (SELECT COALESCE(SUM(S.VLR_SAQUE),0)
                           FROM EN_SAQUE S
-                         WHERE S.COD_INVESTIMENTO = I.COD_INVESTIMENTO) AS VLR_TOTAL_SAQUES,
+                         WHERE S.COD_USUARIO = I.COD_USUARIO) AS VLR_TOTAL_SAQUES,
                        COALESCE(((P.VLR_PLANO*2)-(SELECT COALESCE(SUM(S.VLR_SAQUE),0)
                                                     FROM EN_SAQUE S
-                                                   WHERE S.COD_INVESTIMENTO = I.COD_INVESTIMENTO)),0) AS VLR_RESTANTE,
+                                                   WHERE S.COD_USUARIO = I.COD_USUARIO)),0) AS VLR_RESTANTE,
                        I.COD_STATUS,
                        S.DSC_STATUS,
                        B.DSC_BANCO

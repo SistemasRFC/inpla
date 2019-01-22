@@ -20,7 +20,7 @@ class PlanoDao extends BaseDao
     
     Public Function ListarPlanoAtivo() {
         $sql = " SELECT COD_PLANO as ID,
-                        DSC_PLANO as DSC
+                        CONCAT(DSC_PLANO, '- R$ ', VLR_PLANO) as DSC
                    FROM EN_PLANO 
                   WHERE IND_ATIVO='S'
                  UNION
