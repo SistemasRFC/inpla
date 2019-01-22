@@ -18,10 +18,11 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                 <td width="100%"
                     style="text-align:left;
                     height:10%;
-                    font-size:14px;
+                    font-size:16px;
                     color:#0150D3;
                     vertical-align:middle;
-                    font-family: arial, helvetica, serif;">
+                    font-family: arial, helvetica, serif;
+                    border-bottom: 1px solid #0150D3;">
                     Cadastro de Investimentos
                 </td>
             </tr>

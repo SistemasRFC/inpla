@@ -13,6 +13,18 @@ include_once PATH."/View/MenuPrincipal/Cabecalho.php";?>
             <input type="hidden" value="" name="indAtivo" id="indAtivo">
             <table width="100%">
                 <tr>
+                    <td width="100%"
+                        style="text-align:left;
+                         height:10%;
+                         font-size:16px;
+                         color:#0150D3;
+                         vertical-align:middle;
+                         font-family: arial, helvetica, serif;
+                          border-bottom: 1px solid #0150D3;">
+                        Permissões de Menu
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <table width="30%" border="0" align="left">
                             <tr>

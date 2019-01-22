@@ -25,4 +25,9 @@ class InvestimentoController extends BaseController
         $InvestimentoModel = new InvestimentoModel();
         echo $InvestimentoModel->UpdateInvestimento();
     }	
+
+    Public Function InsertReinvestir() {
+        $InvestimentoModel = new InvestimentoModel();
+        echo $InvestimentoModel->InsertReinvestir();
+    }	
 }

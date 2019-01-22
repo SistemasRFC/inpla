@@ -121,9 +121,9 @@ function pagarComSaldo() {
             if (isConfirm) {
                 $("#codStatus").val('2');
                 $("#indAtivo").val('S');
-                $("#codBanco").val('');
+                $("#codBanco").val('0');
                 var parametros = retornaParametros();
-                ExecutaDispatch('Investimento', 'InsertInvestimento', parametros, carrregaInvestimentos, 'Aguarde, Salvando Investimento', 'Investimento criado com sucesso!!');
+                ExecutaDispatch('Investimento', 'InsertReinvestir', parametros, carrregaInvestimentos, 'Aguarde, Salvando Investimento', 'Investimento criado com sucesso!!');
             }
         });
     }

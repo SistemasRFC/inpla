@@ -14,10 +14,11 @@ include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
           <tr>
               <td style="text-align:left;
                     height:10%;
-                    font-size:18px;
-                    color:#000000;
+                    font-size:16px;
+                    color:#0150D3;
                     vertical-align:middle;
-                    font-family: arial, helvetica, serif;border-bottom: 1px solid #000000;">
+                    font-family: arial, helvetica, serif;
+                    border-bottom: 1px solid #0150D3;">
                   Cadastro de Perfil
               </td>
           </tr>

@@ -2,6 +2,7 @@
 
 include_once("Model/BaseModel.php");
 include_once("Dao/Investimento/InvestimentoDao.php");
+include_once("Model/Saque/SaqueModel.php");
 include_once("Resources/php/FuncoesMoeda.php");
 include_once("Resources/php/FuncoesData.php");
 
@@ -68,6 +69,22 @@ class InvestimentoModel extends BaseModel {
             $result[1] .= "Nenhum banco para depósito foi selecionado!\n";
         }
         return $result;
+    }
+    
+    function InsertReinvestir(){
+        $dao = new InvestimentoDao();
+        BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        $codPlano = $this->objRequest->codPlano;
+        $this->objRequest->dtaInicio = date('d/m/Y');
+        $this->objRequest->dtaCadastro = date('d/m/Y');
+        $this->objRequest->codUsuario = $_SESSION['cod_usuario'];
+        $result = $dao->InsertInvestimento($this->objRequest);
+        if($result[0]) {
+            $codInvestimento = $result[2];
+            $saqueModel = new SaqueModel();
+            $result = $saqueModel->InsertSaqueReinvestido($codPlano, $codInvestimento);
+        }
+        return json_encode($result);
     }
 
 }

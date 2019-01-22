@@ -1,10 +1,22 @@
 $(function () {
+    $("#ReinvestirForm").jqxWindow({
+        autoOpen: false,
+        height: 200,
+        width: 300,
+        theme: theme,
+        animationType: 'fade',
+        showAnimationDuration: 500,
+        closeAnimationDuration: 500,
+        title: 'Selecionar Plano',
+        isModal: true
+    });
+    
     $("#vlrSaque").maskMoney({symbol: "R$ ", decimal: ",", thousands: "."});
     $("#btnSacar").click(function () {
         sacarSaldo();
     });
     $("#btnReinvestir").click(function () {
-        reinvestirSaldo();
+        $('#ReinvestirForm').jqxWindow('open');
     });
 });
 
@@ -30,8 +42,6 @@ function carrregaSaques() {
 
 function montaTabelaSaques(ListaSaques) {
     var listaSaques = ListaSaques[1];
-    var html = '<h2 style="color:red;font-size:25px;">Saldo Indisponível</h2>';
-    $("#divInfoSaque").html(html); 
     var nomeGrid = 'listaSaques';
     var source =
             {
@@ -43,15 +53,13 @@ function montaTabelaSaques(ListaSaques) {
                 datafields:
                         [
                             {name: 'COD_SAQUE', type: 'string'},
-                            {name: 'VLR_SAQUE', type: 'string'},
-                            {name: 'IND_ATIVO', type: 'string'},
-                            {name: 'ATIVO', type: 'boolean'}
+                            {name: 'VLR_SAQUE', type: 'string'}
                         ]
             };
     var dataAdapter = new $.jqx.dataAdapter(source);
     $("#" + nomeGrid).jqxGrid(
             {
-                width: 250,
+                width: 480,
                 source: dataAdapter,
                 theme: theme,
                 sortable: true,
@@ -60,8 +68,8 @@ function montaTabelaSaques(ListaSaques) {
                 columnsresize: true,
                 selectionmode: 'singlerow',
                 columns: [
-                    {text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_PLANO', width: 70},
-                    {text: 'Valor', datafield: 'VLR_PLANO', columntype: 'textbox', width: 180}
+                    {text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_PLANO', width: 200},
+                    {text: 'Valor', datafield: 'VLR_PLANO', columntype: 'textbox', width: 280}
                 ]
             });
     $('#' + nomeGrid).on('rowdoubleclick', function (event) {
@@ -78,12 +86,18 @@ function montaTabelaSaques(ListaSaques) {
 function carregaInformacoes(dadosSaque){
    $("#divInfoSaque").html('');
     var dadosSaque = dadosSaque[1];
-    var html = '<h2 style="color:blue;font-size:25px;"><b>Saldo:</b>R$ '+dadosSaque[0]['SALDO']+'</h2><br>';
+    if(dadosSaque[0]['SALDO'] > 0){
+        var html = '<h2 style="color:green;font-size:30px;"><b>Saldo:</b> R$ '+dadosSaque[0]['SALDO']+'</h2><br>';
+        $(".sacar").show();
+    } else {
+        var html = '<h2 style="color:blue;font-size:25px;">Saldo disponível para saque a partir do dia 10</h2><br>';
+        $(".sacar").hide();        
+    }
     $("#divInfoSaque").html(html); 
 }
 
 $(document).ready(function () {
-//    ExecutaDispatch('Saque', 'CarregaSaldo', undefined, carregaInformacoes);
+    ExecutaDispatch('Saque', 'CarregaSaldo', undefined, carregaInformacoes);
     carrregaSaques();
     $("input[type='button']").jqxButton({theme: theme});
 });
