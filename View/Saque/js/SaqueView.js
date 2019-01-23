@@ -59,7 +59,7 @@ function montaTabelaSaques(ListaSaques) {
     var dataAdapter = new $.jqx.dataAdapter(source);
     $("#" + nomeGrid).jqxGrid(
             {
-                width: 480,
+                width: 580,
                 source: dataAdapter,
                 theme: theme,
                 sortable: true,
@@ -69,7 +69,7 @@ function montaTabelaSaques(ListaSaques) {
                 selectionmode: 'singlerow',
                 columns: [
                     {text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_PLANO', width: 200},
-                    {text: 'Valor', datafield: 'VLR_PLANO', columntype: 'textbox', width: 280}
+                    {text: 'Valor', datafield: 'VLR_PLANO', columntype: 'textbox', width: 380}
                 ]
             });
     $('#' + nomeGrid).on('rowdoubleclick', function (event) {
@@ -86,7 +86,7 @@ function montaTabelaSaques(ListaSaques) {
 function carregaInformacoes(dadosSaque){
    $("#divInfoSaque").html('');
     var dadosSaque = dadosSaque[1];
-    if(dadosSaque[0]['SALDO'] > 0){
+    if(parseFloat(dadosSaque[0]['SALDO']) > 0){
         var html = '<h2 style="color:green;font-size:30px;"><b>Saldo:</b> R$ '+dadosSaque[0]['SALDO']+'</h2><br>';
         $(".sacar").show();
     } else {

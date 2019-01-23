@@ -27,7 +27,7 @@ class SaqueDao extends BaseDao
                  WHERE I.COD_USUARIO =".$_SESSION['cod_usuario']."
                    AND I.IND_ATIVO = 'S'
                    AND COD_STATUS = '2'
-                   AND MONTH(NOW()) = MONTH(I.DTA_INICIO)+1
+                   AND MONTH(NOW()) = CASE WHEN MONTH(I.DTA_INICIO)+1>12 THEN 1 ELSE MONTH(I.DTA_INICIO)+1 END
                    AND DAY(NOW()) >= 10";
         return $this->selectDB($sql, false);
     }

@@ -43,9 +43,6 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                     <td class="tdBanco">
                         <div id="tdcodBanco"></div>
                     </td>
-                    <td>
-                        <input type="checkbox" name="indPagarSaldo" id="indPagarSaldo" class="persist">Pagar com Saldo
-                    </td>
                 </tr>
                 <tr>
                     <td>

@@ -11,7 +11,6 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
     <body>
         <input type="hidden" id="codSaque" name="codSaque" value="0" class="persist">
         <input type="hidden" id="vlrSaldo" name="vlrSaldo" value="0" class="persist">
-        <input type="hidden" id="method" name="method" class="persist">
         <table width="100%">
             <tr>
                 <td width="100%"
@@ -41,11 +40,6 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                     <td class="sacar">
                         <input type="button" id="btnSacar" value="Sacar">
                     </td>
-                </tr>
-                <tr>
-                    <td>&nbsp;&nbsp;&nbsp;</td>
-                </tr>
-                <tr>
                     <td class="sacar">
                         <input type="button" id="btnReinvestir" value="Reinvestir">
                     </td>

@@ -78,6 +78,7 @@ class InvestimentoModel extends BaseModel {
         $this->objRequest->dtaInicio = date('d/m/Y');
         $this->objRequest->dtaCadastro = date('d/m/Y');
         $this->objRequest->codUsuario = $_SESSION['cod_usuario'];
+        $this->objRequest->codBanco = 0;
         $result = $dao->InsertInvestimento($this->objRequest);
         if($result[0]) {
             $codInvestimento = $result[2];

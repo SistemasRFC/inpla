@@ -14,23 +14,11 @@ $(function () {
     $("#btnSalvar").click(function () {
         salvarInvestimento();
     });
-
-    $("#indPagarSaldo").change(function () {
-        if ($(this).prop("checked") == true) {
-            $(".tdBanco").hide();
-        } else {
-            $(".tdBanco").show();
-        }
-    });
 });
 
 function salvarInvestimento() {
-    if ($("#indPagarSaldo").prop("checked") == true) {
-        pagarComSaldo();
-    } else {
-        var parametros = retornaParametros();
-        ExecutaDispatch('Investimento', 'InsertInvestimento', parametros, carrregaInvestimentos, 'Aguarde, Salvando Investimento', 'Investimento criado com sucesso!!');
-    }
+    var parametros = retornaParametros();
+    ExecutaDispatch('Investimento', 'InsertInvestimento', parametros, carrregaInvestimentos, 'Aguarde, Salvando Investimento', 'Investimento criado com sucesso!!');
 }
 
 function carrregaInvestimentos() {
@@ -99,34 +87,6 @@ function montaTabelaInvestimento(ListaInvestimentos) {
 function comprovanteForm(cod) {
     $("#codInvestimento").val(cod);
     $("#ComprovanteForm").jqxWindow("open");
-}
-
-function pagarComSaldo() {
-    if ($("#codPlano").val() == 0) {
-        swal({
-            title: 'Aviso',
-            text: 'Selecione um Plano!!',
-            confirmButtontext: 'Fechar',
-            type: 'warning'
-        });
-    } else {
-        swal({
-            title: 'Saldo Disponível: R$ 00,00',
-            text: 'Deseja pagar esse investimento com o saldo disponível?',
-            type: 'info',
-            showCancelButton: true,
-            confirmButtonText: 'Sim',
-            cancelButtonText: 'Não'
-        }, function (isConfirm) {
-            if (isConfirm) {
-                $("#codStatus").val('2');
-                $("#indAtivo").val('S');
-                $("#codBanco").val('0');
-                var parametros = retornaParametros();
-                ExecutaDispatch('Investimento', 'InsertReinvestir', parametros, carrregaInvestimentos, 'Aguarde, Salvando Investimento', 'Investimento criado com sucesso!!');
-            }
-        });
-    }
 }
 
 function cancelarInvestimento(cod) {
