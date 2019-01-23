@@ -61,18 +61,19 @@ if (!isset($_SESSION['cod_usuario'])) {
                     <div id="cabecalho">
                         <table width="100%" align="left" style="border:1px solid #a4bed4;">
                             <tr>
-                                <td align="left" style="text-align:left; height:10%; font-size:14px;color:#000000;vertical-align:middle;font-family: arial, helvetica, serif;" width="30%">
-                                    Sistema de Vendas
+                                <td align="left" style="text-align:left; height:10%; font-size:17px;color:#000000;vertical-align:middle;font-family: arial, helvetica, serif;" width="30%">
+                                    INPLA - Invetimentos
                                 </td>
                                 <td align="left" style="text-align:left; height:10%;font-size:14px;color:#000000;vertical-align:middle;font-family: arial, helvetica, serif;">
                                     <?php
                                     echo "<BR>";
                                     echo "<a style=\"text-align:left;
                                                 height:10%;
-                                                font-size:10px;
+                                                font-size:11px;
                                                 color:#0150D3;
                                                 vertical-align:middle;
-                                                font-family: arial, helvetica, serif;\" href=\"../../View/MenuPrincipal/MenuPrincipalView.php\">Clique aqui para p&aacute;gina inicial</a>";
+                                                font-family: arial, helvetica, serif;\"
+                                                href=\"../../View/MenuPrincipal/MenuPrincipalView.php\">Ir para p&aacute;gina inicial</a>";
                                     ?>
                                 </td>
                             </tr>
