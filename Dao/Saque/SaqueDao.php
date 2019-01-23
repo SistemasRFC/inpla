@@ -35,9 +35,16 @@ class SaqueDao extends BaseDao
     Public Function InsertSaque(stdClass $obj) {
         return $this->MontarInsert($obj);
     }
+    
+    Public function VerificaSaldo($codPlano, $vlrSaldo){    
+        $sql=  "SELECT VLR_PLANO
+                  FROM EN_PLANO 
+                 WHERE COD_PLANO". $codPlano."
+                   AND VLR_PLANO <=".$vlrSaldo;
+        return $this->selectDB($sql, false);
+    }
 
-    Public Function InsertSaqueReinvestido($codPlano, $codInvestimento, $codUsuario) {
-        $vlrPlano = "SELECT VLR_PLANO FROM EN_PLANO WHERE COD_PLANO". $codPlano;
+    Public Function InsertSaqueReinvestido($vlrPlano, $codInvestimento, $codUsuario) {
         $sql = "INSERT INTO EN_SAQUE
                             (VLR_SAQUE,
                             COD_USUARIO,
