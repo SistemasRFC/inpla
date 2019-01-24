@@ -49,9 +49,10 @@ class InvestimentoModel extends BaseModel {
         $dao = new InvestimentoDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         if (!isset($this->objRequest->codStatus)) {
+            $this->objRequest->codStatus = 3;
+        } else if (isset($this->objRequest->codStatus) == 2) {
             $this->objRequest->dtaInicio = date('d/m/Y');
             $this->objRequest->indAtivo = 'S';
-            $this->objRequest->codStatus = 2;
         }
         $result = $dao->UpdateInvestimento($this->objRequest);
         return json_encode($result);
@@ -88,6 +89,9 @@ class InvestimentoModel extends BaseModel {
                 $codInvestimento = $result[2];
                 $result = $saqueModel->InsertSaqueReinvestido($vlrPlano, $codInvestimento);
             }
+        } else {
+          $result{0} = false;
+          $result{1} = "Seu saldo não é suficiente para este plano";
         }
         return json_encode($result);
     }

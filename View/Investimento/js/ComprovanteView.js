@@ -6,11 +6,20 @@ $(function () {
 
 function enviarComprovante() {
     /**
-     * Aviso: O arquivo ainda não está sendo enviado
+     * OBSERVAÇÃO: O arquivo ainda não está sendo enviado
      */
-    $('#method').val('UpdateInvestimento');
-    var parametros = 'codInvestimento;'+$('#codInvestimento').val()+'|lnkComprovante;'+$('#lnkComprovante').val()+'|';
-    ExecutaDispatch('Investimento', $('#method').val(), parametros, retornaEnvio, 'Aguarde, Enviando Comprovante', 'Comprovante enviado com sucesso!!');
+    if($('#lnkComprovante').val() != '') {
+        $('#method').val('UpdateInvestimento');
+        var parametros = 'codInvestimento;'+$('#codInvestimento').val()+'|lnkComprovante;'+$('#lnkComprovante').val()+'|';
+        ExecutaDispatch('Investimento', $('#method').val(), parametros, retornaEnvio, 'Aguarde, Enviando Comprovante', 'Comprovante enviado com sucesso!!');
+    } else {
+        swal({
+            title: 'AVISO',
+            text: 'Nenhum arquivo foi selecionado',
+            confirmButtonText: 'OK',
+            type: 'warning'
+        });
+    }
 }
 
 function retornaEnvio() {
