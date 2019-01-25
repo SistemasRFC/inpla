@@ -96,4 +96,12 @@ class InvestimentoModel extends BaseModel {
         return json_encode($result);
     }
 
+    Public Function UpdateComprovanteInvestimento() {
+        $dao = new InvestimentoDao();
+        BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        $this->objRequest->codStatus = 3;
+        $result = $dao->UpdateComprovanteInvestimento($this->objRequest);
+        return json_encode($result);
+    }
+
 }

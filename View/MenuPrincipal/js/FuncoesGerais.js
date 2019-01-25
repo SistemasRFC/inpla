@@ -213,7 +213,14 @@ function ExecutaDispatch(Controller, Method, Parametros, Callback, MensagemAguar
     );     
 }
 
-function ExecutaDispatchUpload(Controller, Method, Parametros, Callback){
+function ExecutaDispatchUpload(Controller, Method, Parametros, Callback, MensagemAguarde, MensagemRetorno){
+    if (MensagemAguarde!=undefined){
+        swal({
+            title: MensagemAguarde,
+            imageUrl: "../../Resources/images/preload.gif",
+            showConfirmButton: false
+        });
+    }
     $.ajax({
         url: '../../Dispatch.php?controller='+Controller+'&method='+Method,
         type: 'POST',
@@ -225,15 +232,27 @@ function ExecutaDispatchUpload(Controller, Method, Parametros, Callback){
         processData: false,
         success: function(data){
             data = eval('('+data+')');
-            if(data.sucesso == true){
-                 if (Callback!=undefined){
-                     Callback(data);
-                 }
+            if(data[0] == true){
+                if (MensagemRetorno!=undefined){
+                    $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
+                    swal({
+                        title: "Sucesso!",
+                        text: MensagemRetorno,
+                        showConfirmButton: false,
+                        type: "success"
+                    });
+                    setTimeout(function(){
+                        swal.close();
+                    }, 2000);
+                }                
+                if (Callback!=undefined){
+                    Callback(data);
+                }
             } else {
                 $(".jquery-waiting-base-container").fadeOut({modo:"fast"});
                 swal({
                     title: "Erro!",
-                    text: "Erro ao executar a consulta!",
+                    text: "Erro ao fazer upload do arquivo!",
                     type: "error",
                     confirmButtonText: "Fechar"
                 });
