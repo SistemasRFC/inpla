@@ -2,7 +2,7 @@
 include_once getenv("CONSTANTES");
 ?>
 <head>
-    <title> Menu Principal</title>
+    <title>Início - INPLA</title>
 </head>
 <?php include_once "Cabecalho.php";?>
 <style>

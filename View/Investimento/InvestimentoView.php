@@ -34,21 +34,21 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                 </tr>
                 <tr>
                     <td>Plano</td>
-                    <td class="tdBanco">Banco para depósito</td>
+                    <td>Banco para depósito</td>
                 </tr>
                 <tr>
                     <td>
-                        <div id="tdcodPlano"></div>
+                        <div id="tdcodPlano" class="persist"></div>
                     </td>
-                    <td class="tdBanco">
-                        <div id="tdcodBanco"></div>
+                    <td>
+                        <div id="tdcodBanco" class="persist"></div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         &nbsp;&nbsp;
                     </td>
-                    <td  class="tdBanco">
+                    <td>
                         <div id="tdDadosBanco"></div>
                     </td>
                     <td align="right">

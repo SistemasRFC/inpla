@@ -57,7 +57,6 @@ class InvestimentoDao extends BaseDao
 
     Public Function InsertInvestimento(stdClass $obj) {
         $result = $this->MontarInsert($obj);
-        $result[2] = "SELECT MAX(COD_INVESTIMENTO) AS COD FROM EN_INVESTIMENTO";
         return $result;
     }
 }

@@ -22,6 +22,8 @@ function salvarInvestimento() {
 }
 
 function carrregaInvestimentos() {
+    $("#tdDadosBanco").hide();
+    $("#codBanco").val(-1);
     LimparCampos();
     ExecutaDispatch('Investimento', 'ListarInvestimento', undefined, montaTabelaInvestimento);
 }
@@ -98,9 +100,7 @@ function cancelarInvestimento(cod) {
         cancelButtonText: 'Não'
     }, function (isConfirm) {
         if (isConfirm) {
-            $("#codInvestimento").val(cod);
-            $("#codStatus").val('4');
-            var parametros = retornaParametros();
+            var parametros = 'codInvestimento;'+cod+'|codStatus;4';
             ExecutaDispatch('Investimento', 'UpdateInvestimento', parametros, carrregaInvestimentos, 'Aguarde, Cancelando Investimento', 'Investimento cancelado!');
         }
     });
@@ -122,6 +122,7 @@ function retornoDadosBanco(dadosBanco) {
         html += 'Titular: <b>'+dadosBanco[0]['TITULAR']+'</b><br>';
         html += 'Cpf: <b>'+dadosBanco[0]['CPF']+'</b>';
     $("#tdDadosBanco").html(html);
+    $("#tdDadosBanco").show();
 }
 
 $(document).ready(function () {

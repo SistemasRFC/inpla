@@ -49,9 +49,10 @@ class InvestimentoModel extends BaseModel {
         $dao = new InvestimentoDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         if (!isset($this->objRequest->codStatus)) {
+            $this->objRequest->codStatus = 3;
+        } else if (isset($this->objRequest->codStatus) == 2) {
             $this->objRequest->dtaInicio = date('d/m/Y');
             $this->objRequest->indAtivo = 'S';
-            $this->objRequest->codStatus = 2;
         }
         $result = $dao->UpdateInvestimento($this->objRequest);
         return json_encode($result);
@@ -75,15 +76,22 @@ class InvestimentoModel extends BaseModel {
         $dao = new InvestimentoDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $codPlano = $this->objRequest->codPlano;
-        $this->objRequest->dtaInicio = date('d/m/Y');
-        $this->objRequest->dtaCadastro = date('d/m/Y');
-        $this->objRequest->codUsuario = $_SESSION['cod_usuario'];
-        $this->objRequest->codBanco = 0;
-        $result = $dao->InsertInvestimento($this->objRequest);
-        if($result[0]) {
-            $codInvestimento = $result[2];
-            $saqueModel = new SaqueModel();
-            $result = $saqueModel->InsertSaqueReinvestido($codPlano, $codInvestimento);
+        $saqueModel = new SaqueModel();
+        $result = $saqueModel->VerificaSaldo($codPlano);
+        if($result[1] != '') {
+            $vlrPlano = $result[1];
+            $this->objRequest->dtaInicio = date('d/m/Y');
+            $this->objRequest->dtaCadastro = date('d/m/Y');
+            $this->objRequest->codUsuario = $_SESSION['cod_usuario'];
+            $this->objRequest->codBanco = 0;
+            $result = $dao->InsertInvestimento($this->objRequest);
+            if($result[0]) {
+                $codInvestimento = $result[2];
+                $result = $saqueModel->InsertSaqueReinvestido($vlrPlano, $codInvestimento);
+            }
+        } else {
+          $result{0} = false;
+          $result{1} = "Seu saldo não é suficiente para este plano";
         }
         return json_encode($result);
     }
