@@ -1,5 +1,4 @@
-<?php 
-echo "RAfael"; die;
+<?php
 session_start();
 session_unset();
 include_once getenv("CONSTANTES");
