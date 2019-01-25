@@ -19,13 +19,14 @@ function retornoValidacao() {
 function montaDadosInvestimento(dadosInvestimento) {
     $("#dadosInvestimento").html('');
     var html = '<table width="100%">';
-        html += '<tr><td>';
+        html += '<tr><td style="border-bottom:1px solid;">';
+        html += '<b>Investidor:</b> '+dadosInvestimento['USUARIO']+'<br>';
         html += '<b>Valor:</b> '+dadosInvestimento['VLR_PLANO']+'<br>';
         html += '<b>'+dadosInvestimento['DSC_BANCO']+' - </b>';
         html += 'Agência: <b>'+dadosInvestimento['AGENCIA']+'</b> Conta: <b>'+dadosInvestimento['CONTA']+'</b>';
         html += '</td></tr>';
-        html += '<tr><td align="center">';
-        html += '<a href="'+dadosInvestimento['COMPROVANTE']+'">Vizualizar Comprovante</a>';
+        html += '<tr><td align="center" style="padding-top:10px">';
+        html += '<img src=\"'+dadosInvestimento['COMPROVANTE']+'\" title=\"Comprovante\" width=\"80\" height=\"\">';
         html += '</td></tr>';
     $("#dadosInvestimento").html(html);
 }

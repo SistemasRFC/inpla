@@ -1,7 +1,7 @@
 $(function () {
     $("#ValidaInvestimentoForm").jqxWindow({
         autoOpen: false,
-        height: 200,
+        height: 500,
         width: 400,
         theme: theme,
         animationType: 'fade',
@@ -35,6 +35,7 @@ function montaTabelaInvestimento(ListaInvestimentos) {
                             {name: 'DSC_BANCO', type: 'string'},
                             {name: 'AGENCIA', type: 'string'},
                             {name: 'CONTA', type: 'string'},
+                            {name: 'USUARIO', type: 'string'},
                             {name: 'COMPROVANTE', type: 'string'}
                         ]
             };
