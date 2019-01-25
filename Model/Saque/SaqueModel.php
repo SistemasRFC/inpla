@@ -36,10 +36,20 @@ class SaqueModel extends BaseModel {
         }
         return json_encode($lista);
     }
-
-    Public Function InsertSaqueReinvestido($codPlano, $codInvestimento) {
+    
+    Public function VerificaSaldo($codPlano){
         $dao = new SaqueDao();
-        $lista = $dao->InsertSaqueReinvestido($codPlano, $codInvestimento, $_SESSION['cod_usuario']);
+        $lista = $dao->CarregaSaldo();
+        if($lista[0]){
+            $vlrSaldo = $lista[1]['SALDO'];
+            $lista = $dao->VerificaSaldo($codPlano, $vlrSaldo);
+        }
+        return json_encode($lista);
+    }
+
+    Public Function InsertSaqueReinvestido($vlrPlano, $codInvestimento) {
+        $dao = new SaqueDao();
+        $lista = $dao->InsertSaqueReinvestido($vlrPlano, $codInvestimento, $_SESSION['cod_usuario']);
         return json_encode($lista);
     }
 

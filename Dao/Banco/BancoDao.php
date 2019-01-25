@@ -26,6 +26,7 @@ class BancoDao extends BaseDao
                         DSC_BANCO AS DSC
                    FROM EN_BANCO
                   WHERE IND_ATIVO = 'S'
+                    AND COD_BANCO <> '0'
                  UNION
                  SELECT -1 AS ID,
                         '(Selecione)' AS DSC";
