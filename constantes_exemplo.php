@@ -1,7 +1,7 @@
 <?php
 define('PATH', '');
 define("DSC_FUNC", "");
-
+define('PATH_COMPROVANTES', '');
 const PORT     = "";
 const USER     = "";
 const PASSWORD = "";
