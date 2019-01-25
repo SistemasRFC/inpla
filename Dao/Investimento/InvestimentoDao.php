@@ -59,4 +59,9 @@ class InvestimentoDao extends BaseDao
         $result = $this->MontarInsert($obj);
         return $result;
     }
+
+    Public Function UpdateComprovanteInvestimento(stdClass $obj) {
+        $sql = "UPDATE ".$this->tableName." SET LNK_COMPROVANTES = '".$obj->lnkComprovantes."', COD_STATUS = ".$obj->codStatus." WHERE COD_INVESTIMENTO = ".$obj->codInvestimento;
+        return $this->selectDB($sql);
+    }
 }

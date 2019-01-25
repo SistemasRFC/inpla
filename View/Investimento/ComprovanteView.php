@@ -3,8 +3,8 @@
         <script src="js/ComprovanteView.js?rdm=<?php echo time(); ?>"></script>
     </head>
     <body>
-        <form name="ComprovanteForm" method="post" action="Controller/Investimento/InvestimentoController.php">
-            <input type="hidden" id="method" name="method">
+        <form id="ComprovanteForm" name="ComprovanteForm" method="post" action="Controller/Investimento/InvestimentoController.php" enctype="multpart/form-data">
+            <input type="hidden" id="lnkComprovantes" name="lnkComprovantes" class="persist">
             <table width="30%">
                 <tr>
                     <td>

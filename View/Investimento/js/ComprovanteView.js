@@ -9,9 +9,8 @@ function enviarComprovante() {
      * OBSERVAÇÃO: O arquivo ainda não está sendo enviado
      */
     if($('#lnkComprovante').val() != '') {
-        $('#method').val('UpdateInvestimento');
-        var parametros = 'codInvestimento;'+$('#codInvestimento').val()+'|lnkComprovante;'+$('#lnkComprovante').val()+'|';
-        ExecutaDispatch('Investimento', $('#method').val(), parametros, retornaEnvio, 'Aguarde, Enviando Comprovante', 'Comprovante enviado com sucesso!!');
+        var formData = new FormData(document.ComprovanteForm);
+        ExecutaDispatchUpload('Investimento', 'UploadComprovante', formData, retornaEnvio, 'Aguarde, Enviando Comprovante', 'Comprovante enviado com sucesso!!');
     } else {
         swal({
             title: 'AVISO',
@@ -22,7 +21,9 @@ function enviarComprovante() {
     }
 }
 
-function retornaEnvio() {
-    carrregaInvestimentos();
+function retornaEnvio(dado) {
+    $("#lnkComprovantes").val(dado[1]);
+    var parametros = retornaParametros();
+    ExecutaDispatch('Investimento', 'UpdateComprovanteInvestimento', parametros, carrregaInvestimentos);    
     $("#ComprovanteForm").jqxWindow("close");
 }
