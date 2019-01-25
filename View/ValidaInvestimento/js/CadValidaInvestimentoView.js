@@ -26,7 +26,7 @@ function montaDadosInvestimento(dadosInvestimento) {
         html += 'Agência: <b>'+dadosInvestimento['AGENCIA']+'</b> Conta: <b>'+dadosInvestimento['CONTA']+'</b>';
         html += '</td></tr>';
         html += '<tr><td align="center" style="padding-top:10px">';
-        html += '<img src=\"'+dadosInvestimento['COMPROVANTE']+'\" title=\"Comprovante\" width=\"80\" height=\"\">';
+        html += '<img src=\"'+dadosInvestimento['URL_COMPROVANTE']+'\" title=\"Comprovante\" width=\"80\" height=\"\">';
         html += '</td></tr>';
     $("#dadosInvestimento").html(html);
 }

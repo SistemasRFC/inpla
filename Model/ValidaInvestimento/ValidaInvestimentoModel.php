@@ -15,6 +15,10 @@ class ValidaInvestimentoModel extends BaseModel
         $dao = new ValidaInvestimentoDao();
         $lista = $dao->ListarInvestimentoInativos();
         if ($lista[0]) {
+            for($i=0;$i<count($lista[1]);$i++){
+                $arrArquivo = explode('\\', $lista[1][$i]['COMPROVANTE']);
+                $lista[1][$i]['URL_COMPROVANTE'] = URL_COMPROVANTES.$arrArquivo[count($arrArquivo)-1];
+            }
             $lista = FuncoesMoeda::FormataMoedaInArray($lista, 'VLR_PLANO');
         }
         return json_encode($lista);

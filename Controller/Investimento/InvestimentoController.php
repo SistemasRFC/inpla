@@ -47,8 +47,7 @@ class InvestimentoController extends BaseController
                 for($i = 0; $i < count($infos) - 1; $i++){
                     $nomeOriginal = $nomeOriginal . $infos[$i] . ".";
                 }
-            }
-            else{
+            }else{
                 $nomeOriginal = $nome . ".";
             }
             $tipoArquivo = $infos[count($infos) - 1];
@@ -58,12 +57,11 @@ class InvestimentoController extends BaseController
                 if(strtolower($tipoArquivo) == strtolower($tipo)){
                     $tipoPermitido = true;
                 }
-            }
+            }            
             if(!$tipoPermitido){
                 $retorno[0] = false;
                 $retorno[1] = "Tipo não permitido";
-            }
-            else{
+            }else{
                 if(move_uploaded_file($arquivo['tmp_name'], $pasta . $nomeOriginal . $tipoArquivo)){
                     $retorno[0] = true;
                     $retorno[1] = $pasta . $nomeOriginal . $tipoArquivo;
