@@ -5,17 +5,14 @@
     <body>
         <form name="ValidaInvestimentoForm" method="post" action="Controller/Investimento/InvestimentoController.php">
             <input type="hidden" id="method" name="method">
-            <table width="100%" align="center">
+            <table width="100%">
                 <tr>
                     <td>
                         <div id="dadosInvestimento"></div>
                     </td>
                 </tr>
                 <tr>
-                    <td>&nbsp;&nbsp;</td>
-                </tr>
-                <tr>
-                    <td align="center">
+                    <td align="center" style="padding-top:15px;">
                         <input type="button" id="btnValidar" value="Validar">
                     </td>
                 </tr>

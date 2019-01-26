@@ -27,12 +27,16 @@ class ValidaInvestimentoDao extends BaseDao
                        P.VLR_PLANO,
                        B.DSC_BANCO,
                        B.NRO_AGENCIA AS AGENCIA,
-                       B.NRO_CONTA AS CONTA
+                       B.NRO_CONTA AS CONTA,
+                       I.COD_USUARIO,
+                       U.NME_USUARIO_COMPLETO AS USUARIO
                   FROM EN_INVESTIMENTO I
                  INNER JOIN EN_PLANO P
                     ON I.COD_PLANO = P.COD_PLANO
                  INNER JOIN EN_BANCO B
                     ON I.COD_BANCO = B.COD_BANCO
+                 INNER JOIN SE_USUARIO U
+                    ON I.COD_USUARIO = U.COD_USUARIO
                 WHERE I.COD_STATUS = 3
                 ORDER BY I.COD_INVESTIMENTO";
         return $this->selectDB($sql, false);

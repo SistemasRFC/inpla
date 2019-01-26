@@ -99,6 +99,7 @@ class InvestimentoModel extends BaseModel {
     Public Function UpdateComprovanteInvestimento() {
         $dao = new InvestimentoDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        $this->objRequest->lnkComprovantes = str_replace('\\', '\\\\', $this->objRequest->lnkComprovantes);
         $this->objRequest->codStatus = 3;
         $result = $dao->UpdateComprovanteInvestimento($this->objRequest);
         return json_encode($result);
