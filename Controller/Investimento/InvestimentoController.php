@@ -33,7 +33,7 @@ class InvestimentoController extends BaseController
     
     Public Function UploadComprovante(){
         $arquivo = $_FILES['arquivo'];
-        $tipos = array('jpg', 'png', 'gif', 'psd', 'bmp');
+        $tipos = array('jpg', 'png', 'gif', 'psd', 'bmp', 'jpeg');
         $enviar = $this->uploadFile($arquivo, PATH_COMPROVANTES, $tipos);
         echo json_encode($enviar);
     }

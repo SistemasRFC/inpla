@@ -1,8 +1,8 @@
 $(function () {
     $("#ValidaInvestimentoForm").jqxWindow({
         autoOpen: false,
-        height: 500,
-        width: 400,
+        height: 700,
+        width: 600,
         theme: theme,
         animationType: 'fade',
         showAnimationDuration: 500,
@@ -52,8 +52,9 @@ function montaTabelaInvestimento(ListaInvestimentos) {
                 selectionmode: 'singlerow',
                 columns: [
                     {text: 'Nro.', columntype: 'textbox', datafield: 'COD_INVESTIMENTO', width: 50},
-                    {text: 'Plano', datafield: 'DSC_PLANO', columntype: 'textbox', width: 65},
-                    {text: 'Valor Investido', datafield: 'VLR_PLANO', columntype: 'textbox', width: 105, cellsalign: 'right'},
+                    {text: 'Investidor', datafield: 'USUARIO', columntype: 'textbox', width: 150},
+                    {text: 'Plano', datafield: 'DSC_PLANO', columntype: 'textbox', width: 70},
+                    {text: 'Valor Investido', datafield: 'VLR_PLANO', columntype: 'textbox', width: 110, cellsalign: 'right'},
                 ]
             });
     $('#' + nomeGrid).on('rowdoubleclick', function (event) {
