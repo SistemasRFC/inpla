@@ -2,16 +2,23 @@
 include_once 'Model/BaseModel.php';
 include_once 'Dao/Login/LoginDao.php';
 
-class LoginModel extends BaseModel{
+class LoginModel extends BaseModel
+{
     Public Function Logar(){
         $LoginDao = new LoginDao();
         $this->PopulaObjetoComRequest($LoginDao->GetColumns(), $LoginDao);
+        $txtSenha = $this->objRequest->txtSenha;
         $result = $LoginDao->Logar($this->objRequest);
         if ($result[0]){
-            if ($result[1]!=null){
+            if ($result[1]!=NULL){
                 static::AtualizaSessao($result[1]);
-                $result[1][0]['DSC_PAGINA'] = 'MenuPrincipal';
-                $result[1][0]['NME_METHOD'] = 'ChamaView';
+                if ($txtSenha==md5('123459')){
+                    $result[1][0]['DSC_PAGINA'] = 'Login';
+                    $result[1][0]['NME_METHOD'] = 'ChamaAlterarSenhaView';
+                } else {
+                    $result[1][0]['DSC_PAGINA'] = 'MenuPrincipal';
+                    $result[1][0]['NME_METHOD'] = 'ChamaView';
+                }
             }else{
                 $result[0] = false;
                 $result[1] = 'Usuário não encontrado!';
@@ -24,18 +31,19 @@ class LoginModel extends BaseModel{
         $_SESSION['cod_usuario']=$dados[0]['COD_USUARIO'];
     }
     
-    Public Function AlteraSenha(){
+    Public Function AlterarSenha(){
         $LoginDao = new LoginDao();
-        $this->RecuperaRequest(true);
+        $this->RecuperaRequest();
         $this->objRequest->codUsuario = $_SESSION['cod_usuario'];
+        $this->objRequest->txtSenhaAtual = md5($this->objRequest->txtSenhaAtual);
+        $this->objRequest->txtSenhaNova = md5($this->objRequest->txtSenhaNova);
         $result = $this->VerificaSenhaAtual();
         if ($result[0]){
-            $result = $LoginDao->AlteraSenha($this->objRequest);
+            $result = $LoginDao->AlterarSenha($this->objRequest);
             if ($result[0]){
-                if ($result[1]){        
-                    $result[1]['TXT_MSG'] = 'Senha Alterada!';
-                    $result[1]['DSC_PAGINA'] = '../../Controller/MenuPrincipal/MenuPrincipalController.php';
-                    $result[1]['NME_METHOD'] = 'ChamaView';
+                if ($result[1]){
+                    $result[1][0]['DSC_PAGINA'] = 'MenuPrincipal';
+                    $result[1][0]['NME_METHOD'] = 'ChamaView';
                 }
             }
         }

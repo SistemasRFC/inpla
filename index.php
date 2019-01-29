@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 session_unset();
 include_once getenv("CONSTANTES");
@@ -82,13 +82,11 @@ include_once getenv("CONSTANTES");
                 height: 350px;
                 color: preto;
             }
-</style>
+        </style>
     </head>
     <body>
         <form name="CadastroForm" method="post" accept-charset="UTF-8" action="Controller/Login/LoginController.php">
-            <input type="hidden" id="method" name="method">
-            <input type="hidden" id="pagina" name="pagina">
-            <input type="hidden" id="paginaError" name="paginaError">
+            <input type="hidden" id="verificaPermissao" name="verificaPermissao" value="N" class="persist">
             <table align=center id="table_form">
                 <tr align="center">
                     <td style="font-family:Times New Roman; font-size:30; color:darkcyan;"><b>INPLA - Investimentos</b></td>
@@ -99,7 +97,7 @@ include_once getenv("CONSTANTES");
                             Login<br>
                         </div>
                         <div>
-                            <input type="text" id="nmeLogin" name="nmeLogin" class='login' placeholder="Login">
+                            <input type="text" id="nmeUsuario" name="nmeUsuario" class='login persist' placeholder="Login">
                         </div>
                     </td>
                 </tr>
@@ -109,7 +107,7 @@ include_once getenv("CONSTANTES");
                             Senha<br>
                         </div>
                         <div>                            
-                            <input type="password" id="txtSenha" name="txtSenha" class='login' placeholder="Senha">
+                            <input type="password" id="txtSenha" name="txtSenha" class='login persist' placeholder="Senha">
                         </div>                            
                     </td>
                 </tr>
