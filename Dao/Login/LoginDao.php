@@ -6,7 +6,8 @@ class LoginDao extends BaseDao{
     Protected $tableName = "SE_USUARIO";
     
     Protected $columns = array ("nmeUsuario"           => array("column" => "NME_USUARIO", "typeColumn" => "S"),
-                                "txtSenha"             => array("column" => "TXT_SENHA", "typeColumn" => "P"), 
+                                "nmeUsuarioCompleto"   => array("column" => "NME_USUARIO_Completo", "typeColumn" => "S"), 
+                                "txtSenha"             => array("column" => "TXT_SENHA_W", "typeColumn" => "P"), 
                                 "codPerfil"            => array("column" => "COD_PERFIL_W", "typeColumn" => "I"),
                                 "indAtivo"             => array("column" => "IND_ATIVO", "typeColumn" => "S"));
     
@@ -26,15 +27,15 @@ class LoginDao extends BaseDao{
         $sql = "SELECT COUNT(COD_USUARIO) AS QTD
                   FROM SE_USUARIO
                  WHERE COD_USUARIO = ".$objRequest->codUsuario."
-                   AND TXT_SENHA   = '".$objRequest->txtSenhaAtual."'";
+                   AND TXT_SENHA_W   = '".$objRequest->txtSenhaAtual."'";
         return $this->selectDB($sql, false);
     }
     
-    Public Function AlteraSenha($objRequest){
+    Public Function AlterarSenha($objRequest){
         $sql = "UPDATE ".$this->tableName."
-                   SET TXT_SENHA = '".$objRequest->txtSenhaNova."'
+                   SET TXT_SENHA_W = '".$objRequest->txtSenhaNova."'
                  WHERE COD_USUARIO = ".$objRequest->codUsuario;
-        return $this->insertDB($sql, false);
+        return $this->insertDB($sql);
     }
     
     Public Function VerificaUsuario(){
@@ -54,20 +55,18 @@ class LoginDao extends BaseDao{
     Public Function InsereCadastro(){
         $codUsuario = $this->CatchUltimoCodigo($this->tableName, 'COD_USUARIO');
         $sql = "INSERT INTO SE_USUARIO (COD_USUARIO, 
-                                        NME_USUARIO, 
-                                        COD_USUARIO_PAI, 
+                                        NME_USUARIO,
                                         NME_USUARIO_COMPLETO, 
-                                        TXT_SENHA, 
+                                        TXT_SENHA_W, 
                                         NRO_TEL_CELULAR, 
-                                        TXT_EMAIL, 
-                                        COD_PERFIL,
+                                        TXT_EMAIL,
+                                        COD_PERFIL_W,
                                         IND_ATIVO)
                 VALUES(".$codUsuario.",
                        '".$this->Populate('nmeUsuario')."',
-                       ".$this->Populate('codPatrocinador').",
-                       '".$this->Populate('nmeCompleto')."', 
-                       '".md5($this->Populate('txtSenha'))."', 
-                       '".$this->Populate('nroTelefone')."', 
+                       '".$this->Populate('nmeUsuarioCompleto')."', 
+                       '".md5($this->Populate('txtSenhaW'))."', 
+                       '".$this->Populate('nroTelCelular')."', 
                        '".$this->Populate('txtEmail')."', 
                        2,
                        'S')";

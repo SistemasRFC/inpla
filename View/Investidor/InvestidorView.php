@@ -29,7 +29,7 @@
                             Login *<br>
                         </div>
                         <div>
-                            <input required type="text" id="nmeUsuario" name="nmeUsuario" size="30" class="persist">
+                            <input required type="text" id="nmeUsuarioInvestidor" name="nmeUsuarioInvestidor" size="30">
                         </div>
                     </td>
                 </tr>

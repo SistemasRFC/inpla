@@ -9,9 +9,14 @@ class LoginController extends BaseController
         echo $LoginModel->Logar();
     }   
     
+    Public Function ChamaAlterarSenhaView(){
+        $params = array();
+        echo ($this->gen_redirect_and_form('View/Usuario/AlteraSenhaView.php', $params));        
+    }
+
     Public Function AlterarSenha(){
         $LoginModel = new LoginModel();
-        echo $LoginModel->AlteraSenha();        
+        echo $LoginModel->AlterarSenha();        
     }   
     
     Public Function Logoff(){
