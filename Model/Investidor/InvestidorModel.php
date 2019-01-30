@@ -69,17 +69,11 @@ class InvestidorModel extends BaseModel
         }
         if (!FuncoesString::validaCPF($this->objRequest->nroCpf)){
             $result[0] = false;
-            $result[1] .= "CPF inválido\n";
+            $result[1] .= "CPF inválido!\n";
         }
         if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
             $result[0] = false;
-            $result[1] .= "Email inválido'\n";
-        }
-        if(isset($this->objRequest->nroTelCelular)) {
-            if(!FuncoesString::validaCelular($this->objRequest->nroTelCelular)) {
-                $result[0] = false;
-                $result[1] .= "Némero de Celular inválido'\n";
-            }
+            $result[1] .= "Email inválido!\n";
         }
         return $result;
     }
@@ -87,11 +81,26 @@ class InvestidorModel extends BaseModel
     Public Function AtualizaDadosInvestidor() {
         $dao = new InvestidorDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $result = $this->VerificaCamposVazios();
+        $result = $this->VerificaCampos();
         if($result[0]){
             $result = $dao->AtualizaDadosInvestidor($this->objRequest);
         }
         return json_encode($result);
+    }
+
+    Public Function VerificaCampos(){
+        $result=array(true, '');
+        if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
+            $result[0] = false;
+            $result[1] .= "Email inválido!\n";
+        }
+        if(isset($this->objRequest->nroTelCelular)) {
+            if(!FuncoesString::validaCelular($this->objRequest->nroTelCelular)) {
+                $result[0] = false;
+                $result[1] .= "Número de Celular inválido!\n";
+            }
+        }
+        return $result;
     }
 }
 
