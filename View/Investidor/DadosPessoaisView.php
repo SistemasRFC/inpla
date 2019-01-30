@@ -59,10 +59,10 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                 <div class="cabecalho">Dados Pessoais</div>
                 
                 <label for="nmeUsuarioCompleto" class="titulo">Nome Completo *</label>
-                <input id="nmeUsuarioCompleto" name="nmeUsuarioCompleto" class="persist input" disabled>
+                <input required id="nmeUsuarioCompleto" name="nmeUsuarioCompleto" class="persist input" disabled>
                 
                 <label for="nroCpf" class="titulo">CPF *</label>
-                <input id="nroCpf" name="nroCpf" class="persist input" disabled>
+                <input required id="nroCpf" name="nroCpf" class="persist input" disabled>
                 
                 <div class="cabecalho">Contato</div>
                 
@@ -70,7 +70,7 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                 <input id="nroTelCelular" name="nroTelCelular" class="persist input">
 
                 <label for="txtEmail" class="titulo">Email *</label>
-                <input id="txtEmail" name="txtEmail" class="persist input">
+                <input required id="txtEmail" name="txtEmail" placeholder="exemplo@email.com" class="persist input">
 
                 <div class="cabecalho">Dados Bancários</div>
 

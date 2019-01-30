@@ -74,14 +74,23 @@ class InvestidorModel extends BaseModel
         if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
             $result[0] = false;
             $result[1] .= "Email inválido'\n";
-        }      
+        }
+        if(isset($this->objRequest->nroTelCelular)) {
+            if(!FuncoesString::validaCelular($this->objRequest->nroTelCelular)) {
+                $result[0] = false;
+                $result[1] .= "Némero de Celular inválido'\n";
+            }
+        }
         return $result;
     }
 
     Public Function AtualizaDadosInvestidor() {
         $dao = new InvestidorDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $result = $dao->AtualizaDadosInvestidor($this->objRequest);
+        $result = $this->VerificaCamposVazios();
+        if($result[0]){
+            $result = $dao->AtualizaDadosInvestidor($this->objRequest);
+        }
         return json_encode($result);
     }
 }

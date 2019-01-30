@@ -1,5 +1,6 @@
 $(function () {
     $("#nroCpf").mask('999.999.999-99');
+    $("#nroTelCelular").mask('(99)99999-9999');
 
     $("#btnSalvar").click(function () {
         var parametros = retornaParametros();
