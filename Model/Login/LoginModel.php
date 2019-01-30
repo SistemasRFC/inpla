@@ -41,10 +41,9 @@ class LoginModel extends BaseModel
         if ($result[0]){
             $result = $LoginDao->AlterarSenha($this->objRequest);
             if ($result[0]){
-                if ($result[1]){
-                    $result[1][0]['DSC_PAGINA'] = 'MenuPrincipal';
-                    $result[1][0]['NME_METHOD'] = 'ChamaView';
-                }
+                $result[1] = array();
+                $result[1][0]['DSC_PAGINA'] = 'MenuPrincipal';
+                $result[1][0]['NME_METHOD'] = 'ChamaView';
             }
         }
         return json_encode($result);
@@ -60,7 +59,7 @@ class LoginModel extends BaseModel
         }else{
             return array(false, 'Problema ao executar a consulta!');
         }
-        return array(true, 'Senha Alterada!');
+        return array(true, 'Senha Correta!');
     }
 
 }
