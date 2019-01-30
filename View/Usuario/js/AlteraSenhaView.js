@@ -17,5 +17,5 @@ function AlterarSenha(){
         }
 }
 function RedirecionaTela(logar){
-    $(location).attr('href', 'Dispatch.php?controller=' + logar[1][0]['DSC_PAGINA'] + '&method=' + logar[1][0]['NME_METHOD']+'&verificaPermissao=N');
+    $(location).attr('href', '../../Dispatch.php?controller=' + logar[1][0]['DSC_PAGINA'] + '&method=' + logar[1][0]['NME_METHOD']+'&verificaPermissao=N');
 }
