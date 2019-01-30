@@ -1,5 +1,5 @@
 <?php
-include_once("Controller/BaseController.php"); 
+include_once("Controller/BaseController.php");
 include_once("Model/#class/#classModel.php");
 class #classController extends BaseController
 {
@@ -24,5 +24,5 @@ class #classController extends BaseController
     Public Function Update#class() {
         $#classModel = new #classModel();
         echo $#classModel->Update#class();
-    }	
+    }
 }

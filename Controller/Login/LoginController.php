@@ -11,7 +11,7 @@ class LoginController extends BaseController
     
     Public Function ChamaAlterarSenhaView(){
         $params = array();
-        echo ($this->gen_redirect_and_form('View/Usuario/AlteraSenhaView.php', $params));        
+        echo ($this->gen_redirect_and_form('View/Usuario/AlteraSenhaView.php', $params));
     }
 
     Public Function AlterarSenha(){

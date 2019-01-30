@@ -20,14 +20,15 @@ class InvestidorDao extends BaseDao
         $this->conect();
     }
 
-    Public Function ListarInvestidor() {    
-        return $this->MontarSelect();
+    Public Function ListarDadosInvestidor() {
+        $sql = "WHERE COD_USUARIO =". $_SESSION['cod_usuario'];
+        return $this->MontarSelect(null, $sql);
     }
 
     Public Function UpdateInvestidor(stdClass $obj) {
         return $this->MontarUpdate($obj);
     }
-
+    
     Public Function InsertInvestidor(stdClass $obj) {
         return $this->MontarInsert($obj);
     }
@@ -37,5 +38,9 @@ class InvestidorDao extends BaseDao
                   FROM SE_USUARIO 
                  WHERE NME_USUARIO ='".$nmeUsuario."'";
         return $this->selectDB($sql, false);
+    }
+
+    Public Function AtualizaDadosInvestidor(stdClass $obj) {
+        return $this->MontarUpdate($obj);
     }
 }

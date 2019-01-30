@@ -11,9 +11,9 @@ class InvestidorModel extends BaseModel
         }
     }
 
-    Public Function ListarInvestidor($Json=true) {
+    Public Function ListarDadosInvestidor($Json=true) {
         $dao = new InvestidorDao();
-        $lista = $dao->ListarInvestidor();
+        $lista = $dao->listarDadosInvestidor();
         if ($Json){
             return json_encode($lista);
         }else{
@@ -76,6 +76,13 @@ class InvestidorModel extends BaseModel
             $result[1] .= "Email inválido'\n";
         }      
         return $result;
+    }
+
+    Public Function AtualizaDadosInvestidor() {
+        $dao = new InvestidorDao();
+        BaseModel::PopulaObjetoComRequest($dao->getColumns());
+        $result = $dao->AtualizaDadosInvestidor($this->objRequest);
+        return json_encode($result);
     }
 }
 

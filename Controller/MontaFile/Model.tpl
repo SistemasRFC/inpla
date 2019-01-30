@@ -16,15 +16,15 @@ class #classModel extends BaseModel
         if ($Json){
             return json_encode($lista);
         }else{
-            return $lista;        
+            return $lista;
         }
     }
-    
+
     Public Function Insert#class() {
-        $dao = new #classDao();        
+        $dao = new #classDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $result = $dao->Insert#class($this->objRequest);
-        return json_encode($result);        
+        return json_encode($result);
     }
 
     Public Function Update#class() {
@@ -32,7 +32,7 @@ class #classModel extends BaseModel
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $result = $dao->Update#class($this->objRequest);
         return json_encode($result);
-    }	
+    }
     
 }
 
