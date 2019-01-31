@@ -18,7 +18,7 @@ $(function () {
     });
     $("#btnCadastrar").click(function () {
         var modal = document.getElementById('CadInvestidor');
-        modal.style.display = "block";
+        $("#CadInvestidor").show('fade');
         // $("#CadInvestidor").jqxWindow("open");
     });
     $("#btnLogin").click(function () {
