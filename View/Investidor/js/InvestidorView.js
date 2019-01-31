@@ -20,7 +20,7 @@ $(function () {
     });
 
     $("#fechaModal").click(function () {
-        document.getElementById('CadInvestidor').style.display = "none";
+        $('#CadInvestidor').hide('fade');
     });
 });
 
