@@ -87,7 +87,13 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                 <input type="text" id="nroOperacao" name="nroOperacao" class="persist input">
 
                 <label for="tpoConta" class="titulo">Tipo de conta</label>
-                <input type="text" id="tpoConta" name="tpoConta" class="persist input">
+                <select id="tpoConta" name="tpoConta" class="persist input">
+                    <option value="" selected disabled>Selecione</option>
+                    <option value="Corrente">Conta Corrente</option>
+                    <option value="Poupanca">Conta Poupança</option>
+                    <option value="Salario">Conta Salário</option>
+                    <option value="Juridica">Conta Jurídica</option>
+                </select>
                 
                 <div class=titulo>
                     <input type="button" id="btnSalvar" value="Salvar" class="button">
