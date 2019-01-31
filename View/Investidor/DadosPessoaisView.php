@@ -95,7 +95,7 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                     <option value="Juridica">Conta Jurídica</option>
                 </select>
                 
-                <div class=titulo>
+                <div class="titulo">
                     <input type="button" id="btnSalvar" value="Salvar" class="button">
                 </div>
             </form>

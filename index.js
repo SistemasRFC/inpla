@@ -1,6 +1,4 @@
 $(function () {
-    $("#nmeUsuario").jqxInput({ height: 30, width: 200 });
-    $("#txtSenha").jqxInput({ height: 30, width: 200 });
     valor = '{x:' + $(window).width / 2 + ', y:' + $(window).heigth / 2 + '}';
     $("#CadInvestidor").jqxWindow({
         autoOpen: false,
@@ -21,7 +19,6 @@ $(function () {
     $("#btnCadastrar").click(function () {
         $("#CadInvestidor").jqxWindow("open");
     });
-    $("#btnLogin").jqxButton({ width: '208', height: 30, theme: 'energyblue' });
     $("#btnLogin").click(function () {
         logar();
     });

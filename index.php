@@ -55,13 +55,13 @@ include_once getenv("CONSTANTES");
                 color: darkslategrey;
             }
             #btnCadastrar{
-                padding-right: 20px;
+                padding-right: 15px;
             }
             #btnCadastrar:hover {
                 color: blue;
             }
             #btnEsqueciSenha{
-                padding-left: 20px;
+                padding-left: 15px;
             }
             #btnEsqueciSenha:hover {
                 color: red;
@@ -69,67 +69,33 @@ include_once getenv("CONSTANTES");
             a:active {
                 text-decoration: none
             }
-            #table_form div{
-                text-align: center;
-            }
-            #table_form tr{
-                padding-bottom: 2px;
-            }
-            #table_form{
-                margin-top: 150; 
-                background-color: silver;
-                width: 320px;
-                height: 350px;
-                color: preto;
-            }
         </style>
     </head>
     <body>
-        <form name="CadastroForm" method="post" accept-charset="UTF-8" action="Controller/Login/LoginController.php">
-            <input type="hidden" id="verificaPermissao" name="verificaPermissao" value="N" class="persist">
-            <table align=center id="table_form">
-                <tr align="center">
-                    <td style="font-family:Times New Roman; font-size:30; color:darkcyan;"><b>INPLA - Investimentos</b></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div style="text-align:left; padding-left:55;">
-                            Login<br>
-                        </div>
-                        <div>
-                            <input type="text" id="nmeUsuario" name="nmeUsuario" class='login persist' placeholder="Login">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div style="text-align:left; padding-left:55;">
-                            Senha<br>
-                        </div>
-                        <div>                            
-                            <input type="password" id="txtSenha" name="txtSenha" class='login persist' placeholder="Senha">
-                        </div>                            
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center">
-                        <input type="button" id="btnLogin" value="Login">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center">
-                        <a href="javascript:return false" id=btnCadastrar>Cadastre-se</a>
-                        <a href="javascript:return false" id=btnEsqueciSenha>Esqueci a senha</a>
-                    </td>
-                </tr>
-            </table>
-        </form>
-        <div id="CadInvestidor">
-            <div id="windowHeader">
+        <input type="hidden" id="verificaPermissao" name="verificaPermissao" value="N" class="persist">
+        <div class="card" style="max-width: 300px;margin-top: 200px;">
+            <div class="cabecalho" style="color: darkcyan;padding-bottom:15px;">INPLA - Investimentos</div>
+            
+            <label for="nmeUsuario" class="titulo">Login</label>
+            <input type="text" id="nmeUsuario" name="nmeUsuario" class='login persist input' placeholder="Login">
+
+            <label for="txtSenha" class="titulo">Senha</label>   
+            <input type="password" id="txtSenha" name="txtSenha" class='login persist input' placeholder="Senha">
+
+            <div class="titulo">
+                <input type="button" id="btnLogin" value="Login" class="button" style="background-color: darkcyan;">
             </div>
+            
+            <div style="padding-top:10px;text-align:center;">
+                <a href="javascript:return false" id=btnCadastrar>Cadastre-se</a>
+                <a href="javascript:return false" id=btnEsqueciSenha>Esqueci a senha</a>
+            </div>
+        </div>
+        <div id="CadInvestidor">
+            <div id="windowHeader"></div>
             <div style="overflow: hidden;" id="windowContent">
                 <?php include_once PATH . "/View/Investidor/InvestidorView.php"; ?>
             </div>
         </div>
-    </body>
+        </body>
 </html>
