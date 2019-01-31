@@ -69,6 +69,31 @@ include_once getenv("CONSTANTES");
             a:active {
                 text-decoration: none
             }
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 150px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
@@ -91,11 +116,14 @@ include_once getenv("CONSTANTES");
                 <a href="javascript:return false" id=btnEsqueciSenha>Esqueci a senha</a>
             </div>
         </div>
-        <div id="CadInvestidor">
+        <div id="ModalInvestidor">
+            <?php include_once PATH . "/View/Investidor/InvestidorView.php"; ?>
+        </div>
+        <!-- <div id="CadInvestidor">
             <div id="windowHeader"></div>
             <div style="overflow: hidden;" id="windowContent">
-                <?php include_once PATH . "/View/Investidor/InvestidorView.php"; ?>
+                <?php //include_once PATH . "/View/Investidor/InvestidorView.php"; ?>
             </div>
-        </div>
+        </div> -->
         </body>
 </html>

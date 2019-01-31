@@ -1,5 +1,4 @@
 $(function () {
-    $("#btnSalvar").jqxButton({ width: '100', height: 30, theme: 'energyblue' });
     $("#nroCpf").mask('999.999.999-99');
 
     $("#nroCpf").blur(function () {
@@ -18,6 +17,10 @@ $(function () {
         var parametros = retornaParametros();
         parametros += 'verificaPermissao;N|nmeUsuario;'+$("#nmeUsuarioInvestidor").val(),
         ExecutaDispatch('Investidor', 'InsertInvestidor', parametros, retornaSalvar, "Aguarde, Salvando Cadastro");
+    });
+
+    $("#fechaModal").click(function () {
+        document.getElementById('CadInvestidor').style.display = "none";
     });
 });
 

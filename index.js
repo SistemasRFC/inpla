@@ -1,23 +1,25 @@
 $(function () {
     valor = '{x:' + $(window).width / 2 + ', y:' + $(window).heigth / 2 + '}';
-    $("#CadInvestidor").jqxWindow({
-        autoOpen: false,
-        height: 350,
-        width: 370,
-        theme: theme,
-        animationType: 'fade',
-        showAnimationDuration: 500,
-        closeAnimationDuration: 500,
-        title: 'Cadastro',
-        isModal: true
-    });
+    // $("#CadInvestidor").jqxWindow({
+    //     autoOpen: false,
+    //     height: 420,
+    //     width: 370,
+    //     theme: theme,
+    //     animationType: 'fade',
+    //     showAnimationDuration: 500,
+    //     closeAnimationDuration: 500,
+    //     title: 'Cadastro',
+    //     isModal: true
+    // });
     $(".login").keyup(function (event) {
         if (event.keyCode == 13) {
             $("#btnLogin").click();
         }
     });
     $("#btnCadastrar").click(function () {
-        $("#CadInvestidor").jqxWindow("open");
+        var modal = document.getElementById('CadInvestidor');
+        modal.style.display = "block";
+        // $("#CadInvestidor").jqxWindow("open");
     });
     $("#btnLogin").click(function () {
         logar();

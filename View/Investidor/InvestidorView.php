@@ -4,61 +4,29 @@
         <script src="View/Investidor/js/InvestidorView.js?rdm=<?php echo time(); ?>"></script>
     </head>
     <body>
-        <form name="InvestidorForm" method="post" action="Controller/Investidor/InvestidorController.php">
+        <div id="CadInvestidor" class="modal">
             <input type="hidden" id="codUsuario" name="codUsuario" class="persist">
-            <table width="100%">
-                <tr>
-                    <td style="padding-bottom: 20px;color: darkslategrey;">
-                        <b>Preencha todos os campos</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="titulo">
-                            Nome Completo *<br>
-                        </div>
-                        <div>
-                            <input required type="text" id="nmeUsuarioCompleto" name="nmeUsuarioCompleto"
-                                size="30" class="persist" placeholder="Não utilize abreviações" style="text-transform:uppercase;">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="titulo">
-                            Login *<br>
-                        </div>
-                        <div>
-                            <input required type="text" id="nmeUsuarioInvestidor" name="nmeUsuarioInvestidor" size="30">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="titulo">
-                            CPF *<br>
-                        </div>
-                        <div>
-                            <input type="text" id="nroCpf" name="nroCpf" size="20" class="persist">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="titulo">
-                            Email *<br>
-                        </div>
-                        <div>
-                            <input required type="text" id="txtEmail" name="txtEmail" size="30" class="persist">
-                        </div>
-                    </td>
-                </tr>        
-                <tr align="right">
-                    <td style="padding-top: 30;">
-                        <input type="button" id="btnSalvar" value="Salvar">
-                    </td>
-                </tr>
-            </table>
-        </form>
+            <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 500px;">
+                <span id="fechaModal" class="close" style="margin-top: 8px;">&times;</span>
+                <h4>Preencha todos os campos</h4>
+
+                <label for="nmeUsuarioCompleto" class="titulo">Nome Completo *</label>
+                <input required type="text" id="nmeUsuarioCompleto" name="nmeUsuarioCompleto"
+                    size="30" class="persist input" placeholder="Não utilize abreviações" style="text-transform:uppercase;">
+
+                <label for="nmeUsuarioInvestidor" class="titulo">Login *</label>
+                <input required type="text" id="nmeUsuarioInvestidor" name="nmeUsuarioInvestidor" size="30" class="input">
+
+                <label for="nroCpf" class="titulo">CPF *</label>
+                <input type="text" id="nroCpf" name="nroCpf" size="20" class="persist input">
+
+                <label for="txtEmail" class="titulo">Email *</label>
+                <input required type="text" id="txtEmail" name="txtEmail" size="30" class="persist input">
+                
+                <div class="titulo">
+                    <input type="button" id="btnSalvar" value="Salvar" class="button">
+                </div>
+            </div>
+        </div>
     </body>
 </html>
