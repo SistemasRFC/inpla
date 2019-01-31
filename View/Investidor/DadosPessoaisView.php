@@ -10,17 +10,8 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
         <style>
             .input {
                 width: 100%;
-                padding: 6px 5px;
+                padding: 5px 5px;
                 margin: 4px 0;
-            }
-            .card {
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
-                max-width: 800px;
-                margin: auto;
-                margin-top: 15px;
-                font-family: arial;
-                background-color: #f2f2f2;
-                padding: 20px 25px;
             }
 
             .cabecalho {
@@ -50,6 +41,14 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
             .button:hover {
                 opacity: 0.7;
             }
+
+            .alert {
+                padding: 14px;
+                margin-bottom: 10px;
+                margin-top: 8px;
+                background-color: #ff9800;
+                color: white;
+            }
         </style>
     </head>
     <body>
@@ -59,35 +58,36 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                 <div class="cabecalho">Dados Pessoais</div>
                 
                 <label for="nmeUsuarioCompleto" class="titulo">Nome Completo *</label>
-                <input required id="nmeUsuarioCompleto" name="nmeUsuarioCompleto" class="persist input" disabled>
+                <input type="text" id="nmeUsuarioCompleto" name="nmeUsuarioCompleto" class="persist input" disabled>
                 
                 <label for="nroCpf" class="titulo">CPF *</label>
-                <input required id="nroCpf" name="nroCpf" class="persist input" disabled>
+                <input type="text" id="nroCpf" name="nroCpf" class="persist input" disabled>
                 
                 <div class="cabecalho">Contato</div>
                 
                 <label for="nroTelCelular" class="titulo">Celular</label>
-                <input id="nroTelCelular" name="nroTelCelular" class="persist input">
+                <input type="text" id="nroTelCelular" name="nroTelCelular" class="persist input">
 
                 <label for="txtEmail" class="titulo">Email *</label>
-                <input required id="txtEmail" name="txtEmail" placeholder="exemplo@email.com" class="persist input">
+                <input required type="text" id="txtEmail" name="txtEmail" placeholder="exemplo@email.com" class="persist input">
 
                 <div class="cabecalho">Dados Bancários</div>
+                <div class="alert"><b>Atenção!</b><br>Sua conta bancária deverá estar no nome e cpf cadastrados acima.</div>
 
                 <label for="dscBanco" class="titulo">Banco</label>
-                <input id="dscBanco" name="dscBanco" class="persist input">
+                <input type="text" id="dscBanco" name="dscBanco" class="persist input">
 
                 <label for="nroAgencia" class="titulo">Agência</label>
-                <input id="nroAgencia" name="nroAgencia" class="persist input">
+                <input type="text" id="nroAgencia" name="nroAgencia" class="persist input">
 
                 <label for="nroConta" class="titulo">Conta</label>
-                <input id="nroConta" name="nroConta" class="persist input">
+                <input type="text" id="nroConta" name="nroConta" class="persist input">
 
                 <label for="nroOperacao" class="titulo">Operação</label>
-                <input id="nroOperacao" name="nroOperacao" class="persist input">
+                <input type="text" id="nroOperacao" name="nroOperacao" class="persist input">
 
                 <label for="tpoConta" class="titulo">Tipo de conta</label>
-                <input id="tpoConta" name="tpoConta" class="persist input">
+                <input type="text" id="tpoConta" name="tpoConta" class="persist input">
                 
                 <div class=titulo>
                     <input type="button" id="btnSalvar" value="Salvar" class="button">

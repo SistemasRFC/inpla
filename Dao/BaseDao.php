@@ -254,7 +254,7 @@ class BaseDao{
         return $this->updateDB($sql, $this->Populate(key($this->columnKey)));      
     }
     
-    Public Function MontarSelect($codLoja=NULL, $criterio=NULL, $ordenacao=NULL){
+    Public Function MontarSelect($criterio=NULL, $ordenacao=NULL){
         $sql = 'SELECT '.$this->columnKey[key($this->columnKey)]['column'].', ';
         foreach($this->columns as $key => $value){
             if ($value['typeColumn']=='I'){
@@ -264,9 +264,6 @@ class BaseDao{
             }
         }
         $sql = substr($sql, 0, strlen($sql)-2).' FROM '.$this->tableName;
-        if ($codLoja){
-            $sql .= " WHERE COD_LOJA = ".$codLoja;
-        }
         if ($criterio){
             $sql .= " ".$criterio;
         }

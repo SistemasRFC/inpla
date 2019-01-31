@@ -19,7 +19,7 @@
                         </div>
                         <div>
                             <input required type="text" id="nmeUsuarioCompleto" name="nmeUsuarioCompleto"
-                                size="30" class="persist" placeholder="Não utilize abreviações">
+                                size="30" class="persist" placeholder="Não utilize abreviações" style="text-transform:uppercase;">
                         </div>
                     </td>
                 </tr>

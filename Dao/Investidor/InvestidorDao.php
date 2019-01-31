@@ -4,15 +4,20 @@ class InvestidorDao extends BaseDao
 {
     Protected $tableName = "SE_USUARIO";
     
-    Protected $columns = array ("nmeUsuario"   => array("column" =>"NME_USUARIO", "typeColumn" =>"S"),
-                                "nmeUsuarioCompleto"   => array("column" =>"NME_USUARIO_COMPLETO", "typeColumn" =>"S"),
-                                "txtSenhaW"   => array("column" =>"TXT_SENHA_W", "typeColumn" =>"S"),
-                                "nroTelCelular"   => array("column" =>"NRO_TEL_CELULAR", "typeColumn" =>"S"),
-                                "txtEmail"   => array("column" =>"TXT_EMAIL", "typeColumn" =>"S"),
-                                "dtaInativo"   => array("column" =>"DTA_INATIVO", "typeColumn" =>"D"),
-                                "codPerfilW"   => array("column" =>"COD_PERFIL_W", "typeColumn" =>"I"),
-                                "indAtivo"   => array("column" =>"IND_ATIVO", "typeColumn" =>"S"),
-                                "nroCpf"   => array("column" =>"NRO_CPF", "typeColumn" =>"S"));
+    Protected $columns = array ("nmeUsuario"            => array("column" =>"NME_USUARIO", "typeColumn" =>"S"),
+                                "nmeUsuarioCompleto"    => array("column" =>"NME_USUARIO_COMPLETO", "typeColumn" =>"S"),
+                                "txtSenhaW"             => array("column" =>"TXT_SENHA_W", "typeColumn" =>"S"),
+                                "nroTelCelular"         => array("column" =>"NRO_TEL_CELULAR", "typeColumn" =>"S"),
+                                "txtEmail"              => array("column" =>"TXT_EMAIL", "typeColumn" =>"S"),
+                                "dtaInativo"            => array("column" =>"DTA_INATIVO", "typeColumn" =>"D"),
+                                "codPerfilW"            => array("column" =>"COD_PERFIL_W", "typeColumn" =>"I"),
+                                "indAtivo"              => array("column" =>"IND_ATIVO", "typeColumn" =>"S"),
+                                "nroCpf"                => array("column" =>"NRO_CPF", "typeColumn" =>"S"),
+                                "dscBanco"              => array("column" =>"DSC_BANCO", "typeColumn" =>"S"),
+                                "nroAgencia"            => array("column" =>"NRO_AGENCIA", "typeColumn" =>"S"),
+                                "nroConta"              => array("column" =>"NRO_CONTA", "typeColumn" =>"S"),
+                                "nroOperacao"           => array("column" =>"NRO_OPERACAO", "typeColumn" =>"S"),
+                                "tpoConta"              => array("column" =>"TPO_CONTA", "typeColumn" =>"S"));
     
     Protected $columnKey = array("codUsuario"=> array("column" =>"COD_USUARIO", "typeColumn" => "I"));
     
@@ -22,7 +27,7 @@ class InvestidorDao extends BaseDao
 
     Public Function ListarDadosInvestidor() {
         $sql = "WHERE COD_USUARIO =". $_SESSION['cod_usuario'];
-        return $this->MontarSelect(null, $sql);
+        return $this->MontarSelect($sql);
     }
 
     Public Function UpdateInvestidor(stdClass $obj) {

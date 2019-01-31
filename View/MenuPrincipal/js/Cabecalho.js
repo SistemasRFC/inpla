@@ -3,9 +3,9 @@ $(document).ready(function(){
     $("input[type='button']").each(function(){
         $(this).jqxButton({theme: theme});            
     });
-    $("input[type='text']").each(function(){
-        $(this).jqxInput({theme: theme, height: 25});          
-    }); 
+    // $("input[type='text']").each(function(){
+    //     $(this).jqxInput({theme: theme, height: 25});          
+    // }); 
 });
 function VerificaSessao(result){
     if (!result){            
