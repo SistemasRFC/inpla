@@ -8,40 +8,6 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
         <script src="js/DadosPessoaisView.js?rdm=<?php echo time(); ?>"></script>
         <style>
-            .input {
-                width: 100%;
-                padding: 5px 5px;
-                margin: 4px 0;
-            }
-
-            .cabecalho {
-                margin-top: 5px;
-                font-size: 22px;
-                font-weight: bold;
-                text-align: center;
-            }
-
-            .titulo {
-                padding: 5px;
-                padding-top: 10px;
-                font-size: 16px;
-            }
-
-            .button {
-                border: none;
-                padding: 10px;
-                color: white;
-                background-color: #2E2EFE;
-                text-align: center;
-                cursor: pointer;
-                width: 100%;
-                font-size: 18px;
-            }
-
-            .button:hover {
-                opacity: 0.7;
-            }
-
             .alert {
                 padding: 14px;
                 margin-bottom: 10px;

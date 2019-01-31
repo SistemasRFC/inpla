@@ -12,16 +12,16 @@
 
                 <label for="nmeUsuarioCompleto" class="titulo">Nome Completo *</label>
                 <input required type="text" id="nmeUsuarioCompleto" name="nmeUsuarioCompleto"
-                    size="30" class="persist input" placeholder="Não utilize abreviações" style="text-transform:uppercase;">
+                    class="persist input" placeholder="Não utilize abreviações" style="text-transform:uppercase;">
 
                 <label for="nmeUsuarioInvestidor" class="titulo">Login *</label>
-                <input required type="text" id="nmeUsuarioInvestidor" name="nmeUsuarioInvestidor" size="30" class="input">
+                <input required type="text" id="nmeUsuarioInvestidor" name="nmeUsuarioInvestidor" class="input">
 
                 <label for="nroCpf" class="titulo">CPF *</label>
-                <input type="text" id="nroCpf" name="nroCpf" size="20" class="persist input">
+                <input type="text" id="nroCpf" name="nroCpf" class="persist input">
 
                 <label for="txtEmail" class="titulo">Email *</label>
-                <input required type="text" id="txtEmail" name="txtEmail" size="30" class="persist input">
+                <input required type="text" id="txtEmail" name="txtEmail" class="persist input">
                 
                 <div class="titulo">
                     <input type="button" id="btnSalvar" value="Salvar" class="button">

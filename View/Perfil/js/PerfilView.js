@@ -52,7 +52,6 @@ function carregaGridPerfil() {
 function montaTabelaPerfil(listaPerfil) {
     $("#codPerfil").val(0);
     listaPerfil = listaPerfil[1];
-    console.log(listaPerfil);
     var nomeGrid = 'listaPerfil';
     var source =
     {

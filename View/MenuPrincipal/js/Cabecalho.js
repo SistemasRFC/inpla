@@ -1,8 +1,8 @@
 //window.location.href='../../View/MenuPrincipal/Redirect.php';
 $(document).ready(function(){
-    $("input[type='button']").each(function(){
-        $(this).jqxButton({theme: theme});            
-    });
+    // $("input[type='button']").each(function(){
+    //     $(this).jqxButton({theme: theme});            
+    // });
     // $("input[type='text']").each(function(){
     //     $(this).jqxInput({theme: theme, height: 25});          
     // }); 
