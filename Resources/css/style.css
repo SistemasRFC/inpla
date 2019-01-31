@@ -224,6 +224,12 @@ td{
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
 .close {
     color: #aaaaaa;
     float: right;

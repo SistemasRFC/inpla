@@ -3,8 +3,10 @@
         <div id="CadTime" class="modal">
             <input type="hidden" id="codTime" name="codTime" class="persist">
             <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 500px;">
-                <span id="fechaModal" class="close" style="margin-top: 8px;">&times;</span>
-                <div class="cabecalho">Time</div>
+                <div class="modal-header">
+                    <h4>Time</h4>
+                    <span id="fechaModal" class="close">&times;</span>
+                </div>
 
                 <label for="dscTime" class="titulo">Nome do Time</label>
                 <input type="text" id="dscTime" name="dscTime" class="persist input">
