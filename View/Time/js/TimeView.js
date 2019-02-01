@@ -1,15 +1,10 @@
 $(function () {
     $("#btnNovo").click(function () {
         LimparCampos();
-        $("#CadTime").show('fade');
     });
 
     $("#btnSalvar").click(function () {
         SalvarTime();
-    });
-
-    $("#fechaModal").click(function () {
-        $('#CadTime').hide('fade');
     });
 });
 
@@ -21,21 +16,15 @@ function SalvarTime(method){
         method = "InsertTime";
     }
     var parametros = retornaParametros();
-    ExecutaDispatch('Time', method, parametros, retornoSalvarTime, 'Aguarde, Salvando Time!', 'Time Salvo com Sucesso!');
-}
-
-function retornoSalvarTime() {
-    $("#codTime").val('');
-    $("#CadTime").hide('fade');
-    carregaGridTime();
+    ExecutaDispatch('Time', method, parametros, carregaGridTime, 'Aguarde, Salvando Time!', 'Time Salvo com Sucesso!');
 }
 
 function carregaGridTime() {
+    LimparCampos();
     ExecutaDispatch('Time', 'ListarTime', undefined, montaTabelaTime);
 }
 
 function montaTabelaTime(listaTime) {
-    $("#codTime").val(0);
     listaTime = listaTime[1];
     var nomeGrid = 'listaTime';
     var source =
@@ -67,10 +56,9 @@ function montaTabelaTime(listaTime) {
             columns: [
                 { text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_TIME', width: 80 },
                 { text: 'Descri&ccedil;&atilde;o', datafield: 'DSC_TIME', columntype: 'textbox', width: 280 },
-                { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 67 }
+                { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 67, align: 'center' }
             ]
         });
-    $("#" + nomeGrid).jqxGrid('localizestrings', localizationobj);
     // events
     $('#' + nomeGrid).on('rowdoubleclick', function (event) {
         var args = event.args;
@@ -78,7 +66,6 @@ function montaTabelaTime(listaTime) {
         var rowData = rows[args.visibleindex];
         var rowID = rowData.uid;
         preencheCamposForm(listaTime[rowID],'indAtivo;B|');
-        $("#CadTime").show('fade');
     });
 }
 

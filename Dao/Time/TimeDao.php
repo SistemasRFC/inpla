@@ -4,10 +4,10 @@ class TimeDao extends BaseDao
 {
     Protected $tableName = "EN_TIME";
 
-    Protected $columns = array ("dscTime"   => array("column" =>"dsc_time", "typeColumn" =>"S"),
-                                "indAtivo"   => array("column" =>"ind_ativo", "typeColumn" =>"S"));
+    Protected $columns = array ("dscTime"   => array("column" =>"DSC_TIME", "typeColumn" =>"S"),
+                                "indAtivo"   => array("column" =>"IND_ATIVO", "typeColumn" =>"S"));
 
-    Protected $columnKey = array("codTime"=> array("column" =>"cod_time", "typeColumn" => "I"));
+    Protected $columnKey = array("codTime"=> array("column" =>"COD_TIME", "typeColumn" => "I"));
 
     Public Function TimeDao() {
         $this->conect();

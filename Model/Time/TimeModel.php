@@ -1,6 +1,7 @@
 <?php
 include_once("Model/BaseModel.php");
 include_once("Dao/Time/TimeDao.php");
+include_once("Resources/php/FuncoesArray.php");
 class TimeModel extends BaseModel
 {
     public function TimeModel() {
@@ -13,11 +14,10 @@ class TimeModel extends BaseModel
     Public Function ListarTime($Json=true) {
         $dao = new TimeDao();
         $lista = $dao->ListarTime();
-        if ($Json){
-            return json_encode($lista);
-        }else{
-            return $lista;
+        if ($lista[0]){
+            $lista = FuncoesArray::AtualizaBooleanInArray($lista, 'IND_ATIVO', 'ATIVO');
         }
+        return json_encode($lista);
     }
 
     Public Function InsertTime() {
