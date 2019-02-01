@@ -23,7 +23,12 @@ class EstadioModel extends BaseModel
     Public Function InsertEstadio() {
         $dao = new EstadioDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $result = $dao->InsertEstadio($this->objRequest);
+        if (!isset($this->objRequest->dscEstadio)){
+            $result[0] = false;
+            $result[1] = "Nenhum Estádio foi informado";
+        } else {
+            $result = $dao->InsertEstadio($this->objRequest);
+        }
         return json_encode($result);
     }
 

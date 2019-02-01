@@ -34,7 +34,7 @@ class PlanoModel extends BaseModel
         if (!isset($this->objRequest->dscPlano) ||
             !isset($this->objRequest->vlrPlano)){
             $result[0] = false;
-            $result[1] .= "Preencha os campos 'Descrição' e 'Valor'";
+            $result[1] = "Preencha os campos 'Descrição' e 'Valor'";
         } else {
             $result = $dao->InsertPlano($this->objRequest);
         }

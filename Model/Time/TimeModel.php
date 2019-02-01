@@ -23,7 +23,12 @@ class TimeModel extends BaseModel
     Public Function InsertTime() {
         $dao = new TimeDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $result = $dao->InsertTime($this->objRequest);
+        if (!isset($this->objRequest->dscTime)){
+            $result[0] = false;
+            $result[1] = "Nenhum Time foi informado";
+        } else {
+            $result = $dao->InsertTime($this->objRequest);
+        }
         return json_encode($result);
     }
 
