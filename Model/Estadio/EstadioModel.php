@@ -19,7 +19,7 @@ class EstadioModel extends BaseModel
         }
         return json_encode($lista);
     }
-
+    
     Public Function InsertEstadio() {
         $dao = new EstadioDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
@@ -31,12 +31,18 @@ class EstadioModel extends BaseModel
         }
         return json_encode($result);
     }
-
+    
     Public Function UpdateEstadio() {
         $dao = new EstadioDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $result = $dao->UpdateEstadio($this->objRequest);
         return json_encode($result);
+    }
+
+    Public Function ListarEstadiosAtivos($Json=true) {
+        $dao = new EstadioDao();
+        $lista = $dao->ListarEstadiosAtivos();
+        return json_encode($lista);
     }
     
 }

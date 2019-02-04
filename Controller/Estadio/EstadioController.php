@@ -20,9 +20,14 @@ class EstadioController extends BaseController
         $EstadioModel = new EstadioModel();
         echo $EstadioModel->InsertEstadio();
     }
-
+    
     Public Function UpdateEstadio() {
         $EstadioModel = new EstadioModel();
         echo $EstadioModel->UpdateEstadio();
+    }
+
+    Public Function ListarEstadiosAtivos() {
+        $EstadioModel = new EstadioModel();
+        echo $EstadioModel->ListarEstadiosAtivos();
     }
 }

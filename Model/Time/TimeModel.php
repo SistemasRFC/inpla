@@ -38,6 +38,12 @@ class TimeModel extends BaseModel
         $result = $dao->UpdateTime($this->objRequest);
         return json_encode($result);
     }
+
+    Public Function ListarTimesAtivos() {
+        $dao = new TimeDao();
+        $lista = $dao->ListarTimesAtivos();
+        return json_encode($lista);
+    }
     
 }
 

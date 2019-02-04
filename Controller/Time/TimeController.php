@@ -25,4 +25,9 @@ class TimeController extends BaseController
         $TimeModel = new TimeModel();
         echo $TimeModel->UpdateTime();
     }
+
+    Public Function ListarTimesAtivos() {
+        $TimeModel = new TimeModel();
+        echo $TimeModel->ListarTimesAtivos();
+    }
 }

@@ -16,12 +16,23 @@ class EstadioDao extends BaseDao
     Public Function ListarEstadio() {
         return $this->MontarSelect();
     }
-
+    
     Public Function UpdateEstadio(stdClass $obj) {
         return $this->MontarUpdate($obj);
     }
-
+    
     Public Function InsertEstadio(stdClass $obj) {
         return $this->MontarInsert($obj);
+    }
+
+    Public Function ListarEstadiosAtivos() {
+        $sql = "SELECT COD_ESTADIO AS ID,
+                       DSC_ESTADIO AS DSC
+                  FROM EN_ESTADIO
+                 WHERE IND_ATIVO = 'S'
+                UNION
+                SELECT 0 AS ID,
+                       '(Selecione)' AS DSC";
+        return $this->selectDB($sql, false);
     }
 }
