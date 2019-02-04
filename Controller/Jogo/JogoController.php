@@ -25,4 +25,9 @@ class JogoController extends BaseController
         $JogoModel = new JogoModel();
         echo $JogoModel->UpdateJogo();
     }
+
+    Public Function CarregaTimesJogo() {
+        $JogoModel = new JogoModel();
+        echo $JogoModel->CarregaTimesJogo();
+    }
 }

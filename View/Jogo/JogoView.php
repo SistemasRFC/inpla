@@ -34,7 +34,7 @@ include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
                         <div id="tdcodTime1" class="input"></div>
                     </td>
                     <td style="font-size: 24px">
-                        <b>X</b>
+                        &nbsp;&nbsp;<b>X</b>
                     </td>
                     <td>
                         <div id="tdcodTime2" class="input"></div>
@@ -68,13 +68,16 @@ include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
                 </tr>
                 <tr>
                     <td colspan="3" align="right">
-                        <input type="button" id="btnSalvar" value="Salvar" class="button" style="width: 100px;">
+                        <input type="button" id="btnSalvar" value="Salvar" class="button" style="width: 100px;margin-bottom: 15px;">
                     </td>
                 </tr>
             </table>
             <div>
                 <div id="listaJogo"></div>
             </div>
+        </div>
+        <div id="ModalLancaGol">
+            <?php include_once PATH . "/View/Jogo/LancaGolView.php"; ?>
         </div>
     </body>
 </html>

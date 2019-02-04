@@ -43,7 +43,9 @@ function montaTabelaJogo(listaJogo) {
                 { name: 'DSC_ESTADIO', type: 'string' },
                 { name: 'COD_ESTADIO', type: 'string' },
                 { name: 'DTA_JOGO', type: 'string' },
-                { name: 'HRA_JOGO', type: 'string' }
+                { name: 'DTA_JOGO_W', type: 'string' },
+                { name: 'HRA_JOGO', type: 'string' },
+                { name: 'ACAO', type: 'string' }
             ]
     };
     var dataAdapter = new $.jqx.dataAdapter(source);
@@ -58,10 +60,11 @@ function montaTabelaJogo(listaJogo) {
             pageable: true,
             columnsresize: true,
             columns: [
-                { text: 'Times', datafield: 'DSC_JOGO', columntype: 'textbox', width: 270, align: 'center' },
-                { text: 'Estádio', datafield: 'DSC_ESTADIO', columntype: 'textbox', width: 170, align: 'center' },
-                { text: 'Data', datafield: 'DTA_JOGO', columntype: 'textbox', width: 100, cellsalign: 'center', align: 'center' },
-                { text: 'Horário', datafield: 'HRA_JOGO', columntype: 'textbox', width: 80, align: 'center' }
+                { text: 'Times', datafield: 'DSC_JOGO', columntype: 'textbox', width: 260, align: 'center' },
+                { text: 'Estádio', datafield: 'DSC_ESTADIO', columntype: 'textbox', width: 160, align: 'center' },
+                { text: 'Data', datafield: 'DTA_JOGO_W', columntype: 'textbox', width: 90, cellsalign: 'center', align: 'center' },
+                { text: 'Horário', datafield: 'HRA_JOGO', columntype: 'textbox', width: 70, align: 'center' },
+                { text: 'Ação', datafield: 'ACAO', columntype: 'textbox', width: 40, cellsalign: 'center', align: 'center' }
             ]
         });
     // events
@@ -72,6 +75,11 @@ function montaTabelaJogo(listaJogo) {
         var rowID = rowData.uid;
         preencheCamposForm(listaJogo[rowID]);
     });
+}
+
+function lancarGol(codJogo) {
+    $("#codJogo").val(codJogo);
+    $("#LancaGol").show("fade");
 }
 
 function CarregaComboTime1(arrDados) {

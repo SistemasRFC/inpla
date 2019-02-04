@@ -15,7 +15,7 @@ class JogoModel extends BaseModel
         $dao = new JogoDao();
         $lista = $dao->ListarJogo();
         if ($lista[0]){
-            $lista = FuncoesData::AtualizaDataInArray($lista, 'DTA_JOGO');
+            $lista = FuncoesData::AtualizaDataInArray($lista, 'DTA_JOGO_W');
         }
         return json_encode($lista);
     }
@@ -34,6 +34,12 @@ class JogoModel extends BaseModel
         $dao = new JogoDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
         $result = $dao->UpdateJogo($this->objRequest);
+        return json_encode($result);
+    }
+
+    Public Function CarregaTimesJogo() {
+        $dao = new JogoDao();
+        $result = $dao->CarregaTimesJogo();
         return json_encode($result);
     }
     
