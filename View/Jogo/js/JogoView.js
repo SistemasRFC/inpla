@@ -8,8 +8,8 @@ $(function () {
     });
 });
 
-function SalvarJogo(method){
-    var method='';
+function SalvarJogo(method) {
+    var method = '';
     if ($("#codJogo").val() != '') {
         method = "UpdateJogo";
     } else {
@@ -49,7 +49,7 @@ function montaTabelaJogo(listaJogo) {
     var dataAdapter = new $.jqx.dataAdapter(source);
     $("#" + nomeGrid).jqxGrid(
         {
-            width: 600,
+            width: 620,
             source: dataAdapter,
             theme: theme,
             selectionmode: 'singlerow',
@@ -58,9 +58,9 @@ function montaTabelaJogo(listaJogo) {
             pageable: true,
             columnsresize: true,
             columns: [
-                { text: 'Times', datafield: 'DSC_JOGO', columntype: 'textbox', width: 270 },
-                { text: 'Estádio', datafield: 'DSC_ESTADIO', columntype: 'textbox', width: 160 },
-                { text: 'Data', datafield: 'DTA_JOGO', columntype: 'textbox', width: 90 },
+                { text: 'Times', datafield: 'DSC_JOGO', columntype: 'textbox', width: 270, align: 'center' },
+                { text: 'Estádio', datafield: 'DSC_ESTADIO', columntype: 'textbox', width: 170, align: 'center' },
+                { text: 'Data', datafield: 'DTA_JOGO', columntype: 'textbox', width: 100, cellsalign: 'center', align: 'center' },
                 { text: 'Horário', datafield: 'HRA_JOGO', columntype: 'textbox', width: 80, align: 'center' }
             ]
         });
@@ -89,10 +89,11 @@ function CarregaComboEstadio(arrDados) {
 $(document).ready(function () {
     ExecutaDispatch('Time', 'ListarTimesAtivos', undefined, CarregaComboTime1);
     ExecutaDispatch('Estadio', 'ListarEstadiosAtivos', undefined, CarregaComboEstadio);
+    ExecutaDispatch('Time', 'ListarTimesAtivos', 'codTime1;' + $("#codTime1").val() + '|', CarregaComboTime2);
     carregaGridJogo();
 
     $("#tdcodTime1").change(function () {
-        ExecutaDispatch('Time', 'ListarTimesAtivos', 'codTime1;'+$("#codTime1").val()+'|', CarregaComboTime2);
+        ExecutaDispatch('Time', 'ListarTimesAtivos', 'codTime1;' + $("#codTime1").val() + '|', CarregaComboTime2);
     });
 });
 
