@@ -4,7 +4,7 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
 ?>
 <html>
     <head>
-        <title>Cadastro de Investimentos</title>
+        <title>INPLA - Cadastro de Investimentos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
         <script src="js/InvestimentoView.js?rdm=<?php echo time(); ?>"></script>
     </head>
@@ -13,28 +13,12 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
         <input type="hidden" id="codStatus" name="codStatus" value="0" class="persist">
         <input type="hidden" id="indAtivo" name="indAtivo" value="0" class="persist">
         <input type="hidden" id="method" name="method">
-        <table width="100%">
-            <tr>
-                <td width="100%"
-                    style="text-align:left;
-                    height:10%;
-                    font-size:16px;
-                    color:#0150D3;
-                    vertical-align:middle;
-                    font-family: arial, helvetica, serif;
-                    border-bottom: 1px solid #0150D3;">
-                    Cadastro de Investimentos
-                </td>
-            </tr>
-        </table>
-        <form name="InvestimentoForm" enctype="multpart/form-data" id="cadastroInvestimentoForm" method="post" action="../../Controller/Investimento/InvestimentoController.php">
-            <table width="45%">
+        <div class="card" style="max-width: 870px;">
+            <div class="cabecalho" style="padding-bottom: 10px;">Cadastro de Investimentos</div>
+            <table width="60%">
                 <tr>
-                    <td>&nbsp;&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>Plano</td>
-                    <td>Banco para depósito</td>
+                    <td><label for="tdcodPlano" class="titulo">Plano</label></td>
+                    <td><label for="tdcodBanco" class="titulo">Banco para depósito</label></td>
                 </tr>
                 <tr>
                     <td>
@@ -48,28 +32,21 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                     <td>
                         &nbsp;&nbsp;
                     </td>
-                    <td>
+                    <td class="titulo">
                         <div id="tdDadosBanco"></div>
-                    </td>
-                    <td align="right">
-                        <input type="button" id="btnSalvar" value="Salvar">
                     </td>
                 </tr>
             </table>
-        </form>
-        <table width="100%">
-            <tr>
-                <td>
-                    <div id="listaInvestimentos" />
-                </td>
-            </tr>
-        </table>
-        <div id="ComprovanteForm">
-              <div id="windowHeader">
-              </div>
-              <div style="overflow: hidden;" id="windowContent">
-                  <?php include_once "ComprovanteView.php";?>
-              </div>
+            <div class="titulo" style="text-align: center;">
+                <input type="button" id="btnSalvar" value="Salvar" class="button" style="width: 200px;">
+            </div>
+            
+            <div class="titulo">
+                <div id="listaInvestimentos"></div>
+            </div>
+        </div>
+        <div id="ModalComprovante">
+            <?php include_once "ComprovanteView.php";?>
         </div>
     </body>
 </html>

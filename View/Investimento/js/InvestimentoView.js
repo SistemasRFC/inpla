@@ -1,16 +1,4 @@
 $(function () {
-    $("#ComprovanteForm").jqxWindow({
-        autoOpen: false,
-        height: 200,
-        width: 400,
-        theme: theme,
-        animationType: 'fade',
-        showAnimationDuration: 500,
-        closeAnimationDuration: 500,
-        title: 'Enviar Comprovante',
-        isModal: true
-    });
-
     $("#btnSalvar").click(function () {
         salvarInvestimento();
     });
@@ -82,13 +70,12 @@ function montaTabelaInvestimento(ListaInvestimentos) {
         var rowID = rowData.uid;
 
         preencheCamposForm(listaInvestimentos[rowID]);
-//        $("#nomePopUp").jqWindow("open");
     });
 }
 
 function comprovanteForm(cod) {
     $("#codInvestimento").val(cod);
-    $("#ComprovanteForm").jqxWindow("open");
+    $("#modalComprovante").show("fade");
 }
 
 function cancelarInvestimento(cod) {
@@ -129,7 +116,6 @@ $(document).ready(function () {
     ExecutaDispatch('Plano', 'ListarPlanoAtivo', undefined, CarregaComboPlano);
     ExecutaDispatch('Banco', 'ListarBancoAtivo', undefined, CarregaComboBanco);
     carrregaInvestimentos();
-    $("input[type='button']").jqxButton({theme: theme});
 
     $("#tdcodBanco").change(function () {
         ExecutaDispatch('Banco', 'ListaDadosBanco', 'codBanco;'+$("#codBanco").val()+'|', retornoDadosBanco);

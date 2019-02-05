@@ -1,22 +1,10 @@
 $(function () {
-    $("#ReinvestirForm").jqxWindow({
-        autoOpen: false,
-        height: 200,
-        width: 300,
-        theme: theme,
-        animationType: 'fade',
-        showAnimationDuration: 500,
-        closeAnimationDuration: 500,
-        title: 'Selecionar Plano',
-        isModal: true
-    });
-    
     $("#vlrSaque").maskMoney({symbol: "R$ ", decimal: ",", thousands: "."});
     $("#btnSacar").click(function () {
         sacarSaldo();
     });
     $("#btnReinvestir").click(function () {
-        $('#ReinvestirForm').jqxWindow('open');
+        $('#modalReinvestir').show('fade');
     });
 });
 
@@ -99,5 +87,4 @@ function carregaInformacoes(dadosSaque){
 $(document).ready(function () {
     ExecutaDispatch('Saque', 'CarregaSaldo', undefined, carregaInformacoes);
     carrregaSaques();
-    $("input[type='button']").jqxButton({theme: theme});
 });

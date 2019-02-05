@@ -77,7 +77,7 @@ include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
             </div>
         </div>
         <div id="ModalLancaGol">
-            <?php include_once PATH . "/View/Jogo/LancaGolView.php"; ?>
+            <?php include_once "LancaGolView.php"; ?>
         </div>
     </body>
 </html>

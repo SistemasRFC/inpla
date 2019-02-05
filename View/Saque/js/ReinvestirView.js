@@ -23,7 +23,7 @@ function salvarInvestimento() {
 
 function carrregaListaSaque() {
     LimparCampos();
-    $('#ReinvestirForm').jqxWindow('close');
+    $('#modalReinvestir').hide('fade');
     ExecutaDispatch('Saque', 'ListarSaque', undefined, montaTabelaSaques);
 }
 

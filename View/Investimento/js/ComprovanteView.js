@@ -25,5 +25,5 @@ function retornaEnvio(dado) {
     $("#lnkComprovantes").val(dado[1]);
     var parametros = retornaParametros();
     ExecutaDispatch('Investimento', 'UpdateComprovanteInvestimento', parametros, carrregaInvestimentos);    
-    $("#ComprovanteForm").jqxWindow("close");
+    $("#modalComprovante").hide("fade");
 }
