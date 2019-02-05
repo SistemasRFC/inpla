@@ -21,7 +21,21 @@ class JogoDao extends BaseDao
                        CONCAT('<a href=\"javascript:lancarGol(',J.COD_JOGO,')\"><img src=\"../../Resources/images/gol.png\" title=\"Registrar Gol\" width=\"20\" height=\"\"></a>') AS ACAO,
                        J.COD_TIME_1,
                        J.COD_TIME_2,
-                       CONCAT(T.DSC_TIME,' X ', T1.DSC_TIME) AS DSC_JOGO,
+                       CONCAT(T.DSC_TIME,' ',
+                              (SELECT COALESCE(COUNT(G.COD_GOL), 0)
+                                 FROM EN_GOL G 
+                                INNER JOIN RE_JOGO J1
+                                   ON G.COD_JOGO = J1.COD_JOGO
+                                  AND G.COD_TIME = J1.COD_TIME_1
+                                WHERE J1.COD_JOGO = J.COD_JOGO),
+                              ' X ',
+                              (SELECT COALESCE(COUNT(G.COD_GOL), 0)
+                                 FROM EN_GOL G 
+                                INNER JOIN RE_JOGO J1
+                                   ON G.COD_JOGO = J1.COD_JOGO
+                                  AND G.COD_TIME = J1.COD_TIME_2
+                                WHERE J1.COD_JOGO = J.COD_JOGO),' ',
+                              T1.DSC_TIME) AS DSC_JOGO,
                        J.COD_ESTADIO,
                        E.DSC_ESTADIO,
                        DTA_JOGO AS DTA_JOGO_W,
@@ -34,6 +48,7 @@ class JogoDao extends BaseDao
                     ON J.COD_TIME_2 = T1.COD_TIME
                  INNER JOIN EN_ESTADIO E
                     ON J.COD_ESTADIO = E.COD_ESTADIO
+                 GROUP BY J.COD_JOGO
                  ORDER BY DTA_JOGO, HRA_JOGO";
         return $this->selectDB($sql, false);
     }

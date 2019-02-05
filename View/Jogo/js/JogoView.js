@@ -79,6 +79,7 @@ function montaTabelaJogo(listaJogo) {
 
 function lancarGol(codJogo) {
     $("#codJogo").val(codJogo);
+    ExecutaDispatch('Jogo', 'CarregaTimesJogo', 'codJogo;'+codJogo+'|', montaRadioTimes);
     $("#LancaGol").show("fade");
 }
 

@@ -337,6 +337,7 @@ function preencheCamposForm(arrCampos, valorPadrao){
 function LimparCampos(){
     $(".persist").each(function(index) { 
         switch ($(this).attr('type')) {
+            case 'radio':
             case 'checkbox':
                 $(this).prop("checked", false);
                 break;                

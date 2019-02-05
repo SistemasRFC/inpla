@@ -4,29 +4,37 @@ $(function () {
     });
 
     $("#fechaModal").click(function () {
-        $("#codJogo").val('');
+        LimparCampos();
         $("#LancaGol").hide("fade");
     });
-
 });
 
 function LancaGol() {
     var parametros = retornaParametros();
-    ExecutaDispatch('Jogo', LancarGol , parametros, carregaGridJogo, 'Aguarde, Salvando!', 'Gol Registrado com Sucesso!');
+    parametros += 'nroMinutos;'+$("#nroMinutos").val()+'|codTime;'+$("input[name='codTimeItem']:checked").val()+'|nroTempo;'+$("input[name='nroTempoItem']:checked").val()+'|';
+    ExecutaDispatch('Gol', 'InsertGol' , parametros, carregaGridJogo, 'Aguarde, Salvando!', 'Gol Registrado com Sucesso!');
 }
 
 function montaRadioTimes(dados) {
-    $("#codTime").html('');
-    var html = "<input type='radio' name='codTime1' value='"+dados[1]['codTime1']+"'>'"+dados[1]['dscTime1']+"'";
-    html += "<input type='radio' name='codTime1' value='"+dados[1]['codTime2']+"'>'"+dados[1]['dscTime2']+"'";
-    $("#codTime").html(html);
+    $("#codTimeRadio").html('');
+    var html = "<input type='radio' class='persist' name='codTimeItem' value='"+dados[1][0]['COD_TIME_1']+"'>"+dados[1][0]['DSC_TIME_1']+"&nbsp;&nbsp;&nbsp;&nbsp;";
+    html += "<input type='radio' class='persist' name='codTimeItem' value='"+dados[1][0]['COD_TIME_2']+"'>"+dados[1][0]['DSC_TIME_2']+"";
+    $("#codTimeRadio").html(html);
+}
+
+function montaRadioTempos() {
+    $("#nroTempoRadio").html('');
+    var html = "<input type='radio' class='persist' name='nroTempoItem' value='1'> 1&ordm; Tempo &nbsp;&nbsp;";
+    html += "<input type='radio' class='persist' name='nroTempoItem' value='2'> 2&ordm; Tempo";
+    $("#nroTempoRadio").html(html);
 }
 
 function carregaGridJogo() {
     LimparCampos();
     ExecutaDispatch('Jogo', 'ListarJogo', undefined, montaTabelaJogo);
+    $("#LancaGol").hide("fade");
 }
 
-$(document).ready(function(){
-    ExecutaDispatch('Jogo', 'CarregaTimesJogo', 'codJogo;'+$("#codJogo").val()+'|', montaRadioTimes);
+$(document).ready(function() {
+    montaRadioTempos();
 });

@@ -4,20 +4,28 @@
     </head>
     <body>
         <div id="LancaGol" class="modal" style="padding-top: 100px;">
-            <input type="hidden" id="codJogo" name="codJogo" class="persist">
             <input type="hidden" id="codGol" name="codGol" class="persist">
-            <div class="card" style="margin-top: 0px; padding-top: 2px; max-width: 500px;">
-                <span id="fechaModal" class="close" style="margin-top: 8px;">&times;</span>
-                <h4>Lançar Gols</h4>
-
-                <div id="codTime" class="persist">
-
-                <label for="nroMinutos" class="titulo">Minutos</label>
-                <input type="text" id="nroMinutos" name="nroMinutos" class="input" style="width: 120px">
-
-                <input type="radio" name="nroTempo" value="1" class="persist"> 1&ordm; Tempo
-                <input type="radio" name="nroTempo" value="2" class="persist"> 2&ordm; Tempo
-                
+            <div class="card" style="margin-top: 0px;max-width: 500px;padding: 0px 0px;">
+                <div class="modal-header">
+                    <span id="fechaModal" class="close" style="margin-top: 8px;color: #f2f2f2;">&times;</span>
+                    <h4>Lançar Gols</h4>
+                </div>
+                <table width="100%">
+                    <tr>
+                        <td colspan="2" class="titulo">
+                            <div id="codTimeRadio" style="padding: 10px 20px;"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="titulo">
+                            <label for="nroMinutos" class="titulo" style="padding-left: 20px;">Minutos</label>
+                            <input type="text" id="nroMinutos" name="nroMinutos" class="persist input" style="width: 120px;">
+                        </td>
+                        <td class="titulo">
+                            <div id="nroTempoRadio"></div>
+                        </td>
+                    </tr>
+                </table>
                 <div class="titulo">
                     <input type="button" id="btnLancar" value="Salvar" class="button">
                 </div>
