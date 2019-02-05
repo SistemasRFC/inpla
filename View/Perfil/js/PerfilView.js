@@ -1,16 +1,4 @@
 $(function () {
-    $("#CadPerfil").jqxWindow({
-        autoOpen: false,
-        height: 200,
-        width: 400,
-        theme: theme,
-        animationType: 'fade',
-        showAnimationDuration: 500,
-        closeAnimationDuration: 500,
-        isModal: true,
-        title: 'Cadastro de Perfil'
-    });
-
     $("#listaPerfil").jqxTooltip({
         content: 'D&ecirc; um duplo clique para editar',
         position: 'mouse',
@@ -20,7 +8,6 @@ $(function () {
 
     $("#btnNovo").click(function () {
         LimparCampos();
-        $("#CadPerfil").jqxWindow("open");
     });
 
     $("#btnSalvar").click(function () {
@@ -40,8 +27,7 @@ function SalvarPerfil(method){
 }
 
 function retornoSalvarPerfil() {
-    $("#codPerfil").val('');
-    $("#CadPerfil").jqxWindow("close");
+    LimparCampos();
     carregaGridPerfil();
 }
 
@@ -50,7 +36,6 @@ function carregaGridPerfil() {
 }
 
 function montaTabelaPerfil(listaPerfil) {
-    $("#codPerfil").val(0);
     listaPerfil = listaPerfil[1];
     var nomeGrid = 'listaPerfil';
     var source =
@@ -71,7 +56,7 @@ function montaTabelaPerfil(listaPerfil) {
     var dataAdapter = new $.jqx.dataAdapter(source);
     $("#" + nomeGrid).jqxGrid(
         {
-            width: 685,
+            width: 500,
             source: dataAdapter,
             theme: theme,
             selectionmode: 'singlerow',
@@ -93,7 +78,6 @@ function montaTabelaPerfil(listaPerfil) {
         var rowData = rows[args.visibleindex];
         var rowID = rowData.uid;
         preencheCamposForm(listaPerfil[rowID],'indAtivo;B|');
-        $("#CadPerfil").jqxWindow("open");
     });
 }
 
