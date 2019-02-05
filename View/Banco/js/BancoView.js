@@ -48,7 +48,7 @@ function montaTabelaBancos(ListaBancos) {
     var dataAdapter = new $.jqx.dataAdapter(source);
     $("#" + nomeGrid).jqxGrid(
             {
-                width: 695,
+                width: 600,
                 source: dataAdapter,
                 theme: theme,
                 sortable: true,
@@ -57,12 +57,12 @@ function montaTabelaBancos(ListaBancos) {
                 columnsresize: true,
                 selectionmode: 'singlerow',
                 columns: [
-                    {text: 'Banco', datafield: 'DSC_BANCO', columntype: 'textbox', width: 100},
-                    {text: 'Agência', datafield: 'NRO_AGENCIA', columntype: 'textbox', width: 100},
-                    {text: 'Conta', datafield: 'NRO_CONTA', columntype: 'textbox', width: 100},
-                    {text: 'CPF', datafield: 'NRO_CPF', columntype: 'textbox', width: 150},
-                    {text: 'Titular', datafield: 'DSC_TITULAR', columntype: 'textbox', width: 180},
-                    {text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 65, align:'center'}
+                    {text: 'Banco', datafield: 'DSC_BANCO', columntype: 'textbox', width: 120},
+                    {text: 'Agência', datafield: 'NRO_AGENCIA', columntype: 'textbox', width: 80},
+                    {text: 'Conta', datafield: 'NRO_CONTA', columntype: 'textbox', width: 80},
+                    {text: 'CPF', datafield: 'NRO_CPF', columntype: 'textbox', width: 110},
+                    {text: 'Titular', datafield: 'DSC_TITULAR', columntype: 'textbox', width: 150, cellsalign: 'center'},
+                    {text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 60, align:'center'}
                 ]
             });
     $('#' + nomeGrid).on('rowdoubleclick', function (event) {
@@ -78,5 +78,4 @@ function montaTabelaBancos(ListaBancos) {
 
 $(document).ready(function () {
     carrregaBancos();
-    $("input[type='button']").jqxButton({theme: theme});
 });

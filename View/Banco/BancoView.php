@@ -4,80 +4,60 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
 ?>
 <html>
     <head>
-        <title>Cadastro de Bancos</title>
+        <title>INPLA - Cadastro de Bancos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/BancoView.js?rdm=<?php echo time(); ?>"></script>
     </head>
     <body>
         <input type="hidden" id="codBanco" name="codBanco" value="0" class="persist">    
         <input type="hidden" id="method" name="method" class="persist">
-        <table width="100%">
-            <tr>
-                <td width="100%"
-                    style="text-align:left;
-                    height:10%;
-                    font-size:16px;
-                    color:#0150D3;
-                    vertical-align:middle;
-                    font-family: arial, helvetica, serif;
-                    border-bottom: 1px solid #0150D3;">
-                    Cadastro de Bancos
-                </td>
-            </tr>
-        </table>
-        <form name="bancoForm" enctype="multpart/form-data" id="cadastroBancoForm" method="post" action="../../Controller/Banco/BancoController.php">
-            <table width="50%">
+        <div class="card" style="max-width: 610px;">
+            <div class="cabecalho">Cadastro de Bancos</div>
+
+            <div class="titulo" style="margin-bottom: 30px;">
+                <input type="button" id="btnNovo" value="Novo Banco" class="button" style="width: 150px;background-color: darkslategrey;">
+            </div>
+            <table width="100%">
                 <tr>
                     <td>
-                        <input type="button" id="btnNovo" value="Novo Banco">
-                    </td>
-                </tr>
-                <tr>
-                    <td>&nbsp;&nbsp;&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Banco</b><br>
-                        <input type="text" name="dscBanco" id="dscBanco" size="15" class="persist">
+                        <label for="dscBanco" class="titulo">Banco</label>
+                        <input type="text" id="dscBanco" name="dscBanco" class="persist input">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <b>Agência</b><br>
-                        <input type="text" name="nroAgencia" id="nroAgencia" size="10" class="persist">
+                        <label for="nroAgencia" class="titulo">Agência</label>
+                        <input type="text" id="nroAgencia" name="nroAgencia" class="persist input">
                     </td>
                     <td>
-                        <b>Conta</b><br>
-                        <input type="text" name="nroConta" id="nroConta" size="10" class="persist">
+                        <label for="nroConta" class="titulo">Conta</label>
+                        <input type="text" id="nroConta" name="nroConta" class="persist input">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <b>Titular</b><br>
-                        <input type="text" name="dscTitular" id="dscTitular" size="20" class="persist">
+                        <label for="dscTitular" class="titulo">Titular</label>
+                        <input type="text" id="dscTitular" name="dscTitular" class="persist input">
                     </td>
                     <td>
-                        <b>CPF</b><br>
-                        <input type="text" name="nroCpf" id="nroCpf" size="15" class="persist">
+                        <label for="nroCpf" class="titulo">CPF</label>
+                        <input type="text" id="nroCpf" name="nroCpf" class="persist input">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" name="indAtivo" id="indAtivo" class="persist"><b>Ativo</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="right">
-                        <input type="button" id="btnSalvar" value="Salvar">
+                        <input type="checkbox" id="indAtivo" name="indAtivo" class="persist input" style="width: 3%;">
+                        <label for="indAtivo" class="titulo">Ativo</label>
                     </td>
                 </tr>
             </table>
-        </form>
-        <table width="100%">
-            <tr>
-                <td>
-                    <div id="listaBancos" />
-                </td>
-            </tr>
-        </table>
+
+            <div class="titulo" style="text-align: right;">
+                <input type="button" id="btnSalvar" value="Salvar" class="button" style="width: 100px;">
+            </div>
+            
+            <div class="titulo">
+                <div id="listaBancos"></div>
+            </div>
+        </div>
     </body>

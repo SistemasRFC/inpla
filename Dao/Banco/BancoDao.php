@@ -5,7 +5,7 @@ class BancoDao extends BaseDao
     Protected $tableName = "EN_BANCO";
     
     Protected $columns = array ("dscBanco"   => array("column" =>"DSC_BANCO", "typeColumn" =>"S"),
-                                "nroAgencia"   => array("column" =>"NRO_AGENCIA", "typeColumn" =>"I"),
+                                "nroAgencia"   => array("column" =>"NRO_AGENCIA", "typeColumn" =>"S"),
                                 "nroConta"   => array("column" =>"NRO_CONTA", "typeColumn" =>"S"),
                                 "nroCpf"   => array("column" =>"NRO_CPF", "typeColumn" =>"S"),
                                 "dscTitular"   => array("column" =>"DSC_TITULAR", "typeColumn" =>"S"),
