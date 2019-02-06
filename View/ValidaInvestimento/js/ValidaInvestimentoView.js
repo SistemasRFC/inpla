@@ -42,7 +42,7 @@ function montaTabelaInvestimento(ListaInvestimentos) {
     var dataAdapter = new $.jqx.dataAdapter(source);
     $("#" + nomeGrid).jqxGrid(
             {
-                width: 860,
+                width: 450,
                 source: dataAdapter,
                 theme: theme,
                 sortable: true,
@@ -52,9 +52,9 @@ function montaTabelaInvestimento(ListaInvestimentos) {
                 selectionmode: 'singlerow',
                 columns: [
                     {text: 'Nro.', columntype: 'textbox', datafield: 'COD_INVESTIMENTO', width: 50},
-                    {text: 'Investidor', datafield: 'USUARIO', columntype: 'textbox', width: 150},
-                    {text: 'Plano', datafield: 'DSC_PLANO', columntype: 'textbox', width: 70},
-                    {text: 'Valor Investido', datafield: 'VLR_PLANO', columntype: 'textbox', width: 110, cellsalign: 'right'},
+                    {text: 'Investidor', datafield: 'USUARIO', columntype: 'textbox', width: 190},
+                    {text: 'Plano', datafield: 'DSC_PLANO', columntype: 'textbox', width: 90, cellsalign: 'center', align: 'center'},
+                    {text: 'Valor Investido', datafield: 'VLR_PLANO', columntype: 'textbox', width: 120, cellsalign: 'right'},
                 ]
             });
     $('#' + nomeGrid).on('rowdoubleclick', function (event) {

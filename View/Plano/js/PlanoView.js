@@ -45,7 +45,7 @@ function montaTabelaPlanos(ListaPlanos) {
     var dataAdapter = new $.jqx.dataAdapter(source);
     $("#" + nomeGrid).jqxGrid(
             {
-                width: 550,
+                width: 500,
                 source: dataAdapter,
                 theme: theme,
                 sortable: true,
@@ -56,7 +56,7 @@ function montaTabelaPlanos(ListaPlanos) {
                 columns: [
                     {text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_PLANO', width: 80},
                     {text: 'Descri&ccedil;&atilde;o', datafield: 'DSC_PLANO', columntype: 'textbox', width: 180},
-                    {text: 'Valor', datafield: 'VLR_PLANO', columntype: 'textbox', width: 180},
+                    {text: 'Valor', datafield: 'VLR_PLANO', columntype: 'textbox', width: 150},
                     {text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 67}
                 ]
             });
@@ -73,5 +73,4 @@ function montaTabelaPlanos(ListaPlanos) {
 
 $(document).ready(function () {
     carrregaPlanos();
-    $("input[type='button']").jqxButton({theme: theme});
 });
