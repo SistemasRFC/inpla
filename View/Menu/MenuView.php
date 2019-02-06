@@ -14,7 +14,7 @@ include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
             <div class="cabecalho">Cadastro de Menus</div>
             
             <div class="titulo" style="margin-bottom: 30px;">
-                <input type="button" id="btnNovo" value="Novo Menu" class="button" style="width: 150px;background-color: darkslategrey;">
+                <input type="button" id="btnNovo" value="Novo Menu" class="button-novo">
             </div>
             
             <div class="titulo">

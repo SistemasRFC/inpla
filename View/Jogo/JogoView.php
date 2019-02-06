@@ -15,7 +15,7 @@ include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
             <table width="95%">
                 <tr class="titulo">
                     <td>
-                        <input type="button" id="btnNovo" value="Novo Jogo" class="button" style="width: 150px;background-color: darkslategrey;margin-bottom: 15px;">
+                        <input type="button" id="btnNovo" value="Novo Jogo" class="button-novo">
                     </td>
                 </tr>
                 <tr>

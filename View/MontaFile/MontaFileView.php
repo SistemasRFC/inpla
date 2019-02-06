@@ -15,8 +15,7 @@ include_once PATH."View/MenuPrincipal/Cabecalho.php";
             <div class="cabecalho">Monta File</div>
             
             <div class="titulo" style="margin-bottom: 30px;">
-                <input type="button" id="Refresh" value="Atualiza" onclick="javascript:MontaListaTabelas();" 
-                    class="button" style="width: 150px;background-color: darkslategrey;">
+                <input type="button" id="Refresh" value="Atualiza" onclick="javascript:MontaListaTabelas();" class="button-novo">
             </div>
             
             <div class="titulo">

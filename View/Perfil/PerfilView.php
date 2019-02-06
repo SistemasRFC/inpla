@@ -15,7 +15,7 @@ include_once PATH."View/MenuPrincipal/Cabecalho.php";?>
             <div class="cabecalho">Cadastro de Perfil</div>
             
             <div class="titulo" style="margin-bottom: 30px;">
-                <input type="button" id="btnNovo" value="Novo Perfil" class="button" style="width: 150px;background-color: darkslategrey;">
+                <input type="button" id="btnNovo" value="Novo Perfil" class="button-novo">
             </div>
             
             <label for="dscPerfilW" class="titulo">Descrição</label>

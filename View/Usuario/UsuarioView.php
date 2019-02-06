@@ -20,14 +20,6 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                 <div id="listaUsuarios"></div>
             </div>
         </div>
-        <!-- <table width="100%" id="CadastroUsuarios">         
-            <tr>
-                <td id="tdGrid">
-                    <div id="listaUsuarios">
-                    </div>
-                </td>
-            </tr>
-        </table> -->
         <div id="CadUsuarios">
             <div id="windowHeader"></div>
             <div style="overflow: hidden;" id="windowContent">
