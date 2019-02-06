@@ -3,7 +3,7 @@ $(function () {
         autoOpen: false,
         height: 360,
         width: 480,
-        theme: theme,
+        theme: 'darkcyan',
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
@@ -52,7 +52,7 @@ function MontaTabelaUsuario(listaUsuario) {
         {
             width: 700,
             source: dataAdapter,
-            theme: theme,
+            theme: 'darkcyan',
             sortable: true,
             filterable: true,
             pageable: true,

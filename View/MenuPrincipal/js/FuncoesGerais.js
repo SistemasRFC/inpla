@@ -24,7 +24,7 @@ function MontaMenu(menu){
             {name: 'dscMenu', map: 'label'},
             {name: 'id', map: 'id'}
         ]);
-        $('#CriaMenu').jqxMenu({ source: records, height: 30, theme: theme });
+        $('#CriaMenu').jqxMenu({ source: records, height: 30, theme: 'darkcyan' });
         $("#CriaMenu").on('itemclick', function (event) {
             for(i=0;i<DadosMenu[1].length;i++){
 
@@ -57,7 +57,7 @@ function CriarDivAutoComplete(nmeInput, url, method, dataFields, displayMember, 
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
-        theme: theme,
+        theme: 'darkcyan',
         isModal: false,
         autoOpen: false
     });           

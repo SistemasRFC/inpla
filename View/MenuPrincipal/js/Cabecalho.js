@@ -50,7 +50,7 @@ function CriarCombo(nmeCombo, url, parametros, dataFields, displayMember, valueM
             $("#"+nmeCombo).jqxDropDownList(
             {
                 source: records[1],
-                theme: theme,
+                theme: 'darkcyan',
                 width: 200,
                 height: 25,
                 selectedIndex: 0,
@@ -102,7 +102,7 @@ function CriarComboTamanho(nmeCombo, largura, altura, larguraDrop, url, parametr
             $("#"+nmeCombo).jqxDropDownList(
             {
                 source: records[1],
-                theme: theme,
+                theme: 'darkcyan',
                 width: largura,
                 height: altura,
                 dropDownWidth: larguraDrop,

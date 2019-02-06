@@ -3,7 +3,7 @@ $(function () {
         content: 'D&ecirc; um duplo clique para editar',
         position: 'mouse',
         name: 'movieTooltip',
-        theme: theme
+        theme: 'darkcyan'
     });
 
     $("#btnNovo").click(function () {
@@ -58,7 +58,7 @@ function montaTabelaPerfil(listaPerfil) {
         {
             width: 500,
             source: dataAdapter,
-            theme: theme,
+            theme: 'darkcyan',
             selectionmode: 'singlerow',
             sortable: true,
             filterable: true,

@@ -53,7 +53,7 @@ function montaTabelaJogo(listaJogo) {
         {
             width: 620,
             source: dataAdapter,
-            theme: theme,
+            theme: 'darkcyan',
             selectionmode: 'singlerow',
             sortable: true,
             filterable: true,

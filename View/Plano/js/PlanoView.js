@@ -47,7 +47,7 @@ function montaTabelaPlanos(ListaPlanos) {
             {
                 width: 500,
                 source: dataAdapter,
-                theme: theme,
+                theme: 'darkcyan',
                 sortable: true,
                 filterable: true,
                 pageable: true,

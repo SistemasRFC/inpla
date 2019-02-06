@@ -45,7 +45,7 @@ function montaTabelaInvestimento(ListaInvestimentos) {
             {
                 width: 860,
                 source: dataAdapter,
-                theme: theme,
+                theme: 'darkcyan',
                 sortable: true,
                 filterable: true,
                 pageable: true,

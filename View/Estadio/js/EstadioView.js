@@ -47,7 +47,7 @@ function montaTabelaEstadio(listaEstadio) {
         {
             width: 600,
             source: dataAdapter,
-            theme: theme,
+            theme: 'darkcyan',
             selectionmode: 'singlerow',
             sortable: true,
             filterable: true,

@@ -15,7 +15,8 @@ if (!isset($_SESSION['cod_usuario'])) {
         <link rel="stylesheet" href="../../Resources/css/style.css?random=<?php echo time(); ?>" type="text/css" />
         <link href="../../Resources/css/redmond/jquery-ui-1.10.3.custom.css" rel="stylesheet">
         <link rel="stylesheet" href="../../Resources/jqx/jqwidgets/styles/jqx.base.css" type="text/css" />
-        <link rel="stylesheet" href="../../Resources/jqx/jqwidgets/styles/jqx.bootstrap.css" type="media" />
+        <link rel="stylesheet" href="../../Resources/jqx/jqwidgets/styles/jqx.bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="../../Resources/jqx/jqwidgets/styles/jqx.darkcyan.css" type="text/css" />
         <script src="../../Resources/js/jquery-1.9.0.js"></script>
         <script src="../../Resources/js/jquery-ui-1.10.0.custom.js"></script>
         <script src="../../Resources/js/jquery.maskedinput.js" type="text/javascript"></script>
@@ -69,7 +70,7 @@ if (!isset($_SESSION['cod_usuario'])) {
                                     echo "<BR>";
                                     echo "<a style=\"text-align:left;
                                                 height:10%;
-                                                font-size:11px;
+                                                font-size:13px;
                                                 color:#0150D3;
                                                 vertical-align:middle;
                                                 font-family: arial, helvetica, serif;\"

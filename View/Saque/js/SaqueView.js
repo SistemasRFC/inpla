@@ -49,7 +49,7 @@ function montaTabelaSaques(ListaSaques) {
             {
                 width: 580,
                 source: dataAdapter,
-                theme: theme,
+                theme: 'darkcyan',
                 sortable: true,
                 filterable: true,
                 pageable: true,

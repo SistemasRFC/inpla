@@ -32,7 +32,7 @@
                 <tr align="center">
                     <td colspan="2" style="font-family:Times New Roman;
                                            font-size:30;
-                                           color:darkcyan;
+                                           color: darkcyan;
                                            border-bottom: 1px solid darkcyan">
                         <b>Alteração de Senha</b>
                     </td>

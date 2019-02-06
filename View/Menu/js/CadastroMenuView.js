@@ -1,12 +1,12 @@
 $(function () {
     $("#CadMenus").jqxWindow({
         title: 'Cadastro de Menus',
-        height: 520,
+        height: 530,
         width: 700,
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
-        theme: theme,
+        theme: 'darkcyan',
         isModal: true,
         autoOpen: false
     });
@@ -17,7 +17,7 @@ $(function () {
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
-        theme: theme,
+        theme: 'darkcyan',
         isModal: true,
         autoOpen: false
     });
@@ -28,7 +28,7 @@ $(function () {
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
-        theme: theme,
+        theme: 'darkcyan',
         isModal: true,
         autoOpen: false
     });
@@ -46,7 +46,7 @@ function CarregaGridMenu(listaMenus) {
 
 function MontaTabelaMenu(listaMenus) {
     var nomeGrid = 'listaMenus';
-    var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px', autoOpenPopup: false, mode: 'popup', theme: theme });
+    var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px', autoOpenPopup: false, mode: 'popup', theme: 'darkcyan' });
     var source =
     {
         localdata: listaMenus,
@@ -72,7 +72,7 @@ function MontaTabelaMenu(listaMenus) {
         {
             width: 800,
             source: dataAdapter,
-            theme: theme,
+            theme: 'darkcyan',
             sortable: true,
             filterable: true,
             pageable: true,

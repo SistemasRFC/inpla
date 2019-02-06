@@ -3,7 +3,7 @@ $(function () {
         autoOpen: false,
         height: 700,
         width: 600,
-        theme: theme,
+        theme: 'darkcyan',
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
@@ -44,7 +44,7 @@ function montaTabelaInvestimento(ListaInvestimentos) {
             {
                 width: 450,
                 source: dataAdapter,
-                theme: theme,
+                theme: 'darkcyan',
                 sortable: true,
                 filterable: true,
                 pageable: true,
