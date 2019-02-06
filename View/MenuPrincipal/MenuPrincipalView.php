@@ -1,73 +1,53 @@
 <?php 
 include_once getenv("CONSTANTES");
+include_once "Cabecalho.php";
 ?>
 <head>
     <title>Início - INPLA</title>
-</head>
-<?php include_once "Cabecalho.php";?>
-<style>
-    a:link{border: #000000; text-decoration:none; background-color:#FFFFFF; color:#FF0000;}
-    a:visited{border: #000000; text-decoration:none; background-color:#FFFFFF; color:#FF0000;}
-    a:hover{border: #000000; text-decoration:none; background-color:#a4bed4; color:#FF0000;}
-    a:active{border: #000000; text-decoration:none; background-color:#FFFFFF; color:#FF0000;}
-    img{border:#000000;}
-</style>
     <script src="../../View/MenuPrincipal/js/MenuPrincipalView.js"></script>
-    <form name="menuPrincipal" method="post">
-    <input type="hidden" name="horaInicial">
-    <input type="hidden" name="data">
-    <input type="hidden" name="habilita">
-    <div  class="divDefault">
-    <table width="100%">
-        <tr>
-            <td width="50%">
-                <table align="center" width="100%" style=" border: 1px solid #a4bed4;" >
-                    <tr>
-                        <td>
-                            <table width="100%">
-                                <tr>
-                                    <td style="border: 1px solid #a4bed4;text-align:left;padding-left:6;font-size:13px;background-color:#e0e9f5;color:#000000;">Atalhos</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #a4bed4;">
-                                        <div id="divAtalhos" style="display:block;border: 0px solid #a4bed4;overflow:scroll;width:100%;height:500px;">
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-areas:
+        'left main right'
+        'left main right';
+        grid-gap: 10px;
+        background-color: #f2f2f2;
+    }
 
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td width="50%">
-                <table align="center" width="100%" style=" border: 1px solid #a4bed4;" >
-                    <tr>
-                        <td>
-                            <table width="100%">
-                                <tr>
-                                    <td style="border: 1px solid #a4bed4;text-align:left;padding-left:6;font-size:13px;background-color:#e0e9f5;color:#000000;">Resumo</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #a4bed4;">
-                                        <div id="divResumo" style="display:block;border: 0px solid #a4bed4;overflow:scroll;width:100%;height:500px;">
-                                            <div id='host' style="margin: 0 auto; width: 599px; height: 400px;">
-                                                 <div id='jqxChart' style="width: 580px; height: 400px; position: relative; left: 0px;
-                                                     top: 0px;">
-                                                 </div>
-                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+    .item1 { grid-area: header; }
+    .item2 { grid-area: left; }
+    .item3 { grid-area: main; }
+    .item4 { grid-area: right; }
+    .item5 { grid-area: footer; }
+
+    .grid-container > div {
+    text-align: center;
+    font-size: 30px;
+    }
+</style>
+</head>
+<body>
+    <div class="card" style="max-width: 100%;">
+        <div class="grid-container">
+            <div class="item2">
+                <div class="card" style="max-width: 100%;background-color: #D8C7C7">
+                    <div class="info">Teste</div>
+                    <img src="">
+                </div>
+            </div>
+            <div class="item3">
+                <div class="card" style="max-width: 100%;background-color: #D8C7C7">
+                <div class="info">Teste 2</div>
+                    <img src="">
+                </div>
+            </div>
+            <div class="item4">
+                <div class="card" style="max-width: 100%;background-color: #D8C7C7">
+                <div class="info">Teste 3</div>
+                    <img src="">
+                </div>
+            </div>
+        </div>
     </div>
-</form>
-    </td></tr>
-    </table>
-    </body>
+</body>
