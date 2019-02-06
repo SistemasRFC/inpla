@@ -11,7 +11,7 @@ $(function () {
 
 function LancaGol() {
     var parametros = retornaParametros();
-    parametros += 'nroMinutos;'+$("#nroMinutos").val()+'|codTime;'+$("input[name='codTimeItem']:checked").val()+'|nroTempo;'+$("input[name='nroTempoItem']:checked").val()+'|';
+    parametros += 'codTime;'+$("input[name='codTimeItem']:checked").val()+'|nroTempo;'+$("input[name='nroTempoItem']:checked").val()+'|';
     ExecutaDispatch('Gol', 'InsertGol' , parametros, carregaGridJogo, 'Aguarde, Salvando!', 'Gol Registrado com Sucesso!');
 }
 
