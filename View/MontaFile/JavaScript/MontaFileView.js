@@ -31,7 +31,7 @@ function MontaListaTabelas(ListaTabelas) {
     var dataAdapter = new $.jqx.dataAdapter(source);
     $("#" + nomeGrid).jqxGrid(
         {
-            width: 800,
+            width: 500,
             source: dataAdapter,
             theme: theme,
             selectionmode: 'singlerow',
@@ -41,8 +41,7 @@ function MontaListaTabelas(ListaTabelas) {
             //editable: true,
             columnsresize: true,
             columns: [
-                //{ text: 'C.P.F', columntype: 'textbox', datafield: 'CPF', width: 80 }, 
-                { text: 'Descrição', columntype: 'textbox', datafield: 'NME_TABELA', width: 320 }
+                { text: 'Descrição', columntype: 'textbox', datafield: 'NME_TABELA', width: 500 }
             ]
         });
     // events

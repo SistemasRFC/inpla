@@ -1,8 +1,8 @@
 $(function () {
     $("#CadUsuarios").jqxWindow({
         autoOpen: false,
-        height: 270,
-        width: 500,
+        height: 360,
+        width: 480,
         theme: theme,
         animationType: 'fade',
         showAnimationDuration: 500,
@@ -50,7 +50,7 @@ function MontaTabelaUsuario(listaUsuario) {
     var dataAdapter = new $.jqx.dataAdapter(source);
     $("#" + nomeGrid).jqxGrid(
         {
-            width: 1000,
+            width: 700,
             source: dataAdapter,
             theme: theme,
             sortable: true,
@@ -59,12 +59,12 @@ function MontaTabelaUsuario(listaUsuario) {
             columnsresize: true,
             selectionmode: 'singlerow',
             columns: [
-                { text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_USUARIO', width: 80 },
-                { text: 'Login', datafield: 'NME_USUARIO', columntype: 'textbox', width: 180 },
-                { text: 'Nome Completo', datafield: 'NME_USUARIO_COMPLETO', columntype: 'textbox', width: 180 },
+                { text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_USUARIO', width: 70 },
+                { text: 'Login', datafield: 'NME_USUARIO', columntype: 'textbox', width: 170 },
+                { text: 'Nome Completo', datafield: 'NME_USUARIO_COMPLETO', columntype: 'textbox', width: 220 },
                 { text: 'Perfil', datafield: 'DSC_PERFIL_W', columntype: 'textbox', width: 180 },
                 { text: 'CPF', datafield: 'NRO_CPF', columntype: 'textbox', width: 180 },
-                { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 67 }
+                { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 60, align: 'center' }
             ]
         });
     // events

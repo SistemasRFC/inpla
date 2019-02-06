@@ -1,7 +1,7 @@
 $(function () {
     $("#CadMenus").jqxWindow({
         title: 'Cadastro de Menus',
-        height: 450,
+        height: 520,
         width: 700,
         animationType: 'fade',
         showAnimationDuration: 500,
@@ -121,16 +121,6 @@ function MontaTabelaMenu(listaMenus) {
         var rowID = rowData.uid;
 
         preencheCamposForm(listaMenus[rowID], 'indMenuAtivoW;B|indAtalho;B|indVisible;B|');
-//        $("#codMenu").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_W);
-//        $("#dscMenu").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_MENU_W);
-//        $("#nmeController").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
-//        $("#nmeClasse").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_CONTROLLER);
-//        $("#nmeMethod").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).NME_METHOD);
-//        $("#dscCaminhoImagem").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).DSC_CAMINHO_IMAGEM);
-//        $("#codMenuPai").val($('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).COD_MENU_PAI_W);
-//        $("#indAtivo").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATIVO);
-//        $("#indAtalho").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).ATALHO);
-//        $("#indVisible").prop("checked", $('#' + nomeGrid).jqxGrid('getrowdatabyid', args.rowindex).VISIBLE);
         $("#method").val("UpdateMenu");
         $("#CadMenus").jqxWindow("open");
     });
@@ -139,17 +129,8 @@ function MontaTabelaMenu(listaMenus) {
         var rowindex = $("#listaMenus").jqxGrid('getselectedrowindex');
         if ($.trim($(args).text()) == "Editar") {
             $("#CadMenus").jqxWindow("open");
-            //$("#CadMenus").dialog("open");
         } else if ($.trim($(args).text()) == "Novo") {
             LimparCampos();
-//            $("#codMenu").val(0);
-//            $("#dscMenu").val('');
-//            $("#nmeController").val('');
-//            $("#nmeMethod").val('');
-//            $("#dscCaminhoImagem").val('');
-//            $("#codMenuPai").val(0);
-//            $("#indAtivo").prop("checked", false);
-//            $("#indAtalho").prop("checked", false);
             $("#CadMenus").jqxWindow("open");
         }
     });
@@ -160,5 +141,4 @@ $(document).ready(function () {
     $(document).on('contextmenu', function (e) {
         return false;
     });
-    $("input[type='button']").jqxButton({ theme: theme });
 });

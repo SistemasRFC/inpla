@@ -135,7 +135,7 @@ function SelecionaItem(event, dataAdapter, dataFields, callback){
 
 function CriarComboDispatch(nmeCombo, arrDados, valor){ 
     $("#td"+nmeCombo).html('');
-    var select = '<select id="'+nmeCombo+'" class="persist">';
+    var select = '<select id="'+nmeCombo+'" class="persist input" style="background-color: white;">';
     for (i=0;i<arrDados[1].length;i++){
         if (arrDados[1][i]['ID']==valor){
             select += '<option value="'+arrDados[1][i]['ID']+'" selected>'+arrDados[1][i]['DSC']+'</option>';

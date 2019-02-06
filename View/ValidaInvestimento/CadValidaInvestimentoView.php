@@ -13,7 +13,7 @@
                 </tr>
                 <tr>
                     <td align="center" style="padding-top:15px;">
-                        <input type="button" id="btnValidar" value="Validar">
+                        <input type="button" id="btnValidar" value="Validar" class="button-novo" style="background-color: blue;">
                     </td>
                 </tr>
             </table>

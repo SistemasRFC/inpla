@@ -2,81 +2,68 @@
 <form name="menuForm" enctype="multpart/form-data" id="cadastroMenuForm" method="post" action="../../Controller/Menu/CadastroMenuController.php">
     <input type="hidden" id="codMenuW" name="codMenu" value="0" class="persist">    
     <input type="hidden" id="dscCaminhoImagem" name="dscCaminhoImagem" class="persist">
-    <table width="100%">
-    <tr>
-        <td>
-            <table width="70%" align="left">
-                <tr>
-                    <td class="style2">Menu</td>
-                </tr>
-                <tr>
-                    <td class="styleTD1">
-                        <input type="text" name="dscMenu" id="dscMenuW" size="30" class="persist">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style2">Controller</td>
-                </tr>
-                <tr>
-                    <td class="styleTD1">
-                        <input type="text" name="nmeController" id="nmeController" size="50" class="persist">
-                        <input type="hidden" name="nmeClasse" id="nmeClasse" size="50" class="persist">
-                    </td>
-                    <td>
-                        <input type="button" id="btnListarController" value="Listar Controllers">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style2">Method</td>
-                </tr>
-                <tr>
-                    <td class="styleTD1">
-                        <input type="text" name="nmeMethod" id="nmeMethod" size="50" class="persist">
-                    </td>
-                    <td>
-                        <input type="button" id="btnListarMetodos" value="Listar Métodos">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style2">
-                        <input type="checkbox" name="indAtalho" id="indAtalho" class="persist">Atalho
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style2">
-                        <input type="checkbox" name="indMenuAtivoW" id="indMenuAtivoW" class="persist">Ativo
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style2">
-                        <input type="checkbox" name="indVisible" id="indVisible" class="persist">Visivel
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style2">Menu Pai</td>
-                </tr>
-                <tr>
-                    <td class="styleTD1" id="tdcodMenuPaiW">
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    </table>    
-    Selecione o arquivo:<br>
-    <input type="file" name="arquivo" id="arquivo" size="45" class="persist"/>
-    <br />
-    <progress value="0" max="100"></progress>
-    <span id="porcentagem">0%</span>
-    <br />
+    <table width="100%" align="left">
+        <tr>
+            <td class="titulo" style="padding-top: 0px;">Menu</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="dscMenu" id="dscMenuW" class="persist input">
+            </td>
+        </tr>
+        <tr>
+            <td class="titulo" style="padding-top: 0px;">Controller</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="nmeController" id="nmeController" class="persist input" style="width: 520px;">
+                <input type="hidden" name="nmeClasse" id="nmeClasse" class="persist">
+                <input type="button" id="btnListarController" value="Listar Controllers">
+            </td>
+        </tr>
+        <tr>
+            <td class="titulo" style="padding-top: 0px;">Method</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="nmeMethod" id="nmeMethod" class="persist input" style="width: 520px;">
+                <input type="button" id="btnListarMetodos" value="Listar Métodos">
+            </td>
+        </tr>
+        <tr>
+            <td class="titulo">
+                <input type="checkbox" name="indAtalho" id="indAtalho" class="persist">Atalho &nbsp;&nbsp;
+                <input type="checkbox" name="indMenuAtivoW" id="indMenuAtivoW" class="persist">Ativo &nbsp;&nbsp;
+                <input type="checkbox" name="indVisible" id="indVisible" class="persist">Visivel
+            </td>
+        </tr>
+        <tr>
+            <td class="titulo">Menu Pai
+                <div id="tdcodMenuPaiW"></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="titulo">
+                Ícone do Atalho
+                <div style="border-top:1px solid;padding-top: 5px;width: 220px;">
+                    Selecione o arquivo:<br>
+                    <input type="file" name="arquivo" id="arquivo" class="persist"/>
+                    <br />
+                    <progress value="0" max="100"></progress>
+                    <span id="porcentagem">0%</span>
+                    <br />
+                </div>
+            </td>
+        </tr>
+    </table>   
 </form>
 <table>
     <tr>
         <td>
-            <input type="button" id="btnSalvar" value="Salvar">
+            <input type="button" id="btnSalvar" value="Salvar" class="button">
         </td>
         <td>
-            <input type="button" id="btnDeletar" value="Deletar">
+            <input type="button" id="btnDeletar" value="Deletar" class="button" style="background-color: darkred;">
         </td>
     </tr>
 </table>

@@ -53,7 +53,7 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
                 <input type="text" id="nroOperacao" name="nroOperacao" class="persist input">
 
                 <label for="tpoConta" class="titulo">Tipo de conta</label>
-                <select id="tpoConta" name="tpoConta" class="persist input">
+                <select id="tpoConta" name="tpoConta" class="persist input titulo" style="background-color: white;">
                     <option value="" selected disabled>Selecione</option>
                     <option value="Corrente">Conta Corrente</option>
                     <option value="Poupanca">Conta Poupança</option>

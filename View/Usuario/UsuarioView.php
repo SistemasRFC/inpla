@@ -9,31 +9,25 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
     </head>
     <body>
-        <table width="100%" id="CadastroUsuarios">
-            <tr>
-                <td width="100%"
-                    style="text-align:left;
-                    height:10%;
-                    font-size:16px;
-                    color:#0150D3;
-                    vertical-align:middle;
-                    font-family: arial, helvetica, serif;
-                    border-bottom: 1px solid #0150D3;">
-                    Usu&aacute;rios
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="button" id="btnNovo" value="Novo Usu&aacute;rio">
-                </td>
-            </tr>          
+        <div class="card" style="max-width: 710px;">
+            <div class="cabecalho">Usu&aacute;rios</div>
+            
+            <div class="titulo" style="margin-bottom: 30px;">
+                <input type="button" id="btnNovo" value="Novo Usu&aacute;rio" class="button-novo">
+            </div>
+            
+            <div class="titulo">
+                <div id="listaUsuarios"></div>
+            </div>
+        </div>
+        <!-- <table width="100%" id="CadastroUsuarios">         
             <tr>
                 <td id="tdGrid">
                     <div id="listaUsuarios">
                     </div>
                 </td>
             </tr>
-        </table>
+        </table> -->
         <div id="CadUsuarios">
             <div id="windowHeader"></div>
             <div style="overflow: hidden;" id="windowContent">

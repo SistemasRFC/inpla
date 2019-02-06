@@ -1,5 +1,4 @@
 $(function () {
-    $("#btnSalvar").jqxButton({ width: '100', theme: theme });
     $("#btnSalvar").click(function () {
         MontaComboSelecionado();
     });
@@ -49,7 +48,7 @@ function ListaMenus(ListaMenus) {
     $("#checkboxes").html(tabela);
     var theme = theme;
     // Create jqxCheckBox
-    $(".check").jqxCheckBox({ height: 25, theme: theme });
+    $(".check").jqxCheckBox({ height: 25, theme: theme});
     $('.check').jqxCheckBox('uncheck');
     for (i = 0; i < ListaMenus.length; i++) {
         if (ListaMenus[i].PERFIL == null) {

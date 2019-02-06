@@ -1,4 +1,5 @@
 $(function () {
+    $("#tpoConta").jqxDropDownList({dropDownHeight: '130px', width: '98%'});
     $("#nroCpf").mask('999.999.999-99');
     $("#nroTelCelular").mask('(99)99999-9999');
 
