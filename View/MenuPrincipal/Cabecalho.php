@@ -26,6 +26,7 @@ if (!isset($_SESSION['cod_usuario'])) {
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxinput.js"></script> 
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxbuttons.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxscrollbar.js"></script>
+        <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxknob.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxmenu.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxgrid.js"></script>
         <script type="text/javascript" src="../../Resources/jqx/jqwidgets/jqxgrid.edit.js"></script>

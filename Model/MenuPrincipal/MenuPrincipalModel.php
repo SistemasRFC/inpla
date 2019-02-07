@@ -2,6 +2,7 @@
 include_once("Model/BaseModel.php");
 include_once("Dao/MenuPrincipal/MenuPrincipalDao.php");
 include_once("Resources/php/FuncoesArray.php");
+include_once("Resources/php/FuncoesMoeda.php");
 
 class MenuPrincipalModel extends BaseModel
 {
@@ -57,10 +58,10 @@ class MenuPrincipalModel extends BaseModel
     /**
      * Retorna uma lista de atalhos configurados no Cadastro de Menu
      */
-    Public Function CarregaAtalhos($path){
+    Public Function CarregaDadosInvestidor(){
         $dao = new MenuPrincipalDao();
-        $_SESSION['ListaAtalhos'] = $dao->CarregaAtalhos($_SESSION['cod_usuario'], $path);
-        return json_encode($_SESSION['ListaAtalhos']);
+        $lista= $dao->CarregaDadosInvestidor($_SESSION['cod_usuario']);
+        return json_encode($lista);
     }
 
     Public Function CarregaDadosUsuario(){

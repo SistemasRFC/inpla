@@ -5,7 +5,7 @@ $(document).ready(function(){
     // });
     // $("input[type='text']").each(function(){
     //     $(this).jqxInput({theme: theme, height: 25});          
-    // }); 
+    // });
 });
 function VerificaSessao(result){
     if (!result){            

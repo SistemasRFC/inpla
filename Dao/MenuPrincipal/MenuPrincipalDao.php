@@ -71,30 +71,28 @@ class MenuPrincipalDao extends BaseDao
         return $rs_localiza;
     }
 
-    function CarregaAtalhos( $codUsuario, $path ) {
-        try {
-            $sql_localiza = " SELECT DSC_MENU_W,
-                                     m.COD_MENU_W,
-                                     CONCAT('" .$path. "','/Dispatch.php?controller=',NME_CONTROLLER,'&method=',NME_METHOD) AS NME_CONTROLLER,
-                                     NME_METHOD,
-                                     NME_USUARIO_COMPLETO,
-                                     M.COD_MENU_PAI_W,
-                                     CONCAT('" .$path. "',M.DSC_CAMINHO_IMAGEM) as DSC_CAMINHO_IMAGEM,
-                                     TXT_SENHA_W
-                                FROM SE_MENU M
-                               INNER JOIN SE_MENU_PERFIL MP
-                                  ON M.COD_MENU_W = MP.COD_MENU_W
-                               INNER JOIN SE_USUARIO U
-                                  ON MP.COD_PERFIL_W = U.COD_PERFIL_W
-                               WHERE COD_USUARIO = $codUsuario
-                                 AND IND_MENU_ATIVO_W = 'S'
-                                 AND M.IND_ATALHO = 'S'
-                               ORDER BY DSC_MENU_W";
-            $rs_localiza = $this->selectDB("$sql_localiza", false);
-        } catch (Exception $e) {
-            echo "erro" . $e;
-        }
-        return $rs_localiza;
+    function CarregaDadosInvestidor( $codUsuario ) {
+        $sql = " SELECT U.NME_USUARIO_COMPLETO AS NME_INVESTIDOR,
+                        (SELECT COALESCE(SUM(P.VLR_PLANO), 0)
+                           FROM EN_PLANO P
+                          INNER JOIN EN_INVESTIMENTO I
+                             ON P.COD_PLANO = I.COD_PLANO) AS VLR_INVESTIDO,
+                        (SELECT COALESCE(SUM(P.VLR_PLANO), 0)
+                           FROM EN_PLANO P
+                          INNER JOIN EN_INVESTIMENTO I
+                             ON P.COD_PLANO = I.COD_PLANO)*2 AS VLR_TOTAL,
+                        (SELECT COALESCE(SUM(S.VLR_SAQUE),0)
+                           FROM EN_SAQUE S
+                          WHERE S.COD_USUARIO = U.COD_USUARIO) AS VLR_SACADO,
+                        COALESCE(((SELECT SUM(P.VLR_PLANO)
+                                    FROM EN_PLANO P
+                                   INNER JOIN EN_INVESTIMENTO I
+                                      ON P.COD_PLANO = I.COD_PLANO)*2)-(SELECT COALESCE(SUM(S.VLR_SAQUE),0)
+                                                                          FROM EN_SAQUE S
+                                                                         WHERE S.COD_USUARIO = U.COD_USUARIO), 0) AS VLR_RESTANTE
+                   FROM SE_USUARIO U
+                  WHERE U.COD_USUARIO = $codUsuario";
+        return $this->selectDB("$sql", false);
     }
 
     public function CarregaDadosUsuario($codUsuario) {

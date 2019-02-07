@@ -1,51 +1,102 @@
-function CarregaAtalhos(listaAtalhos){
-    $("#divAtalhos").html("<span style='align:center;'>Aguarde, Carregando!<br><img src='../../Resources/images/carregando.gif' width='200' height='30'></span>");
-    if (listaAtalhos[0]==true){
-        MontaTabelaAtalhos(listaAtalhos[1]);
-    }else{
-        $("#divAtalhos").html("<span style='align:center;'>Erro ao buscar atalhos!<br>"+listaAtalhos[1]);
-    }
+function CarregaDados(dados){
+    $("#dadosInvestidor").html('Olá, '+dados[1][0]["NME_INVESTIDOR"]);
+    var ValorTotal = dados[1][0]["VLR_TOTAL"];
+    var ValorSacado = dados[1][0]["VLR_SACADO"];
+    var ValorRestante = dados[1][0]["VLR_RESTANTE"];
+            $('#DadosInvestimentoKnob').jqxKnob({
+                value: ValorTotal,
+                min: 0,
+                max: ValorTotal,
+                startAngle: 180,
+                endAngle: 540,
+                snapToStep: true,
+                pointerGrabAction: 'progressBar',
+                allowValueChangeOnDrag: false,
+                allowValueChangeOnClick: false,
+                allowValueChangeOnMouseWheel: false,
+                rotation: 'clockwise',
+                style: { fill: '#FFFFFF' },
+                marks: {
+                    drawAboveProgressBar: true,
+                    colorRemaining: 'white',
+                    colorProgress: 'white',
+                    style: 'line',
+                    offset: '78%',
+                    thickness: 3,
+                    size: '18%',
+                    minorInterval: 5
+                },
+                progressBar: {
+                    style: { fill: '#18a25e', stroke: '#18a25e' },
+                    size: '18%',
+                    offset: '78%',
+                    background: { fill: '#cfd0d4', stroke: '#cfd0d4' }
+                },
+                pointer: { type: 'line', visible: false, style: { fill: '#18a25e' }, size: '18%', offset: '78%', thickness: 0 }
+            });
+            var input = $('<div class="inputField">');
+            var input2 = $('<div class="inputField2">');
+            var input3 = $('<div class="inputField3">');
+            var knob2 = $('<div id="knob2">');
+            var knob3 = $('<div id="knob3">');
+            $('#DadosInvestimentoKnob').append(knob2);
+            $('#knob2').jqxKnob({
+                value: ValorSacado,
+                min: 0,
+                max: ValorTotal,
+                startAngle: 190,
+                width: 300,
+                height: 300,
+                endAngle: 350,
+                snapToStep: true,
+                pointerGrabAction: 'progressBar',
+                allowValueChangeOnDrag: false,
+                allowValueChangeOnClick: false,
+                allowValueChangeOnMouseWheel: false,
+                rotation: 'clockwise',
+                style: { fill: 'transparent' },
+                progressBar: {
+                    style: { fill: '#407ec3', stroke: '#407ec3' },
+                    size: '18%',
+                    offset: '78%',
+                    background: { fill: '#cfd0d4', stroke: '#cfd0d4' }
+                },
+                pointer: { type: 'line', visible: false, style: { fill: '#33AADD' }, size: '18%', offset: '78%', thickness: 0 }
+            });
+            $(knob2).append(knob3);
+            $('#knob3').jqxKnob({
+                value: ValorRestante,
+                min: 0,
+                max: ValorTotal,
+                startAngle: 10,
+                width: 300,
+                height: 300,
+                endAngle: 170,
+                snapToStep: true,
+                pointerGrabAction: 'progressBar',
+                allowValueChangeOnDrag: false,
+                allowValueChangeOnClick: false,
+                allowValueChangeOnMouseWheel: false,
+                rotation: 'clockwise',
+                style: { fill: 'transparent' },
+                progressBar: {
+                    style: { fill: '#ef6100', stroke: '#ef6100' },
+                    size: '18%',
+                    offset: '78%',
+                    background: { fill: '#cfd0d4', stroke: '#cfd0d4' }
+                },
+                pointer: { type: 'line', visible: false, style: { fill: '#00a4e1' }, size: '18%', offset: '78%', thickness: 0 }
+            });
+            // Add label element to the Knob widget and attach event handlers to update them when the widget value updates.
+            // Note that labels need not be sub elements of the knobs, and they are there just to display that they can be.
+            $('#DadosInvestimentoKnob').append(input);
+            $('#knob2').append(input2);
+            $('#knob3').append(input3);
+            $(input).html('<span style="font-size: 24px; width: 30%; display:inline-block; color: #18a25e">Total</span><span style="width:70%; display:inline-block;">R$ ' + ValorTotal + ',00</span>');
+            $(input2).html('<div style="font-size: 18px; color: #407ec3">Valor Sacado</div><div>R$ ' + ValorSacado + ',00</div>');
+            $(input3).html('<div>R$ ' + ValorRestante + ',00</div><div style="font-size: 18px; color: #ef6100">Valor Restante</div>');
 }
 
-function MontaTabelaNoticias(listaNoticias){
-    if (listaNoticias!=null){
-        tabela = '<table width="100%">';
-        for(i=0;i<listaNoticias.length;i++){
-            tabela = tabela + '<tr><td style="font-size:20;font-family: arial, helvetica, serif;height:10%;">'+listaNoticias[i].DTA_NOTICIA+' - '+listaNoticias[i].DSC_TITULO+'</td></tr>';
-            tabela = tabela + '<tr><td>'+listaNoticias[i].TXT_NOTICIA+'</td></tr>';
-            tabela = tabela + '<tr><td style="border-bottom:1px solid #000000;"><br><br></td></tr>';
-        }
-        tabela = tabela + '</table>';
-    }else{
-        tabela = '';
-    }
-    $("#divNoticias").html(tabela);
-}
-function chamaAtalho(controller, method){    
-    window.location.href = controller+'?method='+method;
-}
-function MontaTabelaAtalhos(listaAtalhos){
-    if (listaAtalhos!=null){
-        tabela = '<table width="100%" border="0">';
-        colunas = 5;
-        j=5;
-        for(i=0;i<listaAtalhos.length;i++){
-            if (j==colunas){
-                tabela = tabela + "<tr style=''><td style='font-size:20;font-family: arial, helvetica, serif;height:10%;padding-top:20px;'>"
-                j=0;
-            }
-            tabela = tabela + "<a style='padding-left:45px;' href='"+listaAtalhos[i].NME_CONTROLLER+"'><img src='"+listaAtalhos[i].DSC_CAMINHO_IMAGEM+"' title='"+listaAtalhos[i].DSC_MENU_W+"' width='65' height='65'></a>";
-            j++;
-            if (j==colunas){
-                tabela = tabela + "</td></tr>";
-            }
-        }
-        tabela = tabela + '</table>';
-    }else{
-        tabela = '';
-    }
-    $("#divAtalhos").html(tabela);
-}
 $(document).ready(function() {
-    ExecutaDispatch('MenuPrincipal', 'CarregaAtalhos', '', CarregaAtalhos);
+    ExecutaDispatch('MenuPrincipal', 'CarregaDadosInvestidor', 'verificaPermissao;N|', CarregaDados);
 });
