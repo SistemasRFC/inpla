@@ -55,41 +55,51 @@ if (!isset($_SESSION['cod_usuario'])) {
         <script src="../../View/MenuPrincipal/js/FuncoesGerais.js?random=<?php echo time(); ?>"></script>
         <script src="../../Resources/swal/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../../Resources/swal/dist/sweetalert.css"> 
+        <style>
+            a:link, a:visited {
+                text-decoration: none;
+                color: black;
+            }
+            a:active {
+                text-decoration: none
+            }
+            .jqx-menu-item-top, .jqx-menu-item
+            {
+                font-size: 14px;
+                vertical-align: middle;
+            }
+        </style>
     </head>
     <body>
-        <table width="100%">
-            <tr>
-                <td>
-                    <div id="cabecalho">
-                        <table width="100%" align="left" style="border:1px solid #a4bed4;">
-                            <tr>
-                                <td align="left" style="text-align:left; height:10%; font-size:17px;color:#000000;vertical-align:middle;font-family: arial, helvetica, serif;" width="30%">
-                                    INPLA - Invetimentos
-                                </td>
-                                <td align="left" style="text-align:left; height:10%;font-size:14px;color:#000000;vertical-align:middle;font-family: arial, helvetica, serif;">
-                                    <?php
-                                    echo "<BR>";
-                                    echo "<a style=\"text-align:left;
-                                                height:10%;
-                                                font-size:13px;
-                                                color:#0150D3;
-                                                vertical-align:middle;
-                                                font-family: arial, helvetica, serif;\"
-                                                href=\"../../View/MenuPrincipal/MenuPrincipalView.php\">Ir para p&aacute;gina inicial</a>";
-                                    ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <div id="CriaMenu">
-
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div id="cabecalho">
+            <table width="100%" align="left" style="border:2px solid #04b9b9;border-bottom: 0px;">
+                <tr>
+                    <!-- <td align="left" class="cabecalho" style="text-align:left;color:#000000;vertical-align:middle;font-family: arial;" width="40%">
+                        INPLA - Invetimentos
+                    </td> -->
+                    <td class="cabecalho" style="text-align:left;">
+                        <?php
+                            echo "<a style=\"text-align: left;
+                                                height: 10%;
+                                                vertical-align: middle;
+                                                font-family: arial;
+                                                color: black;\"
+                                        href=\"../../View/MenuPrincipal/MenuPrincipalView.php\">INPLA - Invetimentos</a>";
+                        ?>
+                    </td>
+                    <td style="text-align:right;vertical-align:middle;font-size: 17px;font-family: times new roman;">
+                        <?php echo $_SESSION['dadosInvestidor']["NME_INVESTIDOR"]; ?>
+                    </td>
+                    <td style="text-align:right;vertical-align:middle;padding-right: 5px;" width="5%">
+                        <?php
+                            echo "<a href=\"../../index.php\">
+                                        <img src='../../Resources/images/Logof.png' width='40' title='Sair'>
+                                    </a>";
+                        ?>
+                    </td>
+                </tr>
+            </table>
+            <div id="CriaMenu"></div>
+        </div>
     </body>
 </html>

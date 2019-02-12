@@ -58,23 +58,26 @@ class MenuDao extends BaseDao
 
     public function ListarMenusGrid() {
         try {
-            $sql_lista = " SELECT COD_MENU_W,
-                                  COD_MENU_W AS ID,
-                                  DSC_MENU_W,
-                                  DSC_MENU_W AS DSC,
-                                  NME_CONTROLLER,
-                                  NME_METHOD,
-                                  IND_MENU_ATIVO_W,
-                                  IND_VISIBLE,
-                                  COD_MENU_PAI_W,
-                                  COALESCE(IND_ATALHO,'N') AS IND_ATALHO,
-                                  COALESCE(DSC_CAMINHO_IMAGEM, '') AS DSC_CAMINHO_IMAGEM,
+            $sql_lista = " SELECT M.COD_MENU_W,
+                                  M.COD_MENU_W AS ID,
+                                  M.DSC_MENU_W,
+                                  M.DSC_MENU_W AS DSC,
+                                  M.NME_CONTROLLER,
+                                  M.NME_METHOD,
+                                  M.IND_MENU_ATIVO_W,
+                                  M.IND_VISIBLE,
+                                  M.COD_MENU_PAI_W,
+                                  COALESCE(M1.DSC_MENU_W, '- - - - - - -') AS DSC_MENU_PAI,
+                                  COALESCE(M.IND_ATALHO,'N') AS IND_ATALHO,
+                                  COALESCE(M.DSC_CAMINHO_IMAGEM, '') AS DSC_CAMINHO_IMAGEM,
                                   (SELECT COUNT(*)
                                      FROM SE_MENU
                                     WHERE COD_MENU_W > 0
                                       AND COD_MENU_PAI_W = M.COD_MENU_W) AS QTD
                              FROM SE_MENU M
-                            WHERE COD_MENU_PAI_W >= 0";
+                             LEFT JOIN SE_MENU M1
+                               ON M.COD_MENU_PAI_W = M1.COD_MENU_W
+                            WHERE M.COD_MENU_PAI_W >= 0";
             $lista = $this->selectDB("$sql_lista", false);
         } catch (Exception $e) {
             echo "erro" . $e;

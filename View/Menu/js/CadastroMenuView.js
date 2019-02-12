@@ -1,14 +1,15 @@
 $(function () {
     $("#CadMenus").jqxWindow({
         title: 'Cadastro de Menus',
-        height: 530,
-        width: 700,
+        height: 550,
+        width: 650,
         animationType: 'fade',
         showAnimationDuration: 500,
         closeAnimationDuration: 500,
         theme: 'darkcyan',
         isModal: true,
-        autoOpen: false
+        autoOpen: false,
+        position: { x: 435, y: 90 }
     });
     $("#ListaController").jqxWindow({
         title: 'Lista de Controllers',
@@ -62,6 +63,7 @@ function MontaTabelaMenu(listaMenus) {
                 { name: 'NME_METHOD', type: 'string' },
                 { name: 'DSC_CAMINHO_IMAGEM', type: 'string' },
                 { name: 'COD_MENU_PAI_W', type: 'string' },
+                { name: 'DSC_MENU_PAI', type: 'string' },
                 { name: 'ATIVO', type: 'boolean' },
                 { name: 'ATALHO', type: 'boolean' },
                 { name: 'VISIBLE', type: 'boolean' }
@@ -79,15 +81,15 @@ function MontaTabelaMenu(listaMenus) {
             columnsresize: true,
             selectionmode: 'singlerow',
             columns: [
-                { text: 'C&oacute;digo', columntype: 'textbox', datafield: 'COD_MENU_W', width: 80 },
-                { text: 'Descri&ccedil;&atilde;o', datafield: 'DSC_MENU_W', columntype: 'textbox', width: 180 },
-                { text: 'Controller', datafield: 'NME_CONTROLLER', columntype: 'textbox', width: 180 },
-                { text: 'Method', datafield: 'NME_METHOD', columntype: 'textbox', width: 180 },
-                { text: 'Imagem', datafield: 'DSC_CAMINHO_IMAGEM', columntype: 'textbox', width: 180 },
-                { text: 'Menu Pai', datafield: 'COD_MENU_PAI_W', columntype: 'textbox', width: 180 },
-                { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 67 },
-                { text: 'Atalho', datafield: 'ATALHO', columntype: 'checkbox', width: 67 },
-                { text: 'Visível', datafield: 'VISIBLE', columntype: 'checkbox', width: 67 }
+                { text: 'C&oacute;d.', columntype: 'textbox', datafield: 'COD_MENU_W', width: 40 },
+                { text: 'Descri&ccedil;&atilde;o', datafield: 'DSC_MENU_W', columntype: 'textbox', width: 195 },
+                { text: 'Controller', datafield: 'NME_CONTROLLER', columntype: 'textbox', width: 132 },
+                { text: 'Method', datafield: 'NME_METHOD', columntype: 'textbox', width: 190 },
+                // { text: 'Imagem', datafield: 'DSC_CAMINHO_IMAGEM', columntype: 'textbox', width: 180 },
+                { text: 'Menu Pai', datafield: 'DSC_MENU_PAI', columntype: 'textbox', width: 140 },
+                { text: 'Ativo', datafield: 'ATIVO', columntype: 'checkbox', width: 48, align: 'center' },
+                // { text: 'Atalho', datafield: 'ATALHO', columntype: 'checkbox', width: 50, align: 'center' },
+                { text: 'Visível', datafield: 'VISIBLE', columntype: 'checkbox', width: 55, align: 'center' }
             ]
         });
     // events

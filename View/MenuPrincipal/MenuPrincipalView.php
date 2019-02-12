@@ -23,7 +23,7 @@ include_once "Cabecalho.php";
 
     .grid-container > div {
         text-align: center;
-        font-size: 30px;
+        font-size: 24px;
     }
     
     .card-principal {
@@ -119,7 +119,7 @@ include_once "Cabecalho.php";
         <div class="grid-container">
             <div class="item1" style="text-align: left;">
                 <div class="card-principal">
-                    <div class="info-topo" id="dadosInvestidor"></div>
+                    Acompanhe seu rendimento
                 </div>
             </div>
         </div>

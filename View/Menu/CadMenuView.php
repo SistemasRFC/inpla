@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <td>
-                <input type="text" name="nmeController" id="nmeController" class="persist input" style="width: 520px;">
+                <input type="text" name="nmeController" id="nmeController" class="persist input" style="width: 480px;">
                 <input type="hidden" name="nmeClasse" id="nmeClasse" class="persist">
                 <input type="button" id="btnListarController" value="Listar Controllers">
             </td>
@@ -26,13 +26,13 @@
         </tr>
         <tr>
             <td>
-                <input type="text" name="nmeMethod" id="nmeMethod" class="persist input" style="width: 520px;">
+                <input type="text" name="nmeMethod" id="nmeMethod" class="persist input" style="width: 480px;">
                 <input type="button" id="btnListarMetodos" value="Listar Métodos">
             </td>
         </tr>
         <tr>
             <td class="titulo">
-                <input type="checkbox" name="indAtalho" id="indAtalho" class="persist">Atalho &nbsp;&nbsp;
+                <!-- <input type="checkbox" name="indAtalho" id="indAtalho" class="persist">Atalho &nbsp;&nbsp; -->
                 <input type="checkbox" name="indMenuAtivoW" id="indMenuAtivoW" class="persist">Ativo &nbsp;&nbsp;
                 <input type="checkbox" name="indVisible" id="indVisible" class="persist">Visivel
             </td>
@@ -42,7 +42,7 @@
                 <div id="tdcodMenuPaiW"></div>
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td class="titulo">
                 Ícone do Atalho
                 <div style="border-top:1px solid;padding-top: 5px;width: 220px;">
@@ -54,11 +54,11 @@
                     <br />
                 </div>
             </td>
-        </tr>
+        </tr> -->
     </table>   
 </form>
 <table>
-    <tr>
+    <tr style="padding-top:20px;">
         <td>
             <input type="button" id="btnSalvar" value="Salvar" class="button">
         </td>

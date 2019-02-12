@@ -61,6 +61,7 @@ class MenuPrincipalModel extends BaseModel
     Public Function CarregaDadosInvestidor(){
         $dao = new MenuPrincipalDao();
         $lista= $dao->CarregaDadosInvestidor($_SESSION['cod_usuario']);
+        $_SESSION['dadosInvestidor']= $lista[1][0];
         return json_encode($lista);
     }
 

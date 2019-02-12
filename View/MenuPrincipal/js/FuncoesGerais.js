@@ -24,7 +24,7 @@ function MontaMenu(menu){
             {name: 'dscMenu', map: 'label'},
             {name: 'id', map: 'id'}
         ]);
-        $('#CriaMenu').jqxMenu({ source: records, height: 30, theme: 'darkcyan' });
+        $('#CriaMenu').jqxMenu({ source: records, height: 35, theme: 'darkcyan' });
         $("#CriaMenu").on('itemclick', function (event) {
             for(i=0;i<DadosMenu[1].length;i++){
 

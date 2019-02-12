@@ -214,7 +214,7 @@ td{
     border: none;
     padding: 10px;
     color: white;
-    background-color: darkslategrey;
+    background-color: teal;
     text-align: center;
     cursor: pointer;
     width: 150px;
@@ -241,7 +241,7 @@ td{
 
 .modal-header {
     padding: 2px 16px;
-    background-color: darkseagreen;
+    background-color: MediumAquamarine;
     color: white;
 }
 

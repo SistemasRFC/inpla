@@ -1,5 +1,4 @@
 function CarregaDados(dados){
-    $("#dadosInvestidor").html('Olá, '+dados[1][0]["NME_INVESTIDOR"]);
     var ValorTotal = dados[1][0]["VLR_TOTAL"];
     var ValorSacado = dados[1][0]["VLR_SACADO"];
     var ValorRestante = dados[1][0]["VLR_RESTANTE"];
@@ -16,16 +15,6 @@ function CarregaDados(dados){
                 allowValueChangeOnMouseWheel: false,
                 rotation: 'clockwise',
                 style: { fill: '#FFFFFF' },
-                marks: {
-                    drawAboveProgressBar: true,
-                    colorRemaining: 'white',
-                    colorProgress: 'white',
-                    style: 'line',
-                    offset: '78%',
-                    thickness: 3,
-                    size: '18%',
-                    minorInterval: 5
-                },
                 progressBar: {
                     style: { fill: '#18a25e', stroke: '#18a25e' },
                     size: '18%',
@@ -55,6 +44,16 @@ function CarregaDados(dados){
                 allowValueChangeOnMouseWheel: false,
                 rotation: 'clockwise',
                 style: { fill: 'transparent' },
+                marks: {
+                    drawAboveProgressBar: true,
+                    colorRemaining: 'white',
+                    colorProgress: 'white',
+                    style: 'line',
+                    offset: '78%',
+                    thickness: 2,
+                    size: '18%',
+                    minorInterval: 12
+                },
                 progressBar: {
                     style: { fill: '#407ec3', stroke: '#407ec3' },
                     size: '18%',
@@ -79,6 +78,16 @@ function CarregaDados(dados){
                 allowValueChangeOnMouseWheel: false,
                 rotation: 'clockwise',
                 style: { fill: 'transparent' },
+                marks: {
+                    drawAboveProgressBar: true,
+                    colorRemaining: 'white',
+                    colorProgress: 'white',
+                    style: 'line',
+                    offset: '78%',
+                    thickness: 2,
+                    size: '18%',
+                    minorInterval: 12
+                },
                 progressBar: {
                     style: { fill: '#ef6100', stroke: '#ef6100' },
                     size: '18%',

@@ -23,7 +23,7 @@ include_once PATH . "View/MenuPrincipal/Cabecalho.php";
             
             <div class="titulo sacar" style="text-align: right;padding-bottom: 30px;">
                 <input type="button" id="btnSacar" value="Sacar" class="button" style="width: 100px;">
-                <input type="button" id="btnReinvestir" value="Reinvestir" class="button" style="width: 120px; background-color: darkgreen;">
+                <input type="button" id="btnReinvestir" value="Reinvestir" class="button-novo" style="width: 120px;">
             </div>
             
             <div style="text-align: center;">
