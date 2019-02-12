@@ -2,6 +2,10 @@ $(function () {
     $("#btnSalvar").click(function () {
         salvarInvestimento();
     });
+
+    $("#fechaModal").click(function () {
+        $('#modalReinvestir').hide('fade');
+    });
 });
 
 function salvarInvestimento() {

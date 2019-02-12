@@ -22,9 +22,19 @@ class SaqueModel extends BaseModel {
     Public Function InsertSaque() {
         $dao = new SaqueDao();
         BaseModel::PopulaObjetoComRequest($dao->getColumns());
-        $this->objRequest->dtaSaque = date('d/m/Y');
-        $this->objRequest->codUsuario = $_SESSION['cod_usuario'];
-        $result = $dao->InsertSaque($this->objRequest);
+        if(isset($this->objRequest->vlrSaque)){
+            if($this->objRequest->vlrSaque > 35){
+                $this->objRequest->dtaSaque = date('d/m/Y');
+                $this->objRequest->codUsuario = $_SESSION['cod_usuario'];
+                $result = $dao->InsertSaque($this->objRequest);
+            } else {
+                $result[0] = false;
+                $result[1] = 'O valor mínimo para saque é de <b>R$ 35,00</b>!';
+            }
+        } else {
+            $result[0] = false;
+            $result[1] = 'Nenhum valor foi informado!';
+        }
         return json_encode($result);
     }
 

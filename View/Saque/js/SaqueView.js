@@ -10,9 +10,8 @@ $(function () {
 
 function sacarSaldo() {
     if ($('#vlrSaque').val() <= $('#vlrSaldo').val()) {
-        $('#method').val('InsertPlano');
         var parametros = retornaParametros();
-        ExecutaDispatch('Saque', $('#method').val(), parametros, carrregaSaques, 'Aguarde, Solicitando saque', 'Saque realizado com sucesso!!');
+        ExecutaDispatch('Saque', 'InsertSaque', parametros, carrregaSaques, 'Aguarde, Solicitando saque', 'Saque realizado com sucesso!!');
     } else {
         swal({
            title: 'Aviso!',
