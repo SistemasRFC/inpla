@@ -1,26 +1,27 @@
 <?php 
 include_once getenv("CONSTANTES");
 include_once "Cabecalho.php";
+include_once "Rodape.php";
 ?>
 <head>
     <title>Início - INPLA</title>
     <script src="../../View/MenuPrincipal/js/MenuPrincipalView.js"></script>
 <style>
+    /*Grid*/
     .grid-container {
         display: grid;
         grid-template-areas:
         'header header header'
         'left main right';
-        grid-gap: 5px;
+        grid-gap: 20px;
         background-color: #f2f2f2;
     }
-
     .item1 { grid-area: header; }
     .item2 { grid-area: left; }
-    .item3 { grid-area: main; margin: auto}
-    .item4 { grid-area: right; }
-    .item5 { grid-area: footer; }
-    
+    .item3 { grid-area: main; margin: auto }
+    .item4 { grid-area: right;}
+
+    /*Card*/
     .card-principal {
         box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.3);
         max-width: 100%;
@@ -32,21 +33,67 @@ include_once "Cabecalho.php";
         font-size: 22px;
     }
     
-    .info {
-        font-size: 60px;
-        font-weight: bolder;
-        color: #00CED1;
-        width: 100%;
-        text-align: center;
-    }
-    
-    .info-topo {
+    .alert {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 14px 10px;
+        margin: 10px;
+        background-color: #00E5EE;
+        border-radius: 5px;
+        color: black;
+        font-size: 20px;
         font-family: 'arial black';
-        font-size: 30px;
-        text-align: left;
-        font-weight: bolder;
-        padding: 5px;
-        padding-top: 10px;
+        font-weight: bold;
+        width: 380;
+        height: auto;
+    }
+
+    /*Quadro de avisos*/
+    .aviso {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+        padding: 10px 5px;
+        margin: 5px;
+        background-color: #E0FFFF;
+        border-radius: 3px;
+        color: black;
+        font-size: 16px;
+        font-family: 'arial black';
+        width: 340;
+        height: 40;
+    }
+    .topo-avisos {
+        padding: 12px 0px;
+        margin: 0px;
+        background-color: #00CD66;
+        color: black;
+        text-align: center;
+        font-size: 22px;
+        font-family: 'times new roman';
+        width: 500;
+        height: 20;
+    }
+
+    /*chip -- recados do quadro de avisos*/
+    .chip {
+        display: inline-block;
+        padding: 0 10px;
+        margin: 8px 10px;
+        width: 460px;
+        height: auto;
+        font-size: 18px;
+        line-height: 50px;
+        border-radius: 10px;
+        background-color: #E8E8E8;
+    }
+    .closebtn {
+        padding-left: 10px;
+        color: #888;
+        font-weight: bold;
+        float: right;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .closebtn:hover {
+        color: #000;
     }
 </style>
 </head>
@@ -58,16 +105,30 @@ include_once "Cabecalho.php";
                     Acompanhe seu rendimento
                 </div>
             </div>
-        </div>
-        <div class="grid-container">
-            <div class="item3">
-                    <div style="width: 100%; margin: 0 auto;">
+            <div class="item2" style="width: 500px;">
+                    <div class="alert">
+                        <div class="topo-avisos" style="background-color: #00C5CD;width: auto;border-radius: 5px;">Investimentos</div>
+                        Todos: <?php echo $_SESSION['dadosInvestidor']["NRO_INVESTIMENTOS"]; ?><br>
+                        &nbsp;&nbsp;&nbsp;&raquo; Ativos: <?php echo $_SESSION['dadosInvestidor']["NRO_INVESTIMENTOS_ATIVOS"]; ?><br>
+                        &nbsp;&nbsp;&nbsp;&raquo; Pendentes: <?php echo $_SESSION['dadosInvestidor']["NRO_INVESTIMENTOS_PENDENTES"]; ?>
+                    </div>
+            </div>
+            <div class="item3" style="width: 450px;">
+                    <div>
                         <div id="DadosInvestimentoKnob"></div>
                     </div>
             </div>
-            <div class="item4">
-                    <div style="width: 100%; margin: 0 auto;">
-                        Número de investimentos
+            <div class="item4" style="width: 500px;">
+                    <div class="card" style="background-color: #00FF7F;height: 350px; padding: 0px 0px;">
+                        <div class="topo-avisos">Quadro de Avisos</div>
+                        <div class="chip">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+                            Bem Vindo ao INPLA!! :)
+                        </div>
+                        <div class="chip">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+                            Saldo disponível para saque!
+                        </div>
                     </div>
             </div>
         </div>

@@ -63,14 +63,6 @@ function montaTabelaInvestimento(ListaInvestimentos) {
                     {text: 'Ações', datafield: 'DSC_ACAO', columntype: 'textbox', width: 70, cellsalign: 'center', align: 'center'}
                 ]
             });
-    $('#' + nomeGrid).on('rowdoubleclick', function (event) {
-        var args = event.args;
-        var rows = $('#' + nomeGrid).jqxGrid('getdisplayrows');
-        var rowData = rows[args.visibleindex];
-        var rowID = rowData.uid;
-
-        preencheCamposForm(listaInvestimentos[rowID]);
-    });
 }
 
 function comprovanteForm(cod) {

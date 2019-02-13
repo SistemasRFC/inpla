@@ -76,23 +76,41 @@ class MenuPrincipalDao extends BaseDao
                         (SELECT COALESCE(SUM(P.VLR_PLANO), 0)
                            FROM EN_PLANO P
                           INNER JOIN EN_INVESTIMENTO I
-                             ON P.COD_PLANO = I.COD_PLANO) AS VLR_INVESTIDO,
+                             ON P.COD_PLANO = I.COD_PLANO
+                            AND I.COD_USUARIO = $codUsuario
+                            AND I.COD_STATUS = 2) AS VLR_INVESTIDO,
                         (SELECT COALESCE(SUM(P.VLR_PLANO), 0)
                            FROM EN_PLANO P
                           INNER JOIN EN_INVESTIMENTO I
-                             ON P.COD_PLANO = I.COD_PLANO)*2 AS VLR_TOTAL,
+                             ON P.COD_PLANO = I.COD_PLANO
+                            AND I.COD_USUARIO = $codUsuario
+                            AND I.COD_STATUS = 2)*2 AS VLR_TOTAL,
                         (SELECT COALESCE(SUM(S.VLR_SAQUE),0)
                            FROM EN_SAQUE S
-                          WHERE S.COD_USUARIO = U.COD_USUARIO) AS VLR_SACADO,
+                          INNER JOIN SE_USUARIO U1
+                             ON S.COD_USUARIO = U1.COD_USUARIO) AS VLR_SACADO,
                         COALESCE(((SELECT SUM(P.VLR_PLANO)
                                     FROM EN_PLANO P
                                    INNER JOIN EN_INVESTIMENTO I
-                                      ON P.COD_PLANO = I.COD_PLANO)*2)-(SELECT COALESCE(SUM(S.VLR_SAQUE),0)
+                                      ON P.COD_PLANO = I.COD_PLANO
+                                     AND I.COD_USUARIO = $codUsuario
+                                     AND I.COD_STATUS = 2)*2)-(SELECT COALESCE(SUM(S.VLR_SAQUE),0)
                                                                           FROM EN_SAQUE S
-                                                                         WHERE S.COD_USUARIO = U.COD_USUARIO), 0) AS VLR_RESTANTE
+                                                                         WHERE S.COD_USUARIO = U.COD_USUARIO), 0) AS VLR_RESTANTE,
+                        COUNT(I1.COD_INVESTIMENTO) AS NRO_INVESTIMENTOS,
+                        (SELECT COUNT(COD_INVESTIMENTO) 
+                           FROM EN_INVESTIMENTO
+                          WHERE COD_USUARIO = $codUsuario
+                            AND COD_STATUS = 2) AS NRO_INVESTIMENTOS_ATIVOS,
+                        (SELECT COUNT(COD_INVESTIMENTO) 
+                           FROM EN_INVESTIMENTO
+                          WHERE COD_USUARIO = $codUsuario
+                            AND COD_STATUS NOT IN (2,4)) AS NRO_INVESTIMENTOS_PENDENTES
                    FROM SE_USUARIO U
+                  INNER JOIN EN_INVESTIMENTO I1
+                     ON U.COD_USUARIO = I1.COD_USUARIO
                   WHERE U.COD_USUARIO = $codUsuario";
-        return $this->selectDB("$sql", false);
+        return $this->selectDB($sql, false);
     }
 
     public function CarregaDadosUsuario($codUsuario) {

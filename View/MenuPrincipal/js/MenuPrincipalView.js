@@ -1,11 +1,17 @@
 function CarregaDados(dados){
-    var ValorTotal = dados[1][0]["VLR_TOTAL"];
+    var ValorTotal = dados[1][0]["VLR_TOTAL"]
     var ValorSacado = dados[1][0]["VLR_SACADO"];
     var ValorRestante = dados[1][0]["VLR_RESTANTE"];
+    var ValorMax = '';
+    if (ValorTotal > 0){
+        ValorMax = ValorTotal;
+    } else {
+        ValorMax = 1;
+    }
             $('#DadosInvestimentoKnob').jqxKnob({
                 value: ValorTotal,
                 min: 0,
-                max: ValorTotal,
+                max: ValorMax,
                 startAngle: 180,
                 endAngle: 540,
                 snapToStep: true,
@@ -32,7 +38,7 @@ function CarregaDados(dados){
             $('#knob2').jqxKnob({
                 value: ValorSacado,
                 min: 0,
-                max: ValorTotal,
+                max: ValorMax,
                 startAngle: 190,
                 width: 300,
                 height: 300,
@@ -66,7 +72,7 @@ function CarregaDados(dados){
             $('#knob3').jqxKnob({
                 value: ValorRestante,
                 min: 0,
-                max: ValorTotal,
+                max: ValorMax,
                 startAngle: 10,
                 width: 300,
                 height: 300,

@@ -1,7 +1,4 @@
 //window.location.href='../../View/MenuPrincipal/Redirect.php';
-$(document).ready(function(){
-    ExecutaDispatch('MenuPrincipal', 'CarregaDadosInvestidor', 'verificaPermissao;N|');
-});
 function VerificaSessao(result){
     if (!result){            
         window.location.href='../../index.php';
@@ -117,4 +114,5 @@ function CriarComboTamanho(nmeCombo, largura, altura, larguraDrop, url, parametr
 
 $(document).ready(function(){        
     ExecutaDispatch('MenuPrincipal', 'VerificaSessao', '', VerificaSessao);
+    ExecutaDispatch('MenuPrincipal', 'CarregaDadosInvestidor', 'verificaPermissao;N|');
 });
