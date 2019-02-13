@@ -74,7 +74,8 @@ include_once getenv("CONSTANTES");
     <body>
         <input type="hidden" id="verificaPermissao" name="verificaPermissao" value="N" class="persist">
         <div class="card" style="max-width: 300px;margin-top: 200px;">
-            <div class="cabecalho" style="color: darkcyan;padding-bottom:15px;">INPLA - Investimentos</div>
+            <div class="cabecalho" style="padding-left: 10px;padding-bottom: 10px;"><img src="Resources/images/LogoRADI_edit_nb.png" width="300"></div>
+            <!-- <div class="cabecalho" style="color: darkcyan;padding-bottom:15px;">INPLA - Investimentos</div> -->
             
             <label for="nmeUsuario" class="titulo">Login</label>
             <input type="text" id="nmeUsuario" name="nmeUsuario" class='login persist input' placeholder="Login">

@@ -37,38 +37,26 @@ include_once "Rodape.php";
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         padding: 14px 10px;
         margin: 10px;
-        background-color: #00E5EE;
+        background-color: #1E90FF;
         border-radius: 5px;
-        color: black;
+        color: white;
         font-size: 20px;
-        font-family: 'arial black';
+        font-family: 'Courier New';
         font-weight: bold;
         width: 380;
         height: auto;
     }
 
     /*Quadro de avisos*/
-    .aviso {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
-        padding: 10px 5px;
-        margin: 5px;
-        background-color: #E0FFFF;
-        border-radius: 3px;
-        color: black;
-        font-size: 16px;
-        font-family: 'arial black';
-        width: 340;
-        height: 40;
-    }
     .topo-avisos {
         padding: 12px 0px;
         margin: 0px;
-        background-color: #00CD66;
-        color: black;
+        background-color: #CD6600;
+        color: white;
         text-align: center;
         font-size: 22px;
         font-family: 'times new roman';
-        width: 500;
+        width: auto;
         height: 20;
     }
 
@@ -107,7 +95,7 @@ include_once "Rodape.php";
             </div>
             <div class="item2" style="width: 500px;">
                     <div class="alert">
-                        <div class="topo-avisos" style="background-color: #00C5CD;width: auto;border-radius: 5px;">Investimentos</div>
+                        <div class="topo-avisos" style="background-color: #0000FF;color: white;border-radius: 5px;margin-bottom: 5px;">Investimentos</div>
                         Todos: <?php echo $_SESSION['dadosInvestidor']["NRO_INVESTIMENTOS"]; ?><br>
                         &nbsp;&nbsp;&nbsp;&raquo; Ativos: <?php echo $_SESSION['dadosInvestidor']["NRO_INVESTIMENTOS_ATIVOS"]; ?><br>
                         &nbsp;&nbsp;&nbsp;&raquo; Pendentes: <?php echo $_SESSION['dadosInvestidor']["NRO_INVESTIMENTOS_PENDENTES"]; ?>
@@ -119,11 +107,11 @@ include_once "Rodape.php";
                     </div>
             </div>
             <div class="item4" style="width: 500px;">
-                    <div class="card" style="background-color: #00FF7F;height: 350px; padding: 0px 0px;">
+                    <div class="card" style="background-color: #FF7F00;height: 350px; padding: 0px 0px;">
                         <div class="topo-avisos">Quadro de Avisos</div>
                         <div class="chip">
                             <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
-                            Bem Vindo ao INPLA!! :)
+                            Bem Vindo ao RADI!! :)
                         </div>
                         <div class="chip">
                             <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>

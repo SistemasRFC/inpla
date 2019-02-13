@@ -66,7 +66,7 @@ function CarregaDados(dados){
                     offset: '78%',
                     background: { fill: '#cfd0d4', stroke: '#cfd0d4' }
                 },
-                pointer: { type: 'line', visible: false, style: { fill: '#33AADD' }, size: '18%', offset: '78%', thickness: 0 }
+                pointer: { type: 'line', visible: false, style: { fill: '#0E4271' }, size: '18%', offset: '78%', thickness: 0 }
             });
             $(knob2).append(knob3);
             $('#knob3').jqxKnob({
@@ -100,7 +100,7 @@ function CarregaDados(dados){
                     offset: '78%',
                     background: { fill: '#cfd0d4', stroke: '#cfd0d4' }
                 },
-                pointer: { type: 'line', visible: false, style: { fill: '#00a4e1' }, size: '18%', offset: '78%', thickness: 0 }
+                pointer: { type: 'line', visible: false, style: { fill: '#F88822' }, size: '18%', offset: '78%', thickness: 0 }
             });
             // Add label element to the Knob widget and attach event handlers to update them when the widget value updates.
             // Note that labels need not be sub elements of the knobs, and they are there just to display that they can be.
@@ -108,8 +108,8 @@ function CarregaDados(dados){
             $('#knob2').append(input2);
             $('#knob3').append(input3);
             $(input).html('<span style="font-size: 24px; width: 30%; display:inline-block; color: #18a25e">Total</span><span style="width:70%; display:inline-block;">R$ ' + ValorTotal + ',00</span>');
-            $(input2).html('<div style="font-size: 18px; color: #407ec3">Valor Sacado</div><div>R$ ' + ValorSacado + ',00</div>');
-            $(input3).html('<div>R$ ' + ValorRestante + ',00</div><div style="font-size: 18px; color: #ef6100">Valor Restante</div>');
+            $(input2).html('<div style="font-size: 18px; color: #0E4271">Valor Sacado</div><div>R$ ' + ValorSacado + ',00</div>');
+            $(input3).html('<div>R$ ' + ValorRestante + ',00</div><div style="font-size: 18px; color: #F88822">Valor Restante</div>');
 }
 
 $(document).ready(function() {

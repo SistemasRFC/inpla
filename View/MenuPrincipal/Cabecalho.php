@@ -82,9 +82,9 @@ if (!isset($_SESSION['cod_usuario'])) {
                             echo "<a style=\"text-align: left;
                                                 height: 10%;
                                                 vertical-align: middle;
-                                                font-family: arial;
-                                                color: black;\"
-                                        href=\"../../View/MenuPrincipal/MenuPrincipalView.php\">INPLA - Invetimentos</a>";
+                                                font-family: Nimbus Mono L;
+                                                color: #145b61;\"
+                                        href=\"../../View/MenuPrincipal/MenuPrincipalView.php\"><img src='../../Resources/images/Icone_logoRADI.jpg' width='45'>RADI<br> <div style='font-size: 14px;color:#f68920;'>Trading Esportivo</div></a>";
                         ?>
                     </td>
                     <td style="text-align:right;vertical-align:middle;font-size: 17px;font-family: times new roman;">
