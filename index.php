@@ -73,7 +73,7 @@ include_once getenv("CONSTANTES");
     </head>
     <body>
         <input type="hidden" id="verificaPermissao" name="verificaPermissao" value="N" class="persist">
-        <div class="card" style="max-width: 300px;margin-top: 200px;">
+        <div class="card" style="max-width: 300px;margin-top: 180px;padding-bottom: 20px;">
             <div class="cabecalho" style="padding-left: 10px;padding-bottom: 10px;"><img src="Resources/images/LogoRADI_edit_nb.png" width="300"></div>
             <!-- <div class="cabecalho" style="color: darkcyan;padding-bottom:15px;">INPLA - Investimentos</div> -->
             
@@ -87,13 +87,16 @@ include_once getenv("CONSTANTES");
                 <input type="button" id="btnLogin" value="Login" class="button" style="background-color: darkcyan;">
             </div>
             
-            <div style="padding-top:10px;text-align:center;">
+            <div style="padding-top:20px;text-align:center;">
                 <a href="javascript:return false" id=btnCadastrar>Cadastre-se</a>
                 <a href="javascript:return false" id=btnEsqueciSenha>Esqueci a senha</a>
             </div>
         </div>
         <div id="ModalInvestidor">
             <?php include_once PATH . "/View/Investidor/InvestidorView.php"; ?>
+        </div>
+        <div id="ModalRecuperaSenha">
+            <?php include_once PATH . "/View/Usuario/RecuperaSenhaView.php"; ?>
         </div>
     </body>
 </html>

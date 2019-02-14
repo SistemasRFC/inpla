@@ -3,7 +3,7 @@ include_once getenv("CONSTANTES");
 include_once PATH."/View/MenuPrincipal/Cabecalho.php";?>
 <HTML>
     <HEAD>
-    <title>INPLA - Permissão de Menus</title>
+    <title>RADI - Permissão de Menus</title>
     <script src="js/PermissaoMenuView.js?rdm=<?php echo time();?>"></script>
     </HEAD>
     <BODY>

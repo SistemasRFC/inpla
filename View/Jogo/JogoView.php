@@ -5,7 +5,7 @@ include_once PATH."View/MenuPrincipal/Rodape.php";
 ?>
 <html>
     <head>
-        <title>INPLA - Jogos</title>
+        <title>RADI - Jogos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
         <script src="js/JogoView.js?rdm=<?php echo Time();?>"></script>
     </head>

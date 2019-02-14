@@ -5,7 +5,7 @@ include_once PATH . "View/MenuPrincipal/Rodape.php";
 ?>
 <html>
     <head>
-        <title>INPLA - Saque</title>
+        <title>RADI - Saque</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/SaqueView.js?rdm=<?php echo time(); ?>"></script>
         <style>

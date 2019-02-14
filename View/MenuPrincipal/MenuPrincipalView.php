@@ -4,7 +4,7 @@ include_once "Cabecalho.php";
 include_once "Rodape.php";
 ?>
 <head>
-    <title>Início - INPLA</title>
+    <title>Início - RADI</title>
     <script src="../../View/MenuPrincipal/js/MenuPrincipalView.js"></script>
 <style>
     /*Grid*/

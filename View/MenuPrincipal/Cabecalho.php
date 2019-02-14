@@ -75,7 +75,7 @@ if (!isset($_SESSION['cod_usuario'])) {
             <table width="100%" align="left" style="border:2px solid #04b9b9;border-bottom: 0px;">
                 <tr>
                     <!-- <td align="left" class="cabecalho" style="text-align:left;color:#000000;vertical-align:middle;font-family: arial;" width="40%">
-                        INPLA - Invetimentos
+                        RADI - Invetimentos
                     </td> -->
                     <td class="cabecalho" style="text-align:left;">
                         <?php
@@ -84,7 +84,7 @@ if (!isset($_SESSION['cod_usuario'])) {
                                                 vertical-align: middle;
                                                 font-family: Nimbus Mono L;
                                                 color: #145b61;\"
-                                        href=\"../../View/MenuPrincipal/MenuPrincipalView.php\"><img src='../../Resources/images/Icone_logoRADI.jpg' width='45'>RADI<br> <div style='font-size: 14px;color:#f68920;'>Trading Esportivo</div></a>";
+                                        href=\"../../View/MenuPrincipal/MenuPrincipalView.php\"><img src='../../Resources/images/LogoRADI_edit_nb.png' width='160'></a>";
                         ?>
                     </td>
                     <td style="text-align:right;vertical-align:middle;font-size: 17px;font-family: times new roman;">

@@ -5,7 +5,7 @@ include_once PATH."View/MenuPrincipal/Rodape.php";
 ?>
 <html>
     <head>
-        <title>Cadastro de Estadios</title>
+        <title>RADI - Cadastro de Estadios</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
         <script src="js/EstadioView.js?rdm=<?php echo Time();?>"></script>
 

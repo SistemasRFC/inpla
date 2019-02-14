@@ -67,13 +67,23 @@ class InvestidorModel extends BaseModel
                 $result[1] .= "Esse Login já está sendo usado!\n";
             }
         }
-        if (!FuncoesString::validaCPF($this->objRequest->nroCpf)){
+        if (isset($this->objRequest->nroCpf)){
+            if (!FuncoesString::validaCPF($this->objRequest->nroCpf)){
+                $result[0] = false;
+                $result[1] .= "CPF inválido!\n";
+            }
+        } else {
             $result[0] = false;
-            $result[1] .= "CPF inválido!\n";
+            $result[1] .= "Preencha o campo 'CPF'\n";
         }
-        if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
+        if (isset($this->objRequest->txtEmail)){
+            if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
+                $result[0] = false;
+                $result[1] .= "Email inválido!\n";
+            }
+        } else {
             $result[0] = false;
-            $result[1] .= "Email inválido!\n";
+            $result[1] .= "Preencha o campo 'Email'\n";    
         }
         return $result;
     }
@@ -90,9 +100,14 @@ class InvestidorModel extends BaseModel
 
     Public Function VerificaCampos(){
         $result=array(true, '');
-        if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
+        if (isset($this->objRequest->txtEmail)){
+            if(!filter_var($this->objRequest->txtEmail, FILTER_VALIDATE_EMAIL)) {
+                $result[0] = false;
+                $result[1] .= "Email inválido!\n";
+            }
+        } else {
             $result[0] = false;
-            $result[1] .= "Email inválido!\n";
+            $result[1] .= "Preencha o campo 'Email'\n";    
         }
         if(isset($this->objRequest->nroTelCelular)) {
             if(!FuncoesString::validaCelular($this->objRequest->nroTelCelular)) {

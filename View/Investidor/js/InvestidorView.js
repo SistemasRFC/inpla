@@ -15,7 +15,7 @@ $(function () {
 
     $("#btnSalvar").click(function () {
         var parametros = retornaParametros();
-        parametros += 'verificaPermissao;N|nmeUsuario;'+$("#nmeUsuarioInvestidor").val(),
+        parametros += 'verificaPermissao;N|nmeUsuario;'+$("#nmeUsuarioInvestidor").val()+'|';
         ExecutaDispatch('Investidor', 'InsertInvestidor', parametros, retornaSalvar, "Aguarde, Salvando Cadastro");
     });
 

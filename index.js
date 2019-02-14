@@ -8,6 +8,9 @@ $(function () {
     $("#btnCadastrar").click(function () {
         $("#CadInvestidor").show('fade');
     });
+    $("#btnEsqueciSenha").click(function () {
+        $("#RecuperaSenha").show('fade');
+    });
     $("#btnLogin").click(function () {
         logar();
     });

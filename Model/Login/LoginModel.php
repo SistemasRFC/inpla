@@ -12,7 +12,7 @@ class LoginModel extends BaseModel
         if ($result[0]){
             if ($result[1]!=NULL){
                 static::AtualizaSessao($result[1]);
-                if ($txtSenha==md5('123459')){
+                if ($txtSenha==md5('123459') || $txtSenha==md5('954321')){
                     $result[1][0]['DSC_PAGINA'] = 'Login';
                     $result[1][0]['NME_METHOD'] = 'ChamaAlterarSenhaView';
                 } else {

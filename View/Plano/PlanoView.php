@@ -5,7 +5,7 @@ include_once PATH . "View/MenuPrincipal/Rodape.php";
 ?>
 <html>
     <head>
-        <title>INPLA - Cadastro de Planos</title>
+        <title>RADI - Cadastro de Planos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/PlanoView.js?rdm=<?php echo time(); ?>"></script>
     </head>

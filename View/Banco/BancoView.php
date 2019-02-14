@@ -5,7 +5,7 @@ include_once PATH . "View/MenuPrincipal/Rodape.php";
 ?>
 <html>
     <head>
-        <title>INPLA - Cadastro de Bancos</title>
+        <title>RADI - Cadastro de Bancos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="js/BancoView.js?rdm=<?php echo time(); ?>"></script>
     </head>

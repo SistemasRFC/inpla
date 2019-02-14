@@ -5,7 +5,7 @@ include_once PATH."View/MenuPrincipal/Rodape.php";
 ?>
 <html>
     <head>
-        <title>Cadastro de Times</title>
+        <title>RADI - Cadastro de Times</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; IBM850; ISO-8859-1">
         <script src="js/TimeView.js?rdm=<?php echo time();?>"></script>
 

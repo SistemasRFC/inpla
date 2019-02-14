@@ -45,6 +45,11 @@ class UsuarioController extends BaseController
     Public Function ResetaSenha(){
         $UsuarioModel = new UsuarioModel();
         echo $UsuarioModel->ResetaSenha();
-    }  
+    }
+
+    Public Function RecuperarSenha(){
+        $UsuarioModel = new UsuarioModel();
+        echo $UsuarioModel->RecuperarSenha();
+    }
 }
 ?>
