@@ -74,9 +74,6 @@ if (!isset($_SESSION['cod_usuario'])) {
         <div id="cabecalho">
             <table width="100%" align="left" style="border:2px solid #04b9b9;border-bottom: 0px;">
                 <tr>
-                    <!-- <td align="left" class="cabecalho" style="text-align:left;color:#000000;vertical-align:middle;font-family: arial;" width="40%">
-                        RADI - Invetimentos
-                    </td> -->
                     <td class="cabecalho" style="text-align:left;">
                         <?php
                             echo "<a style=\"text-align: left;

@@ -5,7 +5,7 @@ include_once "Rodape.php";
 ?>
 <head>
     <title>Início - RADI</title>
-    <script src="../../View/MenuPrincipal/js/MenuPrincipalView.js"></script>
+    <script src="../../View/MenuPrincipal/js/MenuPrincipalView.js?random=<?php echo time(); ?>"></script>
 <style>
     /*Grid*/
     .grid-container {
